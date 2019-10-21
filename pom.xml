@@ -21,4 +21,37 @@
 		<java.version>1.8</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
+	<profiles>
+		<!-- Profile used when the app is in coding phase -->
+		<profile>
+			<id>local</id>
+			<properties>
+				<datasource.url>jdbc:postgresql://localhost:5432/skypiea</datasource.url>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<!-- Profile used when the app is deployed on dev environment -->
+		<profile>
+			<id>dev</id>
+			<properties>
+				<datasource.url>jdbc:postgresql://192.168.0.3:5432/skypiea</datasource.url>
+			</properties>
+		</profile>
+		<!-- Profile used when the app is deployed on act (=rct) environment -->
+		<profile>
+			<id>act</id>
+			<properties>
+				<datasource.url>jdbc:postgresql://192.168.2.3:5432/skypiea</datasource.url>
+			</properties>
+		</profile>		
+		<!-- Profile used when the app is deployed on live (=prod) environment -->
+		<profile>
+			<id>live</id>
+			<properties>
+				<datasource.url>jdbc:postgresql://192.168.1.3:5432/skypiea</datasource.url>
+			</properties>
+		</profile>
+	</profiles>
 </project>
