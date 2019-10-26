@@ -2,17 +2,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
-export class RestService {
+export abstract class RestService {
 
   private completeBackendServerUrl: string = "";
   private headers = new HttpHeaders({'content-type': 'application/json'});
 
-  constructor(protected endpoint: string, private http: HttpClient) {
+  constructor(private endpoint: string, protected http: HttpClient) {
     this.completeBackendServerUrl = `${environment.backendServerUrl}/${this.endpoint}`;
   }
 
   create(entity: any): Observable<any> {
-    console.log("create : " + this.completeBackendServerUrl);
     return this.http.post(this.completeBackendServerUrl, JSON.stringify(entity), { headers: this.headers });
   }
 
