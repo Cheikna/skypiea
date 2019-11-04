@@ -37,5 +37,12 @@ public class CharacterController {
 	public boolean deleteUser(@PathVariable Long id){
 		return characterService.delete(id);
 	}
+	
+	@GetMapping("/{id}")
+	public Character getById(@PathVariable Long id) {
+		return characterService.findById(id);
+	}
+	
+	
 
 }
