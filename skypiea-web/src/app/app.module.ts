@@ -8,11 +8,17 @@ import { AngularMaterialModule } from './util/angular-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
+import { TrainingComponent } from './components/training/training.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    TrainingComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

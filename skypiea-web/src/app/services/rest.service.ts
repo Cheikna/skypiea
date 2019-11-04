@@ -23,4 +23,8 @@ export abstract class RestService {
     return this.http.delete(`${this.completeBackendServerUrl}/${id}`, { headers: this.headers });
   }
 
+  findById(id :number): Observable<any> {
+    return this.http.get(`${this.completeBackendServerUrl}/${id}`, { headers: this.headers });
+  }
+
 }
