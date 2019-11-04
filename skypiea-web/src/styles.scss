@@ -3,6 +3,22 @@
 @import "~font-awesome/css/font-awesome.min.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@font-face {
+  font-family: "one-piece";
+  src: url("assets/fonts/one-piece.ttf") format("truetype");
+}
 
+html,
+body {
+  height: 100%;
+  position: relative;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+footer{
+    width: 100%;
+    margin: 0;
+}
