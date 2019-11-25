@@ -15,4 +15,4 @@ target/
 dist/
 node_modules/
 
-*.log
+*.log*
