@@ -16,7 +16,7 @@ import com.skytech.skypiea.api.service.CharacterService;
 import com.skytech.skypiea.commons.entity.Character;
 
 @RestController
-@RequestMapping("/api/characters")
+@RequestMapping("/characters")
 @CrossOrigin(origins="*", allowedHeaders="*")
 public class CharacterController {
 	
