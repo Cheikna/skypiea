@@ -1,0 +1,22 @@
+<div>
+    <div id="background" class="container">
+        <div class="row d-flex justify-content-center">
+            <h1 mat-dialog-title>Sign In</h1>
+        </div>
+        <div class="row">
+            <form [formGroup]="signInForm">
+                <div mat-dialog-content>
+                    <input class="form-control" placeholder="Username" formControlName="username">
+                    <br>
+                    <input class="form-control" placeholder="Password" formControlName="password" type="password">
+                </div>
+                <br>
+                <div mat-dialog-actions class="d-flex justify-content-center">
+                    <button mat-raised-button class="btn btn-success" type="submit">
+                        <mat-icon>lock_open</mat-icon>Sign In
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

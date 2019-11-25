@@ -1,10 +1,15 @@
+#navbar {
+  background: url("../../../assets/gifs/sky.gif") no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+
 .project-image {
-  width: 30%;
+  width: 55%;
 }
 
 .environment {
-  padding-top: 15px;
-  display: block;
   font-family: "one-piece";
-  font-size: 3rem;
+  font-size: 2rem;
 }

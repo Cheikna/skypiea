@@ -1,24 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './util/angular-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TrainingComponent } from './components/training/training.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
+  entryComponents: [
+    SignInComponent
+  ],
   declarations: [
     AppComponent,
     HomeComponent,
     TrainingComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
@@ -26,9 +32,12 @@ import { FooterComponent } from './components/footer/footer.component';
     BrowserAnimationsModule,
     AngularMaterialModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MDBBootstrapModule.forRoot(),
+    ReactiveFormsModule
   ],
-  providers: [],
+  schemas: [ NO_ERRORS_SCHEMA ],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
