@@ -11,6 +11,7 @@ public class TrackBoard {
 		this.id = id;
 		this.width = width;
 		this.height = height;
+		
 	}
 	
 	public long getId() {

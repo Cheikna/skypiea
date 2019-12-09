@@ -16,13 +16,20 @@ import com.skytech.skypiea.api.service.CharacterService;
 import com.skytech.skypiea.api.service.TrackBoardService;
 import com.skytech.skypiea.commons.entity.Character;
 import com.skytech.skypiea.commons.entity.TrackBoard;
-
+/*
 @RestController
 @RequestMapping("/trackboard")
 @CrossOrigin(origins="*", allowedHeaders="*")
 public class TrackBoardController {
 	
-	@Autowired
+	@GetMapping("")
+	public TrackBoard getTrackBoards() {
+		TrackBoard tB1 = new TrackBoard();
+		//return trackBoardService.findAll();
+		return tB1;
+	}*/
+	
+	/*@Autowired
 	private TrackBoardService trackBoardService;
 	
 	@GetMapping("")
@@ -47,4 +54,4 @@ public class TrackBoardController {
 	
 	
 
-}
+}*/

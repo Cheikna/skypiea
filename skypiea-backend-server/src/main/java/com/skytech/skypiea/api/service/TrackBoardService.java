@@ -5,12 +5,12 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.skytech.skypiea.api.repository.TrackBoardRepository;
+//import com.skytech.skypiea.api.repository.TrackBoardRepository;
 import com.skytech.skypiea.commons.entity.TrackBoard;
 
 public class TrackBoardService {
 	
-	@Autowired
+	/*@Autowired
 	private TrackBoardRepository trackBoardRepository;
 	
 	public List<TrackBoard> findAll(){
@@ -40,5 +40,5 @@ public class TrackBoardService {
 			
 		}
 		return board;
-	}
+	}*/
 }
