@@ -9,58 +9,62 @@ import javax.persistence.Entity;
 public class Client extends com.skytech.skypiea.commons.entity.Entity{
 	
 	@Column(name="LAST_NAME")
-	protected String lastName;
+	protected String last_name;
 
 	@Column(name="FIRST_NAME")
-	protected String firstName;
+	protected String first_name;
 	
 	@Column(name="AGE")
 	protected Integer age;
 	
 	@Column(name="EMAIL")
 	protected String email;
+
+	@Column(name="STREET_NUMBER")
+	protected Integer street_number;
 	
-	@Column(name="ROADNAME")
-	protected String roadname;
+	@Column(name="STREET_NAME")
+	protected String street_name;
 	
-	@Column(name="ZIPCODE")
-	protected String zipcode;
+	@Column(name="ZIP_CODE")
+	protected String zip_code;
 	
 	@Column(name="CITY")
 	protected String city;
 	
-	@Column(name="PHONENUMBER")
-	protected String phoneNumber;
+	@Column(name="PHONE_NUMBER")
+	protected String phone_number;
 	
 	public Client() {
 		
 	}
 	
-	public Client (String lastName, String firstName, Integer age, String email, String roadName, String zipcode, String city, String phoneNumber) {
-		this.lastName = lastName;
-		this.firstName = firstName;
+	public Client (String last_name, String first_name, Integer age, String email, Integer street_number, String street_name, String zip_code, String city, String phone_number) {
+		this.last_name = last_name;
+		this.first_name = first_name;
 		this.age = age;
 		this.email = email;
-		this.roadname = roadName;
-		this.zipcode = zipcode;
+		this.street_number = street_number;
+		this.street_name = street_name;
+		this.zip_code = zip_code;
 		this.city = city;
-		this.phoneNumber = phoneNumber;
+		this.phone_number = phone_number;
 	}
 
 	public String getLastName() {
-		return lastName;
+		return last_name;
 	}
 
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.last_name = lastName;
 	}
 
 	public String getFirstName() {
-		return firstName;
+		return first_name;
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.first_name = firstName;
 	}
 
 	public Integer getAge() {
@@ -79,20 +83,20 @@ public class Client extends com.skytech.skypiea.commons.entity.Entity{
 		this.email = email;
 	}
 
-	public String getRoadname() {
-		return roadname;
+	public String getStreetName() {
+		return street_name;
 	}
 
-	public void setRoadname(String roadname) {
-		this.roadname = roadname;
+	public void setStreetName(String street_name) {
+		this.street_name = street_name;
 	}
 
 	public String getZipcode() {
-		return zipcode;
+		return zip_code;
 	}
 
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
+	public void setZipcode(String zip_code) {
+		this.zip_code = zip_code;
 	}
 
 	public String getCity() {
@@ -104,11 +108,11 @@ public class Client extends com.skytech.skypiea.commons.entity.Entity{
 	}
 
 	public String getPhoneNumber() {
-		return phoneNumber;
+		return phone_number;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setPhoneNumber(String phone_number) {
+		this.phone_number = phone_number;
 	}
 	
 	

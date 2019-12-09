@@ -27,5 +27,6 @@ export class PersonnalFormComponent implements OnInit {
     error => {
       console.log("Error : " + error);
     });
+    this.newClient.email = "";
   }
 }
