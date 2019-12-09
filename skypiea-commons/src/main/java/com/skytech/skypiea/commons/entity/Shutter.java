@@ -1,40 +1,52 @@
 package com.skytech.skypiea.commons.entity;
 
+import java.sql.Timestamp;
+
 import javax.persistence.*;
 import javax.persistence.Entity;
+
+import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
+import com.skytech.skypiea.commons.enumeration.State;
+import com.skytech.skypiea.commons.enumeration.Status;
 
 @Entity
 @Table(name="SHUTTER")
 @PrimaryKeyJoinColumn(name="ID")
 public class Shutter extends NonMedicalConnectedObject  {
 
-	@Column(name="WINDOW_COVERAGE")
-	private int windowCoverage; 
+	@Column(name="IS_AUTOMATIC_MODE_ENABLED")
+	private boolean isAutomaticModeEnabled; 
 	
-	@Column(name="WINDOW_POSITION")
-	private int windowPosition;
+	@Column(name="WINDOW_COVERAGE")
+	private float windowCoverage;
 
-	public int getWindowCoverage() {
-		return windowCoverage;
+	public Shutter() {
+		super();
 	}
 
-	public void setWindowCoverage(int windowCoverage) {
+	public Shutter(Long id, Long version, Timestamp lastParameterModificationDate, boolean isHistory, String brand,
+			String ipAddress, String macAddress, String lastMeasurementDate, Status status, State state,
+			boolean isAutomaticModeEnabled, float windowCoverage, Timestamp installationDate) {
+		super(id, version, lastParameterModificationDate, isHistory, brand, ipAddress, macAddress,
+				lastMeasurementDate, status, state, NonMedicalObjectType.SHUTTER, installationDate);
+		this.isAutomaticModeEnabled = isAutomaticModeEnabled;
 		this.windowCoverage = windowCoverage;
 	}
 
-	public int getWindowPosition() {
-		return windowPosition;
+	public boolean isAutomaticModeEnabled() {
+		return isAutomaticModeEnabled;
 	}
 
-	public void setWindowPosition(int windowPosition) {
-		this.windowPosition = windowPosition;
+	public void setAutomaticModeEnabled(boolean isAutomaticModeEnabled) {
+		this.isAutomaticModeEnabled = isAutomaticModeEnabled;
 	}
 
-	@Override
-	public String toString() {
-		return "Shutter [windowCoverage=" + windowCoverage + ", windowPosition=" + windowPosition + ", toString()="
-				+ super.toString() + "]";
-	} 
-	
+	public float getWindowCoverage() {
+		return windowCoverage;
+	}
+
+	public void setWindowCoverage(float windowCoverage) {
+		this.windowCoverage = windowCoverage;
+	}	
 	
 }

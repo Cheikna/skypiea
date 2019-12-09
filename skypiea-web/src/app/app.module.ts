@@ -13,6 +13,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ToastrModule } from 'ngx-toastr';
+import { RoomSummaryComponent } from './sub-components/room-summary/room-summary.component';
+import { RoomInformationComponent } from './components/room-information/room-information.component';
 
 @NgModule({
   entryComponents: [
@@ -24,7 +26,9 @@ import { ToastrModule } from 'ngx-toastr';
     TrainingComponent,
     HeaderComponent,
     FooterComponent,
-    SignInComponent
+    SignInComponent,
+    RoomSummaryComponent,
+    RoomInformationComponent
   ],
   imports: [
     BrowserModule,

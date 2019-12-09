@@ -13,15 +13,15 @@ import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;
 
 
 @RestController
-@RequestMapping("/api/non-medical-objects")
+@RequestMapping("/non-medical-objects")
 @CrossOrigin(origins="*", allowedHeaders="*")
 public class NonMedicalConnectedObjectController {
-		
-		@Autowired
-		private NonMedicalConnectedObjectService nonMedicalConnectedObjectService;
-		
-		@GetMapping("")
-		public List<NonMedicalConnectedObject> getNonMedicalConnectedObject() {
-			return nonMedicalConnectedObjectService.findAll();
-		}
+
+	@Autowired
+	private NonMedicalConnectedObjectService nonMedicalConnectedObjectService;
+
+	@GetMapping("")
+	public List<NonMedicalConnectedObject> getNonMedicalConnectedObject() {
+		return nonMedicalConnectedObjectService.findAll();
+	}
 }

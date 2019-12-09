@@ -1,5 +1,6 @@
+import { Entity } from './entity.model';
 
 
-export class AlarmClock {
-    currentday: Date;
+export class AlarmClock extends Entity {
+    currentTime: Date;
 }

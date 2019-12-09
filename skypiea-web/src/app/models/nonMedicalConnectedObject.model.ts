@@ -1,14 +1,9 @@
+import { NonMedicalObjectType } from '../enums/nonMedicalObjectType.enum';
+import { Room } from './room.model';
+import { ConnectedObject } from './connectedObject.model';
 
-
-export abstract class NonMedicalConnectedObject {
-    id: number;
-    version: number;
-    lastParameterModification: Date;
-    isHistoricy: boolean; 
-    brand: string;
-    ipAddress: string; 
-    macAddress: string; 
-    lastMeasurementDate: Date; 
-    status: string; 
-    state: string; 
+export class NonMedicalConnectedObject extends ConnectedObject {
+    installationDate: Date;
+    nonMedicalObjectType: NonMedicalObjectType;
+    room: Room;
 }

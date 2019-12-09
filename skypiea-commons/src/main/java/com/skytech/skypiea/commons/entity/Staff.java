@@ -21,4 +21,5 @@ public class Staff extends User {
 			Timestamp lastConnectionDate) {
 		super(id, version, lastName, firstName, username, password, UserType.STAFF, lastConnectionDate);
 	}
+	
 }

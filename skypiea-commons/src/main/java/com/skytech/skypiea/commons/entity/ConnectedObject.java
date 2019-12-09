@@ -2,53 +2,78 @@ package com.skytech.skypiea.commons.entity;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 import com.skytech.skypiea.commons.enumeration.State;
 import com.skytech.skypiea.commons.enumeration.Status;
 
-
+@Entity
 @Table(name="CONNECTED_OBJECT")
-public abstract class ConnectedObject extends Entity {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class ConnectedObject extends com.skytech.skypiea.commons.entity.Entity {
 
-	@Column(name="LAST_PARAMETER_MODIFICATION")
-	private Timestamp lastParameterModification; 
+	@Column(name="LAST_PARAMETER_MODIFICATION_DATE")
+	protected Timestamp lastParameterModificationDate; 
 	
-	@Column(name="IS_HISTORICY")
-	private boolean isHistoricy;
+	@Column(name="IS_HISTORY")
+	protected boolean isHistory;
 	
 	@Column(name="BRAND")
-	private String brand ;	
+	protected String brand;	
 	
 	@Column(name="IP_ADDRESS")
-	private String ipAddress;
+	protected String ipAddress;
 	
 	@Column(name="MAC_ADDRESS")
-	private String macAddress;
+	protected String macAddress;
 	
 	@Column(name="LAST_MEASUREMENT_DATE")
-	private String lastMeasurementDate;
+	protected String lastMeasurementDate;
 	
+	@Enumerated(EnumType.STRING)
 	@Column(name="STATUS")
-	private Status status; 
+	protected Status status; 
 	
+	@Enumerated(EnumType.STRING)
 	@Column(name="STATE")
-	private State state;
+	protected State state;
+
+	public ConnectedObject() {
+		super();
+	}	
+
+	public ConnectedObject(Long id, Long version, Timestamp lastParameterModificationDate, boolean isHistory,
+			String brand, String ipAddress, String macAddress, String lastMeasurementDate, Status status, State state) {
+		super(id, version);
+		this.lastParameterModificationDate = lastParameterModificationDate;
+		this.isHistory = isHistory;
+		this.brand = brand;
+		this.ipAddress = ipAddress;
+		this.macAddress = macAddress;
+		this.lastMeasurementDate = lastMeasurementDate;
+		this.status = status;
+		this.state = state;
+	}
 
 	public Timestamp getLastParameterModification() {
-		return lastParameterModification;
+		return lastParameterModificationDate;
 	}
 
-	public void setLastParameterModification(Timestamp lastParameterModification) {
-		this.lastParameterModification = lastParameterModification;
+	public void setLastParameterModification(Timestamp lastParameterModificationDate) {
+		this.lastParameterModificationDate = lastParameterModificationDate;
 	}
 
-	public boolean isHistoricy() {
-		return isHistoricy;
+	public boolean isHistory() {
+		return isHistory;
 	}
 
-	public void setHistoricy(boolean isHistoricy) {
-		this.isHistoricy = isHistoricy;
+	public void setHistory(boolean isHistory) {
+		this.isHistory = isHistory;
 	}
 
 	public String getBrand() {
@@ -97,17 +122,5 @@ public abstract class ConnectedObject extends Entity {
 
 	public void setState(State state) {
 		this.state = state;
-	}
-
-	@Override
-	public String toString() {
-		return "ConnectedObject [lastParameterModification=" + lastParameterModification + ", isHistoricy="
-				+ isHistoricy + ", brand=" + brand + ", ipAddress=" + ipAddress + ", macAddress=" + macAddress
-				+ ", lastMeasurementDate=" + lastMeasurementDate + ", status=" + status + ", state=" + state
-				+ ", toString()=" + super.toString() + "]";
-	}
-
-	
-
-	
+	}	
 }
