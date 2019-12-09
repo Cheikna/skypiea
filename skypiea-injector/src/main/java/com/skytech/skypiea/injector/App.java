@@ -1,4 +1,4 @@
-package com.skypiea.injector;
+package com.skytech.skypiea.injector;
 
 /**
  * Hello world!

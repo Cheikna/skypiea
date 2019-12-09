@@ -1,13 +1,16 @@
 package com.skytech.skypiea.commons.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 
 
 @Entity
-@Table(name="CHARACTER")
 public class Character {
 	
 	//private static Logger log = LoggerFactory.getLogger(Character.class);
