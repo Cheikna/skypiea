@@ -16,6 +16,7 @@ import { RoomSummaryComponent } from './sub-components/room-summary/room-summary
 import { RoomInformationComponent } from './components/room-information/room-information.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
 import { RoomPlanComponent } from './sub-components/room-plan/room-plan.component';
+import { ObjectListComponent } from './components/ObjectList/ObjectList.component';
 
 @NgModule({
   entryComponents: [
@@ -30,7 +31,8 @@ import { RoomPlanComponent } from './sub-components/room-plan/room-plan.componen
     RoomSummaryComponent,
     RoomInformationComponent,
     MonitoringComponent,
-    RoomPlanComponent
+    RoomPlanComponent,
+    ObjectListComponent
   ],
   imports: [
     BrowserModule,
