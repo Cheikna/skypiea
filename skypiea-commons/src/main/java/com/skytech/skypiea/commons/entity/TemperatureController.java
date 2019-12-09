@@ -11,12 +11,9 @@ import javax.persistence.Entity;
 
 @Entity
 @Table(name="TemperatureController")
-public class TemperatureController{
+@PrimaryKeyJoinColumn(name="ID")
+public class TemperatureController extends NonMedicalConnectedObject{
 	
-	//private static Logger log = LoggerFactory.getLogger(Character.class);
-	
-	@JoinColumn(name = "id")
-    private NonMedicalConnectedObject nonMedicalConnectedObject;
 	
 	@Column(name="threshold")
 	private int threshold;	
@@ -39,13 +36,7 @@ public class TemperatureController{
 	@JoinColumn(name = "id_Room")
     private Room room;
 
-	public NonMedicalConnectedObject getNon_medical_connected_object() {
-		return nonMedicalConnectedObject;
-	}
-
-	public void setNon_medical_connected_object(NonMedicalConnectedObject nonMedicalConnectedObject) {
-		this.nonMedicalConnectedObject = nonMedicalConnectedObject;
-	}
+	
 
 	public int getThreshold() {
 		return threshold;
@@ -102,6 +93,12 @@ public class TemperatureController{
 	public void setRoom(Room room) {
 		this.room = room;
 	}
+	
+	@Override
+	public String toString() {
+		return "TemperatureController [threshold=" + threshold + ", temperature Max=" + temperature_Max + ", temperature Min=" + temperature_Min + ", temperature Settled=" + temperature_Settled +  ",is_Healthing_Connected =" + is_Healthing_Connected + ",is_Air_Conditionner_Connected =" + is_Air_Conditionner_Connected + ",room =" + room +", toString()="
+				+ super.toString() + "]";
+	} 
 }
 	
 	
