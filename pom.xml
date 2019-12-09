@@ -17,6 +17,7 @@
 		<module>skypiea-backend-server</module>
 		<module>skypiea-commons</module>
 		<module>skypiea-injector</module>
+		<module>skypiea-batch</module>
 	</modules>
 	<properties>
 		<java.version>1.8</java.version>
