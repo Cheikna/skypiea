@@ -1,5 +1,6 @@
 package com.skytech.skypiea.commons.entity;
 
+import java.security.Timestamp;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -27,10 +28,10 @@ public class Bathtub extends NonMedicalConnectedObject{
 	private boolean isTapOpened;
 	
 	@Column(name="TAP_OPENING_DATE")
-	private Date tapOpeningDate;
+	private Timestamp tapOpeningDate;
 	
 	@Column(name="TAP_CLOSURE_DATE")
-	private Date tapClosureDate;
+	private Timestamp tapClosureDate;
 	
 	@JoinColumn(name = "ID_ROOM")
     private Room room;
@@ -60,19 +61,19 @@ public class Bathtub extends NonMedicalConnectedObject{
 		this.isTapOpened = isTapOpened;
 	}
 
-	public Date getTapOpeningDate() {
+	public Timestamp getTapOpeningDate() {
 		return tapOpeningDate;
 	}
 
-	public void setTapOpeningDate(Date tapOpeningDate) {
+	public void setTapOpeningDate(Timestamp tapOpeningDate) {
 		this.tapOpeningDate = tapOpeningDate;
 	}
 
-	public Date getTapClosureDate() {
+	public Timestamp getTapClosureDate() {
 		return tapClosureDate;
 	}
 
-	public void setTapClosureDate(Date tapClosureDate) {
+	public void setTapClosureDate(Timestamp tapClosureDate) {
 		this.tapClosureDate = tapClosureDate;
 	}
 

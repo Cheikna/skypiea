@@ -10,30 +10,30 @@ import javax.persistence.Entity;
 
 
 @Entity
-@Table(name="TemperatureController")
+@Table(name="TEMPERATURE_CONTROLLER")
 @PrimaryKeyJoinColumn(name="ID")
 public class TemperatureController extends NonMedicalConnectedObject{
 	
 	
-	@Column(name="threshold")
+	@Column(name="THRESHOLD")
 	private int threshold;	
 	
-	@Column(name="temperature_Max")
-	private int temperature_Max;
+	@Column(name="TEMPERATURE_MAX")
+	private int temperatureMax;
 
-	@Column(name="temperature_Min")
-	private int temperature_Min;
+	@Column(name="TEMPERATURE_MIN")
+	private int temperatureMin;
 	
-	@Column(name="temperature_Settled ")
-	private int temperature_Settled;
+	@Column(name="TEMPERATURE_SETTLED ")
+	private int temperatureSettled;
 	
-	@Column(name="is_Healthing_Connected")
-	private boolean is_Healthing_Connected;
+	@Column(name="IS_HEALTHING_CONNECTED")
+	private boolean isHealthingConnected;
 	
-	@Column(name="is_Air_Conditionner_Connected")
-	private boolean is_Air_Conditionner_Connected;
+	@Column(name="IS_AIR_CONDITIONNER_CONNECTED")
+	private boolean isAirConditionnerConnected;
 	
-	@JoinColumn(name = "id_Room")
+	@JoinColumn(name = "ID_ROOM")
     private Room room;
 
 	
@@ -46,44 +46,44 @@ public class TemperatureController extends NonMedicalConnectedObject{
 		this.threshold = threshold;
 	}
 
-	public int getTemperature_Max() {
-		return temperature_Max;
+	public int getTemperatureMax() {
+		return temperatureMax;
 	}
 
-	public void setTemperature_Max(int temperature_Max) {
-		this.temperature_Max = temperature_Max;
+	public void setTemperatureMax(int temperatureMax) {
+		this.temperatureMax = temperatureMax;
 	}
 
-	public int getTemperature_Min() {
-		return temperature_Min;
+	public int getTemperatureMin() {
+		return temperatureMin;
 	}
 
-	public void setTemperature_Min(int temperature_Min) {
-		this.temperature_Min = temperature_Min;
+	public void setTemperatureMin(int temperatureMin) {
+		this.temperatureMin = temperatureMin;
 	}
 
-	public int getTemperature_Settled() {
-		return temperature_Settled;
+	public int getTemperatureSettled() {
+		return temperatureSettled;
 	}
 
-	public void setTemperature_Settled(int temperature_Settled) {
-		this.temperature_Settled = temperature_Settled;
+	public void setTemperatureSettled(int temperatureSettled) {
+		this.temperatureSettled = temperatureSettled;
 	}
 
-	public boolean isIs_Healthing_Connected() {
-		return is_Healthing_Connected;
+	public boolean getIsHealthingConnected() {
+		return isHealthingConnected;
 	}
 
-	public void setIs_Healthing_Connected(boolean is_Healthing_Connected) {
-		this.is_Healthing_Connected = is_Healthing_Connected;
+	public void setIsHealthingConnected(boolean isHealthingConnected) {
+		this.isHealthingConnected = isHealthingConnected;
 	}
 
-	public boolean isIs_Air_Conditionner_Connected() {
-		return is_Air_Conditionner_Connected;
+	public boolean getIsAirConditionnerConnected() {
+		return isAirConditionnerConnected;
 	}
 
-	public void setIs_Air_Conditionner_Connected(boolean is_Air_Conditionner_Connected) {
-		this.is_Air_Conditionner_Connected = is_Air_Conditionner_Connected;
+	public void setIsAirConditionnerConnected(boolean isAirConditionnerConnected) {
+		this.isAirConditionnerConnected = isAirConditionnerConnected;
 	}
 
 	public Room getRoom() {
@@ -96,7 +96,7 @@ public class TemperatureController extends NonMedicalConnectedObject{
 	
 	@Override
 	public String toString() {
-		return "TemperatureController [threshold=" + threshold + ", temperature Max=" + temperature_Max + ", temperature Min=" + temperature_Min + ", temperature Settled=" + temperature_Settled +  ",is_Healthing_Connected =" + is_Healthing_Connected + ",is_Air_Conditionner_Connected =" + is_Air_Conditionner_Connected + ",room =" + room +", toString()="
+		return "TemperatureController [threshold=" + threshold + ", temperature Max=" + temperatureMax + ", temperature Min=" + temperatureMin + ", temperature Settled=" + temperatureSettled +  ",is_Healthing_Connected =" + isHealthingConnected + ",is_Air_Conditionner_Connected =" + isAirConditionnerConnected + ",room =" + room +", toString()="
 				+ super.toString() + "]";
 	} 
 }
