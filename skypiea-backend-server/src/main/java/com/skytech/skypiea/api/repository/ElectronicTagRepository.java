@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.skytech.skypiea.commons.entity.ElectronicTag;
 
-@Repository
+/*@Repository
 public interface ElectronicTagRepository extends JpaRepository<ElectronicTag, Long>{
 
-}
+}*/

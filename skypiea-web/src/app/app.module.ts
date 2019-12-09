@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ToastrModule } from 'ngx-toastr';
+import { TrackingComponent } from './components/tracking/tracking.component';
 
 import { ObjectListComponent } from './components/ObjectList/ObjectList.component';
 
@@ -43,7 +44,8 @@ import { MonitoringComponent } from './components/monitoring/monitoring.componen
     AlarmClockDetailsComponent,
     NonMedicalConnectedObjectListComponent,
     AlarmClockDetailsComponent,
-    TemperatureControllerDetailsComponent
+    TemperatureControllerDetailsComponent,
+    TrackingComponent
   ],
   imports: [
     BrowserModule,
