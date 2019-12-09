@@ -13,6 +13,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ToastrModule } from 'ngx-toastr';
+import { NonMedicalConnectedObjectListComponent } from './components/non-medical-connected-object-list/non-medical-connected-object-list.component';
+import { AlarmClockDetailsComponent } from './components/alarm-clock-details/alarm-clock-details.component';
 
 @NgModule({
   entryComponents: [
@@ -24,7 +26,9 @@ import { ToastrModule } from 'ngx-toastr';
     TrainingComponent,
     HeaderComponent,
     FooterComponent,
-    SignInComponent
+    SignInComponent,
+    NonMedicalConnectedObjectListComponent,
+    AlarmClockDetailsComponent
   ],
   imports: [
     BrowserModule,
