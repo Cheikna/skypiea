@@ -40,8 +40,9 @@ import { TemperatureControllerDetailsComponent } from './components/temperature-
     AlarmClockDetailsComponent,
     NonMedicalConnectedObjectListComponent,
     AlarmClockDetailsComponent,
-    TemperatureControllerDetailsComponent
-
+    TemperatureControllerDetailsComponent,
+    RoomSummaryComponent,
+    RoomInformationComponent
   ],
   imports: [
     BrowserModule,

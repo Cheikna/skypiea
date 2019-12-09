@@ -36,8 +36,8 @@ public class Bulb extends NonMedicalConnectedObject {
 		this.savingDate = savingDate;
 	}
 
-	public String getCurrentColor() {
-		return currentColor;
+	public Bulb() {
+		super();
 	}
 
 	public void setCurrentColor(String currentColor) {
