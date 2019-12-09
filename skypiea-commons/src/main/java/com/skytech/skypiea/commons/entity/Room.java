@@ -4,11 +4,13 @@ import javax.persistence.*;
 
 import com.skytech.skypiea.commons.enumeration.Wing;
 
-@Table(name="NON_MEDICAL_CONNECTED_OBJECT")
+@Table(name="ROOM")
+
+@PrimaryKeyJoinColumn(name="ID")
 public class Room extends Entity{
 	
 	@Column(name="DOOR_NUMBER")
-	private String doorNumber;
+	private Long doorNumber;
 	
 	@Column(name="FLOOR")
 	private int floor;
@@ -17,13 +19,13 @@ public class Room extends Entity{
 	private boolean isOccuped;
 	
 	@Column(name="WIDTH")
-	private int width;
+	private float width;
 	
 	@Column(name="LENGTH")
-	private int length;
+	private float length;
 	
 	@Column(name="HEIGHT")
-	private int height;
+	private float height;
 	
 	@Column(name="WING")
 	private Wing wing;

@@ -1,7 +1,8 @@
 package com.skytech.skypiea.commons.entity;
-import java.sql.Date;
+import java.sql.Timestamp;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Table;
 
 import com.skytech.skypiea.commons.enumeration.State;
 import com.skytech.skypiea.commons.enumeration.Status;
@@ -11,7 +12,7 @@ import com.skytech.skypiea.commons.enumeration.Status;
 public abstract class ConnectedObject extends Entity {
 
 	@Column(name="LAST_PARAMETER_MODIFICATION")
-	private Date lastParameterModification; 
+	private Timestamp lastParameterModification; 
 	
 	@Column(name="IS_HISTORICY")
 	private boolean isHistoricy;
@@ -34,11 +35,11 @@ public abstract class ConnectedObject extends Entity {
 	@Column(name="STATE")
 	private State state;
 
-	public Date getLastParameterModification() {
+	public Timestamp getLastParameterModification() {
 		return lastParameterModification;
 	}
 
-	public void setLastParameterModification(Date lastParameterModification) {
+	public void setLastParameterModification(Timestamp lastParameterModification) {
 		this.lastParameterModification = lastParameterModification;
 	}
 

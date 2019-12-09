@@ -1,10 +1,13 @@
 package com.skytech.skypiea.commons.entity;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 
 import com.skytech.skypiea.commons.enumeration.BinarySensorType;
 
+@Entity
 @Table(name="BINARY_SENSOR")
+@PrimaryKeyJoinColumn(name="ID")
 public class BinarySensor extends NonMedicalConnectedObject {
 	
 	@Column(name="HAS_DETECTED")

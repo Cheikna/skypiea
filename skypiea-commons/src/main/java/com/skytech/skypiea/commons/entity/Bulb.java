@@ -1,9 +1,12 @@
 package com.skytech.skypiea.commons.entity;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 
+@Entity
 @Table(name="BULB")
-public class Bulb extends NonMedicalConnectedObject{
+@PrimaryKeyJoinColumn(name="ID")
+public class Bulb extends NonMedicalConnectedObject {
 	
 	@Column(name="CURRENT_COLOR")
 	private String currentColor;

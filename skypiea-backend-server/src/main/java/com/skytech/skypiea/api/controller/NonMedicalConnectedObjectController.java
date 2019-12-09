@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skytech.skypiea.api.service.NonMedicalConnectedObjectService;
-import com.skytech.skypiea.commons.entity.AlarmClock;
 import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;
 
 

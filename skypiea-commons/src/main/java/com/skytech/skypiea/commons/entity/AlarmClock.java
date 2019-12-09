@@ -3,10 +3,13 @@ package com.skytech.skypiea.commons.entity;
 import java.sql.Time;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 
 import com.skytech.skypiea.commons.enumeration.Day;
 
+@Entity
 @Table(name="ALARM_CLOCK")
+@PrimaryKeyJoinColumn(name="ID")
 public class AlarmClock extends NonMedicalConnectedObject {
 	
 	@Column(name="HOUR")

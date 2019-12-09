@@ -1,8 +1,11 @@
 package com.skytech.skypiea.commons.entity;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 
+@Entity
 @Table(name="SHUTTER")
+@PrimaryKeyJoinColumn(name="ID")
 public class Shutter extends NonMedicalConnectedObject  {
 
 	@Column(name="WINDOW_COVERAGE")
