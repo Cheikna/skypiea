@@ -7,4 +7,11 @@
   </parent>
   <groupId>com.skytech.skypiea.batch</groupId>
   <artifactId>skypiea-batch</artifactId>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.skytech.skypiea</groupId>
+  		<artifactId>skypiea-commons</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>
