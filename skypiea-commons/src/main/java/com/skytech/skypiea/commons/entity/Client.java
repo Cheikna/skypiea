@@ -1,8 +1,12 @@
 package com.skytech.skypiea.commons.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Table;
+import javax.persistence.Entity;
 
-public class Client extends Entity{
+@Entity
+@Table(name="CLIENT")
+public class Client extends com.skytech.skypiea.commons.entity.Entity{
 	
 	@Column(name="LAST_NAME")
 	protected String lastName;
@@ -27,6 +31,21 @@ public class Client extends Entity{
 	
 	@Column(name="PHONENUMBER")
 	protected String phoneNumber;
+	
+	public Client() {
+		
+	}
+	
+	public Client (String lastName, String firstName, Integer age, String email, String roadName, String zipcode, String city, String phoneNumber) {
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.age = age;
+		this.email = email;
+		this.roadname = roadName;
+		this.zipcode = zipcode;
+		this.city = city;
+		this.phoneNumber = phoneNumber;
+	}
 
 	public String getLastName() {
 		return lastName;
