@@ -13,10 +13,7 @@ import javax.persistence.Entity;
 @Entity
 @Table(name="BATHTUB")
 @PrimaryKeyJoinColumn(name="ID")
-public class Bathtub extends NonMedicalConnectedObject{
-	
-	
-	
+public class Bathtub extends NonMedicalConnectedObject{	
 	
 	@Column(name="WATER_LEVEL")
 	private int waterLevel;	
