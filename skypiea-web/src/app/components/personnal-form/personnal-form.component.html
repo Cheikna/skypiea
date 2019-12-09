@@ -5,9 +5,12 @@
     <input type="radio" name="masculin" value="masc" id="masc"/> <label for="masc">Masculin</label>
     <input type="radio" name="feminin" value="fem" id="fem"/> <label for="fem">Féminin</label>  
     <input type="radio" name="autre" value="autre" id="autre"/> <label for="autre">Autre</label><br />
-    <label for="nom">Votre nom </label><input type="text" [(ngModel)]="nom" name="nom"/><br>
-    <label for="prenom">Votre prénom </label><input type="text" [(ngModel)]="prenom" name="prenom"/><br>
-    <label for="age">Votre age </label><input type="text" [(ngModel)]="age" name="age"/><br>
-    <label for="adresse">Votre adresse </label><input type="text" [(ngModel)]="adresse" name="adresse"/><br>
+    <label for="nom">Votre nom </label><input type="text" [(ngModel)]="newClient.lastName" name="nom"/><br>
+    <label for="prenom">Votre prénom </label><input type="text" [(ngModel)]="newClient.firstName" name="prenom"/><br>
+    <label for="age">Votre age </label><input type="text" [(ngModel)]="newClient.age" name="age"/><br>
+    <label for="streetNumber">Le numéro de votre rue </label><input type="number" [(ngModel)]="newClient.streetNumber" name="streetNumber"/><br>
+    <label for="streetName">Votre adresse </label><input type="text" [(ngModel)]="newClient.streetName" name="streetName"/><br>
+    <label for="city">Votre ville </label><input type="text" [(ngModel)]="newClient.city" name="city"/><br>
+    <label for="zipCode">Votre code postal </label><input type="text" [(ngModel)]="newClient.zipCode" name="zipCode"/><br>
 </form>
 <button (click)="create()">Enregistrer</button>
