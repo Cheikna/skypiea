@@ -1,0 +1,38 @@
+<section>
+
+    <div class="container">
+
+        <h4>List of connected objects :</h4>
+        <table class="table table-bordered table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Last Parameter Modification</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Last Measurement object</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Room</th>
+
+
+
+                </tr>
+            </thead>
+           <tbody>
+                    <tr *ngFor="let temperatureController of temperatureControllers">
+                        <th scope="row">{{Non_medical_connected_object.id }}</th>
+                        <router-outlet><a [routerLink]="['/training']"></a></router-outlet>
+                        <td>{{ Non_medical_connected_object.version }}</td>
+                        <td>{{ Non_medical_connected_object.last_Parameter_Modification }}</td>
+                        <td>{{ Non_medical_connected_object.brand }}</td>
+                        <td>{{ Non_medical_connected_object.last_Measurement_objesct }}</td>
+                        <td>{{ Non_medical_connected_object.status }}</td>
+                        <td>{{ Non_medical_connected_object.state }}</td>
+                        <td>{{ Non_medical_connected_object.room }}</td>
+                    </tr>
+            </tbody>
+       </table>
+
+        <span><br><br></span>
+    </div>
+</section>

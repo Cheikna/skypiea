@@ -13,6 +13,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ObjectListComponent } from './components/ObjectList/ObjectList.component';
 
 @NgModule({
   entryComponents: [
@@ -24,7 +25,8 @@ import { ToastrModule } from 'ngx-toastr';
     TrainingComponent,
     HeaderComponent,
     FooterComponent,
-    SignInComponent
+    SignInComponent,
+    ObjectListComponent
   ],
   imports: [
     BrowserModule,
