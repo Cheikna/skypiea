@@ -15,9 +15,6 @@ import javax.persistence.Entity;
 public class SmokeSensor extends NonMedicalConnectedObject {
 	
 	
-	@JoinColumn(name = "id")
-    private NonMedicalConnectedObject nonMedicalConnectedObject;
-	
 	@Column(name="threshold")
 	private int threshold;	
 	
@@ -27,13 +24,7 @@ public class SmokeSensor extends NonMedicalConnectedObject {
 	@JoinColumn(name = "id_Room")
     private Room room;
 
-	public NonMedicalConnectedObject getNonMedicalConnectedObject() {
-		return nonMedicalConnectedObject;
-	}
-
-	public void setNon_medical_connected_object(NonMedicalConnectedObject nonMedicalConnectedObject) {
-		this.nonMedicalConnectedObject = nonMedicalConnectedObject;
-	}
+	
 
 	public int getThreshold() {
 		return threshold;
