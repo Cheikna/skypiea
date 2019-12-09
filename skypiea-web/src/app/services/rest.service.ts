@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 
 export abstract class RestService {
 
-  private completeBackendServerUrl: string = "";
-  private headers = new HttpHeaders({'content-type': 'application/json'});
+  protected completeBackendServerUrl: string = "";
+  protected headers = new HttpHeaders({'content-type': 'application/json'});
 
-  constructor(private endpoint: string, protected http: HttpClient) {
+  constructor(protected endpoint: string, protected http: HttpClient) {
     this.completeBackendServerUrl = `${environment.backendServerUrl}/${this.endpoint}`;
   }
 
