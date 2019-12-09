@@ -10,18 +10,18 @@ import javax.persistence.Entity;
 
 
 @Entity
-@Table(name="SmokeSensor")
+@Table(name="SMOKE_SENSOR")
 @PrimaryKeyJoinColumn(name="ID")
 public class SmokeSensor extends NonMedicalConnectedObject {
 	
 	
-	@Column(name="threshold")
+	@Column(name="THRESHOLD")
 	private int threshold;	
 	
-	@Column(name="sensitivity")
+	@Column(name="SENSITIVITY")
 	private String sensitivity;
 	
-	@JoinColumn(name = "id_Room")
+	@JoinColumn(name = "ID_ROOM")
     private Room room;
 
 	
