@@ -17,6 +17,8 @@ import { RoomInformationComponent } from './components/room-information/room-inf
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
 import { RoomPlanComponent } from './sub-components/room-plan/room-plan.component';
 import { ObjectListComponent } from './components/ObjectList/ObjectList.component';
+import { NonMedicalConnectedObjectListComponent } from './components/non-medical-connected-object-list/non-medical-connected-object-list.component';
+import { AlarmClockDetailsComponent } from './components/alarm-clock-details/alarm-clock-details.component';
 
 @NgModule({
   entryComponents: [
@@ -33,7 +35,8 @@ import { ObjectListComponent } from './components/ObjectList/ObjectList.componen
     MonitoringComponent,
     RoomPlanComponent,
     ObjectListComponent,
-    TemperatureControllerDetailComponent
+    NonMedicalConnectedObjectListComponent,
+    AlarmClockDetailsComponent
   ],
   imports: [
     BrowserModule,
