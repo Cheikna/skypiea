@@ -12,7 +12,7 @@ import { TrainingComponent } from './components/training/training.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
-import { CookieService } from 'ngx-cookie-service';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   entryComponents: [
@@ -34,10 +34,13 @@ import { CookieService } from 'ngx-cookie-service';
     HttpClientModule,
     FormsModule,
     MDBBootstrapModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({      
+    positionClass: 'toast-top-center',
+    })
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [CookieService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

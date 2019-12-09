@@ -3,35 +3,18 @@
         <img src="assets/images/logos/skypiea.png" class="project-image">
     </a>
     <span class="environment">({{environmentVariables.environmentTitle}})</span>
-    <!-- Display the correct header according to the state (logged in or not) and the role if the user -->
-    <links *ngIf="true; then notConnectedUser"></links>
+    <links>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link waves-effect" mdbWavesEffect (click)="openSignInDialog()">
+                    <mdb-icon fas icon="user"></mdb-icon> Sign In
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-effect" mdbWavesEffect>
+                    <mdb-icon fas icon="envelope"></mdb-icon> Contact
+                </a>
+            </li>
+        </ul>
+    </links>
 </mdb-navbar>
-
-
-<!-- Template of the header when a user is not connected -->
-<ng-template #notConnectedUser>
-    <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <a class="nav-link waves-effect" mdbWavesEffect (click)="openSignInDialog()">
-                <mdb-icon fas icon="user"></mdb-icon> Sign In
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link waves-effect" mdbWavesEffect>
-                <mdb-icon fas icon="envelope"></mdb-icon> Contact
-            </a>
-        </li>
-    </ul>
-</ng-template>
-
-
-<!-- Case when the user is connected. We have to figure out what header to display -->
-<ng-template #connectedUser *ngIf="false; then normalResident else monitoringAgent"></ng-template>
-
-<!-- TODO Template of the header of a normal resident -->
-<ng-template #normalResident>
-</ng-template>
-
-<!-- TODO Template of the header of a monitoring agent -->
-<ng-template #monitoringAgent>
-</ng-template>

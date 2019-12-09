@@ -4,7 +4,7 @@
             <h1 mat-dialog-title>Sign In</h1>
         </div>
         <div class="row">
-            <form [formGroup]="signInForm">
+            <form [formGroup]="signInForm" (ngSubmit)="authenticate()">
                 <div mat-dialog-content>
                     <input class="form-control" placeholder="Username" formControlName="username">
                     <br>
@@ -12,9 +12,12 @@
                 </div>
                 <br>
                 <div mat-dialog-actions class="d-flex justify-content-center">
-                    <button mat-raised-button class="btn btn-success" type="submit">
+                    <button mat-raised-button [disabled]="signInForm.invalid" class="btn btn-success" type="submit">
                         <mat-icon>lock_open</mat-icon>Sign In
-                    </button>
+                    </button> 
+                </div>                              
+                <div class="text-white font-italic" *ngIf="signInForm.invalid">
+                    Missing username or password !
                 </div>
             </form>
         </div>
