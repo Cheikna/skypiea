@@ -10,69 +10,70 @@ import javax.persistence.Entity;
 
 
 @Entity
-@Table(name="Bathtub")
+@Table(name="BATHTUB")
 @PrimaryKeyJoinColumn(name="ID")
 public class Bathtub extends NonMedicalConnectedObject{
 	
 	
 	
 	
-	@Column(name="water_Level")
-	private int water_Level;	
+	@Column(name="WATER_LEVEL")
+	private int waterLevel;	
 	
-	@Column(name="bathtub_Height")
-	private int bathtub_Height;
+	@Column(name="BATHTUB_HEIGHT")
+	private int bathtubHeight;
 
-	@Column(name="is_Tap_Opened")
-	private boolean is_Tap_Opened;
+	@Column(name="IS_TAP_OPENED")
+	private boolean isTapOpened;
 	
-	@Column(name="tap_Opening_Date")
-	private Date tap_Opening_Date;
+	@Column(name="TAP_OPENING_DATE")
+	private Date tapOpeningDate;
 	
-	@Column(name="tap_Closure_Date")
-	private Date tap_Closure_Date;
+	@Column(name="TAP_CLOSURE_DATE")
+	private Date tapClosureDate;
 	
-	@JoinColumn(name = "id_Room")
+	@JoinColumn(name = "ID_ROOM")
     private Room room;
 
-	public int getWater_Level() {
-		return water_Level;
+	public int getWaterLevel() {
+		return waterLevel;
+	}
+	
+
+	public void setWaterLevel(int waterLevel) {
+		this.waterLevel = waterLevel;
 	}
 
-	public void setWater_Level(int water_Level) {
-		this.water_Level = water_Level;
+	public int getBathtubHeight() {
+		return bathtubHeight;
 	}
 
-	public int getBathtub_Height() {
-		return bathtub_Height;
+	public void setBathtub_Height(int bathtubHeight) {
+		this.bathtubHeight = bathtubHeight;
 	}
 
-	public void setBathtub_Height(int bathtub_Height) {
-		this.bathtub_Height = bathtub_Height;
+	public boolean getIsTapOpened() {
+		return isTapOpened;
 	}
 
-	public boolean isIs_Tap_Opened() {
-		return is_Tap_Opened;
+	public void setIsTapOpened(boolean isTapOpened) {
+		this.isTapOpened = isTapOpened;
 	}
 
-	public void setIs_Tap_Opened(boolean is_Tap_Opened) {
-		this.is_Tap_Opened = is_Tap_Opened;
+	public Date getTapOpeningDate() {
+		return tapOpeningDate;
 	}
 
-	public Date getTap_Opening_Date() {
-		return tap_Opening_Date;
+	public void setTapOpeningDate(Date tapOpeningDate) {
+		this.tapOpeningDate = tapOpeningDate;
 	}
 
-	public void setTap_Opening_Date(Date tap_Opening_Date) {
-		this.tap_Opening_Date = tap_Opening_Date;
+	public Date getTapClosureDate() {
+		return tapClosureDate;
 	}
 
-	public Date getTap_Closure_Date() {
-		return tap_Closure_Date;
-	}
-
-	public void setTap_Closure_Date(Date tap_Closure_Date) {
-		this.tap_Closure_Date = tap_Closure_Date;
+	public void setTapClosureDate(Date tapClosureDate) {
+		this.tapClosureDate = tapClosureDate;
 	}
 
 	public Room getRoom() {
@@ -85,7 +86,7 @@ public class Bathtub extends NonMedicalConnectedObject{
 
 	@Override
 	public String toString() {
-		return "Bathtub [waterLevel=" + water_Level + ", Bathtub Height=" + bathtub_Height + ", is_Tap_Opened=" + is_Tap_Opened + ", tap_Opening_Date=" + tap_Opening_Date +  ",tap_Closure_Date =" + tap_Closure_Date + ",room =" + room +", toString()="
+		return "Bathtub [waterLevel=" + waterLevel + ", Bathtub Height=" + bathtubHeight + ", is_Tap_Opened=" + isTapOpened + ", tap_Opening_Date=" + tapOpeningDate +  ",tap_Closure_Date =" + tapClosureDate + ",room =" + room +", toString()="
 				+ super.toString() + "]";
 	} 
 	
