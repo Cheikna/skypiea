@@ -18,6 +18,8 @@ import { ObjectListComponent } from './components/ObjectList/ObjectList.componen
 
 import { NonMedicalConnectedObjectListComponent } from './components/non-medical-connected-object-list/non-medical-connected-object-list.component';
 import { AlarmClockDetailsComponent } from './components/alarm-clock-details/alarm-clock-details.component';
+import { TemperatureControllerDetailsComponent } from './components/temperature-controller-details/temperature-controller-details.component';
+
 
 
 @NgModule({
@@ -31,10 +33,10 @@ import { AlarmClockDetailsComponent } from './components/alarm-clock-details/ala
     HeaderComponent,
     FooterComponent,
     SignInComponent,
-
     ObjectListComponent,
     NonMedicalConnectedObjectListComponent,
-    AlarmClockDetailsComponent
+    AlarmClockDetailsComponent,
+    TemperatureControllerDetailsComponent
 
   ],
   imports: [
