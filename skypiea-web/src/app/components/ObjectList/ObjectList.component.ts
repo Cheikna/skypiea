@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Non_medical_connected_object } from 'src/app/models/non_medical_connected_object';
+import { NonMedicalConnectedObject } from 'src/app/models/nonMedicalConnectedObject.model';
 
 
 @Component({
@@ -8,8 +8,8 @@ import { Non_medical_connected_object } from 'src/app/models/non_medical_connect
   styleUrls: ['./ObjectList.component.scss']
 })
 export class ObjectListComponent implements OnInit {
-  ObjectLists: Array<Non_medical_connected_object>;
-  newObjectList: Non_medical_connected_object;
+  ObjectLists: Array<NonMedicalConnectedObject>;
+  newObjectList: NonMedicalConnectedObject;
 
   
 

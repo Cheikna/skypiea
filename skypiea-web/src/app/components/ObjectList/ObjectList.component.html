@@ -22,13 +22,13 @@
                     <tr *ngFor="let temperatureController of temperatureControllers">
                         <th scope="row">{{Non_medical_connected_object.id }}</th>
                         <router-outlet><a [routerLink]="['/training']"></a></router-outlet>
-                        <td>{{ Non_medical_connected_object.version }}</td>
-                        <td>{{ Non_medical_connected_object.last_Parameter_Modification }}</td>
-                        <td>{{ Non_medical_connected_object.brand }}</td>
-                        <td>{{ Non_medical_connected_object.last_Measurement_objesct }}</td>
-                        <td>{{ Non_medical_connected_object.status }}</td>
-                        <td>{{ Non_medical_connected_object.state }}</td>
-                        <td>{{ Non_medical_connected_object.room }}</td>
+                        <td>{{ NonMedicalConnectedObject.version }}</td>
+                        <td>{{ NonMedicalConnectedObject.last_Parameter_Modification }}</td>
+                        <td>{{ NonMedicalConnectedObject.brand }}</td>
+                        <td>{{ NonMedicalConnectedObject.last_Measurement_objesct }}</td>
+                        <td>{{ NonMedicalConnectedObject.status }}</td>
+                        <td>{{ NonMedicalConnectedObject.state }}</td>
+                        <td>{{ NonMedicalConnectedObject.room }}</td>
                     </tr>
             </tbody>
        </table>
