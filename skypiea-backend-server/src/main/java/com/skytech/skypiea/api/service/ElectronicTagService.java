@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 //import com.skytech.skypiea.api.repository.ElectronicTagRepository;
-import com.skytech.skypiea.commons.entity.ElectronicTag;
+import com.skytech.skypiea.commons.entity.ETag;
 
 @Service
 public class ElectronicTagService {
