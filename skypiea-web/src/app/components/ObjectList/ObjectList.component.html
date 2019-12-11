@@ -6,7 +6,6 @@
         <table class="table table-bordered table-dark">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Last Parameter Modification</th>
                     <th scope="col">Brand</th>
                     <th scope="col">Last Measurement object</th>
@@ -20,8 +19,7 @@
             </thead>
            <tbody>
                     <tr *ngFor="let temperatureController of temperatureControllers">
-                        <th scope="row">{{Non_medical_connected_object.id }}</th>
-                        <router-outlet><a [routerLink]="['/training']"></a></router-outlet>
+                        
                         <td>{{ NonMedicalConnectedObject.version }}</td>
                         <td>{{ NonMedicalConnectedObject.last_Parameter_Modification }}</td>
                         <td>{{ NonMedicalConnectedObject.brand }}</td>
