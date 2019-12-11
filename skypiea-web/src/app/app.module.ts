@@ -14,6 +14,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ObjectListComponent } from './components/ObjectList/ObjectList.component';
+import { TemperatureControllerDetailComponent } from './temperature-controller-detail/temperature-controller-detail.component';
 
 @NgModule({
   entryComponents: [
@@ -26,7 +27,8 @@ import { ObjectListComponent } from './components/ObjectList/ObjectList.componen
     HeaderComponent,
     FooterComponent,
     SignInComponent,
-    ObjectListComponent
+    ObjectListComponent,
+    TemperatureControllerDetailComponent
   ],
   imports: [
     BrowserModule,
