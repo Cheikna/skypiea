@@ -13,7 +13,7 @@ export class TracklistCharactersComponent implements OnInit {
   characters: Array<Character>;
   newCharacter: Character;
 
-  constructor(private characterService: CharacterService,private router: Router) { 
+  constructor(private characterService: CharacterService, private router: Router) { 
     this.characters = new Array<Character>();
     this.newCharacter = new Character();
   }
@@ -29,23 +29,8 @@ export class TracklistCharactersComponent implements OnInit {
 
   }
 
-  create(){
-    this.characterService.create(this.newCharacter).subscribe(data => {
-      console.log("character created");
-    }, 
-    error => {
-      console.log("Error : " + error);
-    });
-    this.newCharacter.name = "";
-
-  }
-
   select(id: number){
     this.router.navigate(['/tracking/'+id])
-
-
-
-
   }
 
 }

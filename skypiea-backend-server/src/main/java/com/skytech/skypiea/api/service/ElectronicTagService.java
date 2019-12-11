@@ -1,4 +1,4 @@
-package com.skytech.skypiea.api.service;
+/*package com.skytech.skypiea.api.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,12 +6,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-//import com.skytech.skypiea.api.repository.ElectronicTagRepository;
+import com.skytech.skypiea.commons.entity.ElectronicTag;
+import com.skytech.skypiea.api.repository.ElectronicTagRepository;
 
 @Service
 public class ElectronicTagService {
 	
-	/*@Autowired
+	@Autowired
 	private ElectronicTagRepository electronicTagRepository;
 	
 	public List<ElectronicTag> findAll(){
@@ -41,6 +42,6 @@ public class ElectronicTagService {
 			
 		}
 		return eTag;
-	}*/
+	}
 
-}
+}*/
