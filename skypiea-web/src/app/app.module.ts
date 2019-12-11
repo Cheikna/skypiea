@@ -32,7 +32,8 @@ import { ObjectListComponent } from './components/ObjectList/ObjectList.componen
     RoomInformationComponent,
     MonitoringComponent,
     RoomPlanComponent,
-    ObjectListComponent
+    ObjectListComponent,
+    TemperatureControllerDetailComponent
   ],
   imports: [
     BrowserModule,
