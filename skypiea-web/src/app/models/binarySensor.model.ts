@@ -4,4 +4,6 @@ import { NonMedicalConnectedObject } from './nonMedicalConnectedObject.model';
 export class BinarySensor extends NonMedicalConnectedObject {
     isActive: boolean;
     type: BinarySensorType;
+    isCurrentSettings: boolean;
+    savingDate: Date;
 }

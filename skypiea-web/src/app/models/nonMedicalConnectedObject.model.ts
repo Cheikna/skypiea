@@ -6,4 +6,5 @@ export class NonMedicalConnectedObject extends ConnectedObject {
     installationDate: Date;
     nonMedicalObjectType: NonMedicalObjectType;
     room: Room;
+    svgPoint: String;
 }

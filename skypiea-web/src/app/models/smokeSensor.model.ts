@@ -1,8 +1,8 @@
 import { NonMedicalConnectedObject } from './nonMedicalConnectedObject.model';
 
-
-export class AlarmClock extends NonMedicalConnectedObject {
-    currentTime: Date;
+export class SmokeSensor extends NonMedicalConnectedObject {
+    threshold: number;
+    sensitivity: string;
     isCurrentSettings: boolean;
     savingDate: Date;
 }

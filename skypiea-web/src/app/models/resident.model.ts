@@ -1,6 +1,5 @@
-import { Room } from './room.model';
+import { User } from './user.model';
 
-export class Resident {
+export class Resident extends User {
     birthDay: Date;
-    room: Room;
 }
