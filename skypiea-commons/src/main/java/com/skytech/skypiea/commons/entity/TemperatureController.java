@@ -1,5 +1,9 @@
 package com.skytech.skypiea.commons.entity;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> Updating Backend Server entities
 import java.sql.Timestamp;
 
 import javax.persistence.*;

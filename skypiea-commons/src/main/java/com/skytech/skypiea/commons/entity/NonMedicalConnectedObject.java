@@ -87,18 +87,22 @@ public abstract class NonMedicalConnectedObject extends ConnectedObject {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ROOM_ID", nullable = false)
 	protected Room room;
+	
+	@Column(name="SVG_POINT")
+	protected String svgPoint;
 
 	public NonMedicalConnectedObject() {
 		super();
 	}
 
 	public NonMedicalConnectedObject(Long id, Long version, Timestamp lastParameterModificationDate,
-			boolean isHistory, String brand, String ipAddress, String macAddress, String lastMeasurementDate,
-			Status status, State state, NonMedicalObjectType nonMedicalObjectType, Timestamp installationDate) {
-		super(id, version, lastParameterModificationDate, isHistory, brand, ipAddress, macAddress, lastMeasurementDate,
+			String brand, String ipAddress, String macAddress, String lastMeasurementDate,
+			Status status, State state, NonMedicalObjectType nonMedicalObjectType, Timestamp installationDate, String svgPoint) {
+		super(id, version, lastParameterModificationDate, brand, ipAddress, macAddress, lastMeasurementDate,
 				status, state);
 		this.nonMedicalObjectType = nonMedicalObjectType;
 		this.installationDate = installationDate;
+		this.svgPoint = svgPoint;
 	}
 
 	public Timestamp getInstallationDate() {

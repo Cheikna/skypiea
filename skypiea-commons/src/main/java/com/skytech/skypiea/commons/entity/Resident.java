@@ -4,9 +4,6 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -19,10 +16,6 @@ public class Resident extends User {
 	
 	@Column(name="BIRTH_DAY")
 	private Timestamp birthDay;
-	
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ROOM_ID", nullable = false)	
-	private Room room;
 
 	public Resident() {		
 		super();
