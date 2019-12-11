@@ -1,4 +1,4 @@
-package com.skytech.skypiea.commons.entity;
+/*package com.skytech.skypiea.commons.entity;
 import java.util.ArrayList;
 
 public class ElectronicTag {
@@ -35,4 +35,4 @@ public class ElectronicTag {
 	public void setHistoryMoving(ArrayList<HistoryMoving> historyMoving) {
 		this.historyMoving = historyMoving;
 	}
-}
+}*/

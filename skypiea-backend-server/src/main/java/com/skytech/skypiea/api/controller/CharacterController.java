@@ -42,7 +42,4 @@ public class CharacterController {
 	public Character getById(@PathVariable Long id) {
 		return characterService.findById(id);
 	}
-	
-	
-
 }
