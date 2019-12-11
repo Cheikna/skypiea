@@ -11,21 +11,29 @@ import com.skytech.skypiea.commons.enumeration.Status;
 
 @Entity
 @Table(name="BULB")
-@PrimaryKeyJoinColumn(name="ID")
+@PrimaryKeyJoinColumn(name="PARENT_ID")
 public class Bulb extends NonMedicalConnectedObject {
 	
 	@Column(name="CURRENT_COLOR")
 	private String currentColor;
+	
+	@Column(name="IS_CURRENT_SETTINGS")
+	private boolean isCurrentSettings;
+	
+	@Column(name="SAVING_DATE")
+	private Timestamp savingDate;
 
 	public Bulb() {
 		super();
 	}
 
-	public Bulb(Long id, Long version, Timestamp lastParameterModificationDate, boolean isHistory, String brand,
+	public Bulb(Long id, Long version, Timestamp lastParameterModificationDate, String brand,
 			String ipAddress, String macAddress, String lastMeasurementDate, Status status, State state,
-			Timestamp installationDate) {
-		super(id, version, lastParameterModificationDate, isHistory, brand, ipAddress, macAddress, lastMeasurementDate, status,
-				state, NonMedicalObjectType.BULB, installationDate);
+			Timestamp installationDate, String svgPoint, Boolean isCurrentSettings, Timestamp savingDate) {
+		super(id, version, lastParameterModificationDate, brand, ipAddress, macAddress, lastMeasurementDate, status,
+				state, NonMedicalObjectType.BULB, installationDate, svgPoint);
+		this.isCurrentSettings = isCurrentSettings;
+		this.savingDate = savingDate;
 	}
 
 	public String getCurrentColor() {
@@ -35,5 +43,21 @@ public class Bulb extends NonMedicalConnectedObject {
 	public void setCurrentColor(String currentColor) {
 		this.currentColor = currentColor;
 	}	
+
+	public boolean isCurrentSettings() {
+		return isCurrentSettings;
+	}
+
+	public void setCurrentSettings(boolean isCurrentSettings) {
+		this.isCurrentSettings = isCurrentSettings;
+	} 
+	
+	public Timestamp getSavingDate() {
+		return savingDate;
+	}
+
+	public void setSavingDate(Timestamp savingDate) {
+		this.savingDate = savingDate;
+	} 
 	
 }

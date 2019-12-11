@@ -8,7 +8,7 @@ public enum NonMedicalObjectType {
 	
 	SUNSHINE_SENSOR("Sunshine sensor"),
 	
-	SHOWER("Shower"),
+	SMOKE_SENSOR("Smoke sensor"),
 	
 	DOOR_SENSOR("Door sensor"),
 	

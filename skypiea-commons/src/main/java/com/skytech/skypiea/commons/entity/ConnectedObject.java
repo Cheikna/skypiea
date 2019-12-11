@@ -20,9 +20,6 @@ public abstract class ConnectedObject extends com.skytech.skypiea.commons.entity
 	@Column(name="LAST_PARAMETER_MODIFICATION_DATE")
 	protected Timestamp lastParameterModificationDate; 
 	
-	@Column(name="IS_HISTORY")
-	protected boolean isHistory;
-	
 	@Column(name="BRAND")
 	protected String brand;	
 	
@@ -47,11 +44,10 @@ public abstract class ConnectedObject extends com.skytech.skypiea.commons.entity
 		super();
 	}	
 
-	public ConnectedObject(Long id, Long version, Timestamp lastParameterModificationDate, boolean isHistory,
+	public ConnectedObject(Long id, Long version, Timestamp lastParameterModificationDate,
 			String brand, String ipAddress, String macAddress, String lastMeasurementDate, Status status, State state) {
 		super(id, version);
 		this.lastParameterModificationDate = lastParameterModificationDate;
-		this.isHistory = isHistory;
 		this.brand = brand;
 		this.ipAddress = ipAddress;
 		this.macAddress = macAddress;
@@ -66,14 +62,6 @@ public abstract class ConnectedObject extends com.skytech.skypiea.commons.entity
 
 	public void setLastParameterModification(Timestamp lastParameterModificationDate) {
 		this.lastParameterModificationDate = lastParameterModificationDate;
-	}
-
-	public boolean isHistory() {
-		return isHistory;
-	}
-
-	public void setHistory(boolean isHistory) {
-		this.isHistory = isHistory;
 	}
 
 	public String getBrand() {

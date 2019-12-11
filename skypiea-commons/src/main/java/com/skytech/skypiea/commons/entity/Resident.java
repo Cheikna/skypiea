@@ -4,9 +4,6 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -14,17 +11,13 @@ import com.skytech.skypiea.commons.enumeration.UserType;
 
 @Entity
 @Table(name="RESIDENT")
-@PrimaryKeyJoinColumn(name="ID")
+@PrimaryKeyJoinColumn(name="USER_ID")
 public class Resident extends User {
 	
 	@Column(name="BIRTH_DAY")
 	private Timestamp birthDay;
-	
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ROOM_ID", nullable = false)	
-	private Room room;
 
-	public Resident() {
+	public Resident() {		
 		super();
 	}
 
@@ -41,13 +34,4 @@ public class Resident extends User {
 	public void setBirthDay(Timestamp birthDay) {
 		this.birthDay = birthDay;
 	}
-
-	public Room getRoom() {
-		return room;
-	}
-
-	public void setRoom(Room room) {
-		this.room = room;
-	}	
-
 }

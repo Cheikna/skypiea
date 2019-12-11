@@ -6,7 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -19,7 +20,8 @@ import com.skytech.skypiea.commons.enumeration.Status;
 
 @Entity
 @Table(name="NON_MEDICAL_CONNECTED_OBJECT")
-@PrimaryKeyJoinColumn(name="ID")
+@PrimaryKeyJoinColumn(name="CONNECTED_OBJECT_ID")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class NonMedicalConnectedObject extends ConnectedObject {
 	
 	@Column(name="INSTALLATION_DATE")
@@ -29,21 +31,25 @@ public abstract class NonMedicalConnectedObject extends ConnectedObject {
 	@Column(name="NON_MEDICAL_OBJECT_TYPE")
 	protected NonMedicalObjectType nonMedicalObjectType;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
     @JoinColumn(name = "ROOM_ID", nullable = false)
 	protected Room room;
+	
+	@Column(name="SVG_POINT")
+	protected String svgPoint;
 
 	public NonMedicalConnectedObject() {
 		super();
 	}
 
 	public NonMedicalConnectedObject(Long id, Long version, Timestamp lastParameterModificationDate,
-			boolean isHistory, String brand, String ipAddress, String macAddress, String lastMeasurementDate,
-			Status status, State state, NonMedicalObjectType nonMedicalObjectType, Timestamp installationDate) {
-		super(id, version, lastParameterModificationDate, isHistory, brand, ipAddress, macAddress, lastMeasurementDate,
+			String brand, String ipAddress, String macAddress, String lastMeasurementDate,
+			Status status, State state, NonMedicalObjectType nonMedicalObjectType, Timestamp installationDate, String svgPoint) {
+		super(id, version, lastParameterModificationDate, brand, ipAddress, macAddress, lastMeasurementDate,
 				status, state);
 		this.nonMedicalObjectType = nonMedicalObjectType;
 		this.installationDate = installationDate;
+		this.svgPoint = svgPoint;
 	}
 
 	public Timestamp getInstallationDate() {

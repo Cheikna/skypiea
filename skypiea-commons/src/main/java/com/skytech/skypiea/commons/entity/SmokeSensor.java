@@ -10,53 +10,54 @@ import com.skytech.skypiea.commons.enumeration.State;
 import com.skytech.skypiea.commons.enumeration.Status;
 
 @Entity
-@Table(name="DOOR_SENSOR")
+@Table(name="SMOKE_SENSOR")
 @PrimaryKeyJoinColumn(name="PARENT_ID")
-public class DoorSensor extends NonMedicalConnectedObject  {
+public class SmokeSensor extends NonMedicalConnectedObject  {
+
+	@Column(name="THRESHOLD")
+	private float threshold;	
 	
-	@Column(name="IS_DOOR_LOCKED")
-	private boolean isDoorLocked;
-	
-	@Column(name="IS_DOOR_OPENED")
-	private boolean isDoorOpened;
+	@Column(name="SENSITIVITY")
+	private String sensitivity;
 	
 	@Column(name="IS_CURRENT_SETTINGS")
 	private boolean isCurrentSettings;
 	
 	@Column(name="SAVING_DATE")
 	private Timestamp savingDate;
-	
-	public DoorSensor() {
+
+
+	public SmokeSensor() {
 		super();
 	}
 
-	public DoorSensor(Long id, Long version, Timestamp lastParameterModificationDate, String brand,
+	public SmokeSensor(Long id, Long version, Timestamp lastParameterModificationDate, String brand,
 			String ipAddress, String macAddress, String lastMeasurementDate, Status status, State state,
-			boolean isDoorLocked, boolean isDoorOpened, Timestamp installationDate, String svgPoint, 
-			Boolean isCurrentSettings, Timestamp savingDate) {
+			Timestamp installationDate, String svgPoint, int threshold,
+			String sensitivity, Boolean isCurrentSettings, Timestamp savingDate) {
 		super(id, version, lastParameterModificationDate, brand, ipAddress, macAddress, lastMeasurementDate,
-				status, state, NonMedicalObjectType.DOOR_SENSOR, installationDate, svgPoint);
-		this.isDoorLocked = isDoorLocked;
-		this.isDoorOpened = isDoorOpened;
+				status, state, NonMedicalObjectType.SMOKE_SENSOR, installationDate, svgPoint);
+		this.threshold = threshold;
+		this.sensitivity = sensitivity;
 		this.isCurrentSettings = isCurrentSettings;
 		this.savingDate = savingDate;
 	}
 
-	public boolean isDoorLocked() {
-		return isDoorLocked;
+	public float getThreshold() {
+		return threshold;
 	}
 
-	public void setDoorLocked(boolean isDoorLocked) {
-		this.isDoorLocked = isDoorLocked;
+	public void setThreshold(float threshold) {
+		this.threshold = threshold;
 	}
 
-	public boolean isDoorOpened() {
-		return isDoorOpened;
+	public String getSensitivity() {
+		return sensitivity;
 	}
 
-	public void setDoorOpened(boolean isDoorOpened) {
-		this.isDoorOpened = isDoorOpened;
-	}	
+	public void setSensitivity(String sensitivity) {
+		this.sensitivity = sensitivity;
+	}
 
 	public boolean isCurrentSettings() {
 		return isCurrentSettings;
@@ -73,7 +74,5 @@ public class DoorSensor extends NonMedicalConnectedObject  {
 	public void setSavingDate(Timestamp savingDate) {
 		this.savingDate = savingDate;
 	} 
-
 	
-
 }
