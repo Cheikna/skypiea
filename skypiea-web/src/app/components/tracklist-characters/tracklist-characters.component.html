@@ -1,0 +1,17 @@
+<h4>List of the characters :</h4>
+<table class="table table-bordered table-dark">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let character of characters">
+            <th scope="row">{{ character.id }}</th>
+            <td>{{ character.name }}</td>
+            <td><button mat-raised-button color="info" (click)="select(character.id)"><mat-icon>all_out</mat-icon></button></td>
+        </tr>
+    </tbody>
+</table>

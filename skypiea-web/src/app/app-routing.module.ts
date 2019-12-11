@@ -5,6 +5,7 @@ import { ObjectListComponent } from './components/ObjectList/ObjectList.componen
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
 import { RoomInformationComponent } from './components/room-information/room-information.component';
 import { TrackingComponent } from './components/tracking/tracking.component';
+import { TracklistCharactersComponent } from './components/tracklist-characters/tracklist-characters.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,9 @@ const routes: Routes = [
   {path: 'ObjectList', component: ObjectListComponent},
   {path: 'monitoring', component: MonitoringComponent},
   { path: 'monitoring/room/:roomId', component: RoomInformationComponent},
-  {path: 'tracking', component: TrackingComponent}
+  {path: 'tracking', component: TrackingComponent},
+  {path: 'tracking/:id', component: TrackingComponent},
+  {path: 'tracklist', component: TracklistCharactersComponent}
 ];
 
 @NgModule({
