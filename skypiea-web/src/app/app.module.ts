@@ -13,8 +13,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ToastrModule } from 'ngx-toastr';
+
 import { ObjectListComponent } from './components/ObjectList/ObjectList.component';
-import { TemperatureControllerDetailComponent } from './temperature-controller-detail/temperature-controller-detail.component';
+
+import { NonMedicalConnectedObjectListComponent } from './components/non-medical-connected-object-list/non-medical-connected-object-list.component';
+import { AlarmClockDetailsComponent } from './components/alarm-clock-details/alarm-clock-details.component';
+
 
 @NgModule({
   entryComponents: [
@@ -27,8 +31,11 @@ import { TemperatureControllerDetailComponent } from './temperature-controller-d
     HeaderComponent,
     FooterComponent,
     SignInComponent,
+
     ObjectListComponent,
-    TemperatureControllerDetailComponent
+    NonMedicalConnectedObjectListComponent,
+    AlarmClockDetailsComponent
+
   ],
   imports: [
     BrowserModule,
