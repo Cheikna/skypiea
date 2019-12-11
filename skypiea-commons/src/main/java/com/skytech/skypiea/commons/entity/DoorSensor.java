@@ -1,8 +1,11 @@
 package com.skytech.skypiea.commons.entity;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 
+@Entity
 @Table(name="DOOR_SENSOR")
+@PrimaryKeyJoinColumn(name="ID")
 public class DoorSensor extends NonMedicalConnectedObject  {
 	
 	@Column(name="IS_DOOR_LOCKED")
