@@ -14,6 +14,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ToastrModule } from 'ngx-toastr';
 import { TrackingComponent } from './components/tracking/tracking.component';
+import { TracklistCharactersComponent } from './components/tracklist-characters/tracklist-characters.component';
 
 @NgModule({
   entryComponents: [
@@ -26,7 +27,8 @@ import { TrackingComponent } from './components/tracking/tracking.component';
     HeaderComponent,
     FooterComponent,
     SignInComponent,
-    TrackingComponent
+    TrackingComponent,
+    TracklistCharactersComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { TrackingComponent } from './components/tracking/tracking.component';
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
