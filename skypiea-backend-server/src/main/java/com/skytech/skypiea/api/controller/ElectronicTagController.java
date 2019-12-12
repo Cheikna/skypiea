@@ -1,4 +1,4 @@
-/*package com.skytech.skypiea.api.controller;
+package com.skytech.skypiea.api.controller;
 
 import java.util.List;
 
@@ -42,5 +42,5 @@ public class ElectronicTagController {
 	public ElectronicTag getETagById(@PathVariable Long id) {
 		return electronicTagService.findById(id);
 	}
-}*/
+}
 

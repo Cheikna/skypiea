@@ -1,4 +1,4 @@
-/*package com.skytech.skypiea.api.service;
+package com.skytech.skypiea.api.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -44,4 +44,4 @@ public class ElectronicTagService {
 		return eTag;
 	}
 
-}*/
+}
