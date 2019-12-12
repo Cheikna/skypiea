@@ -1,1 +1,23 @@
-<p>room-information works!</p>
+<section>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Room n°{{ room.doorNumber }}</h2>
+            </div>
+            <div class="col-12">
+                <h3>Occupant : {{room?.resident.lastName | uppercase }} {{ room?.resident.firstName }}</h3>
+                <br><br>
+            </div>
+        </div>
+        <div class="row">
+            <br>
+            <app-room-plan [nonMedicalConnectedObjects]="room?.nonMedicalConnectedObjects">
+            </app-room-plan>
+        </div>
+        <div class="row">
+                <h2>Details</h2>
+            </div>
+    </div>
+
+</section>

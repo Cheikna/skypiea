@@ -15,6 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { RoomSummaryComponent } from './sub-components/room-summary/room-summary.component';
 import { RoomInformationComponent } from './components/room-information/room-information.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
+import { RoomPlanComponent } from './sub-components/room-plan/room-plan.component';
 
 @NgModule({
   entryComponents: [
@@ -28,7 +29,8 @@ import { MonitoringComponent } from './components/monitoring/monitoring.componen
     SignInComponent,
     RoomSummaryComponent,
     RoomInformationComponent,
-    MonitoringComponent
+    MonitoringComponent,
+    RoomPlanComponent
   ],
   imports: [
     BrowserModule,

@@ -66,6 +66,16 @@ public abstract class NonMedicalConnectedObject extends ConnectedObject {
 
 	public void setNonMedicalObjectType(NonMedicalObjectType nonMedicalObjectType) {
 		this.nonMedicalObjectType = nonMedicalObjectType;
+	}	
+
+	public String getSvgPoint() {
+		return svgPoint;
 	}
+
+	public void setSvgPoint(String svgPoint) {
+		this.svgPoint = svgPoint;
+	}
+	
+	
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Room } from 'src/app/models/room.model';
 import { Resident } from 'src/app/models/resident.model';
 import { nonMedicalObjectIcons } from 'src/app/util/nonMedicalObjectIcons.util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-room-summary',
@@ -16,13 +17,13 @@ export class RoomSummaryComponent implements OnInit {
   // To import
   nonMedicalObjectIcons = nonMedicalObjectIcons;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  moreDetailsOnRoom(roomId: number){
-    console.log("You want more details on the room with the id (!= room number) : " + roomId);
+  moreDetailsOnRoom(roomId: number){    
+    this.router.navigate(['/monitoring/room', roomId]);
   }
 
 }

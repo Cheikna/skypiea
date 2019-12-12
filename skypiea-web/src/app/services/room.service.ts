@@ -14,4 +14,8 @@ export class RoomService extends RestService {
   getRoomsSummary(){
     return this.http.get(`${this.completeBackendServerUrl}/summary`, { headers: this.headers });
   }
+
+  getRoomDetail(roomId: number){
+    return this.http.get(`${this.completeBackendServerUrl}/${roomId}`, { headers: this.headers });
+  }
 }
