@@ -23,10 +23,6 @@ public class Bulb extends NonMedicalConnectedObject {
 	@Column(name="SAVING_DATE")
 	private Timestamp savingDate;
 
-	public Bulb() {
-		super();
-	}
-
 	public Bulb(Long id, Long version, Timestamp lastParameterModificationDate, String brand,
 			String ipAddress, String macAddress, String lastMeasurementDate, Status status, State state,
 			Timestamp installationDate, String svgPoint, Boolean isCurrentSettings, Timestamp savingDate) {
