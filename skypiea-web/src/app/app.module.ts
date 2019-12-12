@@ -8,7 +8,6 @@ import { AngularMaterialModule } from './util/angular-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TrainingComponent } from './components/training/training.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -19,6 +18,10 @@ import { ObjectListComponent } from './components/ObjectList/ObjectList.componen
 import { NonMedicalConnectedObjectListComponent } from './components/non-medical-connected-object-list/non-medical-connected-object-list.component';
 import { AlarmClockDetailsComponent } from './components/alarm-clock-details/alarm-clock-details.component';
 import { TemperatureControllerDetailsComponent } from './components/temperature-controller-details/temperature-controller-details.component';
+import { RoomPlanComponent } from './sub-components/room-plan/room-plan.component';
+import { RoomSummaryComponent } from './sub-components/room-summary/room-summary.component';
+import { RoomInformationComponent } from './components/room-information/room-information.component';
+import { MonitoringComponent } from './components/monitoring/monitoring.component';
 
 
 
@@ -29,15 +32,18 @@ import { TemperatureControllerDetailsComponent } from './components/temperature-
   declarations: [
     AppComponent,
     HomeComponent,
-    TrainingComponent,
     HeaderComponent,
     FooterComponent,
     SignInComponent,
+    RoomSummaryComponent,
+    RoomInformationComponent,
+    MonitoringComponent,
+    RoomPlanComponent,
     ObjectListComponent,
+    AlarmClockDetailsComponent,
     NonMedicalConnectedObjectListComponent,
     AlarmClockDetailsComponent,
     TemperatureControllerDetailsComponent
-
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,18 @@
+export enum NonMedicalObjectType {
+	
+	BINARY_SENSOR,
+	
+	SHUTTER,
+	
+	SUNSHINE_SENSOR,
+	
+	SHOWER,
+	
+	DOOR_SENSOR,
+	
+	BULB,
+	
+	TEMPERATURE_CONTROLLER,
+	
+	ALARM_CLOCK	
+}

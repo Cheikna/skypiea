@@ -37,6 +37,7 @@ export class SignInComponent implements OnInit {
     this.authenticationService.login(logon).subscribe(
       (data) => {
         if(data){
+          console.log(JSON.stringify(data));
           this.toastService.displayToast(ToastType.SUCCESS, 'Successful connection', true);
           this.authenticationService.saveSuccessfullAuthentication(data);
           // TODO : redirect to the home page according to the user Type (STAFF or RESIDENT) and get his extras information

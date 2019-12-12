@@ -10,7 +10,7 @@ import com.skytech.skypiea.commons.enumeration.UserType;
 
 @Entity
 @Table(name="STAFF")
-@PrimaryKeyJoinColumn(name="ID")
+@PrimaryKeyJoinColumn(name="USER_ID")
 public class Staff extends User {
 
 	public Staff() {
@@ -21,4 +21,5 @@ public class Staff extends User {
 			Timestamp lastConnectionDate) {
 		super(id, version, lastName, firstName, username, password, UserType.STAFF, lastConnectionDate);
 	}
+	
 }

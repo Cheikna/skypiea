@@ -9,27 +9,27 @@ import com.skytech.skypiea.commons.enumeration.Day;
 
 @Entity
 @Table(name="CLOCK_PROGRAM")
-public class ClockProgram {
-	
-	@Id
-	@Column(name="ID")
-	private int idClockProgram;
+public class ClockProgram extends com.skytech.skypiea.commons.entity.Entity {
 	
 	@Column(name="HOUR")
 	private Time hour;
 	
+	@Enumerated(EnumType.STRING)
 	@Column(name="DAY")
 	private Day day;
 	
 	@Column(name="NAME")
-	private String name;
+	private String name;	
 
-	public int getIdClockProgram() {
-		return idClockProgram;
-	}
+	public ClockProgram() {
+		super();
+	}	
 
-	public void setIdClockProgram(int idClockProgram) {
-		this.idClockProgram = idClockProgram;
+	public ClockProgram(Long id, Long version, Time hour, Day day, String name) {
+		super(id, version);
+		this.hour = hour;
+		this.day = day;
+		this.name = name;
 	}
 
 	public Time getHour() {
@@ -54,13 +54,6 @@ public class ClockProgram {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	@Override
-	public String toString() {
-		return "ClockProgram [idClockProgram=" + idClockProgram + ", hour=" + hour + ", day=" + day + ", name=" + name
-				+ "]";
-	}
-	
+	}	
 	
 }

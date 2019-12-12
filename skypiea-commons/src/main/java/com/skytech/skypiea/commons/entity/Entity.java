@@ -1,5 +1,6 @@
 package com.skytech.skypiea.commons.entity;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,6 +11,7 @@ import javax.persistence.Version;
 public abstract class Entity {
 	
 	@Id
+	@Column(name="ID")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	protected Long id;
 	

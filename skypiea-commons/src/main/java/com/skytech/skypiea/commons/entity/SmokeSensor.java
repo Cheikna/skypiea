@@ -1,36 +1,54 @@
 package com.skytech.skypiea.commons.entity;
 
 import java.util.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
 
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-
+import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
+import com.skytech.skypiea.commons.enumeration.State;
+import com.skytech.skypiea.commons.enumeration.Status;
 
 @Entity
 @Table(name="SMOKE_SENSOR")
-@PrimaryKeyJoinColumn(name="ID")
-public class SmokeSensor extends NonMedicalConnectedObject {
-	
-	
+@PrimaryKeyJoinColumn(name="PARENT_ID")
+public class SmokeSensor extends NonMedicalConnectedObject  {
+
 	@Column(name="THRESHOLD")
-	private int threshold;	
+	private float threshold;	
 	
 	@Column(name="SENSITIVITY")
 	private String sensitivity;
 	
-	@JoinColumn(name = "ID_ROOM")
-    private Room room;
-
+	@Column(name="IS_CURRENT_SETTINGS")
+	private boolean isCurrentSettings;
 	
+	@Column(name="SAVING_DATE")
+	private Timestamp savingDate;
 
-	public int getThreshold() {
+
+	public SmokeSensor() {
+		super();
+	}
+
+	public SmokeSensor(Long id, Long version, Timestamp lastParameterModificationDate, String brand,
+			String ipAddress, String macAddress, String lastMeasurementDate, Status status, State state,
+			Timestamp installationDate, String svgPoint, int threshold,
+			String sensitivity, Boolean isCurrentSettings, Timestamp savingDate) {
+		super(id, version, lastParameterModificationDate, brand, ipAddress, macAddress, lastMeasurementDate,
+				status, state, NonMedicalObjectType.SMOKE_SENSOR, installationDate, svgPoint);
+		this.threshold = threshold;
+		this.sensitivity = sensitivity;
+		this.isCurrentSettings = isCurrentSettings;
+		this.savingDate = savingDate;
+	}
+
+	public float getThreshold() {
 		return threshold;
 	}
 
-	public void setThreshold(int threshold) {
+	public void setThreshold(float threshold) {
 		this.threshold = threshold;
 	}
 
@@ -42,18 +60,20 @@ public class SmokeSensor extends NonMedicalConnectedObject {
 		this.sensitivity = sensitivity;
 	}
 
-	public Room getRoom() {
-		return room;
+	public boolean isCurrentSettings() {
+		return isCurrentSettings;
 	}
 
-	public void setRoom(Room room) {
-		this.room = room;
-	}
+	public void setCurrentSettings(boolean isCurrentSettings) {
+		this.isCurrentSettings = isCurrentSettings;
+	} 
 	
-	@Override
-	public String toString() {
-		return "SmokeSensor [threshold=" + threshold + ", sensitivity=" + sensitivity + ", room =" + room + ", toString()="
-				+ super.toString() + "]";
+	public Timestamp getSavingDate() {
+		return savingDate;
+	}
+
+	public void setSavingDate(Timestamp savingDate) {
+		this.savingDate = savingDate;
 	} 
 	
 }

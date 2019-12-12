@@ -11,13 +11,13 @@ import com.skytech.skypiea.commons.enumeration.UserType;
 
 @Entity
 @Table(name="RESIDENT")
-@PrimaryKeyJoinColumn(name="ID")
-public class Resident extends User{
+@PrimaryKeyJoinColumn(name="USER_ID")
+public class Resident extends User {
 	
 	@Column(name="BIRTH_DAY")
 	private Timestamp birthDay;
 
-	public Resident() {
+	public Resident() {		
 		super();
 	}
 
@@ -33,6 +33,5 @@ public class Resident extends User{
 
 	public void setBirthDay(Timestamp birthDay) {
 		this.birthDay = birthDay;
-	}	
-
+	}
 }
