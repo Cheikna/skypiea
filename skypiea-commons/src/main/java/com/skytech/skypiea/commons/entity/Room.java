@@ -54,6 +54,9 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
 	@Transient
 	private Map<String, Integer> objectQuantityByType;
 	
+	@Transient
+	private int numberOfNonMedicalObjects;
+	
 
 	public Room() {
 		super();
@@ -143,8 +146,16 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
 
 	public void setObjectQuantityByType(Map<String, Integer> objectQuantityByType) {
 		this.objectQuantityByType = objectQuantityByType;
-	}	
+	}		
 	
+	public int getNumberOfNonMedicalObjects() {
+		return numberOfNonMedicalObjects;
+	}
+
+	public void setNumberOfNonMedicalObjects(int numberOfNonMedicalObjects) {
+		this.numberOfNonMedicalObjects = numberOfNonMedicalObjects;
+	}
+
 	/**
 	 * Fill the map with the quantity of objects by type
 	 */
@@ -153,7 +164,7 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
 		objectQuantityByType = new HashMap<String, Integer>();
 		if(this.nonMedicalConnectedObjects != null && nonMedicalConnectedObjects.size() > 0) {
 			nonMedicalConnectedObjects.forEach((object) -> {
-				String objectTypeName = object.getNonMedicalObjectType().getName();
+				String objectTypeName = object.getNonMedicalObjectType().name();
 				Integer quantity;
 				try {
 					quantity = objectQuantityByType.get(objectTypeName) + 1;

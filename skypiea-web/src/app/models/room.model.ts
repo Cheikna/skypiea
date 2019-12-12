@@ -14,4 +14,5 @@ export class Room extends Entity {
     resident: Resident;
     nonMedicalConnectedObjects: Array<NonMedicalConnectedObject>;
     objectQuantityByType: Map<string, number>;
+    numberOfNonMedicalObjects: number;
 }

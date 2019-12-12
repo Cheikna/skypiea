@@ -8,13 +8,13 @@ import { AngularMaterialModule } from './util/angular-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TrainingComponent } from './components/training/training.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ToastrModule } from 'ngx-toastr';
 import { RoomSummaryComponent } from './sub-components/room-summary/room-summary.component';
 import { RoomInformationComponent } from './components/room-information/room-information.component';
+import { MonitoringComponent } from './components/monitoring/monitoring.component';
 
 @NgModule({
   entryComponents: [
@@ -23,12 +23,12 @@ import { RoomInformationComponent } from './components/room-information/room-inf
   declarations: [
     AppComponent,
     HomeComponent,
-    TrainingComponent,
     HeaderComponent,
     FooterComponent,
     SignInComponent,
     RoomSummaryComponent,
-    RoomInformationComponent
+    RoomInformationComponent,
+    MonitoringComponent
   ],
   imports: [
     BrowserModule,

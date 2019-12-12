@@ -3,7 +3,6 @@
         <!--Add an image -->
     </div>
     <div class="container">
-        <app-room-summary [name]="'Cheikna'"></app-room-summary>
         <br>
         <mat-form-field>
             <input matInput placeholder="Enter a name" [(ngModel)]="newCharacter.name">
@@ -31,8 +30,6 @@
         </table>
 
         <button color="primary" mat-raised-button (click)="findAll()">Load the characters</button>
-        <span><br><br></span>
-        <button color="primary" mat-raised-button [routerLink]="['/training']">Search By ID</button>
 
     </div>
 </section>

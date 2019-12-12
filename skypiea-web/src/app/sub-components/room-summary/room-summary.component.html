@@ -1,19 +1,22 @@
 <mat-card>
     <mat-card-header>
-        <mat-card-title>{{ name }}</mat-card-title>
-        <mat-card-subtitle>Member since 2016</mat-card-subtitle>
+        <mat-card-title>{{ resident.lastName | uppercase }} {{ resident.firstName }}</mat-card-title>
+        <mat-card-subtitle>Room n°{{ room.doorNumber }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <h5>Owned connected objects : 3</h5>
-        <div class="object-icon text-center" style="background-color: red;">
-            <img src="assets/images/connected-objects/shutter.png">
+        <h5>Number of connected objects : {{ room.numberOfNonMedicalObjects }}</h5>
+        <br>
+        <div class="object-icon text-center" *ngFor="let object of room.objectQuantityByType | keyvalue">
+            <img src="{{ nonMedicalObjectIcons[object.key].iconPath }}">
             <br>
-            test
+            <span>{{ nonMedicalObjectIcons[object.key].name }}</span>
+            <br>
+            <span>{{ object.value }}</span>
         </div>
     </mat-card-content>
     <mat-card-actions>
         <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-outline-info">
+            <button type="button" class="btn btn-outline-info" (click)="moreDetailsOnRoom(room.id)">
                 <mdb-icon fas icon="plus-circle"></mdb-icon> More details...
             </button>
         </div>
