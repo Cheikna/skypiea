@@ -6,27 +6,23 @@
         <table class="table table-bordered table-dark">
             <thead>
                 <tr>
-                    <th scope="col">Last Parameter Modification</th>
                     <th scope="col">Brand</th>
-                    <th scope="col">Last Measurement object</th>
+                    <th scope="col">Installation date</th>
                     <th scope="col">Status</th>
                     <th scope="col">State</th>
-                    <th scope="col">Room</th>
+                    <th scope="col">IP ADDRESS</th>
 
 
 
                 </tr>
             </thead>
            <tbody>
-                    <tr *ngFor="let NonMedicalConnectedObject of NonMedicalConnectedObjects">
-                        
-                        <td>{{ NonMedicalConnectedObject.version }}</td>
-                        <td>{{ NonMedicalConnectedObject.last_Parameter_Modification }}</td>
-                        <td>{{ NonMedicalConnectedObject.brand }}</td>
-                        <td>{{ NonMedicalConnectedObject.last_Measurement_objesct }}</td>
-                        <td>{{ NonMedicalConnectedObject.status }}</td>
-                        <td>{{ NonMedicalConnectedObject.state }}</td>
-                        <td>{{ NonMedicalConnectedObject.room }}</td>
+                    <tr *ngFor="let nonMedicalConnectedObject of nonMedicalConnectedObjects">
+                        <td>{{ nonMedicalConnectedObject.brand }}</td>
+                        <td>{{ nonMedicalConnectedObject.installationDate }}</td>
+                        <td>{{ nonMedicalConnectedObject.status }}</td>
+                        <td>{{ nonMedicalConnectedObject.state }}</td>
+                        <td>{{ nonMedicalConnectedObject.ipAddress }}</td>
                     </tr>
             </tbody>
        </table>
