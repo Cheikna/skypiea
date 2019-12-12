@@ -120,5 +120,7 @@ public abstract class NonMedicalConnectedObject extends ConnectedObject {
 	public void setNonMedicalObjectType(NonMedicalObjectType nonMedicalObjectType) {
 		this.nonMedicalObjectType = nonMedicalObjectType;
 	}
+	
+	
 
 }

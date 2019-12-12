@@ -43,7 +43,8 @@ import { TemperatureControllerDetailsComponent } from './components/temperature-
     TemperatureControllerDetailsComponent,
     RoomSummaryComponent,
     RoomInformationComponent,
-    MonitoringComponent
+    MonitoringComponent,
+    RoomPlanComponent
   ],
   imports: [
     BrowserModule,
