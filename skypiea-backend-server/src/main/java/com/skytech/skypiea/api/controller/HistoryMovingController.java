@@ -1,4 +1,4 @@
-/*package com.skytech.skypiea.api.controller;
+package com.skytech.skypiea.api.controller;
 
 import java.util.List;
 
@@ -44,4 +44,4 @@ public class HistoryMovingController {
 		return historyMovingService.findById(id);
 	}
 
-}*/
+}

@@ -1,4 +1,4 @@
-/*package com.skytech.skypiea.api.service;
+package com.skytech.skypiea.api.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.skytech.skypiea.commons.entity.HistoryMoving;
 import com.skytech.skypiea.api.repository.HistoryMovingRepository;
 
+@Service
 public class HistoryMovingService {
 	@Autowired
 	private HistoryMovingRepository historyMovingRepository;
@@ -30,7 +31,7 @@ public class HistoryMovingService {
 	
 	public HistoryMoving findById(Long id) {
 		HistoryMoving historyMoving = null;
-		/*if(id >= 1) {			
+		if(id >= 1) {			
 			try {
 				Optional<HistoryMoving> optionalHistoryMoving = historyMovingRepository.findById(id);
 				historyMoving = optionalHistoryMoving.get();				
@@ -42,4 +43,4 @@ public class HistoryMovingService {
 		return historyMoving;
 	}
 
-}*/
+}
