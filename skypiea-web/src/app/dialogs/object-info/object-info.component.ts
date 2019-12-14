@@ -13,11 +13,12 @@ export class ObjectInfoComponent implements OnInit {
 
   nonMedicalConnectedObject: NonMedicalConnectedObject;
   NonMedicalConnectedObjectType = NonMedicalObjectType;
+  objectsInJSON : JSON;
   
   constructor() { }
 
   ngOnInit() {
-    console.log(JSON.stringify(this.nonMedicalConnectedObject));
+    this.objectsInJSON = JSON.parse(JSON.stringify(this.nonMedicalConnectedObject));
   }
 
 }
