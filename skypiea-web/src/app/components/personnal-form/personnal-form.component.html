@@ -1,0 +1,13 @@
+<p>personnal-form works!</p>
+<h1>TEST DU FORM</h1>
+<form ngForm="">
+    <p>Quel est votre sexe ?</p>
+    <input type="radio" name="masculin" value="masc" id="masc"/> <label for="masc">Masculin</label>
+    <input type="radio" name="feminin" value="fem" id="fem"/> <label for="fem">Féminin</label>  
+    <input type="radio" name="autre" value="autre" id="autre"/> <label for="autre">Autre</label><br />
+    <label for="nom">Votre nom </label><input type="text" [(ngModel)]="nom" name="nom"/><br>
+    <label for="prenom">Votre prénom </label><input type="text" [(ngModel)]="prenom" name="prenom"/><br>
+    <label for="age">Votre age </label><input type="text" [(ngModel)]="age" name="age"/><br>
+    <label for="adresse">Votre adresse </label><input type="text" [(ngModel)]="adresse" name="adresse"/><br>
+</form>
+<button (click)="create()">Enregistrer</button>
