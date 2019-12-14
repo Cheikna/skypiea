@@ -16,7 +16,6 @@ import { PersonnalFormComponent } from './components/personnal-form/personnal-fo
 
 import { ObjectListComponent } from './components/ObjectList/ObjectList.component';
 
-import { NonMedicalConnectedObjectListComponent } from './components/non-medical-connected-object-list/non-medical-connected-object-list.component';
 import { AlarmClockDetailsComponent } from './components/alarm-clock-details/alarm-clock-details.component';
 import { TemperatureControllerDetailsComponent } from './components/temperature-controller-details/temperature-controller-details.component';
 import { RoomPlanComponent } from './sub-components/room-plan/room-plan.component';
@@ -42,7 +41,6 @@ import { MonitoringComponent } from './components/monitoring/monitoring.componen
     RoomPlanComponent,
     ObjectListComponent,
     AlarmClockDetailsComponent,
-    NonMedicalConnectedObjectListComponent,
     AlarmClockDetailsComponent,
     TemperatureControllerDetailsComponent,
     PersonnalFormComponent
