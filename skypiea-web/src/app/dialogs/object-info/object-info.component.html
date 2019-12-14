@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row"
+        *ngIf="nonMedicalConnectedObject.nonMedicalObjectType == NonMedicalConnectedObjectType.BULB; then bulbType">
+    </div>
+    <div class="row"
+        *ngIf="nonMedicalConnectedObject.nonMedicalObjectType == NonMedicalConnectedObjectType.DOOR_SENSOR; then doorSensorType">
+    </div>
+    <div class="row"
+        *ngIf="nonMedicalConnectedObject.nonMedicalObjectType == NonMedicalConnectedObjectType.SHUTTER; then shutterType">
+    </div>
+    <div class="row"
+        *ngIf="nonMedicalConnectedObject.nonMedicalObjectType == NonMedicalConnectedObjectType.SUNSHINE_SENSOR; then sunshineSensorType">
+    </div>
+    <div class="row"
+        *ngIf="nonMedicalConnectedObject.nonMedicalObjectType == NonMedicalConnectedObjectType.BINARY_SENSOR; then binarySensorType">
+    </div>
+    <div class="row"
+        *ngIf="nonMedicalConnectedObject.nonMedicalObjectType == NonMedicalConnectedObjectType.TEMPERATURE_CONTROLLER; then temperatureControllerType">
+    </div>
+    <div class="row"
+        *ngIf="nonMedicalConnectedObject.nonMedicalObjectType == NonMedicalConnectedObjectType.SMOKE_SENSOR; then smokeSensorType">
+    </div>
+    <div class="row"
+        *ngIf="nonMedicalConnectedObject.nonMedicalObjectType == NonMedicalConnectedObjectType.ALARM_CLOCK; then alarmClockType">
+    </div>
+    
+</div>
+
+<ng-template #bulbType>
+    Color : {{ nonMedicalConnectedObject.currentColor }}<br>
+    Is Current Settings : {{ nonMedicalConnectedObject.currentSettings }}<br>
+    Saving Date : {{ nonMedicalConnectedObject.savingDate }}<br>
+</ng-template>
+
+<ng-template #doorSensorType>
+    Is Door Opened : {{ nonMedicalConnectedObject.doorOpened }} <br>
+    Is Current Settings : {{ nonMedicalConnectedObject.currentSettings }} <br>
+    Saving Date : {{ nonMedicalConnectedObject.savingDate }}<br>
+</ng-template>
+
+<ng-template #shutterType>
+    Window Coverage : {{ nonMedicalConnectedObject.windowCoverage }}<br>
+    Is Current Settings : {{ nonMedicalConnectedObject.currentSettings }}<br>
+    Saving Date : {{ nonMedicalConnectedObject.savingDate }}<br>
+    Is Automatic Mode Enabled : {{ nonMedicalConnectedObject.automaticModeEnabled }}<br>
+</ng-template>
+
+<ng-template #sunshineSensorType>
+    External Temperature : {{ nonMedicalConnectedObject.externalTemperature }}<br>
+    External Sunshine : {{ nonMedicalConnectedObject.externalSunshine }}<br>
+    Is Current Settings : {{ nonMedicalConnectedObject.currentSettings }}<br>
+    Saving Date : {{ nonMedicalConnectedObject.savingDate }}<br>
+</ng-template>
+
+<ng-template #binarySensorType>
+    Is Active : {{ nonMedicalConnectedObject.active}}<br>
+    Is Current Settings : {{ nonMedicalConnectedObject.currentSettings}}<br>
+    Saving Date : {{ nonMedicalConnectedObject.savingDate}}<br>
+    Type : {{ nonMedicalConnectedObject.type}}<br>
+</ng-template>
+
+<ng-template #temperatureControllerType>
+    Threshold : {{ nonMedicalConnectedObject.threshold }}<br>
+    Temperature Max : {{ nonMedicalConnectedObject.temperatureMax }}<br>
+    Temperature Min : {{ nonMedicalConnectedObject.temperatureMin }}<br>
+    Temperature Settled : {{ nonMedicalConnectedObject.temperatureSettled }}<br>
+    Is Healthing Connected : {{ nonMedicalConnectedObject.healthingConnected }}<br>
+    Is Air Conditionner Connected : {{ nonMedicalConnectedObject.airConditionnerConnected }}<br>
+    Is Current Settings : {{ nonMedicalConnectedObject.currentSettings }}<br>
+    Saving Date : {{ nonMedicalConnectedObject.savingDate }}<br>
+</ng-template>
+
+<ng-template #alarmClockType>
+    Current Time : {{ nonMedicalConnectedObject.currentTime }}<br>
+    Is Current Settings : {{ nonMedicalConnectedObject.currentSettings }}<br>
+    Saving Date : {{ nonMedicalConnectedObject.savingDate }}<br>
+</ng-template>
+
+<ng-template #smokeSensorType>
+    Threshold : {{ nonMedicalConnectedObject.threshold }}<br>
+    Sensitivity : {{ nonMedicalConnectedObject.sensitivity }}<br>
+    Is Current Settings : {{ nonMedicalConnectedObject.currentSettings }}<br>
+    Saving Date : {{ nonMedicalConnectedObject.savingDate }}<br>
+</ng-template>

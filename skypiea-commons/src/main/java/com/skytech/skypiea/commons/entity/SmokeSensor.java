@@ -1,6 +1,6 @@
 package com.skytech.skypiea.commons.entity;
 
-import java.util.Date;
+
 import java.sql.Timestamp;
 
 import javax.persistence.*;
@@ -44,22 +44,7 @@ public class SmokeSensor extends NonMedicalConnectedObject  {
 		this.savingDate = savingDate;
 	}
 
-	public float getThreshold() {
-		return threshold;
-	}
-
-	public void setThreshold(float threshold) {
-		this.threshold = threshold;
-	}
-
-	public String getSensitivity() {
-		return sensitivity;
-	}
-
-	public void setSensitivity(String sensitivity) {
-		this.sensitivity = sensitivity;
-	}
-
+	
 	public boolean isCurrentSettings() {
 		return isCurrentSettings;
 	}
@@ -74,6 +59,22 @@ public class SmokeSensor extends NonMedicalConnectedObject  {
 
 	public void setSavingDate(Timestamp savingDate) {
 		this.savingDate = savingDate;
+	}
+
+	public float getThreshold() {
+		return threshold;
+	}
+
+	public void setThreshold(float threshold) {
+		this.threshold = threshold;
+	}
+
+	public String getSensitivity() {
+		return sensitivity;
+	}
+
+	public void setSensitivity(String sensitivity) {
+		this.sensitivity = sensitivity;
 	} 
 	
 }

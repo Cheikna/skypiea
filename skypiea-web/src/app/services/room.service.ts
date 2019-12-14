@@ -18,4 +18,8 @@ export class RoomService extends RestService {
   getRoomDetail(roomId: number){
     return this.http.get(`${this.completeBackendServerUrl}/${roomId}`, { headers: this.headers });
   }
+
+  getResidentRoomDetails(residentId: number){
+    return this.http.get(`${this.completeBackendServerUrl}/resident/${residentId}`, { headers: this.headers });
+  }
 }

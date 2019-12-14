@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NonMedicalConnectedObject } from 'src/app/models/nonMedicalConnectedObject.model';
-import { NonMedicalConnectedObjectService} from 'src/app/services/non-medical-connected-object.service';
+import { NonMedicalConnectedObjectService } from 'src/app/services/non-medical-connected-object.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { RoomService } from 'src/app/services/room.service';
+import { Room } from 'src/app/models/room.model';
+import { MatDialog } from '@angular/material/dialog';
+import { ObjectInfoComponent } from 'src/app/dialogs/object-info/object-info.component';
 
 @Component({
   selector: 'app-ObjectList',
@@ -11,16 +15,24 @@ import { Router } from '@angular/router';
 })
 export class ObjectListComponent implements OnInit {
 
-  nonMedicalConnectedObjects: Observable<NonMedicalConnectedObject[]>
-  
-  constructor(private nonMedicalConnectedObjectService: NonMedicalConnectedObjectService, private router: Router) { }
+  residentId: number = 3;
+  room : Room = new Room();
 
-  reloadData(){
-    this.nonMedicalConnectedObjects = this.nonMedicalConnectedObjectService.findAll();
-  }
+  nonMedicalConnectedObjects: Array<NonMedicalConnectedObject>;
+
+  constructor(private roomService: RoomService,private dialog: MatDialog) { }
+
+
+
 
   ngOnInit() {
-    this.reloadData();
+    this.roomService.getResidentRoomDetails(this.residentId).subscribe((data: Room)=>{
+      this.nonMedicalConnectedObjects=data.nonMedicalConnectedObjects;
+    });
   }
 
+  openDialogInfo(nonMedicalConnectedObject: NonMedicalConnectedObject){
+    let dialogRef = this.dialog.open(ObjectInfoComponent, { panelClass: 'login-dialog'});
+    dialogRef.componentInstance.nonMedicalConnectedObject = nonMedicalConnectedObject;
+  }
 }
