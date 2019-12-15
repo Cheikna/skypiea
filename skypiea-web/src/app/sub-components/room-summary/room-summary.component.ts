@@ -22,8 +22,8 @@ export class RoomSummaryComponent implements OnInit {
   ngOnInit() {
   }
 
-  moreDetailsOnRoom(roomId: number){    
-    this.router.navigate(['/monitoring/room', roomId]);
+  moreDetailsOnRoom(doorNumber: number){    
+    this.router.navigate(['/monitoring/room', doorNumber]);
   }
 
 }

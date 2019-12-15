@@ -30,8 +30,8 @@ public class RoomController {
 		return roomService.getRoomsSummary();	
 	}
 	
-	@GetMapping("/{id}")
-	public Room getRoomDetails(@PathVariable Long id) {
-		return this.roomService.findRoomById(id);
+	@GetMapping("/{doorNumber}")
+	public Room getRoomDetails(@PathVariable Long doorNumber) {
+		return this.roomService.findByDoorNumber(doorNumber);
 	}
 }

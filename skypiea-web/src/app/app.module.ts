@@ -23,6 +23,7 @@ import { RoomPlanComponent } from './sub-components/room-plan/room-plan.componen
 import { RoomSummaryComponent } from './sub-components/room-summary/room-summary.component';
 import { RoomInformationComponent } from './components/room-information/room-information.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
+import { FloorOnePlanComponent } from './floors-plan-components/floor-one-plan/floor-one-plan.component';
 
 
 
@@ -45,7 +46,8 @@ import { MonitoringComponent } from './components/monitoring/monitoring.componen
     NonMedicalConnectedObjectListComponent,
     AlarmClockDetailsComponent,
     TemperatureControllerDetailsComponent,
-    PersonnalFormComponent
+    PersonnalFormComponent,
+    FloorOnePlanComponent
   ],
   imports: [
     BrowserModule,

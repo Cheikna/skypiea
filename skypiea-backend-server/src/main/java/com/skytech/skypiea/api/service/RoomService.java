@@ -1,7 +1,6 @@
 package com.skytech.skypiea.api.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +18,12 @@ public class RoomService {
 		return this.roomRepository.findAll();
 	}
 	
-	public Room findRoomById(Long id) {
+	public Room findByDoorNumber(Long doorNumber) {
 		Room room = null;
-		Optional<Room> roomOptionnal = roomRepository.findById(id);
+		List<Room> rooms = roomRepository.findByDoorNumber(doorNumber);
 		
-		if(roomOptionnal.isPresent()) {
-			room = roomOptionnal.get();
+		if(rooms != null && rooms.size() > 0) {
+			room = rooms.get(0);
 		}
 		
 		return room;

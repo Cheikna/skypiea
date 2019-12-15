@@ -3,9 +3,8 @@ export class TemperatureController {
     threshold : number;
     temperatureMax : number;
     temperatureMin : number;
+    currentTemperature: number;
     temperatureSettled : number;
     isHealthingConnected : boolean;
-    isAirConditionnerConnected : boolean;
-    idRoom  : number;
-    
+    isAirConditionnerConnected : boolean;   
 }

@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'ObjectList', component: ObjectListComponent},
   {path: 'monitoring', component: MonitoringComponent},
-  { path: 'monitoring/room/:roomId', component: RoomInformationComponent},
+  { path: 'monitoring/room/:doorNumber', component: RoomInformationComponent},
   {path: 'personnalForm', component: PersonnalFormComponent}
 ];
 
