@@ -5,6 +5,7 @@ import { ObjectListComponent } from './components/ObjectList/ObjectList.componen
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
 import { RoomInformationComponent } from './components/room-information/room-information.component';
 import { PersonnalFormComponent } from './components/personnal-form/personnal-form.component';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'ObjectList', component: ObjectListComponent},
   {path: 'monitoring', component: MonitoringComponent},
   { path: 'monitoring/room/:roomId', component: RoomInformationComponent},
-  {path: 'personnalForm', component: PersonnalFormComponent}
+  {path: 'personnalForm', component: PersonnalFormComponent},
+  {path: 'dynamicForm', component: DynamicFormComponent}
 ];
 
 @NgModule({
