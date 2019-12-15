@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'tracking', component: TrackingComponent},
   {path: 'tracking/:id', component: TrackingComponent},
   {path: 'tracklist', component: TracklistCharactersComponent},
-  {path: 'personnalForm', component: PersonnalFormComponent}
+  {path: 'personnalForm', component: PersonnalFormComponent},
   {path: 'dynamicForm', component: DynamicFormComponent}
 ];
 
