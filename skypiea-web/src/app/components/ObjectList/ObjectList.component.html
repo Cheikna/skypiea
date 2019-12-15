@@ -6,11 +6,13 @@
         <table class="table table-bordered table-dark">
             <thead>
                 <tr>
-                    <th scope="col">Brand</th>
                     <th scope="col">Installation date</th>
+                    <th scope="col">Object Type</th>
+                    <th scope="col">Brand</th>
                     <th scope="col">Status</th>
                     <th scope="col">State</th>
-                    <th scope="col">IP ADDRESS</th>
+                    <th scope="col">More details</th>
+                    
 
 
 
@@ -18,11 +20,12 @@
             </thead>
            <tbody>
                     <tr *ngFor="let nonMedicalConnectedObject of nonMedicalConnectedObjects">
-                        <td>{{ nonMedicalConnectedObject.brand }}</td>
                         <td>{{ nonMedicalConnectedObject.installationDate }}</td>
-                        <td>{{ nonMedicalConnectedObject.status }}</td>
-                        <td>{{ nonMedicalConnectedObject.state }}</td>
-                        <td>{{ nonMedicalConnectedObject.ipAddress }}</td>
+                        <td>{{ nonMedicalConnectedObject.nonMedicalObjectType}}</td>
+                        <td>{{ nonMedicalConnectedObject.brand}}</td>
+                        <td>{{ nonMedicalConnectedObject.status}}</td>
+                        <td>{{ nonMedicalConnectedObject.state}}</td>
+                        <td><button class="btn btn-success" (click)="openDialogInfo(nonMedicalConnectedObject)"><mdb-icon fas icon="info-circle"></mdb-icon></button></td>
                     </tr>
             </tbody>
        </table>

@@ -35,6 +35,10 @@ public class Bulb extends NonMedicalConnectedObject {
 	public Bulb() {
 		super();
 	}
+	
+	public String getCurrentColor() {
+		return this.currentColor;
+	}
 
 	public void setCurrentColor(String currentColor) {
 		this.currentColor = currentColor;
@@ -54,6 +58,6 @@ public class Bulb extends NonMedicalConnectedObject {
 
 	public void setSavingDate(Timestamp savingDate) {
 		this.savingDate = savingDate;
-	} 
+	}
 	
 }

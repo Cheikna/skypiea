@@ -18,17 +18,19 @@ import { ObjectListComponent } from './components/ObjectList/ObjectList.componen
 
 import { NonMedicalConnectedObjectListComponent } from './components/non-medical-connected-object-list/non-medical-connected-object-list.component';
 import { AlarmClockDetailsComponent } from './components/alarm-clock-details/alarm-clock-details.component';
-import { TemperatureControllerDetailsComponent } from './components/temperature-controller-details/temperature-controller-details.component';
+
 import { RoomPlanComponent } from './sub-components/room-plan/room-plan.component';
 import { RoomSummaryComponent } from './sub-components/room-summary/room-summary.component';
 import { RoomInformationComponent } from './components/room-information/room-information.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
+import { ObjectInfoComponent } from './dialogs/object-info/object-info.component';
 
 
 
 @NgModule({
   entryComponents: [
-    SignInComponent
+    SignInComponent,
+    ObjectInfoComponent
   ],
   declarations: [
     AppComponent,
@@ -44,8 +46,8 @@ import { MonitoringComponent } from './components/monitoring/monitoring.componen
     AlarmClockDetailsComponent,
     NonMedicalConnectedObjectListComponent,
     AlarmClockDetailsComponent,
-    TemperatureControllerDetailsComponent,
-    PersonnalFormComponent
+    PersonnalFormComponent,
+    ObjectInfoComponent
   ],
   imports: [
     BrowserModule,

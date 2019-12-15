@@ -19,4 +19,6 @@ public class NonMedicalConnectedObjectService {
 		List<NonMedicalConnectedObject> nonMedicalConnectedObject = this.nonMedicalConnectedObjectRepository.findAll();
 		return nonMedicalConnectedObject;
 	}
+	
+	
 }
