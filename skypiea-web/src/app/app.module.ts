@@ -26,6 +26,7 @@ import { RoomSummaryComponent } from './sub-components/room-summary/room-summary
 import { RoomInformationComponent } from './components/room-information/room-information.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
 import { ObjectInfoComponent } from './dialogs/object-info/object-info.component';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 
 
 
@@ -51,7 +52,8 @@ import { ObjectInfoComponent } from './dialogs/object-info/object-info.component
     TrackingComponent,
     TracklistCharactersComponent,
     PersonnalFormComponent,
-    ObjectInfoComponent
+    ObjectInfoComponent,
+    DynamicFormComponent
   ],
   imports: [
     BrowserModule,

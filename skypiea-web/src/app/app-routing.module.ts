@@ -7,6 +7,7 @@ import { RoomInformationComponent } from './components/room-information/room-inf
 import { TrackingComponent } from './components/tracking/tracking.component';
 import { TracklistCharactersComponent } from './components/tracklist-characters/tracklist-characters.component';
 import { PersonnalFormComponent } from './components/personnal-form/personnal-form.component';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'tracking/:id', component: TrackingComponent},
   {path: 'tracklist', component: TracklistCharactersComponent},
   {path: 'personnalForm', component: PersonnalFormComponent}
+  {path: 'dynamicForm', component: DynamicFormComponent}
 ];
 
 @NgModule({
