@@ -27,6 +27,7 @@ import { RoomInformationComponent } from './components/room-information/room-inf
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
 import { ObjectInfoComponent } from './dialogs/object-info/object-info.component';
 import { FloorOnePlanComponent } from './floors-plan-components/floor-one-plan/floor-one-plan.component';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 
 
 
@@ -54,7 +55,8 @@ import { FloorOnePlanComponent } from './floors-plan-components/floor-one-plan/f
     PersonnalFormComponent,
     ObjectInfoComponent,
     PersonnalFormComponent,
-    FloorOnePlanComponent
+    FloorOnePlanComponent,
+    DynamicFormComponent
   ],
   imports: [
     BrowserModule,
