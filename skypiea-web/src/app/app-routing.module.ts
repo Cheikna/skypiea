@@ -6,6 +6,7 @@ import { MonitoringComponent } from './components/monitoring/monitoring.componen
 import { RoomInformationComponent } from './components/room-information/room-information.component';
 import { TrackingComponent } from './components/tracking/tracking.component';
 import { TracklistCharactersComponent } from './components/tracklist-characters/tracklist-characters.component';
+import { PersonnalFormComponent } from './components/personnal-form/personnal-form.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'monitoring/room/:roomId', component: RoomInformationComponent},
   {path: 'tracking', component: TrackingComponent},
   {path: 'tracking/:id', component: TrackingComponent},
-  {path: 'tracklist', component: TracklistCharactersComponent}
+  {path: 'tracklist', component: TracklistCharactersComponent},
+  {path: 'personnalForm', component: PersonnalFormComponent}
 ];
 
 @NgModule({

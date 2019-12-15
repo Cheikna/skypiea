@@ -34,4 +34,10 @@ public class RoomController {
 	public Room getRoomDetails(@PathVariable Long id) {
 		return this.roomService.findRoomById(id);
 	}
+	
+	@GetMapping("/resident/{id}")
+	public Room getResidentRoomDetails(@PathVariable Long id) {
+		return this.roomService.findByResidentId(id);
+		
+	}
 }

@@ -1,11 +1,13 @@
-export class TemperatureController {
-    id: number;
+import { NonMedicalConnectedObject } from './nonMedicalConnectedObject.model';
+
+export class TemperatureController extends NonMedicalConnectedObject{
     threshold : number;
     temperatureMax : number;
     temperatureMin : number;
     temperatureSettled : number;
     isHealthingConnected : boolean;
     isAirConditionnerConnected : boolean;
-    idRoom  : number;
+    isCurrentSettings : boolean;
+    savingDate  : Date;
     
 }
