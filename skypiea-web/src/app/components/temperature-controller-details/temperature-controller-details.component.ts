@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TemperatureController} from 'src/app/models/temperatureController.model';
 import {TemperatureControllerService} from 'src/app/services/temperature-controller.service';
+//import {NonMedicalConnectedObjectListComponent} from 'src/app/components/non-medical-connected-object-list';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

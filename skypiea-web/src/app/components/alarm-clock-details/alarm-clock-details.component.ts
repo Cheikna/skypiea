@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AlarmClock} from 'src/app/models/alarmClock.model';
 import {AlarmClockService} from 'src/app/services/alarm-clock.service';
+//import {NonMedicalConnectedObjectListComponent} from 'src/app/components/non-medical-connected-object-list';
 import { from } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -15,7 +16,7 @@ export class AlarmClockDetailsComponent implements OnInit {
   alarmClock: AlarmClock; 
 
   constructor(private route: ActivatedRoute, private router: Router, private alarmClockService: AlarmClockService) { }
-   
+
   ngOnInit() {
     this.alarmClock = new AlarmClock();
 
