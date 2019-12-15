@@ -2,31 +2,21 @@ package com.skytech.skypiea.commons.enumeration;
 
 public enum NonMedicalObjectType {
 	
-	BINARY_SENSOR("Binary sensor"),
+	BINARY_SENSOR,
 	
-	SHUTTER("Shutter"),
+	SHUTTER,
 	
-	SUNSHINE_SENSOR("Sunshine sensor"),
+	SUNSHINE_SENSOR,
 	
-	SMOKE_SENSOR("Smoke sensor"),
+	SMOKE_SENSOR,
 	
-	DOOR_SENSOR("Door sensor"),
+	DOOR_SENSOR,
 	
-	BULB("Bulb"),
+	BULB,
 	
-	TEMPERATURE_CONTROLLER("Temperature controller"),
+	TEMPERATURE_CONTROLLER,
 	
-	ALARM_CLOCK("Alarm clock");
-	
-	private String name;
-
-	NonMedicalObjectType(String name) {
-		this.name = name;
-	}
-
-	public String getName() {
-		return name;
-	}
+	ALARM_CLOCK;
 	
 	
 }

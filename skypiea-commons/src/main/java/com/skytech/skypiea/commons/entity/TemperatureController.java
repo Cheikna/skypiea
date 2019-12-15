@@ -26,6 +26,9 @@ public class TemperatureController extends NonMedicalConnectedObject  {
 	@Column(name="TEMPERATURE_SETTLED")
 	private float temperatureSettled;
 	
+	@Column(name="CURRENT_TEMPERATURE")
+	private float currentTemperature;
+	
 	@Column(name="IS_HEALTHING_CONNECTED")
 	private boolean isHealthingConnected;
 	
@@ -46,7 +49,7 @@ public class TemperatureController extends NonMedicalConnectedObject  {
 	public TemperatureController(Long id, Long version, Timestamp lastParameterModificationDate,
 			String brand, String ipAddress, String macAddress, String lastMeasurementDate, Status status, State state,
 			Timestamp installationDate, String svgPoint, int threshold,
-			int temperatureMax, int temperatureMin, int temperatureSettled, boolean isHealthingConnected,
+			int temperatureMax, int temperatureMin, int temperatureSettled, float currentTemperature, boolean isHealthingConnected,
 			boolean isAirConditionnerConnected, Boolean isCurrentSettings, Timestamp savingDate) {
 		super(id, version, lastParameterModificationDate, brand, ipAddress, macAddress, lastMeasurementDate,
 				status, state, NonMedicalObjectType.TEMPERATURE_CONTROLLER, installationDate, svgPoint);
@@ -54,6 +57,7 @@ public class TemperatureController extends NonMedicalConnectedObject  {
 		this.temperatureMax = temperatureMax;
 		this.temperatureMin = temperatureMin;
 		this.temperatureSettled = temperatureSettled;
+		this.currentTemperature = currentTemperature;
 		this.isHealthingConnected = isHealthingConnected;
 		this.isAirConditionnerConnected = isAirConditionnerConnected;
 		this.isCurrentSettings = isCurrentSettings;
@@ -90,6 +94,14 @@ public class TemperatureController extends NonMedicalConnectedObject  {
 
 	public void setTemperatureSettled(float temperatureSettled) {
 		this.temperatureSettled = temperatureSettled;
+	}	
+
+	public float getCurrentTemperature() {
+		return currentTemperature;
+	}
+
+	public void setCurrentTemperature(float currentTemperature) {
+		this.currentTemperature = currentTemperature;
 	}
 
 	public boolean isHealthingConnected() {

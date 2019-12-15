@@ -13,10 +13,10 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'ObjectList', component: ObjectListComponent},
   {path: 'monitoring', component: MonitoringComponent},
-  { path: 'monitoring/room/:roomId', component: RoomInformationComponent},
   {path: 'tracking', component: TrackingComponent},
   {path: 'tracking/:id', component: TrackingComponent},
   {path: 'tracklist', component: TracklistCharactersComponent},
+  { path: 'monitoring/room/:doorNumber', component: RoomInformationComponent},
   {path: 'personnalForm', component: PersonnalFormComponent}
 ];
 
