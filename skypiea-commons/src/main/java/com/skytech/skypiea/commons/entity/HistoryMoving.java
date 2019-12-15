@@ -4,16 +4,18 @@ import java.security.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-public class HistoryMoving {
-	//private static Logger log = LoggerFactory.getLogger(Character.class);
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+@Table(name="HISTORY_MOVING")
+public class HistoryMoving extends com.skytech.skypiea.commons.entity.Entity{
+	//private static Logger log = LoggerFactory.getLogger(Character.class);	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="ELECTRONIC_TAG_ID", nullable=false)
+	protected ElectronicTag electronicTag;
 	
 	@Column(name="POSX")
 	private int posX;
@@ -24,8 +26,14 @@ public class HistoryMoving {
 	@Column(name="SAVING_TIME")
 	private Timestamp time;
 	
-	public HistoryMoving(long id, int posX, int posY, Timestamp time) {
-		this.id = id;
+
+	public HistoryMoving() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public HistoryMoving(Long id, Long version, int posX, int posY, Timestamp time) {
+		super(id, version);
 		this.posX = posX;
 		this.posY = posY;
 		this.time = time;
@@ -36,14 +44,12 @@ public class HistoryMoving {
 		return "HistoryMoving [id=" + id + ", posX=" + posX + ", posY=" + posY + ", time=" + time + "]";
 	}
 
-
-
-	public long getId() {
-		return id;
+	public ElectronicTag getElectronicTag() {
+		return electronicTag;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setElectronicTag(ElectronicTag electronicTag) {
+		this.electronicTag = electronicTag;
 	}
 
 	public int getPosX() {
