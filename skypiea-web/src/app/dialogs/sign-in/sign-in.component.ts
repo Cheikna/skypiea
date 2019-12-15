@@ -37,10 +37,11 @@ export class SignInComponent implements OnInit {
     this.authenticationService.login(logon).subscribe(
       (data) => {
         if(data){
-          console.log(JSON.stringify(data));
-          this.toastService.displayToast(ToastType.SUCCESS, 'Successful connection', true);
           this.authenticationService.saveSuccessfullAuthentication(data);
-          // TODO : redirect to the home page according to the user Type (STAFF or RESIDENT) and get his extras information
+          this.router.navigate(['']).then(() => {
+            this.toastService.displayToast(ToastType.SUCCESS, 'Successful connection', true, 'Please wait, the page will reload');
+            setTimeout(() => { window.location.reload(); }, 2000);            
+          });
         } else {
           this.toastService.displayToast(ToastType.ERROR, 'Authentication failed !', true, 
           'Your username or your password is incorrect.', 7000);

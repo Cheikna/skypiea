@@ -16,12 +16,21 @@ export class WebStorageService {
   constructor(@Inject(SESSION_STORAGE) private sessionStorage: StorageService, 
   @Inject(LOCAL_STORAGE) private localStorage: StorageService) { }
 
-  setSesionAttribute = (key: string, value: any) => this.sessionStorage.set(key, value);
+  setSessionAttribute = (key: string, value: any) => this.sessionStorage.set(key, value);
   getSessionAttribute = (key: string) => this.sessionStorage.get(key);
   removeSessionAttribute = (key: string) => this.sessionStorage.remove(key);
 
   setLocalAttribute = (key: string, value: any) => this.localStorage.set(key, value);
   getLocalAttribute = (key: string) => this.localStorage.get(key);
-  removeLocalAttribute = (key: string) => this.localStorage.remove(key);
+  removeLocalAttribute = (key: string) => this.localStorage.remove(key);  
+  
+
+  getConnectedUserType(){
+    const userInfo = this.getSessionAttribute("USER_INFO");
+    if(userInfo){
+      return userInfo.userType;
+    }
+    return null;
+  }
   
 }

@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NonMedicalConnectedObject } from 'src/app/models/nonMedicalConnectedObject.model';
-import { NonMedicalConnectedObjectService } from 'src/app/services/non-medical-connected-object.service';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
 import { RoomService } from 'src/app/services/room.service';
 import { Room } from 'src/app/models/room.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ObjectInfoComponent } from 'src/app/dialogs/object-info/object-info.component';
+import { WebStorageService } from 'src/app/util/web-storage.service';
+import { storageKey } from 'src/app/util/storageKey.util';
 
 @Component({
   selector: 'app-ObjectList',
@@ -15,23 +14,23 @@ import { ObjectInfoComponent } from 'src/app/dialogs/object-info/object-info.com
 })
 export class ObjectListComponent implements OnInit {
 
-  residentId: number = 3;
+  residentId: number;
   room : Room = new Room();
 
-  nonMedicalConnectedObjects: Array<NonMedicalConnectedObject>;
+  nonMedicalConnectedObjects: Array<any>;
 
-  constructor(private roomService: RoomService,private dialog: MatDialog) { }
-
-
+  constructor(private roomService: RoomService,private dialog: MatDialog, private webStorageService: WebStorageService) { }
 
 
   ngOnInit() {
+    const userInfoFromStorage = this.webStorageService.getSessionAttribute(storageKey.USER_INFO.name);
+    this.residentId = userInfoFromStorage.id;
     this.roomService.getResidentRoomDetails(this.residentId).subscribe((data: Room)=>{
       this.nonMedicalConnectedObjects=data.nonMedicalConnectedObjects;
     });
   }
 
-  openDialogInfo(nonMedicalConnectedObject: NonMedicalConnectedObject){
+  openDialogInfo(nonMedicalConnectedObject){
     let dialogRef = this.dialog.open(ObjectInfoComponent, { panelClass: 'login-dialog'});
     dialogRef.componentInstance.nonMedicalConnectedObject = nonMedicalConnectedObject;
   }

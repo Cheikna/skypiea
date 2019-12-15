@@ -5,44 +5,56 @@
     <span class="environment">({{environmentVariables.environmentTitle}})</span>
     <links>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <li class="nav-item" *appUserVisibility="['NOT_CONNECTED']">
                 <a class="nav-link waves-effect" mdbWavesEffect (click)="openSignInDialog()">
                     <mdb-icon fas icon="user"></mdb-icon> Sign In
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *appUserVisibility="['STAFF']">
                 <a class="nav-link waves-effect" mdbWavesEffect [routerLink]="['/monitoring']">
                     <mdb-icon fas icon="desktop"></mdb-icon> Monitoring
                 </a>
             </li>
-          <li class="nav-item">
+            <li class="nav-item" *appUserVisibility="['STAFF']">
                 <a class="nav-link waves-effect" mdbWavesEffect>
                     <mdb-icon fas icon="exclamation-triangle"></mdb-icon> Failure Management
                 </a>
             </li>
-          <li class="nav-item">
+            <li class="nav-item" *appUserVisibility="['RESIDENT']">
                 <a class="nav-link waves-effect" mdbWavesEffect [routerLink]="['/ObjectList']">
                     <mdb-icon fas icon="network-wired"></mdb-icon> My Smart Objects
                 </a>
             </li>
-          <li class="nav-item">
+            <li class="nav-item" *appUserVisibility="['STAFF']">
                 <a class="nav-link waves-effect" mdbWavesEffect>
                     <mdb-icon fas icon="briefcase-medical"></mdb-icon> Health Monitoring
                 </a>
             </li>
-          <li class="nav-item">
+            <li class="nav-item" *appUserVisibility="['STAFF']">
                 <a class="nav-link waves-effect" mdbWavesEffect>
                     <mdb-icon fas icon="map-marker-alt"></mdb-icon> Tracking
                 </a>
             </li>
-          <li class="nav-item">
+            <li class="nav-item" *appUserVisibility="['STAFF']">
                 <a class="nav-link waves-effect" mdbWavesEffect>
                     <mdb-icon fas icon="chart-line"></mdb-icon> Statistics
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link waves-effect" mdbWavesEffect>
-                    <mdb-icon fas icon="envelope"></mdb-icon> Contact
+            <li class="nav-item" *appUserVisibility="['STAFF', 'RESIDENT']">
+                <button class="btn dropdown-toggle" mat-button [matMenuTriggerFor]="myAccountMenu">
+                    <mdb-icon fas icon="user-circle"></mdb-icon> My Account
+                </button>
+                <mat-menu #myAccountMenu="matMenu">
+                    <button mat-menu-item>Hello {{ userInfo?.lastName | uppercase }} {{ userInfo?.firstName }}</button>
+                    <button mat-menu-item (click)="logout()">
+                        <mdb-icon fas icon="sign-out-alt"></mdb-icon> Logout
+                    </button>
+                </mat-menu>
+
+            </li>
+            <li class="nav-item" *appUserVisibility="['NOT_CONNECTED']">
+                <a class="nav-link waves-effect" mdbWavesEffect [routerLink]="['/personnalForm']">
+                    <mdb-icon fas icon="glass-cheers"></mdb-icon> Join us
                 </a>
             </li>
         </ul>

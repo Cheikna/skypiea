@@ -10,7 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignInComponent } from './dialogs/sign-in/sign-in.component';
 import { ToastrModule } from 'ngx-toastr';
 import { PersonnalFormComponent } from './components/personnal-form/personnal-form.component';
 
@@ -24,6 +24,8 @@ import { RoomSummaryComponent } from './sub-components/room-summary/room-summary
 import { RoomInformationComponent } from './components/room-information/room-information.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
 import { ObjectInfoComponent } from './dialogs/object-info/object-info.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { UserVisibilityDirective } from './directives/user-visibility.directive';
 
 
 
@@ -47,7 +49,9 @@ import { ObjectInfoComponent } from './dialogs/object-info/object-info.component
     NonMedicalConnectedObjectListComponent,
     AlarmClockDetailsComponent,
     PersonnalFormComponent,
-    ObjectInfoComponent
+    ObjectInfoComponent,
+    PageNotFoundComponent,
+    UserVisibilityDirective
   ],
   imports: [
     BrowserModule,

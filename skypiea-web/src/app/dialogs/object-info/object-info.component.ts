@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NonMedicalConnectedObject } from 'src/app/models/nonMedicalConnectedObject.model';
 import { Bulb } from 'src/app/models/bulb.model';
 import { NonMedicalObjectType } from 'src/app/enums/nonMedicalObjectType.enum';
-import { DoorSensor } from 'src/app/models/doorSensor.model';
 
 @Component({
   selector: 'app-object-info',
@@ -11,14 +10,15 @@ import { DoorSensor } from 'src/app/models/doorSensor.model';
 })
 export class ObjectInfoComponent implements OnInit {
 
-  nonMedicalConnectedObject: NonMedicalConnectedObject;
+  nonMedicalConnectedObject;
   NonMedicalConnectedObjectType = NonMedicalObjectType;
-  objectsInJSON : JSON;
   
   constructor() { }
 
   ngOnInit() {
-    this.objectsInJSON = JSON.parse(JSON.stringify(this.nonMedicalConnectedObject));
+    
+    console.log(JSON.stringify(this.nonMedicalConnectedObject));
+    //this.objectsInJSON = JSON.parse(JSON.stringify(this.nonMedicalConnectedObject));
   }
 
 }

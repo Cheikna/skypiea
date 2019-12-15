@@ -1,38 +1,18 @@
 <section>
-    <div class="empty">
-        <!--Add an image -->
-    </div>
     <div class="container">
-        <br>
-        <mat-form-field>
-            <input matInput placeholder="Enter a name" [(ngModel)]="newCharacter.name">
-        </mat-form-field>
-
-        <button color="primary" mat-raised-button
-            [disabled]="!newCharacter.name || newCharacter.name.trim().length <= 0" (click)="create()">Create</button>
-        <br><br>
-        <h4>List of the characters :</h4>
-        <table class="table table-bordered table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let character of characters">
-                    <th scope="row">{{ character.id }}</th>
-                    <td>{{ character.name }}</td>
-                    <td><button mat-raised-button color="warn" (click)="delete(character.id)"><mat-icon>delete_forever</mat-icon></button></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <button color="primary" mat-raised-button (click)="findAll()">Load the characters</button>
-        <span><br><br></span>
-        <button color="primary" mat-raised-button [routerLink]="['/training']">Search By ID</button>
-       
-
+        <div class="row">
+            <div id="carousel-container">
+                <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
+                    <mdb-carousel-item>
+                        <img class="d-block w-100" src="assets/images/carousel/control-cofee.png"
+                            alt="Control coffee with a tablet">
+                    </mdb-carousel-item>
+                    <mdb-carousel-item>
+                        <img class="d-block w-100" src="assets/images/carousel/monitoring-center.png"
+                            alt="A support team always available">
+                    </mdb-carousel-item>
+                </mdb-carousel>
+            </div>
+        </div>
     </div>
 </section>

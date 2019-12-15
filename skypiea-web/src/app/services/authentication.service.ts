@@ -3,6 +3,7 @@ import { RestService } from './rest.service';
 import { HttpClient } from '@angular/common/http';
 import { Logon } from '../models/logon.model';
 import { WebStorageService } from '../util/web-storage.service';
+import { storageKey } from '../util/storageKey.util';
 
 @Injectable({
   providedIn: 'root'
@@ -20,17 +21,11 @@ export class AuthenticationService extends RestService {
     return this.http.post(`${this.completeBackendServerUrl}/authenticate`, JSON.stringify(logon), { headers: this.headers });
   }
 
-  logout(){
-    this.webStorageService.removeLocalAttribute(this.isAuthenticatedStr);
-    this.webStorageService.removeLocalAttribute(this.userInfoStr);
-  }
-
   isAuthenticated(): boolean {
-    return (this.webStorageService.getLocalAttribute(this.isAuthenticatedStr));
+    return (this.webStorageService.getSessionAttribute(storageKey.USER_INFO.name));
   }
 
   saveSuccessfullAuthentication(user: any){
-    this.webStorageService.setLocalAttribute(this.isAuthenticatedStr, true);
-    this.webStorageService.setLocalAttribute(this.userInfoStr, user);
+    this.webStorageService.setSessionAttribute(storageKey.USER_INFO.name, user);
   }
 }
