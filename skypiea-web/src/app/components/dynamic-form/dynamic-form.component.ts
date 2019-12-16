@@ -7,7 +7,7 @@ import { FormBuilder, FormControl } from '@angular/forms';
   styleUrls: ['./dynamic-form.component.scss']
 })
 export class DynamicFormComponent implements OnInit {
-  
+
   constructor() { }
 
   ngOnInit() {
