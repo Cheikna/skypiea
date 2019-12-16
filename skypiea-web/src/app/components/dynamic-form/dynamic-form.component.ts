@@ -8,6 +8,7 @@ import { FormBuilder, FormControl } from '@angular/forms';
 })
 export class DynamicFormComponent implements OnInit {
   isAvailable = false;
+  diabetic;
   constructor() { }
 
   ngOnInit() {
