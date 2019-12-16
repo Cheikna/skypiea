@@ -28,6 +28,24 @@ public class ElectronicTagController {
 		return electronicTagService.findAll();
 	}
 	
+	@GetMapping("/resident/{id}")
+	public ElectronicTag findHistoryMovingByResident(@PathVariable Long id)
+	{
+		ElectronicTag electronicTag = null;
+		System.out.println(id);
+		List<ElectronicTag> tags = electronicTagService.findAll();
+		if(tags != null) {
+			for(ElectronicTag tag: tags) {
+				System.out.println(tag.getId() + " " + tag.getResident().getId());
+				if(tag.getResident().getId() == id) {
+					electronicTag = tag;
+					break;
+				}
+			}
+		}
+		return electronicTag;
+	}
+	
 	@PostMapping("")
 	public ElectronicTag createETag(@RequestBody ElectronicTag eTag){
 		return electronicTagService.createOrUpdate(eTag);
