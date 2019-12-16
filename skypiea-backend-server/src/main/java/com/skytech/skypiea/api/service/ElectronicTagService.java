@@ -16,8 +16,7 @@ public class ElectronicTagService {
 	private ElectronicTagRepository electronicTagRepository;
 	
 	public List<ElectronicTag> findAll(){
-		List<ElectronicTag> eTag = this.electronicTagRepository.findAll();
-		return eTag;
+		return electronicTagRepository.findAll();
 	}
 	
 	public ElectronicTag createOrUpdate(ElectronicTag eTag) {

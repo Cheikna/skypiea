@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Character } from 'src/app/models/character.model';
 import { CharacterService } from 'src/app/services/character.service';
 import { Router } from "@angular/router";
+import { ElectronicTagService } from 'src/app/services/electronictag.service';
+import { ElectronicTag } from 'src/app/models/electronictag.model';
 
 
 @Component({
@@ -11,15 +13,19 @@ import { Router } from "@angular/router";
 })
 export class TracklistCharactersComponent implements OnInit {
   characters: Array<Character>;
+  tag: ElectronicTag;
   newCharacter: Character;
 
-  constructor(private characterService: CharacterService, private router: Router) { 
+  constructor(private characterService: CharacterService, private router: Router, private electronicTagService: ElectronicTagService) { 
     this.characters = new Array<Character>();
     this.newCharacter = new Character();
   }
 
   ngOnInit() {
     this.findAll();
+    this.electronicTagService.getResidentHistoryMoving(3).subscribe((data: ElectronicTag) => {
+      console.log(JSON.stringify(data));
+    });
   }
 
   findAll(){

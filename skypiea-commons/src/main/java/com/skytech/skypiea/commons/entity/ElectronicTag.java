@@ -3,6 +3,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -16,46 +17,24 @@ public class ElectronicTag extends com.skytech.skypiea.commons.entity.Entity {
 	@JoinColumn(name="RESIDENT_ID")
 	private Resident resident;
 	
-	@OneToMany(mappedBy="electronicTag")
+	@OneToMany(fetch=FetchType.EAGER)
+    @JoinColumn(name = "ELECTRONIC_TAG_ID")
 	private Set<HistoryMoving> historyMoving;
 	
 
 	public ElectronicTag() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-
-
-	public ElectronicTag(Long id, Long version, Resident resident) {
+	public ElectronicTag(Long id, Long version) {
 		super(id, version);
-		this.resident = resident;
-	}
-
-
-
-	@Override
-	public String toString() {
-		return "ElectronicTag [id=" + id + ", resident=" + resident + ", historyMoving=" + historyMoving + "]";
 	}
 
 	public Resident getResident() {
 		return resident;
 	}
-
-
-
 	public void setResident(Resident resident) {
 		this.resident = resident;
-	}
-
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public Set<HistoryMoving> getHistoryMoving() {
@@ -65,4 +44,6 @@ public class ElectronicTag extends com.skytech.skypiea.commons.entity.Entity {
 	public void setHistoryMoving(Set<HistoryMoving> historyMoving) {
 		this.historyMoving = historyMoving;
 	}
+	
+	
 }
