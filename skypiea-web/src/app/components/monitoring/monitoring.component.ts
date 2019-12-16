@@ -12,18 +12,17 @@ export class MonitoringComponent implements OnInit {
 
   roomsFilterForm: FormGroup;
 
-  private roomsFromBackCall: Array<Room>;
+  roomsFromBackCall: Array<Room>;
   roomsFiltered: Array<Room>;
 
   constructor(private roomService: RoomService, private formBuilder: FormBuilder) { 
-    this.roomsFromBackCall = new Array<Room>();
     this.roomsFiltered = new Array<Room>();
     this.initializeForms();
   }
 
   ngOnInit() {
     this.roomService.getRoomsSummary().subscribe((data: Array<Room>) => {
-      Object.assign(this.roomsFromBackCall, data);
+      this.roomsFromBackCall = Object.assign(new Array<Room>(), data);
       Object.assign(this.roomsFiltered, data);
     });
   }

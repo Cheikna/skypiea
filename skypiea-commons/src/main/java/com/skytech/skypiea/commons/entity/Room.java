@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
 import com.skytech.skypiea.commons.enumeration.Wing;
 
 @Entity
@@ -52,7 +53,7 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
 	private Set<NonMedicalConnectedObject> nonMedicalConnectedObjects;
 	
 	@Transient
-	private Map<String, Integer> objectQuantityByType;
+	private Map<NonMedicalObjectType, Integer> objectQuantityByType;
 	
 	@Transient
 	private int numberOfNonMedicalObjects;
@@ -140,11 +141,11 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
 		this.nonMedicalConnectedObjects = nonMedicalConnectedObjects;
 	}
 
-	public Map<String, Integer> getObjectQuantityByType() {
+	public Map<NonMedicalObjectType, Integer> getObjectQuantityByType() {
 		return objectQuantityByType;
 	}
 
-	public void setObjectQuantityByType(Map<String, Integer> objectQuantityByType) {
+	public void setObjectQuantityByType(Map<NonMedicalObjectType, Integer> objectQuantityByType) {
 		this.objectQuantityByType = objectQuantityByType;
 	}		
 	
@@ -161,19 +162,19 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
 	 */
 	@Transient
 	public void initObjectQuantityByType() {
-		objectQuantityByType = new HashMap<String, Integer>();
+		objectQuantityByType = new HashMap<NonMedicalObjectType, Integer>();
 		if(this.nonMedicalConnectedObjects != null && nonMedicalConnectedObjects.size() > 0) {
 			nonMedicalConnectedObjects.forEach((object) -> {
-				String objectTypeName = object.getNonMedicalObjectType().name();
+				NonMedicalObjectType objectType = object.getNonMedicalObjectType();
 				Integer quantity;
 				try {
-					quantity = objectQuantityByType.get(objectTypeName) + 1;
+					quantity = objectQuantityByType.get(objectType) + 1;
 				}
 				catch(Exception e) {
 					// If the key does not exist
 					quantity = 1;
 				}
-				objectQuantityByType.put(objectTypeName, quantity);
+				objectQuantityByType.put(objectType, quantity);
 			});
 		}
 	}

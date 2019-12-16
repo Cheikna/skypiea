@@ -10,16 +10,16 @@ import { Room } from 'src/app/models/room.model';
 })
 export class RoomInformationComponent implements OnInit {
   
-  private roomId: number;
+  private doorNumber: number;
   room: Room;
 
   constructor(private route: ActivatedRoute, private roomService: RoomService) { }
 
   ngOnInit() {
-    let idParam = this.route.snapshot.paramMap.get('roomId');
+    let doorNumberParam = this.route.snapshot.paramMap.get('doorNumber');
     try{
-      this.roomId = parseInt(idParam);
-      this.roomService.getRoomDetail(this.roomId).subscribe((data: Room) => {
+      this.doorNumber = parseInt(doorNumberParam);
+      this.roomService.getRoomDetail(this.doorNumber).subscribe((data: Room) => {
         this.room = data;
       });
     } catch(e){

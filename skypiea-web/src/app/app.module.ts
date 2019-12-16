@@ -12,6 +12,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ToastrModule } from 'ngx-toastr';
+import { TrackingComponent } from './components/tracking/tracking.component';
+import { TracklistCharactersComponent } from './components/tracklist-characters/tracklist-characters.component';
 import { PersonnalFormComponent } from './components/personnal-form/personnal-form.component';
 
 import { ObjectListComponent } from './components/ObjectList/ObjectList.component';
@@ -24,6 +26,8 @@ import { RoomSummaryComponent } from './sub-components/room-summary/room-summary
 import { RoomInformationComponent } from './components/room-information/room-information.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
 import { ObjectInfoComponent } from './dialogs/object-info/object-info.component';
+import { FloorOnePlanComponent } from './floors-plan-components/floor-one-plan/floor-one-plan.component';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 
 
 
@@ -46,8 +50,13 @@ import { ObjectInfoComponent } from './dialogs/object-info/object-info.component
     AlarmClockDetailsComponent,
     NonMedicalConnectedObjectListComponent,
     AlarmClockDetailsComponent,
+    TrackingComponent,
+    TracklistCharactersComponent,
     PersonnalFormComponent,
-    ObjectInfoComponent
+    ObjectInfoComponent,
+    PersonnalFormComponent,
+    FloorOnePlanComponent,
+    DynamicFormComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +73,7 @@ import { ObjectInfoComponent } from './dialogs/object-info/object-info.component
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

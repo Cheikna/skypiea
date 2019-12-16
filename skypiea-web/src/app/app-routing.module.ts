@@ -4,15 +4,23 @@ import { HomeComponent } from './components/home/home.component';
 import { ObjectListComponent } from './components/ObjectList/ObjectList.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
 import { RoomInformationComponent } from './components/room-information/room-information.component';
+import { TrackingComponent } from './components/tracking/tracking.component';
+import { TracklistCharactersComponent } from './components/tracklist-characters/tracklist-characters.component';
 import { PersonnalFormComponent } from './components/personnal-form/personnal-form.component';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'ObjectList', component: ObjectListComponent},
   {path: 'monitoring', component: MonitoringComponent},
-  { path: 'monitoring/room/:roomId', component: RoomInformationComponent},
-  {path: 'personnalForm', component: PersonnalFormComponent}
+  {path: 'tracking', component: TrackingComponent},
+  {path: 'tracking/:id', component: TrackingComponent},
+  {path: 'tracklist', component: TracklistCharactersComponent},
+  { path: 'monitoring/room/:doorNumber', component: RoomInformationComponent},
+  {path: 'personnalForm', component: PersonnalFormComponent},
+  {path: 'personnalForm', component: PersonnalFormComponent},
+  {path: 'dynamicForm', component: DynamicFormComponent}
 ];
 
 @NgModule({

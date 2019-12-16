@@ -47,7 +47,7 @@ public class RoomServiceTest {
 	@Autowired
 	private RoomService roomService;
 	
-	private Room room0 = new Room(1L, 1L, 101L, 1, 6.6f, 3.0f, 2.0f, Wing.NORTH, "room-1");
+	private Room room0 = new Room(1L, 1L, 101L, 1, 6.6f, 3.0f, 2.0f, Wing.NORTH, "room-0");
 	private Long residentId;
 	
 	@Before
@@ -62,9 +62,9 @@ public class RoomServiceTest {
 
 	@Test
 	public void initObjectQuantityByTypeTest() {
-		Room room1 = new Room(1L, 1L, 101L, 1, 6.6f, 3.0f, 2.0f, Wing.NORTH, "room-1");
+		Room room1 = new Room(1L, 1L, 102L, 1, 6.6f, 3.0f, 2.0f, Wing.NORTH, "room-1");
 		
-		Room room2 = new Room(1L, 1L, 101L, 1, 6.6f, 3.0f, 2.0f, Wing.NORTH, "room-2");
+		Room room2 = new Room(1L, 1L, 103L, 1, 6.6f, 3.0f, 2.0f, Wing.NORTH, "room-2");
 		
 		NonMedicalConnectedObject obj1 = new AlarmClock();
 		obj1.setNonMedicalObjectType(NonMedicalObjectType.ALARM_CLOCK);
@@ -94,13 +94,13 @@ public class RoomServiceTest {
 		room2.initObjectQuantityByType();		
 		
 		assertEquals(1, room1.getObjectQuantityByType().size());
-		int clockInRoom1 = (int)room1.getObjectQuantityByType().get(NonMedicalObjectType.ALARM_CLOCK.name());
+		int clockInRoom1 = (int)room1.getObjectQuantityByType().get(NonMedicalObjectType.ALARM_CLOCK);
 		assertEquals(2, clockInRoom1);
 		
 		assertEquals(2, room2.getObjectQuantityByType().size());
-		int shutterInRoom2 = (Integer)room2.getObjectQuantityByType().get(NonMedicalObjectType.SHUTTER.name());
+		int shutterInRoom2 = (Integer)room2.getObjectQuantityByType().get(NonMedicalObjectType.SHUTTER);
 		assertEquals(1, shutterInRoom2);
-		int sunshineInRoom2 = (Integer)room2.getObjectQuantityByType().get(NonMedicalObjectType.SUNSHINE_SENSOR.name());
+		int sunshineInRoom2 = (Integer)room2.getObjectQuantityByType().get(NonMedicalObjectType.SUNSHINE_SENSOR);
 		assertEquals(1, sunshineInRoom2);
 		
 	}
@@ -110,6 +110,19 @@ public class RoomServiceTest {
 		Room findedRoom = roomService.findByResidentId(residentId);
 		assertNotNull(findedRoom);
 		assertEquals(room0, findedRoom);		
+	}
+	
+	@Test
+	public void testFindByRoomId() {
+		Room room1 = new Room(2L, 1L, 102L, 1, 6.6f, 3.0f, 2.0f, Wing.NORTH, "room-1");		
+		Room room2 = new Room(3L, 1L, 103L, 1, 7.6f, 3.0f, 2.5f, Wing.SOUTH, "room-2");
+		Room room3 = new Room(4L, 1L, 103L, 1, 6.8f, 3.0f, 7.0f, Wing.EAST, "room-3");
+		roomRepository.save(room1);
+		roomRepository.save(room2);
+		roomRepository.save(room3);
+		Room searchedRoom = roomService.findByDoorNumber(103L);
+		assertEquals(room2, searchedRoom);
+		
 	}
 
 }

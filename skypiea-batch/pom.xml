@@ -10,7 +10,7 @@
   <dependencies>
   	<dependency>
   		<groupId>com.skytech.skypiea</groupId>
-  		<artifactId>skypiea-commons</artifactId>
+  		<artifactId>skypiea-backend-server</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>
