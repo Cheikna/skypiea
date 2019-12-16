@@ -12,6 +12,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignInComponent } from './dialogs/sign-in/sign-in.component';
 import { ToastrModule } from 'ngx-toastr';
+import { TrackingComponent } from './components/tracking/tracking.component';
+import { TracklistCharactersComponent } from './components/tracklist-characters/tracklist-characters.component';
 import { PersonnalFormComponent } from './components/personnal-form/personnal-form.component';
 
 import { ObjectListComponent } from './components/ObjectList/ObjectList.component';
@@ -26,6 +28,8 @@ import { MonitoringComponent } from './components/monitoring/monitoring.componen
 import { ObjectInfoComponent } from './dialogs/object-info/object-info.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UserVisibilityDirective } from './directives/user-visibility.directive';
+import { FloorOnePlanComponent } from './floors-plan-components/floor-one-plan/floor-one-plan.component';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 
 
 
@@ -48,10 +52,15 @@ import { UserVisibilityDirective } from './directives/user-visibility.directive'
     AlarmClockDetailsComponent,
     NonMedicalConnectedObjectListComponent,
     AlarmClockDetailsComponent,
+    TrackingComponent,
+    TracklistCharactersComponent,
     PersonnalFormComponent,
     ObjectInfoComponent,
     PageNotFoundComponent,
-    UserVisibilityDirective
+    UserVisibilityDirective,
+    PersonnalFormComponent,
+    FloorOnePlanComponent,
+    DynamicFormComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +77,7 @@ import { UserVisibilityDirective } from './directives/user-visibility.directive'
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

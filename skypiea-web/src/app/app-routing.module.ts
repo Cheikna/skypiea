@@ -4,9 +4,12 @@ import { HomeComponent } from './components/home/home.component';
 import { ObjectListComponent } from './components/ObjectList/ObjectList.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
 import { RoomInformationComponent } from './components/room-information/room-information.component';
+import { TrackingComponent } from './components/tracking/tracking.component';
+import { TracklistCharactersComponent } from './components/tracklist-characters/tracklist-characters.component';
 import { PersonnalFormComponent } from './components/personnal-form/personnal-form.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 
 
 const routes: Routes = [
@@ -31,7 +34,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'monitoring/room/:roomId',
+    path: 'monitoring/room/:doorNumber',
     component: RoomInformationComponent, 
     canActivate: [AuthenticationGuard], 
     data: { 
@@ -41,6 +44,38 @@ const routes: Routes = [
   {
     path: 'personnalForm',
     component: PersonnalFormComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'NOT_CONNECTED'
+    }
+  },
+  {
+    path: 'tracking', 
+    component: TrackingComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'STAFF'
+    }
+  },
+  {
+    path: 'tracking/:id', 
+    component: TrackingComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'STAFF'
+    }
+  },
+  {
+    path: 'tracklist', 
+    component: TracklistCharactersComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'STAFF'
+    }
+  },
+  {
+    path: 'dynamicForm', 
+    component: DynamicFormComponent, 
     canActivate: [AuthenticationGuard], 
     data: { 
       userType: 'NOT_CONNECTED'

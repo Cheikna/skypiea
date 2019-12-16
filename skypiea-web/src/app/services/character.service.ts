@@ -10,5 +10,5 @@ export class CharacterService extends RestService {
   constructor(protected http: HttpClient) { 
     super("characters", http);
   }
-
+  
 }

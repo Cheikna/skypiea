@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Formulaires</h1>
+    <h1>Personnal Form</h1>
     <form class="needs-validation" ngNativeValidate [formGroup]="personnalForm">
     <div class="form-group">
             <div class="col-md-4 mb-3">
@@ -67,6 +67,6 @@
             <label class="form-check-label" for="cgu">I accept the conservation of my data</label>
             </div>
         </div>
-        <button class="btn btn-primary" (click)="create()" type="submit">Next step</button>
+        <button class="btn btn-primary" (click)="create()" [routerLink]="['/dynamicForm']" type="submit">Next step</button>
     </form>
 </div>

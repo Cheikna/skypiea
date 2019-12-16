@@ -7,5 +7,4 @@ import com.skytech.skypiea.commons.entity.Character;
 
 @Repository
 public interface CharacterRepository extends JpaRepository<Character, Long> {
-
 }

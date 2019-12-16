@@ -6,6 +6,11 @@
     <links>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" *appUserVisibility="['NOT_CONNECTED']">
+                <a class="nav-link waves-effect" mdbWavesEffect [routerLink]="['/personnalForm']">
+                    <mdb-icon fas icon="user"></mdb-icon> Create account
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link waves-effect" mdbWavesEffect (click)="openSignInDialog()">
                     <mdb-icon fas icon="user"></mdb-icon> Sign In
                 </a>
@@ -30,8 +35,8 @@
                     <mdb-icon fas icon="briefcase-medical"></mdb-icon> Health Monitoring
                 </a>
             </li>
-            <li class="nav-item" *appUserVisibility="['STAFF']">
-                <a class="nav-link waves-effect" mdbWavesEffect>
+          <li class="nav-item" *appUserVisibility="['STAFF']">
+                <a class="nav-link waves-effect" mdbWavesEffect [routerLink]="['/tracklist']">
                     <mdb-icon fas icon="map-marker-alt"></mdb-icon> Tracking
                 </a>
             </li>
