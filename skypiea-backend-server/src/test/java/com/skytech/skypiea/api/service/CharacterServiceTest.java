@@ -1,16 +1,19 @@
 package com.skytech.skypiea.api.service;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.domain.Example;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.skytech.skypiea.api.repository.CharacterRepository;
@@ -22,6 +25,7 @@ import com.skytech.skypiea.commons.entity.Character;
 })
 @RunWith(SpringRunner.class)
 @DataJpaTest
+@TestPropertySource(locations="classpath:application-test.properties")
 public class CharacterServiceTest {	
 
 	@Autowired

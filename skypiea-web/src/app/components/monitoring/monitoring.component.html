@@ -1,0 +1,56 @@
+<section>
+    <mat-tab-group class="monitoring-tab" mat-align-tabs="center" animationDuration="1200ms">
+        <mat-tab label="List view">
+            <br>
+            <div class="container">
+                <div class="row">
+                    <mat-accordion class="col-12">
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <h4>Filters</h4>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+
+                            <form [formGroup]="roomsFilterForm">
+                                <mat-form-field class="col-12">
+                                    <input matInput placeholder="Room number" formControlName="roomNumber" type="number"
+                                        min="100" max="200">
+                                </mat-form-field>
+                                <mat-form-field class="col-6">
+                                    <input matInput placeholder="Last name" formControlName="residentLastName">
+                                </mat-form-field>
+
+                                <mat-form-field class="col-6">
+                                    <input matInput placeholder="First name" formControlName="residentFirstName">
+                                </mat-form-field>
+
+                                <div class="col-12">
+                                    <button (click)="resetRoomsFormFilter()" class="btn btn-info" mat-raised-button>
+                                        Clear fields
+                                    </button>
+                                </div>
+                            </form>
+
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+                <br>
+                <div class="row">
+                    <div *ngIf="!roomsFiltered || roomsFiltered.length == 0" class="col-12 text-danger text-center">
+                        <br>
+                        <span><b>No match !</b></span>
+                    </div>
+                    <div class="col-12" *ngFor="let room of roomsFiltered">
+                        <app-room-summary [room]="room" [resident]="room.resident"></app-room-summary>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Map view">
+            <app-floor-one-plan [rooms]="roomsFromBackCall"></app-floor-one-plan>
+        </mat-tab>
+    </mat-tab-group>
+</section>

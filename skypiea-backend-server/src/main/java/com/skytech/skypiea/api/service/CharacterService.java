@@ -1,6 +1,7 @@
 package com.skytech.skypiea.api.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,20 @@ public class CharacterService {
 		characterRepository.deleteById(id);
 		// if every thing went well
 		return true;
+	}
+	
+	public Character findById(Long id) {
+		Character character = null;
+		if(id >= 1) {			
+			try {
+				Optional<Character> optionalCharacter = characterRepository.findById(id);
+				character = optionalCharacter.get();				
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return character;
 	}
 
 }

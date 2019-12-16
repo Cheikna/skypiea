@@ -1,0 +1,128 @@
+<svg width="870" height="329" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title/>
+ <desc>Creator: FreeHEP Graphics2D Driver Producer: com.eteks.sweethome3d.swing.PlanComponent$SVGSupport$1 Revision: 12753  Source: Dansoko Date: Tuesday, December 10, 2019 7:25:16 PM CET</desc>
+ <!-- default stroke -->
+ <g class="layer">
+  <title>Layer 1</title>
+  <g id="svg_1" stroke-dashoffset="0" stroke-miterlimit="10" stroke-linecap="square">
+   <!--<g id="svg_2" transform="matrix(100, 0, 0, 100, 61.3125, 73.2532787322998)">
+    <g id="svg_3" fill-rule="nonzero" fill="#000000">
+     <path id="svg_4" d="m0.495,0c0,0.27338 -0.22162,0.495 -0.495,0.495c-0.27338,0 -0.495,-0.22162 -0.495,-0.495c0,-0.27338 0.22162,-0.495 0.495,-0.495c0.27338,0 0.495,0.22162 0.495,0.495zm0.01,0c0,-0.2789 -0.2261,-0.505 -0.505,-0.505c-0.2789,0 -0.505,0.2261 -0.505,0.505c0,0.2789 0.2261,0.505 0.505,0.505c0.2789,0 0.505,-0.2261 0.505,-0.505zm-1.105,0.005l0.1,0l0.005,0l0,-0.01l-0.005,0l-0.1,0l-0.005,0l0,0.01l0.005,0zm1.2,-0.01l-0.1,0l-0.005,0l0,0.01l0.005,0l0.1,0l0.005,0l0,-0.01l-0.005,0zm-0.595,0.605l0,-0.1l0,-0.005l-0.01,0l0,0.005l0,0.1l0,0.005l0.01,0l0,-0.005zm-0.00497,-0.58l0,0c0.01105,-0.00002 0.01999,-0.00898 0.01997,-0.02003c-0.00002,-0.01105 -0.00898,-0.01999 -0.02003,-0.01997l0,0c-0.01105,0.00002 -0.01999,0.00898 -0.01997,0.02003c0.00002,0.01105 0.00898,0.01999 0.02003,0.01997zm-0.01484,-0.48762l0.15,0.93l0.01481,-0.00238l0.01024,-0.01096l-0.15,-0.14l-0.01024,-0.00957l-0.01024,0.00957l-0.15,0.14l0.01024,0.01096l0.01481,0.00238l0.15,-0.93l-0.01481,-0.00238l-0.01481,0.00238zm0,-0.00476l-0.15,0.93l-0.00696,0.04326l0.03201,-0.02992l0.15,-0.14l-0.01024,-0.01096l-0.01024,0.01096l0.15,0.14l0.03201,0.02992l-0.00696,-0.04326l-0.15,-0.93l-0.01481,-0.09204l-0.01481,0.09204zm-0.04019,-0.07762l0,-0.14l-0.015,0l-0.01021,0.01099l0.14,0.13l0.02521,0.02342l0,-0.03441l0,-0.14l0,-0.015l-0.03,0l0,0.015l0,0.14l0.015,0l0.01021,-0.01099l-0.14,-0.13l-0.02521,-0.02342l0,0.03441l0,0.14l0,0.015l0.03,0l0,-0.015z"/>
+    </g>    
+   </g>-->
+   <!-- transform -->
+   <g id="svg_5" transform="matrix(1, 0, 0, 1, 161.3125, 23.253278732299805)">
+    <clipPath id="clip1">
+     <path id="svg_6" d="m700.13464,2.23229l0,293.50001l-697.50003,0l0,-293.49994l0,0l697.50003,-0.00007zm7.5,-7.5l-708.75003,0.00007l0,3.74993l-3.75,0l0,304.75001l712.50003,0l0,-308.50001z"/>
+    </clipPath>
+    <g id="svg_7" clip-path="url(#clip1)">
+     <g id="svg_8" transform="matrix(1, 0, 0, 1, -4, -5)">
+      <image id="svg_9" xlink:href="data:image/PNG;base64,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 fwCBb2Szwu0iCQAAAABJRU5ErkJggg==" height="310" width="714" y="0" x="0"/>
+     </g>
+     <!-- transform -->
+    </g>
+    <!-- clip1 -->
+   </g>
+   <!-- transform -->
+   <g id="svg_10" transform="matrix(1, 0, 0, 1, 161.3125, 23.253278732299805)">
+    <g id="svg_11" stroke-width="1.625" fill="none" stroke="#000000">
+     <path id="svg_12" d="m700.13464,2.23229l0,293.50001l-697.50003,0l0,-293.49994l0,0l697.50003,-0.00007zm7.5,-7.5l-708.75003,0.00007l0,3.74993l-3.75,0l0,304.75001l712.50003,0l0,-308.50001z"/>
+    </g>
+    <!-- drawing style -->
+   </g>
+   <!-- transform -->
+   <g id="svg_13" transform="matrix(1, 0, 0, 1, 161.3125, 23.253278732299805)">
+    <g id="svg_14" fill-rule="nonzero" fill="#ffffff">
+     <path id="svg_15" d="m589.46484,295.7323l0,7.5l91.5,0l0,-7.5l-91.5,0z"/>
+    </g>
+    <!-- drawing style -->
+   </g>
+   <!-- transform -->
+   <g id="svg_16" transform="matrix(1, 0, 0, 1, 161.3125, 23.253278732299805)">
+    <g id="svg_17" stroke-width="1.08333" fill="none" stroke="#000000">
+     <path id="svg_18" d="m589.46484,295.7323l0,7.5l91.5,0l0,-7.5l-91.5,0z"/>
+    </g>
+    <!-- drawing style -->
+   </g>
+   <!-- transform -->
+   <g id="svg_19" transform="matrix(1, 0, 0, 1, 161.3125, 23.253278732299805)">
+    <g id="svg_20" stroke-width="1.08333" fill="none" stroke="#000000">
+     <path id="svg_21" d="m594.46484,295.7323c0,-45.01122 36.48877,-81.5 81.5,-81.5l0,81.5l-81.5,0z"/>
+    </g>
+    <!-- drawing style -->
+   </g>
+   <!-- transform -->
+   <g id="svg_22" transform="matrix(1, 0, 0, 1, 161.3125, 23.253278732299805)">
+    <g id="svg_23" fill-rule="nonzero" fill="#ffffff">
+     <path id="svg_24" d="m680.96484,303.23267l-91.5,0l0,-7.5004l91.5,0l0,7.5004z"/>
+    </g>
+    <!-- drawing style -->
+   </g>
+   <!-- transform -->
+   <g id="svg_25" transform="matrix(1, 0, 0, 1, 161.3125, 23.253278732299805)">
+    <g id="svg_26" stroke-width="1.08333" fill="none" stroke="#000000">
+     <path id="svg_27" d="m680.96484,303.23267l-91.5,0l0,-7.5004l91.5,0l0,7.5004z"/>
+    </g>
+    <!-- drawing style -->
+   </g>
+   <!-- transform -->
+   <g id="svg_28" transform="matrix(1, 0, 0, 1, 161.3125, 23.253278732299805)">
+    <g id="svg_29" fill-rule="nonzero" fill="#ffffff">
+     <path id="svg_30" d="m405.25226,-5.26768l-132,0.00001l0,0l0,7.5l0,0l132,-0.00001l0,0l0,-7.5z"/>
+    </g>
+    <!-- drawing style -->
+   </g>
+   <!-- transform -->
+   <g id="svg_31" transform="matrix(1, 0, 0, 1, 161.3125, 23.253278732299805)">
+    <g id="svg_32" stroke-width="1.08333" fill="none" stroke="#000000">
+     <path id="svg_33" d="m405.25226,-5.26768l-132,0.00001l0,0l0,7.5l0,0l132,-0.00001l0,0l0,-7.5z"/>
+    </g>
+    <!-- drawing style -->
+   </g>
+   <!-- transform -->
+   <g id="svg_34" transform="matrix(1, 0, 0, 1, 161.3125, 23.253278732299805)">
+    <g id="svg_35" stroke-width="1.08333" fill="none" stroke="#000000">
+     <path id="svg_36" d="m338.75226,2.2325c0,35.07008 -28.4299,63.50001 -63.49997,63.50002l-0.00003,-63.5l63.5,-0.00002z"/>
+    </g>
+    <!-- drawing style -->
+   </g>
+   <!-- transform -->
+   <g id="svg_37" transform="matrix(1, 0, 0, 1, 161.3125, 23.253278732299805)">
+    <g id="svg_38" stroke-width="1.08333" fill="none" stroke="#000000">
+     <path id="svg_39" d="m339.75226,2.2325c0,35.07008 28.42993,63.49998 63.5,63.49998l0,-63.5l-63.5,0.00002z"/>
+    </g>
+    <!-- drawing style -->
+   </g>
+   <!-- transform -->
+   <g id="svg_40" transform="matrix(1, 0, 0, 1, 161.3125, 23.253278732299805)">
+    <g id="svg_41" fill-rule="nonzero" fill="#ffffff">
+     <path id="svg_42" d="m273.25226,-5.26803l132,-0.00004l0,7.50055l-132,0.00004l0,-7.50055z"/>
+    </g>
+    <!-- drawing style -->
+   </g>
+   <!-- transform -->
+   <g id="svg_43" transform="matrix(1, 0, 0, 1, 161.3125, 23.253278732299805)">
+    <g id="svg_44" stroke-width="1.08333" fill="none" stroke="#000000">
+     <path id="svg_45" d="m273.25226,-5.26803l132,-0.00004l0,7.50055l-132,0.00004l0,-7.50055z"/>
+    </g>
+    <!-- drawing style -->
+   </g>
+   <!-- transform -->
+  </g>
+  <circle stroke="#000000" id="point-door-1" r="3.28011" cy="322.99999" cx="797.00002" stroke-width="5" fill="#000000"/>
+  <circle stroke="#000000" id="point-window-1" r="3.28011" cy="22.49998" cx="499.00002" stroke-width="5" fill="#000000"/>
+  <circle stroke="#000000" id="point-3" r="3.28011" cy="105.5" cx="160" stroke-width="5" fill="#000000"/>
+  <circle stroke="#000000" id="point-7" r="3.28011" cy="210.5" cx="160" stroke-width="5" fill="#000000"/>
+  <circle stroke="#000000" id="point-1" r="3.28011" cy="21.5" cx="279.5" stroke-width="5" fill="#000000"/>
+  <circle stroke="#000000" id="point-2" r="3.28011" cy="22.25" cx="768" stroke-width="5" fill="#000000"/>
+  <circle stroke="#000000" id="point-4" r="3.28011" cy="104.75" cx="284.5" stroke-width="5" fill="#000000"/>
+  <circle stroke="#000000" id="point-5" r="3.28011" cy="107.25" cx="502.99999" stroke-width="5" fill="#000000"/>
+  <circle stroke="#000000" id="point-6" r="3.28011" cy="104.75" cx="768.49999" stroke-width="5" fill="#000000"/>
+  <circle stroke="#000000" id="point-8" r="3.28011" cy="202.25" cx="287.49999" stroke-width="5" fill="#000000"/>
+  <circle stroke="#000000" id="point-9" r="3.28011" cy="204.75" cx="503.99999" stroke-width="5" fill="#000000"/>
+  <circle stroke="#000000" id="point-10" r="3.28011" cy="206.75" cx="772.49999" stroke-width="5" fill="#000000"/>
+  <circle stroke="#000000" id="point-11" r="3.28011" cy="321.75" cx="287.99999" stroke-width="5" fill="#000000"/>
+  <circle stroke="#000000" id="point-12" r="3.28011" cy="321.25" cx="510.99999" stroke-width="5" fill="#000000"/>
+  <circle class="transparent-example" stroke-opacity="0" fill-opacity="0" stroke="#000000" id="svg_62" r="3.28011" cy="22.75" cx="161.49999" stroke-width="5" fill="#000000"/>
+ </g>
+</svg>

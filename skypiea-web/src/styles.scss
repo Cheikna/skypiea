@@ -1,8 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.min.css";
+//@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss";
+@import "~angular-bootstrap-md/assets/scss/mdb.scss";
 @import "~font-awesome/css/font-awesome.min.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@font-face {
+  font-family: "one-piece";
+  src: url("assets/fonts/one-piece.ttf") format("truetype");
+}
 
+html,
+body {
+  height: 100%;
+  position: relative;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+footer {
+  width: 100%;
+  margin: 0;
+}
+
+.navbar-toggler-icon {
+  background-image: url("assets/icons/hamburger-lines.svg");
+}
+
+.navbar-toggler {
+  border-color: rgb(0, 0, 0);
+} 
+
+.login-dialog .mat-dialog-container {
+  background: url("./assets/gifs/sunrise.gif") no-repeat;
+  background-size: cover;
+}
+
+.monitoring-tab .mat-tab-labels {
+  background-color: white !important;
+}

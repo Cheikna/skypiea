@@ -7,7 +7,6 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CdkStepperModule} from '@angular/cdk/stepper';
 import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
-//6498
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
@@ -34,7 +33,6 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSliderModule} from '@angular/material/slider';
-// chko
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSortModule} from '@angular/material/sort';
@@ -56,7 +54,6 @@ import {MatTreeModule} from '@angular/material/tree';
     DragDropModule,
     MatAutocompleteModule,
     MatBadgeModule,
-    //6498
     MatBottomSheetModule,
     MatButtonModule,
     MatButtonToggleModule,
@@ -73,7 +70,6 @@ import {MatTreeModule} from '@angular/material/tree';
     MatInputModule,
     MatListModule,
     MatMenuModule,
-    // chko
     MatNativeDateModule,
     MatPaginatorModule,
     MatProgressBarModule,
