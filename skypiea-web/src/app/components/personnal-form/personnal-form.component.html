@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Personnal Form</h1>
-    <form class="needs-validation" ngNativeValidate [formGroup]="personnalForm">
+    <form class="needs-validation" ngNativeValidate [formGroup]="personnalForm" (ngSubmit)="create()">
     <div class="form-group">
             <div class="col-md-4 mb-3">
                 <label for="prenom">First name</label>
@@ -67,7 +67,10 @@
             <label class="form-check-label" for="cgu">I accept the conservation of my data</label>
             </div>
         </div>
-        <button class="btn btn-primary" (click)="create()" type="submit">Valider</button>
-        <button class="btn btn-primary" [routerLink]="['/dynamicForm']" type="submit">Next step</button>
+        <div mat-dialog-actions class="d-flex justify-content-left">
+            <button mat-raised-button [disabled]="personnalForm.invalid" class="btn btn-success" type="submit">
+                <mat-icon>done</mat-icon>Valid
+            </button> 
+        </div>    
     </form>
 </div>
