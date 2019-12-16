@@ -31,6 +31,7 @@ import { UserVisibilityDirective } from './directives/user-visibility.directive'
 import { FloorOnePlanComponent } from './floors-plan-components/floor-one-plan/floor-one-plan.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { FailureComponent } from './components/failure/failure.component';
+import { DiseaseFormComponent } from './sub-components/disease-form/disease-form.component';
 
 
 
@@ -62,7 +63,8 @@ import { FailureComponent } from './components/failure/failure.component';
     PersonnalFormComponent,
     FloorOnePlanComponent,
     DynamicFormComponent,
-    FailureComponent
+    FailureComponent,
+    DiseaseFormComponent
   ],
   imports: [
     BrowserModule,
