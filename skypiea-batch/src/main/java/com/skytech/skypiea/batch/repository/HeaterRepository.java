@@ -1,4 +1,4 @@
-package com.skytech.skypiea.api.repository;
+package com.skytech.skypiea.batch.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

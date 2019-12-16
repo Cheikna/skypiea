@@ -9,8 +9,8 @@ import java.util.TimerTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.skytech.skypiea.api.repository.HeaterRepository;
-import com.skytech.skypiea.api.repository.NonMedicalConnectedObjectRepository;
+import com.skytech.skypiea.batch.repository.HeaterRepository;
+import com.skytech.skypiea.batch.repository.NonMedicalConnectedObjectRepository;
 import com.skytech.skypiea.commons.entity.AlarmClock;
 import com.skytech.skypiea.commons.entity.Heater;
 import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;

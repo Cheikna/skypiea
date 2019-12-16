@@ -5,8 +5,8 @@ import java.util.Timer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.skytech.skypiea.api.repository.HeaterRepository;
-import com.skytech.skypiea.api.repository.NonMedicalConnectedObjectRepository;
+import com.skytech.skypiea.batch.repository.HeaterRepository;
+import com.skytech.skypiea.batch.repository.NonMedicalConnectedObjectRepository;
 import com.skytech.skypiea.batch.timer.FailureCheckerTimer;
 
 @Service
@@ -32,6 +32,5 @@ public class FailureCheckerService {
 		failureCheckerTimer.setHeaterRepository(heaterRepository);
         timer.scheduleAtFixedRate(failureCheckerTimer, 0L, breakTime);
 	}
-
 
 }

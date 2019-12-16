@@ -9,7 +9,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>skypiea-backend-server</artifactId>
-	<name>sskypiea-backend-server</name>
+	<name>skypiea-backend-server</name>
 	<description>API for Skypiea Project</description>
 
 	<properties>

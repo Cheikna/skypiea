@@ -10,12 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.skytech.skypiea.batch.service.FailureCheckerService;
 
-@EnableJpaRepositories(basePackages = {"com.skytech.skypiea.api.repository"})
 @EntityScan(basePackages="com.skytech.skypiea.commons.entity")
-@ComponentScan(basePackages = {
-		"com.skytech.skypiea.api.service",
-		"com.skytech.skypiea.batch.service"
-})
 @SpringBootApplication
 public class SkypieaBatchApplication implements CommandLineRunner {
 	
