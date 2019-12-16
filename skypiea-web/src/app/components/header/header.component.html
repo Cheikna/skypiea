@@ -10,7 +10,7 @@
                     <mdb-icon fas icon="user"></mdb-icon> Create account
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *appUserVisibility="['NOT_CONNECTED']">
                 <a class="nav-link waves-effect" mdbWavesEffect (click)="openSignInDialog()">
                     <mdb-icon fas icon="user"></mdb-icon> Sign In
                 </a>
