@@ -14,11 +14,27 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
 import com.skytech.skypiea.commons.enumeration.State;
 import com.skytech.skypiea.commons.enumeration.Status;
 
-
+@JsonTypeInfo(use = Id.NAME,
+include = JsonTypeInfo.As.PROPERTY,
+property = "type")
+@JsonSubTypes({ 
+	@Type(value = AlarmClock.class, name = "alarmClock"), 
+	@Type(value = BinarySensor.class, name = "binarySensor"), 
+	@Type(value = Bulb.class, name = "bulb"), 
+	@Type(value = DoorSensor.class, name = "doorSensor"),
+	@Type(value = Shutter.class, name = "shutter"), 
+	@Type(value = SmokeSensor.class, name = "smokeSensor"),
+	@Type(value = TemperatureController.class, name = "temperatureController"), 
+	@Type(value = SunshineSensor.class, name = "sunshineSensor"),
+})
 @Entity
 @Table(name="NON_MEDICAL_CONNECTED_OBJECT")
 @PrimaryKeyJoinColumn(name="CONNECTED_OBJECT_ID")
@@ -40,7 +56,6 @@ public abstract class NonMedicalConnectedObject extends ConnectedObject {
 	protected String svgPoint;
 
 	public NonMedicalConnectedObject() {
-		super();
 	}
 
 	public NonMedicalConnectedObject(Long id, Long version, Timestamp lastParameterModificationDate,

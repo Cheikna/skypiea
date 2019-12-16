@@ -152,6 +152,7 @@ RESIDENT_ID integer
 
 CREATE TABLE HISTORY_MOVING(
 ID serial primary key, 
+VERSION integer, 
 POSX integer, 
 POSY integer, 
 SAVING_TIME TIMESTAMP,
@@ -160,6 +161,7 @@ ELECTRONIC_TAG_ID integer references ELECTRONIC_TAG(ID)
 
 CREATE TABLE FAILURE(
 ID serial primary key, 
+VERSION integer, 
 NON_MEDICAL_CONNECTECD_OBJECT_ID integer,
 INFORMATION text,
 FAILURE_DATE timestamp

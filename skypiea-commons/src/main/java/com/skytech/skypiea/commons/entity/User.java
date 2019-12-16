@@ -10,8 +10,19 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.skytech.skypiea.commons.enumeration.UserType;
 
+@JsonTypeInfo(use = Id.NAME,
+include = JsonTypeInfo.As.PROPERTY,
+property = "type")
+@JsonSubTypes({ 
+	@Type(value = Staff.class, name = "staff"), 
+	@Type(value = Resident.class, name = "resident")
+})
 @Entity
 @Table(name="SKYPIEA_USER")
 @Inheritance(strategy = InheritanceType.JOINED)
