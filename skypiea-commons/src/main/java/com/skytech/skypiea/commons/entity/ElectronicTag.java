@@ -3,7 +3,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -17,8 +16,8 @@ public class ElectronicTag extends com.skytech.skypiea.commons.entity.Entity {
 	@JoinColumn(name="RESIDENT_ID")
 	private Resident resident;
 	
-	@OneToMany(fetch=FetchType.EAGER)
-    @JoinColumn(name = "ELECTRONIC_TAG_ID")
+	@OneToMany(cascade=CascadeType.ALL)    
+	@JoinColumn(name = "electronic_tag_id")
 	private Set<HistoryMoving> historyMoving;
 	
 
@@ -43,7 +42,6 @@ public class ElectronicTag extends com.skytech.skypiea.commons.entity.Entity {
 
 	public void setHistoryMoving(Set<HistoryMoving> historyMoving) {
 		this.historyMoving = historyMoving;
-	}
-	
+	}	
 	
 }
