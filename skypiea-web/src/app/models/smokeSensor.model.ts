@@ -1,8 +1,6 @@
-import { NonMedicalConnectedObject } from './nonMedicalConnectedObject.model';
+import { ObjectSetting } from './objectSetting.model';
 
-export class SmokeSensor extends NonMedicalConnectedObject {
+export class SmokeSensor extends ObjectSetting {
     threshold : number;
     sensitivity: string;
-    isCurrentSettings: boolean;
-    savingDate: Date;
 }

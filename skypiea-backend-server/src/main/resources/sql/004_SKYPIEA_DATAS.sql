@@ -53,27 +53,50 @@ insert into NON_MEDICAL_CONNECTED_OBJECT (ID, CONNECTED_OBJECT_ID, INSTALLATION_
 
 
 -- Creation of the different connected objects type
-insert into ALARM_CLOCK values(1,1, '2019-12-09 09:00:00.000' , true);
-insert into ALARM_CLOCK values(2,13, '2019-12-16 15:00:00.000' , true);
+insert into OBJECT_SETTING values(1, 1, 1, '2019-12-09 09:00:00.000');
+insert into ALARM_CLOCK values(1, 1, '2019-12-09 09:00:00.000' );
 
-insert into BULB values (1, 2, '#FF5733', true);
-insert into BULB values (2, 9, '#FFBB33', true);
-insert into BULB values (3, 10, '#33FFCA', true);
-insert into BULB values (4, 11, '#50D612', true);
-insert into BULB values (5, 12, '#D364E9', true);
-insert into BULB values (6, 14, '#FF8BC0', true);
+insert into OBJECT_SETTING values(2, 1, 13, '2019-12-09 09:00:00.000');
+insert into ALARM_CLOCK values(2, 1, '2019-12-16 15:00:00.000' );
 
-insert into DOOR_SENSOR values(1, 3, true, false, true);
-insert into DOOR_SENSOR values(2, 8, false, true, true);
+insert into OBJECT_SETTING values(3, 1, 2, '2019-12-09 09:00:00.000');
+insert into BULB values (3, 1, '#FF5733');
 
-insert into SHUTTER values(1, 4, true, 50.0, true);
+insert into OBJECT_SETTING values(4, 1, 9, '2019-12-09 09:00:00.000');
+insert into BULB values (4, 1, '#FFBB33');
 
-insert into SUNSHINE_SENSOR values(1, 5, 17, 10000, true);
+insert into OBJECT_SETTING values(5, 1, 10, '2019-12-09 09:00:00.000');
+insert into BULB values (5, 1, '#33FFCA');
 
-insert into TEMPERATURE_CONTROLLER values(1, 6, 20, 30, 15, 21, 13, true, true, true);
+insert into OBJECT_SETTING values(6, 1, 11, '2019-12-09 09:00:00.000');
+insert into BULB values (6, 1, '#50D612');
 
-insert into SMOKE_SENSOR values(1, 7, 300, 'LOW', true);
-insert into SMOKE_SENSOR values(2, 15, 300, 'LOW', true);
+insert into OBJECT_SETTING values(7, 1, 12, '2019-12-09 09:00:00.000');
+insert into BULB values (7, 1, '#D364E9');
+
+insert into OBJECT_SETTING values(8, 1, 14, '2019-12-09 09:00:00.000');
+insert into BULB values (8, 1, '#FF8BC0');
+
+insert into OBJECT_SETTING values(9, 1, 3, '2019-12-09 09:00:00.000');
+insert into DOOR_SENSOR values(9, 1, true, false);
+
+insert into OBJECT_SETTING values(10, 1, 8, '2019-12-09 09:00:00.000');
+insert into DOOR_SENSOR values(10, 1, false, true);
+
+insert into OBJECT_SETTING values(11, 1, 4, '2019-12-09 09:00:00.000');
+insert into SHUTTER values(11, 1, true, 50.0);
+
+insert into OBJECT_SETTING values(12, 1, 5, '2019-12-09 09:00:00.000');
+insert into SUNSHINE_SENSOR values(2, 1, 17, 10000);
+
+insert into OBJECT_SETTING values(13, 1, 6, '2019-12-09 09:00:00.000');
+insert into TEMPERATURE_CONTROLLER values(13, 1, 20, 30, 15, 21, 13, true, true);
+
+insert into OBJECT_SETTING values(14, 1, '2019-12-09 09:00:00.000');
+insert into SMOKE_SENSOR values(14, 1, 5, 300, 'LOW');
+
+insert into OBJECT_SETTING values(15, 1, 15, '2019-12-09 09:00:00.000');
+insert into SMOKE_SENSOR values(15, 1, 300, 'LOW');
 
 -- Creation of the users
 INSERT INTO skypiea_user (id, version, last_name, first_name, username, password, user_type, last_connection_date) 

@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ObjectInfoComponent } from 'src/app/dialogs/object-info/object-info.component';
 import { WebStorageService } from 'src/app/util/web-storage.service';
 import { storageKey } from 'src/app/util/storageKey.util';
+import { ObjectSetting } from 'src/app/models/objectSetting.model';
 
 @Component({
   selector: 'app-ObjectList',
@@ -15,23 +16,32 @@ import { storageKey } from 'src/app/util/storageKey.util';
 export class ObjectListComponent implements OnInit {
 
   residentId: number;
-  room : Room = new Room();
+  room: Room = new Room();
 
   nonMedicalConnectedObjects: Array<any>;
 
-  constructor(private roomService: RoomService,private dialog: MatDialog, private webStorageService: WebStorageService) { }
+  constructor(private roomService: RoomService, private dialog: MatDialog, private webStorageService: WebStorageService) { }
 
 
   ngOnInit() {
     const userInfoFromStorage = this.webStorageService.getSessionAttribute(storageKey.USER_INFO.name);
     this.residentId = userInfoFromStorage.id;
-    this.roomService.getResidentRoomDetails(this.residentId).subscribe((data: Room)=>{
-      this.nonMedicalConnectedObjects=data.nonMedicalConnectedObjects;
+    this.roomService.getResidentRoomDetails(this.residentId).subscribe((data: Room) => {
+      this.nonMedicalConnectedObjects = data.nonMedicalConnectedObjects;
     });
   }
 
-  openDialogInfo(nonMedicalConnectedObject){
-    let dialogRef = this.dialog.open(ObjectInfoComponent, { panelClass: 'login-dialog'});
-    dialogRef.componentInstance.nonMedicalConnectedObject = nonMedicalConnectedObject;
+  openDialogInfo(nonMedicalConnectedObject) {
+    let dialogRef = this.dialog.open(ObjectInfoComponent, { panelClass: 'login-dialog' });
+    if (!nonMedicalConnectedObject.currentSetting) {
+      let setting: ObjectSetting = new ObjectSetting();
+      setting.nonMedicalObjectType = nonMedicalConnectedObject.nonMedicalObjectType;
+      nonMedicalConnectedObject.currentSetting = setting;
+    }
+    else {
+      nonMedicalConnectedObject.currentSetting.nonMedicalObjectType = nonMedicalConnectedObject.nonMedicalObjectType;
+    }
+
+    dialogRef.componentInstance.nonMedicalConnectedObject = nonMedicalConnectedObject.currentSetting;
   }
 }

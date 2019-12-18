@@ -50,12 +50,13 @@ public class FailureCheckerTimer extends TimerTask {
 				Calendar alarmClockCalendar = Calendar.getInstance();				
 				for(NonMedicalConnectedObject object: objects) {
 					if(object.getNonMedicalObjectType() == NonMedicalObjectType.ALARM_CLOCK) {
-						AlarmClock alarmClock = (AlarmClock)object;
+						//AlarmClock alarmClock = (AlarmClock)object;
+						AlarmClock alarmClock = new AlarmClock();
 						alarmClockCalendar.setTimeInMillis(alarmClock.getCurrentTime().getTime());
 						if(currentCalendar.get(Calendar.HOUR_OF_DAY) != alarmClockCalendar.get(Calendar.HOUR_OF_DAY)) {
 							log.info("========================");
 							log.info("== Error on alarm clock ==");
-							log.info("The alarm clock with the id " + alarmClock.getIpAddress() + " has an incorrect hour ");
+							//log.info("The alarm clock with the id " + alarmClock.getIpAddress() + " has an incorrect hour ");
 							log.info("Current hour : " + currentCalendar.get(Calendar.HOUR_OF_DAY) + " == hour of the alarm clock : " + alarmClockCalendar.get(Calendar.HOUR_OF_DAY));	
 							log.info("========================");
 						}
@@ -63,7 +64,7 @@ public class FailureCheckerTimer extends TimerTask {
 						if(differenceWithCurrent > maxMinuteInterval) {
 							log.info("========================");
 							log.info("== Error on alarm clock because of the interval minute ==");
-							log.info("The alarm clock with the id " + alarmClock.getIpAddress() + " has difference of minute which > " +  maxMinuteInterval);
+							//log.info("The alarm clock with the id " + alarmClock.getIpAddress() + " has difference of minute which > " +  maxMinuteInterval);
 							log.info("Current minute : " + currentCalendar.get(Calendar.MINUTE) + " == minute of the alarm clock : " + alarmClockCalendar.get(Calendar.MINUTE));	
 							log.info("Difference of time : " + differenceWithCurrent);
 							log.info("========================");

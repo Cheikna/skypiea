@@ -1,61 +1,57 @@
 package com.skytech.skypiea.commons.entity;
 
 import java.sql.Timestamp;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.PostLoad;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
 import com.skytech.skypiea.commons.enumeration.State;
 import com.skytech.skypiea.commons.enumeration.Status;
 
-@JsonTypeInfo(use = Id.NAME,
-include = JsonTypeInfo.As.PROPERTY,
-property = "type")
-@JsonSubTypes({ 
-	@Type(value = AlarmClock.class, name = "alarmClock"), 
-	@Type(value = BinarySensor.class, name = "binarySensor"), 
-	@Type(value = Bulb.class, name = "bulb"), 
-	@Type(value = DoorSensor.class, name = "doorSensor"),
-	@Type(value = Shutter.class, name = "shutter"), 
-	@Type(value = SmokeSensor.class, name = "smokeSensor"),
-	@Type(value = TemperatureController.class, name = "temperatureController"), 
-	@Type(value = SunshineSensor.class, name = "sunshineSensor"),
-})
 @Entity
 @Table(name="NON_MEDICAL_CONNECTED_OBJECT")
 @PrimaryKeyJoinColumn(name="CONNECTED_OBJECT_ID")
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class NonMedicalConnectedObject extends ConnectedObject {	
+public class NonMedicalConnectedObject extends ConnectedObject {	
 	
 	@Column(name="INSTALLATION_DATE")
-	protected Timestamp installationDate;
+	private Timestamp installationDate;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name="NON_MEDICAL_OBJECT_TYPE")
-	protected NonMedicalObjectType nonMedicalObjectType;
+	private NonMedicalObjectType nonMedicalObjectType;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ROOM_ID", nullable = false)
-	protected Room room;
+	private Room room;
 	
 	@Column(name="SVG_POINT")
-	protected String svgPoint;
+	private String svgPoint;
+	
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "NON_MEDICAL_CONNECTED_OBJECT_ID")
+	private Set<ObjectSetting> objectSettings;
+	
+	@Transient
+	private ObjectSetting currentSetting;
 
 	public NonMedicalConnectedObject() {
+		super();
 	}
 
 	public NonMedicalConnectedObject(Long id, Long version, Timestamp lastParameterModificationDate,
@@ -91,7 +87,30 @@ public abstract class NonMedicalConnectedObject extends ConnectedObject {
 	public void setSvgPoint(String svgPoint) {
 		this.svgPoint = svgPoint;
 	}
+
+	public Set<ObjectSetting> getObjectSettings() {
+		return objectSettings;
+	}
+
+	public void setObjectSettings(Set<ObjectSetting> objectSettings) {
+		this.objectSettings = objectSettings;
+	}
+
+	public ObjectSetting getCurrentSetting() {
+		return currentSetting;
+	}
+
+	public void setCurrentSetting(ObjectSetting currentSetting) {
+		this.currentSetting = currentSetting;
+	}	
 	
-	
+	@PostLoad
+	public void initCurrentSetting() {
+		if(this.objectSettings != null && this.objectSettings.size() > 0) {
+			List<ObjectSetting> listToSort = objectSettings.stream().collect(Collectors.toList());
+			Collections.sort(listToSort, (obj1, obj2) -> obj2.getSavingDate().compareTo(obj1.getSavingDate()));
+			this.currentSetting = listToSort.get(0);
+		}
+	}
 
 }
