@@ -1,14 +1,11 @@
-import { NonMedicalConnectedObject } from './nonMedicalConnectedObject.model';
+import { ObjectSetting } from './objectSetting.model';
 
-export class TemperatureController extends NonMedicalConnectedObject{
+export class TemperatureController extends ObjectSetting{
     threshold : number;
     temperatureMax : number;
     temperatureMin : number;
     currentTemperature: number;
     temperatureSettled : number;
     isHealthingConnected : boolean;
-    isAirConditionnerConnected : boolean;
-    isCurrentSettings : boolean;
-    savingDate  : Date;
-    
+    isAirConditionnerConnected : boolean;    
 }

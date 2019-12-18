@@ -1,7 +1,5 @@
-import { NonMedicalConnectedObject } from './nonMedicalConnectedObject.model';
+import { ObjectSetting } from './objectSetting.model';
 
-export class Bulb extends NonMedicalConnectedObject{
+export class Bulb extends ObjectSetting{
     currentColor: string;
-    isCurrentSettings: boolean;
-    savingDate: Date;
 }

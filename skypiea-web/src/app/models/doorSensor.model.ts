@@ -1,8 +1,6 @@
-import { NonMedicalConnectedObject } from './nonMedicalConnectedObject.model';
+import { ObjectSetting } from './objectSetting.model';
 
-export class DoorSensor extends NonMedicalConnectedObject {
+export class DoorSensor extends ObjectSetting {
     isDoorLocked: boolean;
     isDoorOpened: boolean;
-    isCurrentSettings: boolean;
-    savingDate: Date;
 }
