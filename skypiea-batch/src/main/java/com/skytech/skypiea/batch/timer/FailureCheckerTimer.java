@@ -8,6 +8,10 @@ import java.util.TimerTask;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.skytech.skypiea.batch.repository.HeaterRepository;
 import com.skytech.skypiea.batch.repository.NonMedicalConnectedObjectRepository;
@@ -21,23 +25,24 @@ public class FailureCheckerTimer extends TimerTask {
 	private static Logger log = LoggerFactory.getLogger(FailureCheckerTimer.class);
 
 	private NonMedicalConnectedObjectRepository nonMedicalConnectedObjectRepository;
+	
+	@Autowired
 	private HeaterRepository heaterRepository;
 
-	public FailureCheckerTimer() {
-	}
-
-	public void setNonMedicalConnectedObjectRepository(
-			NonMedicalConnectedObjectRepository nonMedicalConnectedObjectRepository) {
+	public FailureCheckerTimer(NonMedicalConnectedObjectRepository nonMedicalConnectedObjectRepository) {
 		this.nonMedicalConnectedObjectRepository = nonMedicalConnectedObjectRepository;
-	}
-
-	public void setHeaterRepository(HeaterRepository heaterRepository) {
-		this.heaterRepository = heaterRepository;
 	}
 
 	@Override
 	public void run() {
-		if(nonMedicalConnectedObjectRepository != null) {		
+		System.out.println("==============================================================");
+		System.out.println(nonMedicalConnectedObjectRepository.findAll());
+		System.out.println("==============================================================");
+		System.out.println(nonMedicalConnectedObjectRepository == null);
+		if(nonMedicalConnectedObjectRepository != null) {	
+			System.out.println("==============================================================");
+			System.out.println(nonMedicalConnectedObjectRepository.findAll());
+			System.out.println("==============================================================");
 			float maxMinuteInterval = 5f;
 			List<NonMedicalConnectedObject> objects = nonMedicalConnectedObjectRepository.findAll();
 			if(objects != null && objects.size() > 0) {			
