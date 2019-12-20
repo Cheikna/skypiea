@@ -20,16 +20,16 @@ export class TrackingComponent implements OnInit {
   }
 
   ngOnInit() {
-    // TODO Guillaume : Récupérer l'id en paramètre de l'url et vérifier qu'il n'est pas null
+    //Get ID from url (Should not be null)
     let id = this.route.snapshot.paramMap.get('id');
-    // TODO Guillaume : appeler la méthode du service, déclaré dans le constructeur permettant de récupérer l'ElectronicTag d'un résident
+    //Call service method from constructor to get ElectronicTag of a resident
     this.electronicTagService.getResidentHistoryMoving(parseInt(id)).subscribe((data: ElectronicTag) => {
       this.movings = data.historyMoving;
       /*movings.forEach(move => {
         console.log(move.posX + " " + move.posY);
       });*/
     });
-    // TODO Guillaume : Afficher les données récupérées à l'aide de =>  console.log(JSON.stringify(data))
+    // Display data to console
     console.log(JSON.stringify(id));
   }
 
