@@ -40,6 +40,7 @@ import { AlarmClockConfigComponent } from './components/alarm-clock-config/alarm
 import { BulbConfigComponent } from './components/bulb-config/bulb-config.component';
 import { DoorSensorConfigComponent } from './components/door-sensor-config/door-sensor-config.component';
 
+import 'hammerjs';
 
 
 @NgModule({
