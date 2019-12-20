@@ -23,7 +23,6 @@ export class TracklistCharactersComponent implements OnInit {
 
   ngOnInit() {
     this.findAll();
-    
   }
 
   findAll(){
