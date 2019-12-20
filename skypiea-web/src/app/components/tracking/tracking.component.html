@@ -1,9 +1,16 @@
 <section>
-        <div class="empty">
-            <span style="position: absolute;top: 50%; left: 50%;width: 20px; height: 20px;">
-                <mat-icon>location_on</mat-icon>
+    <div class="empty">
+        <div style="position:absolute">
+            <span *ngFor="let move of movings" [ngStyle]="{
+                'position': 'absolute',
+                'top.px': move.posX, 
+                'left.px' : move.posY
+            }">
+                <mat-icon matTooltip="{{ move.time | date: 'medium' }}">location_on</mat-icon>
+
             </span>
         </div>
-        <div class="container">
-        </div>
-    </section>
+    </div>
+    <div class="container">
+    </div>
+</section>

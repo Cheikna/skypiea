@@ -23,9 +23,7 @@ export class TracklistCharactersComponent implements OnInit {
 
   ngOnInit() {
     this.findAll();
-    this.electronicTagService.getResidentHistoryMoving(3).subscribe((data: ElectronicTag) => {
-      console.log(JSON.stringify(data));
-    });
+    
   }
 
   findAll(){

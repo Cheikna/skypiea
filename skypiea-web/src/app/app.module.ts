@@ -30,7 +30,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { UserVisibilityDirective } from './directives/user-visibility.directive';
 import { FloorOnePlanComponent } from './floors-plan-components/floor-one-plan/floor-one-plan.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
-
+import 'hammerjs';
 
 
 @NgModule({
