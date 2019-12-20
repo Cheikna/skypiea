@@ -87,13 +87,13 @@ insert into OBJECT_SETTING values(11, 1, 4, '2019-12-09 09:00:00.000');
 insert into SHUTTER values(11, 1, true, 50.0);
 
 insert into OBJECT_SETTING values(12, 1, 5, '2019-12-09 09:00:00.000');
-insert into SUNSHINE_SENSOR values(2, 1, 17, 10000);
+insert into SUNSHINE_SENSOR values(12, 1, 17, 10000);
 
 insert into OBJECT_SETTING values(13, 1, 6, '2019-12-09 09:00:00.000');
 insert into TEMPERATURE_CONTROLLER values(13, 1, 20, 30, 15, 21, 13, true, true);
 
-insert into OBJECT_SETTING values(14, 1, '2019-12-09 09:00:00.000');
-insert into SMOKE_SENSOR values(14, 1, 5, 300, 'LOW');
+insert into OBJECT_SETTING values(14, 1, 5, '2019-12-09 09:00:00.000');
+insert into SMOKE_SENSOR values(14, 1, 300, 'LOW');
 
 insert into OBJECT_SETTING values(15, 1, 15, '2019-12-09 09:00:00.000');
 insert into SMOKE_SENSOR values(15, 1, 300, 'LOW');

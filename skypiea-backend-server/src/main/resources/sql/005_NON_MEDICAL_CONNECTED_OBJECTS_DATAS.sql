@@ -138,11 +138,6 @@ values (19, 19, '2019-12-16 09:00:00.000', 'SHUTTER', 5, 'point-window-1');
 insert into NON_MEDICAL_CONNECTED_OBJECT (ID, 
 CONNECTED_OBJECT_ID, INSTALLATION_DATE, NON_MEDICAL_OBJECT_TYPE, 
 ROOM_ID, SVG_POINT) 
-values (20, 20, '2019-12-16 09:00:00.000', 'SHUTTER', 6, 'point-window-1');
-
-insert into NON_MEDICAL_CONNECTED_OBJECT (ID, 
-CONNECTED_OBJECT_ID, INSTALLATION_DATE, NON_MEDICAL_OBJECT_TYPE, 
-ROOM_ID, SVG_POINT) 
 values (21, 21, '2019-12-16 09:00:00.000', 'DOOR_SENSOR', 4, 'point-door-1');
 
 insert into NON_MEDICAL_CONNECTED_OBJECT (ID, 
@@ -211,36 +206,64 @@ ROOM_ID, SVG_POINT)
 values (34, 34, '2019-12-16 09:00:00.000', 'TEMPERATURE_CONTROLLER', 4, 'point-7');
 
 -- Insert alarm clock 
-insert into ALARM_CLOCK values(3,16, '2019-12-09 09:00:00.000' , true);
+insert into OBJECT_SETTING values(16, 1, 16, '2019-12-09 09:00:00.000');
+insert into ALARM_CLOCK values(16, 1, '2019-12-09 09:00:00.000');
 
 -- Insert shutter 
-insert into SHUTTER values(2, 17, true, 50.0, true);
-insert into SHUTTER values(3, 18, true, 50.0, true);
-insert into SHUTTER values(4, 19, true, 50.0, true);
-insert into SHUTTER values(5, 20, true, 50.0, true);
+insert into OBJECT_SETTING values(17, 1, 17, '2019-12-09 09:00:00.000');
+insert into SHUTTER values(17, 1, true, 50.0);
+
+insert into OBJECT_SETTING values(18, 1, 18, '2019-12-09 09:00:00.000');
+insert into SHUTTER values(18, 1, true, 50.0);
+
+insert into OBJECT_SETTING values(19, 1, 19, '2019-12-09 09:00:00.000');
+insert into SHUTTER values(19, 1, true, 50.0);
 
 -- Insert door sensor
-insert into DOOR_SENSOR values(3, 21, false, true, true);
-insert into DOOR_SENSOR values(4, 22, false, true, true);
-insert into DOOR_SENSOR values(5, 23, false, true, true);
+insert into OBJECT_SETTING values(21, 1, 21, '2019-12-09 09:00:00.000');
+insert into DOOR_SENSOR values(21, 1, false, true);
+
+insert into OBJECT_SETTING values(22, 1, 22, '2019-12-09 09:00:00.000');
+insert into DOOR_SENSOR values(22, 1, false, true);
+
+insert into OBJECT_SETTING values(23, 1, 23, '2019-12-09 09:00:00.000');
+insert into DOOR_SENSOR values(23, 1, false, true);
 
 -- Insert sunshine sensor 
-insert into SUNSHINE_SENSOR values(2, 24, 17, 10000, true);
-insert into SUNSHINE_SENSOR values(3, 25, 17, 10000, true);
-insert into SUNSHINE_SENSOR values(4, 26, 17, 10000, true);
+insert into OBJECT_SETTING values(24, 1, 24, '2019-12-09 09:00:00.000');
+insert into SUNSHINE_SENSOR values(24, 1, 17, 10000);
+
+insert into OBJECT_SETTING values(25, 1, 25, '2019-12-09 09:00:00.000');
+insert into SUNSHINE_SENSOR values(25, 1, 17, 10000);
+
+insert into OBJECT_SETTING values(26, 1, 26, '2019-12-09 09:00:00.000');
+insert into SUNSHINE_SENSOR values(26, 1, 17, 10000);
 
 --Insert smoke sensor 
-insert into SMOKE_SENSOR values(3, 27, 300, 'LOW', true);
-insert into SMOKE_SENSOR values(4, 28, 300, 'LOW', true);
-insert into SMOKE_SENSOR values(5, 29, 300, 'LOW', true);
-insert into SMOKE_SENSOR values(6, 30, 300, 'LOW', true);
+insert into OBJECT_SETTING values(27, 1, 27, '2019-12-09 09:00:00.000');
+insert into SMOKE_SENSOR values(27, 1, 300, 'LOW');
+
+insert into OBJECT_SETTING values(28, 1, 28, '2019-12-09 09:00:00.000');
+insert into SMOKE_SENSOR values(28, 1, 300, 'LOW');
+
+insert into OBJECT_SETTING values(29, 1, 29, '2019-12-09 09:00:00.000');
+insert into SMOKE_SENSOR values(29, 1, 300, 'LOW');
+
+insert into OBJECT_SETTING values(30, 1, 30, '2019-12-09 09:00:00.000');
+insert into SMOKE_SENSOR values(30, 1, 300, 'LOW');
 
 -- Insert temperature controller
+insert into OBJECT_SETTING values(33, 1, 33, '2019-12-09 09:00:00.000');
 insert into TEMPERATURE_CONTROLLER 
-values(2, 33, 20, 30, 15, 21, 25, true, true, true);
+values(33, 1, 20, 30, 15, 21, 25, true, true);
+
+insert into OBJECT_SETTING values(34, 1, 34, '2019-12-09 09:00:00.000');
 insert into TEMPERATURE_CONTROLLER 
-values(3, 34, 20, 30, 15, 21, 24, true, true, true); 
+values(34, 1, 20, 30, 15, 21, 24, true, true); 
 
 -- Insert bulb
-insert into BULB values (7, 31, '#FFBB33', true);
-insert into BULB values (8, 32, '#FFBB33', true);
+insert into OBJECT_SETTING values(31, 1, 31, '2019-12-09 09:00:00.000');
+insert into BULB values (31, 1, '#FFBB33');
+
+insert into OBJECT_SETTING values(32, 1, 32, '2019-12-09 09:00:00.000');
+insert into BULB values (32, 1, '#FFBB33');
