@@ -20,12 +20,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.skytech.skypiea.api.repository.NonMedicalConnectedObjectRepository;
 import com.skytech.skypiea.api.repository.RoomRepository;
 import com.skytech.skypiea.api.repository.UserRepository;
-import com.skytech.skypiea.commons.entity.AlarmClock;
 import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;
 import com.skytech.skypiea.commons.entity.Resident;
 import com.skytech.skypiea.commons.entity.Room;
-import com.skytech.skypiea.commons.entity.Shutter;
-import com.skytech.skypiea.commons.entity.SunshineSensor;
 import com.skytech.skypiea.commons.entity.User;
 import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
 import com.skytech.skypiea.commons.enumeration.Wing;
@@ -62,17 +59,17 @@ public class RoomServiceTest {
 
 	@Test
 	public void initObjectQuantityByTypeTest() {
-		/*Room room1 = new Room(1L, 1L, 102L, 1, 6.6f, 3.0f, 2.0f, Wing.NORTH, "room-1");
+		Room room1 = new Room(1L, 1L, 102L, 1, 6.6f, 3.0f, 2.0f, Wing.NORTH, "room-1");
 		
 		Room room2 = new Room(1L, 1L, 103L, 1, 6.6f, 3.0f, 2.0f, Wing.NORTH, "room-2");
 		
-		NonMedicalConnectedObject obj1 = new AlarmClock();
+		NonMedicalConnectedObject obj1 = new NonMedicalConnectedObject();
 		obj1.setNonMedicalObjectType(NonMedicalObjectType.ALARM_CLOCK);
-		NonMedicalConnectedObject obj2 = new AlarmClock();
+		NonMedicalConnectedObject obj2 = new NonMedicalConnectedObject();
 		obj2.setNonMedicalObjectType(NonMedicalObjectType.ALARM_CLOCK);
-		NonMedicalConnectedObject obj3 = new Shutter();
+		NonMedicalConnectedObject obj3 = new NonMedicalConnectedObject();
 		obj3.setNonMedicalObjectType(NonMedicalObjectType.SHUTTER);
-		NonMedicalConnectedObject obj4 = new SunshineSensor();
+		NonMedicalConnectedObject obj4 = new NonMedicalConnectedObject();
 		obj4.setNonMedicalObjectType(NonMedicalObjectType.SUNSHINE_SENSOR);
 		
 		Set<NonMedicalConnectedObject> objects1 = new HashSet<NonMedicalConnectedObject>();
@@ -101,7 +98,7 @@ public class RoomServiceTest {
 		int shutterInRoom2 = (Integer)room2.getObjectQuantityByType().get(NonMedicalObjectType.SHUTTER);
 		assertEquals(1, shutterInRoom2);
 		int sunshineInRoom2 = (Integer)room2.getObjectQuantityByType().get(NonMedicalObjectType.SUNSHINE_SENSOR);
-		assertEquals(1, sunshineInRoom2);*/
+		assertEquals(1, sunshineInRoom2);
 		
 	}
 	

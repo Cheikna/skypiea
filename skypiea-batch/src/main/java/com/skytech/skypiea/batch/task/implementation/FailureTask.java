@@ -1,47 +1,37 @@
-package com.skytech.skypiea.batch.timer;
+package com.skytech.skypiea.batch.task.implementation;
 
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.TimerTask;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import com.skytech.skypiea.batch.repository.HeaterRepository;
-import com.skytech.skypiea.batch.repository.NonMedicalConnectedObjectRepository;
+import com.skytech.skypiea.api.repository.HeaterRepository;
+import com.skytech.skypiea.api.repository.NonMedicalConnectedObjectRepository;
+import com.skytech.skypiea.batch.task.abstracts.ITask;
 import com.skytech.skypiea.commons.entity.AlarmClock;
 import com.skytech.skypiea.commons.entity.Heater;
 import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;
 import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
 
-public class FailureCheckerTimer extends TimerTask {
+@Service
+public class FailureTask implements ITask {
 	
-	private static Logger log = LoggerFactory.getLogger(FailureCheckerTimer.class);
-
+	private static Logger log = LoggerFactory.getLogger(FailureTask.class);
+	
+	@Autowired
 	private NonMedicalConnectedObjectRepository nonMedicalConnectedObjectRepository;
 	
 	@Autowired
 	private HeaterRepository heaterRepository;
 
-	public FailureCheckerTimer(NonMedicalConnectedObjectRepository nonMedicalConnectedObjectRepository) {
-		this.nonMedicalConnectedObjectRepository = nonMedicalConnectedObjectRepository;
-	}
-
 	@Override
-	public void run() {
-		System.out.println("==============================================================");
-		System.out.println(nonMedicalConnectedObjectRepository.findAll());
-		System.out.println("==============================================================");
-		System.out.println(nonMedicalConnectedObjectRepository == null);
+	public void runJob() {
 		if(nonMedicalConnectedObjectRepository != null) {	
-			System.out.println("==============================================================");
-			System.out.println(nonMedicalConnectedObjectRepository.findAll());
 			System.out.println("==============================================================");
 			float maxMinuteInterval = 5f;
 			List<NonMedicalConnectedObject> objects = nonMedicalConnectedObjectRepository.findAll();
@@ -50,8 +40,7 @@ public class FailureCheckerTimer extends TimerTask {
 				Calendar alarmClockCalendar = Calendar.getInstance();				
 				for(NonMedicalConnectedObject object: objects) {
 					if(object.getNonMedicalObjectType() == NonMedicalObjectType.ALARM_CLOCK) {
-						//AlarmClock alarmClock = (AlarmClock)object;
-						AlarmClock alarmClock = new AlarmClock();
+						AlarmClock alarmClock = (AlarmClock)object.getCurrentSetting();
 						alarmClockCalendar.setTimeInMillis(alarmClock.getCurrentTime().getTime());
 						if(currentCalendar.get(Calendar.HOUR_OF_DAY) != alarmClockCalendar.get(Calendar.HOUR_OF_DAY)) {
 							log.info("========================");
@@ -110,8 +99,7 @@ public class FailureCheckerTimer extends TimerTask {
 					
 				}
 			}
-		}
-
+		}	
 	}
 
 }
