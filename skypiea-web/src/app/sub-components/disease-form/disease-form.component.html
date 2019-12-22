@@ -1,3 +1,16 @@
-<mat-card>
-    <h1>TEST</h1>
+<mat-card fxLayoutAlign="start start">
+    <form class="needs-validation" ngNativeValidate>
+        <div class="form-group">
+                <div>
+                    <label for="duration">How long have you been treated ?</label>
+                    <input type="text" class="form-control-center" formControlName="duration" name="duration" placeholder="Ex : 3 years" required>
+                </div>
+        </div>
+        <div class="form-group">
+                <div>
+                    <label for="treatment">Which treatments do you take ?</label>
+                    <input type="text" class="form-control" formControlName="treatment" name="treatment" placeholder="Ex : Insuline" required>
+                </div>
+        </div>
+    </form>
 </mat-card>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -7,12 +7,40 @@ import { FormBuilder, FormControl } from '@angular/forms';
   styleUrls: ['./dynamic-form.component.scss']
 })
 export class DynamicFormComponent implements OnInit {
-  isAvailable = false;
-  diabetic;
-  constructor() { }
+  dynamicForm: FormGroup;
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.dynamicForm = this.fb.group({
+      diabetic: [false],
+      arthritis: [false],
+      fracture: [false],
+      alzheimer: [false],
+      parkinson: [false],
+    });
   }
+
+  diabeticCheckboxChecked(){
+      return this.dynamicForm.get('diabetic').value;
+  }
+
+  arthritisCheckboxChecked(){
+    return this.dynamicForm.get('arthritis').value;
+  }
+
+  fractureCheckboxChecked(){
+    return this.dynamicForm.get('fracture').value;
+  }
+
+  alzheimerCheckboxChecked(){
+    return this.dynamicForm.get('alzheimer').value;
+  }
+
+  parkinsonCheckboxChecked(){
+    return this.dynamicForm.get('parkinson').value;
+  }
+
+
 
   
 
