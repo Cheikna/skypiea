@@ -1,17 +1,17 @@
-<h4>Select character to see his tracking map :</h4>
+<h4>Select resident to see his tracking map :</h4>
 <table class="table table-bordered table-dark">
     <thead>
         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">First Name</th>
             <th scope="col">Select</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let character of characters">
-            <th scope="row">{{ character.id }}</th>
-            <td>{{ character.name }}</td>
-            <td><button mat-raised-button color="info" (click)="select(character.id)"><mat-icon>all_out</mat-icon></button></td>
+        <tr *ngFor="let resident of residents">
+            <th scope="row">{{ resident.lastName }}</th>
+            <td>{{ resident.firstName }}</td>
+            <td><button mat-raised-button color="info" (click)="select(resident.id)"><mat-icon>all_out</mat-icon></button></td>
         </tr>
     </tbody>
 </table>
