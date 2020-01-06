@@ -16,16 +16,8 @@ export class AuthenticationGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const userTypeFromStorage: string = this.webStorageService.getConnectedUserType();
     const neededType: string = next.data.userType;
-    if (userTypeFromStorage) {
-      if ( (userTypeFromStorage == UserType.STAFF && neededType == UserType.STAFF)
-        || (userTypeFromStorage == UserType.RESIDENT && neededType == UserType.RESIDENT)) {
-        return true;
-      } 
-    } else {
-      //Case where the user is not connected
-      if(neededType == UserType.NOT_CONNECTED){
-        return true;
-      }
+    if (userTypeFromStorage == neededType) {
+      return true;
     }
     
     //Redirection to the home page

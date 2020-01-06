@@ -46,6 +46,7 @@
                 </button>
                 <mat-menu #myAccountMenu="matMenu">
                     <button mat-menu-item>Hello {{ userInfo?.lastName | uppercase }} {{ userInfo?.firstName }}</button>
+                    <button mat-menu-item>Last visit : {{ userInfo?.lastConnectionDate | date: 'd MMM y, h:mm a' }}</button>
                     <button mat-menu-item (click)="logout()">
                         <mdb-icon fas icon="sign-out-alt"></mdb-icon> Logout
                     </button>
