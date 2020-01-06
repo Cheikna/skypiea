@@ -30,7 +30,7 @@ public abstract class ConnectedObject extends com.skytech.skypiea.commons.entity
 	protected String macAddress;
 	
 	@Column(name="LAST_MEASUREMENT_DATE")
-	protected String lastMeasurementDate;
+	protected Timestamp lastMeasurementDate;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name="STATUS")
@@ -45,7 +45,7 @@ public abstract class ConnectedObject extends com.skytech.skypiea.commons.entity
 	}	
 
 	public ConnectedObject(Long id, Long version, Timestamp lastParameterModificationDate,
-			String brand, String ipAddress, String macAddress, String lastMeasurementDate, Status status, State state) {
+			String brand, String ipAddress, String macAddress, Timestamp lastMeasurementDate, Status status, State state) {
 		super(id, version);
 		this.lastParameterModificationDate = lastParameterModificationDate;
 		this.brand = brand;
@@ -88,11 +88,11 @@ public abstract class ConnectedObject extends com.skytech.skypiea.commons.entity
 		this.macAddress = macAddress;
 	}
 
-	public String getLastMeasurementDate() {
+	public Timestamp getLastMeasurementDate() {
 		return lastMeasurementDate;
 	}
 
-	public void setLastMeasurementDate(String lastMeasurementDate) {
+	public void setLastMeasurementDate(Timestamp lastMeasurementDate) {
 		this.lastMeasurementDate = lastMeasurementDate;
 	}
 
