@@ -1,6 +1,7 @@
 package com.skytech.skypiea.api.repository;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,4 +15,7 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
 	public List<Room> findByResidentId(@Param("residentId")Long residentId);
 	
 	public List<Room> findByDoorNumber(Long doorNumber);
+	
+	@Query("select r from Room r left join fetch r.nonMedicalConnectedObjects")
+	public Set<Room> findAllWithTheirAssociatedObjects();
 }

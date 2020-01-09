@@ -114,4 +114,8 @@ public class NonMedicalConnectedObject extends ConnectedObject {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return "NonMedicalConnectedObject [id=" + id + ", nonMedicalObjectType=" + nonMedicalObjectType + "]";
+	}
 }
