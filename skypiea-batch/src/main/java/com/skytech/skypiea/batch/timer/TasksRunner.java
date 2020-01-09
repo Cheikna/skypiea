@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.skytech.skypiea.batch.task.implementation.FailureTask;
+import com.skytech.skypiea.batch.task.implementation.RoomObjectsCheckerTask;
 
 @Service
 public class TasksRunner extends TimerTask {
@@ -16,14 +16,14 @@ public class TasksRunner extends TimerTask {
 	
 	/************** Begin Tasks Declaration ***************/	
 	@Autowired
-	private FailureTask failureTask;
+	private RoomObjectsCheckerTask roomObjectsCheckerTask;
 	/************** End Tasks Declaration ***************/	
 
 	@Override
 	public void run() {
-		log.info("=============== BEGIN FAILURE TASK ===============");
-		failureTask.runJob();
-		log.info("===============  END FAILURE TASK  ===============");	
+		log.info("=============== BEGIN ROOMS CHECKING ===============");
+		roomObjectsCheckerTask.runJob();
+		log.info("===============  END ROOMS CHECKING  ===============");	
 
 	}
 
