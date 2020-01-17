@@ -1,7 +1,6 @@
-package com.skytech.skypiea.batch.tasks;
+package com.skytech.skypiea.batch.task.implementation;
 
 import java.util.Set;
-import java.util.TimerTask;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,59 +8,52 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skytech.skypiea.api.repository.RoomRepository;
+import com.skytech.skypiea.batch.algorithm.abstracts.RoomObjectAlgorithm;
+import com.skytech.skypiea.batch.algorithm.implementation.BrokenRoomObjectAlgorithm;
+import com.skytech.skypiea.batch.task.abstracts.ITask;
 import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;
 import com.skytech.skypiea.commons.entity.Room;
 import com.skytech.skypiea.commons.enumeration.State;
-import com.skytech.skypiea.commons.util.Util;
 
 @Service
-public class RoomObjectsCheckerTask extends TimerTask{
+public class RoomObjectsCheckerTask implements ITask {
 
-	private static Logger log = LoggerFactory.getLogger(RoomObjectsCheckerTask.class);
+	private static Logger log = LoggerFactory.getLogger(FailureTask.class);
 
 	@Autowired
 	private RoomRepository roomRepository;
-	
-	/**
-	 * Goal of this job :
-	 * - Retrieve all rooms and all of their objects
-	 * - Set the state of the room with the state of the object which has the highest priority
-	 * - Save the room in the database	
-	 */
+
+	private RoomObjectAlgorithm brokenRoomObjectsAlgorithm = new BrokenRoomObjectAlgorithm();
+
+
 	@Override
-	public void run() {
+	public void runJob() {
 		// Prevent from having the "failed to lazily initialize a collection of role" error
 		// Retrieve all rooms of the residence with the objects of each room
 		Set<Room> rooms = roomRepository.findAllWithTheirAssociatedObjects();
-		
-		rooms.forEach((room) -> {			
+		rooms.forEach((room) -> {
 			log.info("=============== Checking room with door number : " + room.getDoorNumber() + "===============");
-
-			// Retrieving the current state of the room
-			State stateBeforeCheck = room.getState();
-			State stateAfterCheck = null;
-			
 			try {				
 				Set<NonMedicalConnectedObject> nonMedicalConnectedObjects = room.getNonMedicalConnectedObjects();
 				int numberOfObject = nonMedicalConnectedObjects.size();
-				log.info("====> Number of non medical connected object(s) : " + numberOfObject);   
+				log.info("====> Number of non medical connected object(s) : " + numberOfObject);
 				if(nonMedicalConnectedObjects != null && nonMedicalConnectedObjects.size() > 0) {
+					nonMedicalConnectedObjects.forEach((nonMedicalConnectedObject) -> {
+						log.info("===> Checking object : " + nonMedicalConnectedObject);
+						// Get the stqte of the object before the checking
+						State stateBeforeChecking = nonMedicalConnectedObject.getState();
+						// Check if the object is broken with the algorithm
+						State newObjectState = brokenRoomObjectsAlgorithm.check(nonMedicalConnectedObject);
+						// check if the object is not broken and we do not need to monitor it if it is broken
+						if(newObjectState != State.BROKEN) {
+							// TODO Monitoring
+						}
 
-					NonMedicalConnectedObject higherStateObject = (NonMedicalConnectedObject)Util.getObjectWithHighestState(nonMedicalConnectedObjects);
-					if(higherStateObject != null) {
-						stateAfterCheck = higherStateObject.getState();
-					}
+						log.info("=> State (before > after) : " + stateBeforeChecking + " > " + newObjectState);
+					});
 				} else {
 					log.info("There are no non medical connected objects in this room !");
 				}
-				
-				if(stateAfterCheck == null) {
-					stateAfterCheck = State.getDefaultState();
-				}
-				log.info("Room state (before check => after check) : " + stateBeforeCheck + " => " + stateAfterCheck);
-				room.setState(stateAfterCheck);
-				// Saving the room with its new state and the states of its associated objects
-				roomRepository.save(room);
 
 			} catch (Exception e) {
 				log.error(e.getMessage());
