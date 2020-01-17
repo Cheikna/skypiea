@@ -1,7 +1,6 @@
-package com.skytech.skypiea.batch.tasks;
+package com.skytech.skypiea.batch.task.implementation;
 
 import java.util.Set;
-import java.util.TimerTask;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
