@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
+import com.skytech.skypiea.commons.enumeration.State;
 import com.skytech.skypiea.commons.enumeration.Wing;
 
 @Entity
@@ -42,15 +43,18 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
 	private Wing wing;
 	
 	@Column(name="SVG_POINT")
-	private String svgPoint;
-	
+	private String svgPoint;	
 	
 	@OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "RESIDENT_ID")
 	private Resident resident;
 	
-	@OneToMany(mappedBy="room")
+	@OneToMany(mappedBy="room", cascade=CascadeType.ALL)
 	private Set<NonMedicalConnectedObject> nonMedicalConnectedObjects;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="STATE")
+	private State state;
 	
 	@Transient
 	private Map<NonMedicalObjectType, Integer> objectQuantityByType;
@@ -139,6 +143,14 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
 
 	public void setNonMedicalConnectedObjects(Set<NonMedicalConnectedObject> nonMedicalConnectedObjects) {
 		this.nonMedicalConnectedObjects = nonMedicalConnectedObjects;
+	}	
+
+	public State getState() {
+		return state;
+	}
+
+	public void setState(State state) {
+		this.state = state;
 	}
 
 	public Map<NonMedicalObjectType, Integer> getObjectQuantityByType() {
