@@ -1,4 +1,4 @@
-package com.skytech.skypiea.batch.tasks;
+package com.skytech.skypiea.batch.task.implementation;
 
 import java.util.Set;
 import java.util.TimerTask;
@@ -16,12 +16,11 @@ import com.skytech.skypiea.batch.algorithm.implementation.RoomObjectsMonitoringA
 import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;
 import com.skytech.skypiea.commons.entity.Room;
 import com.skytech.skypiea.commons.enumeration.State;
-import com.skytech.skypiea.commons.util.Util;
 
 @Service
-public class RoomObjectsCheckerTask extends TimerTask{
+public class RoomObjectsCheckerTask implements ITask {
 
-	private static Logger log = LoggerFactory.getLogger(RoomObjectsCheckerTask.class);
+	private static Logger log = LoggerFactory.getLogger(FailureTask.class);
 
 	@Autowired
 	private RoomRepository roomRepository;
@@ -39,7 +38,7 @@ public class RoomObjectsCheckerTask extends TimerTask{
 	 * Thirdly, we save the room in the database	
 	 */
 	@Override
-	public void run() {
+	public void runJob() {
 		// Prevent from having the "failed to lazily initialize a collection of role" error
 		// Retrieve all rooms of the residence with the objects of each room
 		Set<Room> rooms = roomRepository.findAllWithTheirAssociatedObjects();
@@ -59,7 +58,7 @@ public class RoomObjectsCheckerTask extends TimerTask{
 			try {				
 				Set<NonMedicalConnectedObject> nonMedicalConnectedObjects = room.getNonMedicalConnectedObjects();
 				int numberOfObject = nonMedicalConnectedObjects.size();
-				log.info("====> Number of non medical connected object(s) : " + numberOfObject);   
+				log.info("====> Number of non medical connected object(s) : " + numberOfObject);
 				if(nonMedicalConnectedObjects != null && nonMedicalConnectedObjects.size() > 0) {
 					nonMedicalConnectedObjects.forEach((nonMedicalConnectedObject) -> {
 						log.info("===> Checking object : " + nonMedicalConnectedObject);
@@ -86,14 +85,6 @@ public class RoomObjectsCheckerTask extends TimerTask{
 					log.info("There are no non medical connected objects in this room !");
 					room.setState(State.OPERATIONAL);
 				}
-				
-				if(stateAfterCheck == null) {
-					stateAfterCheck = State.getDefaultState();
-				}
-				log.info("Room state (before check => after check) : " + stateBeforeCheck + " => " + stateAfterCheck);
-				room.setState(stateAfterCheck);
-				// Saving the room with its new state and the states of its associated objects
-				roomRepository.save(room);
 
 				room.setState(currentRoomState.get());
 				// Saving the room with its new state and the states of its associated objects
