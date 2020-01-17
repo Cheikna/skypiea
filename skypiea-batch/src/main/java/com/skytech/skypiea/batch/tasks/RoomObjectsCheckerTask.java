@@ -1,6 +1,8 @@
-package com.skytech.skypiea.batch.task.implementation;
+package com.skytech.skypiea.batch.tasks;
 
 import java.util.Set;
+import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicReference;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,6 +54,7 @@ public class RoomObjectsCheckerTask extends TimerTask{
 					}
 				} else {
 					log.info("There are no non medical connected objects in this room !");
+					room.setState(State.OPERATIONAL);
 				}
 				
 				if(stateAfterCheck == null) {
@@ -59,6 +62,10 @@ public class RoomObjectsCheckerTask extends TimerTask{
 				}
 				log.info("Room state (before check => after check) : " + stateBeforeCheck + " => " + stateAfterCheck);
 				room.setState(stateAfterCheck);
+				// Saving the room with its new state and the states of its associated objects
+				roomRepository.save(room);
+
+				room.setState(currentRoomState.get());
 				// Saving the room with its new state and the states of its associated objects
 				roomRepository.save(room);
 
