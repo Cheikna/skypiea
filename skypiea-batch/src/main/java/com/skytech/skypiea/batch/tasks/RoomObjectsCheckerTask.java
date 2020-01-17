@@ -1,4 +1,4 @@
-package com.skytech.skypiea.batch.tasks;
+package com.skytech.skypiea.batch.task.implementation;
 
 import java.util.Set;
 import java.util.TimerTask;
@@ -18,9 +18,9 @@ import com.skytech.skypiea.commons.entity.Room;
 import com.skytech.skypiea.commons.enumeration.State;
 
 @Service
-public class RoomObjectsCheckerTask extends TimerTask{
+public class RoomObjectsCheckerTask implements ITask {
 
-	private static Logger log = LoggerFactory.getLogger(RoomObjectsCheckerTask.class);
+	private static Logger log = LoggerFactory.getLogger(FailureTask.class);
 
 	@Autowired
 	private RoomRepository roomRepository;
@@ -38,7 +38,7 @@ public class RoomObjectsCheckerTask extends TimerTask{
 	 * Thirdly, we save the room in the database	
 	 */
 	@Override
-	public void run() {
+	public void runJob() {
 		// Prevent from having the "failed to lazily initialize a collection of role" error
 		// Retrieve all rooms of the residence with the objects of each room
 		Set<Room> rooms = roomRepository.findAllWithTheirAssociatedObjects();
