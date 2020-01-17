@@ -90,6 +90,10 @@ public class RoomObjectsCheckerTask extends TimerTask{
 				// Saving the room with its new state and the states of its associated objects
 				roomRepository.save(room);
 
+				room.setState(currentRoomState.get());
+				// Saving the room with its new state and the states of its associated objects
+				roomRepository.save(room);
+
 			} catch (Exception e) {
 				log.error(e.getMessage());
 				e.printStackTrace();
