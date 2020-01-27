@@ -3,69 +3,46 @@ package com.skytech.skypiea.commons.entity;
 
 import java.sql.Timestamp;
 
-import javax.persistence.*;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-
-import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
-import com.skytech.skypiea.commons.enumeration.State;
-import com.skytech.skypiea.commons.enumeration.Status;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="SMOKE_SENSOR")
-@PrimaryKeyJoinColumn(name="PARENT_ID")
-public class SmokeSensor extends NonMedicalConnectedObject  {
+public class SmokeSensor extends ObjectSetting  {
 
+	@Column(name="MIN_THRESHOLD")
+	private Float minThreshold;	
+	
 	@Column(name="THRESHOLD")
-	private float threshold;	
+	private Float threshold;
+	
+	@Column(name="MAX_THRESHOLD")
+	private Float maxThreshold;	
 	
 	@Column(name="SENSITIVITY")
 	private String sensitivity;
-	
-	@Column(name="IS_CURRENT_SETTINGS")
-	private boolean isCurrentSettings;
-	
-	@Column(name="SAVING_DATE")
-	private Timestamp savingDate;
 
 
 	public SmokeSensor() {
 		super();
 	}
 
-	public SmokeSensor(Long id, Long version, Timestamp lastParameterModificationDate, String brand,
-			String ipAddress, String macAddress, String lastMeasurementDate, Status status, State state,
-			Timestamp installationDate, String svgPoint, int threshold,
-			String sensitivity, Boolean isCurrentSettings, Timestamp savingDate) {
-		super(id, version, lastParameterModificationDate, brand, ipAddress, macAddress, lastMeasurementDate,
-				status, state, NonMedicalObjectType.SMOKE_SENSOR, installationDate, svgPoint);
+	public SmokeSensor(Long id, Long version, Timestamp savingDate, Float threshold, String sensitivity,
+			Float minThreshold, Float maxThreshold) {
+		super(id, version, savingDate);
 		this.threshold = threshold;
 		this.sensitivity = sensitivity;
-		this.isCurrentSettings = isCurrentSettings;
-		this.savingDate = savingDate;
-	}
-
-	
-	public boolean isCurrentSettings() {
-		return isCurrentSettings;
-	}
-
-	public void setCurrentSettings(boolean isCurrentSettings) {
-		this.isCurrentSettings = isCurrentSettings;
-	} 
-	
-	public Timestamp getSavingDate() {
-		return savingDate;
-	}
-
-	public void setSavingDate(Timestamp savingDate) {
-		this.savingDate = savingDate;
+		this.minThreshold = minThreshold;
+		this.maxThreshold = maxThreshold;
 	}
 
 	public float getThreshold() {
 		return threshold;
 	}
 
-	public void setThreshold(float threshold) {
+	public void setThreshold(Float threshold) {
 		this.threshold = threshold;
 	}
 
@@ -75,6 +52,23 @@ public class SmokeSensor extends NonMedicalConnectedObject  {
 
 	public void setSensitivity(String sensitivity) {
 		this.sensitivity = sensitivity;
+	}
+
+	public Float getMinThreshold() {
+		return minThreshold;
+	}
+
+	public void setMinThreshold(Float minThreshold) {
+		this.minThreshold = minThreshold;
+	}
+
+	public Float getMaxThreshold() {
+		return maxThreshold;
+	}
+
+	public void setMaxThreshold(Float maxThreshold) {
+		this.maxThreshold = maxThreshold;
 	} 
+	
 	
 }

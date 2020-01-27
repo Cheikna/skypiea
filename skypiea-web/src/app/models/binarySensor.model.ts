@@ -1,9 +1,7 @@
 import { BinarySensorType } from '../enums/binarySensorType.enum';
-import { NonMedicalConnectedObject } from './nonMedicalConnectedObject.model';
+import { ObjectSetting } from './objectSetting.model';
 
-export class BinarySensor extends NonMedicalConnectedObject {
+export class BinarySensor extends ObjectSetting {
     isActive: boolean;
     type: BinarySensorType;
-    isCurrentSettings: boolean;
-    savingDate: Date;
 }

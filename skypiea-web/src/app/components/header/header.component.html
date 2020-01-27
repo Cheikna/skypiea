@@ -2,7 +2,7 @@
     <a [routerLink]="['/']">
         <img src="assets/images/logos/skypiea.png" class="project-image">
     </a>
-    <span class="environment">({{environmentVariables.environmentTitle}})</span>
+    <span class="environment">{{environmentVariables.environmentTitle}}</span>
     <links>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" *appUserVisibility="['NOT_CONNECTED']">
@@ -10,19 +10,14 @@
                     <mdb-icon fas icon="user"></mdb-icon> Create account
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *appUserVisibility="['NOT_CONNECTED']">
                 <a class="nav-link waves-effect" mdbWavesEffect (click)="openSignInDialog()">
                     <mdb-icon fas icon="user"></mdb-icon> Sign In
                 </a>
             </li>
             <li class="nav-item" *appUserVisibility="['STAFF']">
                 <a class="nav-link waves-effect" mdbWavesEffect [routerLink]="['/monitoring']">
-                    <mdb-icon fas icon="desktop"></mdb-icon> Monitoring
-                </a>
-            </li>
-            <li class="nav-item" *appUserVisibility="['STAFF']">
-                <a class="nav-link waves-effect" mdbWavesEffect>
-                    <mdb-icon fas icon="exclamation-triangle"></mdb-icon> Failure Management
+                    <mdb-icon fas icon="desktop"></mdb-icon> Monitoring & Failures
                 </a>
             </li>
             <li class="nav-item" *appUserVisibility="['RESIDENT']">
@@ -51,6 +46,7 @@
                 </button>
                 <mat-menu #myAccountMenu="matMenu">
                     <button mat-menu-item>Hello {{ userInfo?.lastName | uppercase }} {{ userInfo?.firstName }}</button>
+                    <button mat-menu-item>Last visit : {{ userInfo?.lastConnectionDate | date: 'd MMM y, h:mm a' }}</button>
                     <button mat-menu-item (click)="logout()">
                         <mdb-icon fas icon="sign-out-alt"></mdb-icon> Logout
                     </button>

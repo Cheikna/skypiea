@@ -1,8 +1,6 @@
-import { NonMedicalConnectedObject } from './nonMedicalConnectedObject.model';
+import { ObjectSetting } from './objectSetting.model';
 
-export class Shutter extends NonMedicalConnectedObject{
+export class Shutter extends ObjectSetting {
     externalTemperature: number;
     externalSunshine: number;
-    isCurrentSettings: boolean;
-    savingDate: Date;
 }

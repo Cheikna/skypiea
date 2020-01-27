@@ -30,7 +30,7 @@ public abstract class ConnectedObject extends com.skytech.skypiea.commons.entity
 	protected String macAddress;
 	
 	@Column(name="LAST_MEASUREMENT_DATE")
-	protected String lastMeasurementDate;
+	protected Timestamp lastMeasurementDate;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name="STATUS")
@@ -45,7 +45,7 @@ public abstract class ConnectedObject extends com.skytech.skypiea.commons.entity
 	}	
 
 	public ConnectedObject(Long id, Long version, Timestamp lastParameterModificationDate,
-			String brand, String ipAddress, String macAddress, String lastMeasurementDate, Status status, State state) {
+			String brand, String ipAddress, String macAddress, Timestamp lastMeasurementDate, Status status, State state) {
 		super(id, version);
 		this.lastParameterModificationDate = lastParameterModificationDate;
 		this.brand = brand;
@@ -88,11 +88,11 @@ public abstract class ConnectedObject extends com.skytech.skypiea.commons.entity
 		this.macAddress = macAddress;
 	}
 
-	public String getLastMeasurementDate() {
+	public Timestamp getLastMeasurementDate() {
 		return lastMeasurementDate;
 	}
 
-	public void setLastMeasurementDate(String lastMeasurementDate) {
+	public void setLastMeasurementDate(Timestamp lastMeasurementDate) {
 		this.lastMeasurementDate = lastMeasurementDate;
 	}
 
@@ -110,5 +110,61 @@ public abstract class ConnectedObject extends com.skytech.skypiea.commons.entity
 
 	public void setState(State state) {
 		this.state = state;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((brand == null) ? 0 : brand.hashCode());
+		result = prime * result + ((ipAddress == null) ? 0 : ipAddress.hashCode());
+		result = prime * result + ((lastMeasurementDate == null) ? 0 : lastMeasurementDate.hashCode());
+		result = prime * result
+				+ ((lastParameterModificationDate == null) ? 0 : lastParameterModificationDate.hashCode());
+		result = prime * result + ((macAddress == null) ? 0 : macAddress.hashCode());
+		result = prime * result + ((state == null) ? 0 : state.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ConnectedObject other = (ConnectedObject) obj;
+		if (brand == null) {
+			if (other.brand != null)
+				return false;
+		} else if (!brand.equals(other.brand))
+			return false;
+		if (ipAddress == null) {
+			if (other.ipAddress != null)
+				return false;
+		} else if (!ipAddress.equals(other.ipAddress))
+			return false;
+		if (lastMeasurementDate == null) {
+			if (other.lastMeasurementDate != null)
+				return false;
+		} else if (!lastMeasurementDate.equals(other.lastMeasurementDate))
+			return false;
+		if (lastParameterModificationDate == null) {
+			if (other.lastParameterModificationDate != null)
+				return false;
+		} else if (!lastParameterModificationDate.equals(other.lastParameterModificationDate))
+			return false;
+		if (macAddress == null) {
+			if (other.macAddress != null)
+				return false;
+		} else if (!macAddress.equals(other.macAddress))
+			return false;
+		if (state != other.state)
+			return false;
+		if (status != other.status)
+			return false;
+		return true;
 	}	
 }

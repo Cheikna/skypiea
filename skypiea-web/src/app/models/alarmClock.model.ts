@@ -1,8 +1,6 @@
-import { NonMedicalConnectedObject } from './nonMedicalConnectedObject.model';
+import { ObjectSetting } from './objectSetting.model';
 
 
-export class AlarmClock extends NonMedicalConnectedObject {
+export class AlarmClock extends ObjectSetting {
     currentTime: Date;
-    isCurrentSettings: boolean;
-    savingDate: Date;
 }
