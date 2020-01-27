@@ -7,7 +7,7 @@ export class NonMedicalConnectedObject extends ConnectedObject {
     nonMedicalObjectType: NonMedicalObjectType;
     room: Room;
     svgPoint: string;
+    measurementUnit: string;
     currentSetting: any;
     objectSettings: Array<any>;
-    measurementUnit: string;
 }
