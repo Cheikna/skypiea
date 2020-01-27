@@ -68,6 +68,7 @@ import { AnalysisComponent } from './components/analysis/analysis.component';
     PersonnalFormComponent,
     FloorOnePlanComponent,
     DynamicFormComponent,
+    AnalysisComponent,
     DiseaseFormComponent,
     ObjectMonitoringInfoComponent,
     ObjectMonitoringExtraInfoComponent,

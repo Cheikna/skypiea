@@ -12,6 +12,8 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { EventHistoryComponent } from './components/event-history/event-history.component';
 import { AnalysisComponent } from './components/analysis/analysis.component';
+import { EventHistoryComponent } from './components/event-history/event-history.component';
+
 
 const routes: Routes = [
   {
