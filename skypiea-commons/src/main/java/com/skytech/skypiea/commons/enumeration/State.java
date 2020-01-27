@@ -16,4 +16,8 @@ public enum State {
 	public int getLevel() {
 		return level;
 	}
+	
+	public static State getDefaultState() {
+		return State.OPERATIONAL;
+	}
 }

@@ -51,4 +51,28 @@ public abstract class ObjectSetting extends com.skytech.skypiea.commons.entity.E
 		this.savingDate = savingDate;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((savingDate == null) ? 0 : savingDate.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ObjectSetting other = (ObjectSetting) obj;
+		if (savingDate == null) {
+			if (other.savingDate != null)
+				return false;
+		} else if (!savingDate.equals(other.savingDate))
+			return false;
+		return true;
+	}
 }

@@ -15,6 +15,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
 import com.skytech.skypiea.commons.enumeration.State;
 import com.skytech.skypiea.commons.enumeration.Wing;
@@ -49,6 +51,7 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
     @JoinColumn(name = "RESIDENT_ID")
 	private Resident resident;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy="room", cascade=CascadeType.ALL)
 	private Set<NonMedicalConnectedObject> nonMedicalConnectedObjects;
 	
@@ -180,6 +183,8 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
 				NonMedicalObjectType objectType = object.getNonMedicalObjectType();
 				Integer quantity;
 				try {
+					// Try to retrieve the previous quantity of the object type
+					// and add 1 to the quantity if the type already exists in the hashmap
 					quantity = objectQuantityByType.get(objectType) + 1;
 				}
 				catch(Exception e) {
