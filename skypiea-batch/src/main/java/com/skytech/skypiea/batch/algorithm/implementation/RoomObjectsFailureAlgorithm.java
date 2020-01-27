@@ -16,13 +16,12 @@ public class RoomObjectsFailureAlgorithm extends NonMedicalConnectedObjectAlgori
 	@Override
 	public State check(NonMedicalConnectedObject nonMedicalConnectedObject) {
 		NonMedicalObjectType type = nonMedicalConnectedObject.getNonMedicalObjectType();
-		
 		if(type == NonMedicalObjectType.ALARM_CLOCK) {
-			return checkAlarmClock((Set<AlarmClock>)nonMedicalConnectedObject.getObjectSettings());			
+			return checkAlarmClock((Set<AlarmClock>)(Set<?>)nonMedicalConnectedObject.getObjectSettings());			
 		} else if(type == NonMedicalObjectType.SMOKE_SENSOR) {
-			return checkSmokeSensor((Set<SmokeSensor>)nonMedicalConnectedObject.getObjectSettings());
+			return checkSmokeSensor((Set<SmokeSensor>)(Set<?>)nonMedicalConnectedObject.getObjectSettings());
 		} else if(type == NonMedicalObjectType.TEMPERATURE_CONTROLLER) {
-			return checkTemperatureController((Set<TemperatureController>)nonMedicalConnectedObject.getObjectSettings());
+			return checkTemperatureController((Set<TemperatureController>)(Set<?>)nonMedicalConnectedObject.getObjectSettings());
 		} else {
 			return State.OPERATIONAL;
 		}
