@@ -35,6 +35,7 @@ import { ObjectMonitoringInfoComponent } from './sub-components/object-monitorin
 import { ObjectMonitoringExtraInfoComponent } from './dialogs/object-monitoring-extra-info/object-monitoring-extra-info.component';
 import { FloorPlanComponent } from './sub-components/floor-plan/floor-plan.component';
 import { EventHistoryComponent } from './components/event-history/event-history.component';
+import { AnalysisComponent } from './components/analysis/analysis.component';
 
 
 
@@ -71,7 +72,8 @@ import { EventHistoryComponent } from './components/event-history/event-history.
     ObjectMonitoringInfoComponent,
     ObjectMonitoringExtraInfoComponent,
     FloorPlanComponent,
-    EventHistoryComponent
+    EventHistoryComponent,
+    AnalysisComponent
   ],
   imports: [
     BrowserModule,

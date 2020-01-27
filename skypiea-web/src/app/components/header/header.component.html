@@ -44,8 +44,8 @@
                 </a>
             </li>
             <li class="nav-item" *appUserVisibility="['STAFF']">
-                <a class="nav-link waves-effect" mdbWavesEffect>
-                    <mdb-icon fas icon="chart-line"></mdb-icon> Statistics
+                <a class="nav-link waves-effect" mdbWavesEffect [routerLink]="['/analysis']">
+                    <mdb-icon fas icon="chart-bar"></mdb-icon> Analysis
                 </a>
             </li>
             <li class="nav-item" *appUserVisibility="['STAFF', 'RESIDENT']">
