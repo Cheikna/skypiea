@@ -10,11 +10,11 @@ import { HistoryMoving } from 'src/app/models/historyMoving.model';
   styleUrls: ['./tracking.component.scss']
 })
 export class TrackingComponent implements OnInit {
-
+  //create array of history moving : movings
   movings: Array<HistoryMoving>;
-  // TODO Guillaume : creer un objet de type ElectronicTag
+  //add electronictag object
   electronicTag: ElectronicTag;
-  // TODO Guillaume : déclarer dans le constructeur le service qui permettra de faire appel au controller ElectronicTag
+  //declare service inside constructor
   constructor(private route: ActivatedRoute, private electronicTagService: ElectronicTagService) { 
     this.electronicTagService = electronicTagService;
   }
@@ -30,7 +30,7 @@ export class TrackingComponent implements OnInit {
       });*/
     });
     // Display data to console
-    console.log(JSON.stringify(id));
+    //console.log(JSON.stringify(id));
   }
 
 }

@@ -12,7 +12,7 @@ export class ElectronicTagService extends RestService {
   }
 
   getResidentHistoryMoving(residentId: number){
-    return this.http.get(`${this.completeBackendServerUrl}/resident/${residentId}`, { headers: this.headers });
+    return this.http.get(`${this.completeBackendServerUrl}/residenthistory/${residentId}`, { headers: this.headers });
   }
   
 }

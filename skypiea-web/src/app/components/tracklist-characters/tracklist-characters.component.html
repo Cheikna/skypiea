@@ -1,5 +1,17 @@
-<h4>Select resident to see his tracking map :</h4>
-<table class="table table-bordered table-dark">
+<section>
+    <span class="header">Select a resident to see his tracking map :</span>
+        <mat-card class="track-list" *ngFor="let resident of residents">
+            <mat-card-header>
+            <mat-card-title>{{ resident.lastName }} {{ resident.firstName}}</mat-card-title>
+            <button mat-raised-button color="info" (click)="select(resident.id)"><mat-icon>all_out</mat-icon></button>
+            </mat-card-header>
+        </mat-card>
+        <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]" style="width: 1000px; margin: 0 auto;">
+        </mat-paginator>
+</section>
+<!--<table class="table table-bordered table-dark">
     <thead>
         <tr>
             <th scope="col">Last Name</th>
@@ -14,4 +26,4 @@
             <td><button mat-raised-button color="info" (click)="select(resident.id)"><mat-icon>all_out</mat-icon></button></td>
         </tr>
     </tbody>
-</table>
+</table>-->
