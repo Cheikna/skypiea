@@ -10,7 +10,7 @@ import { PersonnalFormComponent } from './components/personnal-form/personnal-fo
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
-
+import { AnalysisComponent } from './components/analysis/analysis.component';
 
 const routes: Routes = [
   {
@@ -68,6 +68,14 @@ const routes: Routes = [
   {
     path: 'tracklist', 
     component: TracklistCharactersComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'STAFF'
+    }
+  },
+  {
+    path: 'analysis', 
+    component: AnalysisComponent, 
     canActivate: [AuthenticationGuard], 
     data: { 
       userType: 'STAFF'
