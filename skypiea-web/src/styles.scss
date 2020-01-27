@@ -4,6 +4,8 @@
 @import "~angular-bootstrap-md/assets/scss/mdb.scss";
 @import "~font-awesome/css/font-awesome.min.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// Variables for the styles
+@import "./variables.scss";
 
 @font-face {
   font-family: "one-piece";
@@ -41,4 +43,82 @@ footer {
 
 .monitoring-tab .mat-tab-labels {
   background-color: white !important;
+}
+
+.background-green {
+  background-color: #11f02f;
+}
+
+.background-orange {
+  background-color: #faa02a;
+}
+
+.blinking-red {
+  animation: blinkingRedBackground 2s infinite;
+}
+@keyframes blinkingRedBackground {
+  0% {
+    background-color: $color-red-with-opacity;
+  }
+  25% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: $color-red-with-opacity;
+  }
+  75% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: $color-red-with-opacity;
+  }
+}
+
+.blinking-orange{
+  animation: blinkingOrangeBackground 2s infinite;
+}
+@keyframes blinkingOrangeBackground {
+  0% {
+    background-color: $color-orange-with-opacity;
+  }
+  25% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: $color-orange-with-opacity;
+  }
+  75% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: $color-orange-with-opacity;
+  }
+}
+
+.selected-card-animation {
+  animation: selectedCard 3s;
+}
+@keyframes selectedCard {
+  0% {
+    background-color: $color-selected-card;
+  }
+  25% {    
+    background-color: transparent;
+  }
+  50% {
+    background-color: $color-selected-card;
+  }
+  75% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: $color-selected-card;
+  }
+}
+
+.color-circle {    
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  display: inline-block;
 }

@@ -10,6 +10,7 @@ import { PersonnalFormComponent } from './components/personnal-form/personnal-fo
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { EventHistoryComponent } from './components/event-history/event-history.component';
 
 
 const routes: Routes = [
@@ -79,6 +80,14 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard], 
     data: { 
       userType: 'NOT_CONNECTED'
+    }
+  },
+  {
+    path: 'monitoring/event-history',
+    component: EventHistoryComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'STAFF'
     }
   },
   {
