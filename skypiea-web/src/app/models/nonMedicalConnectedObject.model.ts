@@ -9,4 +9,5 @@ export class NonMedicalConnectedObject extends ConnectedObject {
     svgPoint: string;
     currentSetting: any;
     objectSettings: Array<any>;
+    measurementUnit: string;
 }
