@@ -1,0 +1,24 @@
+<mat-tab-group>
+  <mat-tab label="Monitoring & Failures">
+    <br>
+    <div class="d-flex justify-content-center">
+      <span class="badge badge-pill state-info"
+        [style.background-color]="stateInfo[nonMedicalConnectedObject.state].color">
+        &nbsp; {{ stateInfo[nonMedicalConnectedObject.state].name }} &nbsp;
+      </span>
+    </div>
+    <span *ngIf="nonMedicalConnectedObject.realTimeEvent" class="font-italic font-weight-bold">
+      {{ nonMedicalConnectedObject.realTimeEvent.description }}
+    </span>
+    <br>
+    <button type="button" class="btn btn-outline-success btn-block">Show all previous events</button>
+  </mat-tab>
+  <mat-tab label="Overview">
+    MAC Address : {{ nonMedicalConnectedObject?.macAddress }}<br>
+    <mat-divider></mat-divider>
+    <b>{{ nonMedicalConnectedObject.status }}</b> since
+    {{ nonMedicalConnectedObject?.lastParameterModification | date: 'd MMM y, HH:mm' }}
+    <br>
+    In this status since {{ timeDifference }}
+  </mat-tab>
+</mat-tab-group>
