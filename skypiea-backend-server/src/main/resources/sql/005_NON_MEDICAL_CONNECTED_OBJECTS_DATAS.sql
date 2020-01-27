@@ -148,7 +148,7 @@ values (currval(pg_get_serial_sequence('connected_object', 'id')), '2019-12-16 0
 
 insert into OBJECT_SETTING values(nextval(pg_get_serial_sequence('object_setting', 'id')), 1, currval(pg_get_serial_sequence('connected_object', 'id')), '2019-12-09 09:00:00.000');
 
-insert into SMOKE_SENSOR values(currval(pg_get_serial_sequence('object_setting', 'id')), 1, 300, 'LOW');
+insert into SMOKE_SENSOR values(currval(pg_get_serial_sequence('object_setting', 'id')), 1, 300, 'LOW', 100, 348);
 
 
 --------------------------
@@ -163,7 +163,7 @@ values (currval(pg_get_serial_sequence('connected_object', 'id')), '2019-12-16 0
 
 insert into OBJECT_SETTING values(nextval(pg_get_serial_sequence('object_setting', 'id')), 1, currval(pg_get_serial_sequence('connected_object', 'id')), '2019-12-09 09:00:00.000');
 
-insert into SMOKE_SENSOR values(currval(pg_get_serial_sequence('object_setting', 'id')), 1, 300, 'LOW');
+insert into SMOKE_SENSOR values(currval(pg_get_serial_sequence('object_setting', 'id')), 1, 300, 'LOW', 100, 218);
 
 
 --------------------------
@@ -177,7 +177,7 @@ values (currval(pg_get_serial_sequence('connected_object', 'id')), '2019-12-16 0
 
 insert into OBJECT_SETTING values(nextval(pg_get_serial_sequence('object_setting', 'id')), 1, currval(pg_get_serial_sequence('connected_object', 'id')), '2019-12-09 09:00:00.000');
 
-insert into SMOKE_SENSOR values(currval(pg_get_serial_sequence('object_setting', 'id')), 1, 300, 'LOW');
+insert into SMOKE_SENSOR values(currval(pg_get_serial_sequence('object_setting', 'id')), 1, 300, 'LOW', 100, 331);
 
 
 --------------------------
@@ -191,7 +191,7 @@ values (currval(pg_get_serial_sequence('connected_object', 'id')), '2019-12-16 0
 
 insert into OBJECT_SETTING values(nextval(pg_get_serial_sequence('object_setting', 'id')), 1, currval(pg_get_serial_sequence('connected_object', 'id')), '2019-12-09 09:00:00.000');
 
-insert into SMOKE_SENSOR values(currval(pg_get_serial_sequence('object_setting', 'id')), 1, 300, 'LOW');
+insert into SMOKE_SENSOR values(currval(pg_get_serial_sequence('object_setting', 'id')), 1, 300, 'LOW', 100, 415);
 
 
 --------------------------
@@ -249,3 +249,8 @@ insert into OBJECT_SETTING values(nextval(pg_get_serial_sequence('object_setting
 
 insert into TEMPERATURE_CONTROLLER 
 values(currval(pg_get_serial_sequence('object_setting', 'id')), 1, 20, 30, 15, 21, 24, true, true); 
+
+------------------------------------------------------------------------
+-- Update non medical connected objects which have a null SENSITIVITY --
+------------------------------------------------------------------------
+update CONNECTED_OBJECT set SENSITIVITY = 5 where SENSITIVITY is NULL;
