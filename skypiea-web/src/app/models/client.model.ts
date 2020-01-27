@@ -1,6 +1,6 @@
-export class Client {
-    id: number;
-    version: number;
+import { Entity } from './entity.model';
+
+export class Client extends Entity{
     lastName: string;
     firstName: string;
     age: number;

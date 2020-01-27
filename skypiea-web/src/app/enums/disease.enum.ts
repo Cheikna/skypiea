@@ -1,0 +1,12 @@
+export enum Disease {
+	
+	DIABETIC = "DIABETIC",
+	
+	ARTHRITIS = "ARTHRITIS",
+	
+	FRACTURE = "FRACTURE",
+	
+	ALZHEIMER = "ALZHEIMER",
+	
+	PARKINSON = "PARKINSON"
+}

@@ -1,8 +1,11 @@
 package com.skytech.skypiea.commons.entity;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Table;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 @Table(name="CLIENT")
@@ -37,12 +40,16 @@ public class Client extends com.skytech.skypiea.commons.entity.Entity{
 	
 	@Column(name="COUNTRY")
 	protected String country;
+	
+	@OneToMany(mappedBy = "client")
+	private Collection<MedicalRecord> medicalRecords;
 
 	public Client() {
-		
+		super();
 	}
 	
-	public Client (String lastName, String firstName, Integer age, String email, Integer streetNumber, String streetName, String zipCode, String city, String phoneNumber) {
+	public Client (Long id, Long version, String lastName, String firstName, Integer age, String email, Integer streetNumber, String streetName, String zipCode, String city, String phoneNumber) {
+		super(id, version);
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.age = age;
@@ -134,9 +141,12 @@ public class Client extends com.skytech.skypiea.commons.entity.Entity{
 		this.phoneNumber = phoneNumber;
 	}
 
-	
-	
-	
-	
+	public Collection<MedicalRecord> getMedicalRecords() {
+		return medicalRecords;
+	}
+
+	public void setMedicalRecords(Collection<MedicalRecord> medicalRecords) {
+		this.medicalRecords = medicalRecords;
+	}
 
 }

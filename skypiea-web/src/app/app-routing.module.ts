@@ -74,7 +74,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'dynamicForm', 
+    path: 'dynamicForm/:id', 
     component: DynamicFormComponent, 
     canActivate: [AuthenticationGuard], 
     data: { 

@@ -1,6 +1,6 @@
 <div class="container">
     <h1>About you...</h1>
-    <form class="needs-validation" [formGroup]="dynamicForm" ngNativeValidate>
+    <form class="needs-validation" [formGroup]="dynamicForm" (ngSubmit)="createMedicalRecord()" ngNativeValidate>
         <div class="form-group">
                 <div class="col-md-4 mb-3">
                     <label for="diseases">Have you got medical issues ?</label><br>
@@ -30,6 +30,11 @@
                         <label class="form-check-label" for="parkinson">Parkinson</label>
                         <app-disease-form *ngIf="parkinsonCheckboxChecked()"></app-disease-form>
                     </div>
+                    <div mat-dialog-actions class="d-flex justify-content-left">
+                        <button mat-raised-button [disabled]="dynamicForm.invalid" class="btn btn-success" type="submit">
+                            <mat-icon>done</mat-icon>Valid
+                        </button> 
+                    </div>    
                 </div>
         </div>
     </form>
