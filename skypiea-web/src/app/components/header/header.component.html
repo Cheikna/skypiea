@@ -16,9 +16,17 @@
                 </a>
             </li>
             <li class="nav-item" *appUserVisibility="['STAFF']">
-                <a class="nav-link waves-effect" mdbWavesEffect [routerLink]="['/monitoring']">
-                    <mdb-icon fas icon="desktop"></mdb-icon> Monitoring & Failures
-                </a>
+                <button class="btn dropdown-toggle" mat-button [matMenuTriggerFor]="monitoringFailureMenu">
+                    <mdb-icon fas icon="desktop"></mdb-icon> Rooms Monitoring & Failures
+                </button>
+                <mat-menu #monitoringFailureMenu="matMenu">
+                    <button mat-menu-item [routerLink]="['/monitoring']">
+                        <mdb-icon fas icon="wifi"></mdb-icon>&nbsp; Real-time monitoring
+                    </button>
+                    <button mat-menu-item [routerLink]="['/monitoring/event-history']">
+                        <mdb-icon fas icon="history"></mdb-icon>&nbsp; Event history
+                    </button>
+                </mat-menu>
             </li>
             <li class="nav-item" *appUserVisibility="['RESIDENT']">
                 <a class="nav-link waves-effect" mdbWavesEffect [routerLink]="['/ObjectList']">
@@ -51,7 +59,6 @@
                         <mdb-icon fas icon="sign-out-alt"></mdb-icon> Logout
                     </button>
                 </mat-menu>
-
             </li>
             <li class="nav-item" *appUserVisibility="['NOT_CONNECTED']">
                 <a class="nav-link waves-effect" mdbWavesEffect [routerLink]="['/personnalForm']">

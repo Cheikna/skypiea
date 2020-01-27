@@ -2,18 +2,56 @@
     <br>
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 text-center">
                 <h2>Room n°{{ room?.doorNumber }}</h2>
             </div>
-            <div class="col-12">
-                <h3>Occupant : {{room?.resident.lastName | uppercase }} {{ room?.resident.firstName }}</h3>
+            <div class="col-12 text-center font-italic">
+                <h3>{{room?.resident.lastName | uppercase }} {{ room?.resident.firstName }}</h3>
                 <br><br>
             </div>
         </div>
         <div class="row">
-            <br>
-            <app-room-plan [nonMedicalConnectedObjects]="room?.nonMedicalConnectedObjects">
-            </app-room-plan>
+            <div id="objects-positionning" class="col-12">
+                <h3 class="rubric-title">Objects positionning in the room</h3>
+                <hr />
+                <div class="font-italic text-center">
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col" [attr.colspan]="stateInfoArray.length">Legend</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="col" *ngFor="let info of stateInfoArray">
+                                        <!-- Index 0 -> key   -->
+                                        <!-- Index 1 -> value with name and color for instance -->
+                                        <span class="color-circle" [style.background-color]="info[1].color"></span>
+                                        {{ info[1].name }}
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <app-room-plan [nonMedicalConnectedObjects]="objectsFromServiceCall">
+                    </app-room-plan>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="objects-information-title" class="col-12">
+                <h3 class="rubric-title">Information about the objects</h3>
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div *ngFor="let object of objectsFromServiceCall" class="col-12 col-md-6">
+                <app-object-monitoring-info [nonMedicalConnectedObject]="object">
+                </app-object-monitoring-info>
+            </div>
         </div>
     </div>
 </section>
