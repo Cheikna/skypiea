@@ -165,6 +165,14 @@ const routes: Routes = [
     }
   },
   {
+    path: 'monitoring/event-history',
+    component: EventHistoryComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'STAFF'
+    }
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   }
