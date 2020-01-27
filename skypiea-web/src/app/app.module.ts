@@ -67,10 +67,6 @@ import { DoorSensorConfigComponent } from './components/door-sensor-config/door-
     PersonnalFormComponent,
     FloorOnePlanComponent,
     DynamicFormComponent,
-
-    ObjectIhmComponent,
-    ObjectConfigurationGroupe1Component,
-
     AnalysisComponent,
     DiseaseFormComponent,
     ObjectMonitoringInfoComponent,
