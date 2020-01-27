@@ -28,7 +28,7 @@ public class ElectronicTagController {
 		return electronicTagService.findAll();
 	}
 	
-	@GetMapping("/resident/{id}")
+	@GetMapping("/residenthistory/{id}")
 	public ElectronicTag findHistoryMovingByResident(@PathVariable Long id)
 	{
 		return electronicTagService.findHistoryMovingByResident(id);
