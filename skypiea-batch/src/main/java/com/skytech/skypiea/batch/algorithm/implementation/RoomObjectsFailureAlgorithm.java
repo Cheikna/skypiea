@@ -9,12 +9,13 @@ import com.skytech.skypiea.commons.entity.SmokeSensor;
 import com.skytech.skypiea.commons.entity.TemperatureController;
 import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
 import com.skytech.skypiea.commons.enumeration.State;
+import com.skytech.skypiea.commons.message.Message;
 
 public class RoomObjectsFailureAlgorithm extends NonMedicalConnectedObjectAlgorithm {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public State check(NonMedicalConnectedObject nonMedicalConnectedObject) {
+	public State check(NonMedicalConnectedObject nonMedicalConnectedObject, Message receivedMessage) {
 		NonMedicalObjectType type = nonMedicalConnectedObject.getNonMedicalObjectType();
 		if(type == NonMedicalObjectType.ALARM_CLOCK) {
 			return checkAlarmClock((Set<AlarmClock>)(Set<?>)nonMedicalConnectedObject.getObjectSettings());			
