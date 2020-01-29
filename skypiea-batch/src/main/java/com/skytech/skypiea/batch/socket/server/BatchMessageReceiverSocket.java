@@ -2,7 +2,6 @@ package com.skytech.skypiea.batch.socket.server;
 
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.TimerTask;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BatchMessageReceiverSocket extends TimerTask  {
+public class BatchMessageReceiverSocket implements Runnable  {
 
 	private static final Logger log = LoggerFactory.getLogger(BatchMessageReceiverSocket.class);
 

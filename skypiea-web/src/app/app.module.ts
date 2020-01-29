@@ -32,13 +32,18 @@ import { FloorOnePlanComponent } from './floors-plan-components/floor-one-plan/f
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { AnalysisComponent } from './components/analysis/analysis.component';
 import { DiseaseFormComponent } from './sub-components/disease-form/disease-form.component';
+import { ObjectMonitoringInfoComponent } from './sub-components/object-monitoring-info/object-monitoring-info.component';
+import { ObjectMonitoringExtraInfoComponent } from './dialogs/object-monitoring-extra-info/object-monitoring-extra-info.component';
+import { FloorPlanComponent } from './sub-components/floor-plan/floor-plan.component';
+import { EventHistoryComponent } from './components/event-history/event-history.component';
 
 
 
 @NgModule({
   entryComponents: [
     SignInComponent,
-    ObjectInfoComponent
+    ObjectInfoComponent,
+    ObjectMonitoringExtraInfoComponent
   ],
   declarations: [
     AppComponent,
@@ -64,7 +69,12 @@ import { DiseaseFormComponent } from './sub-components/disease-form/disease-form
     FloorOnePlanComponent,
     DynamicFormComponent,
     AnalysisComponent,
-    DiseaseFormComponent
+    DiseaseFormComponent,
+    ObjectMonitoringInfoComponent,
+    ObjectMonitoringExtraInfoComponent,
+    FloorPlanComponent,
+    EventHistoryComponent,
+    AnalysisComponent
   ],
   imports: [
     BrowserModule,
