@@ -16,7 +16,7 @@ public class FileReaderTest {
 		Consumer<String> consumer = (str) -> {
 			read.set(str);
 		};
-		FileReader.readLine("mocks/test1.txt", consumer);
+		FileReader.readLine("mocks/test1.txt", consumer, false);
 		assertEquals(textFromFile1, read.get());
 	}
 
