@@ -166,9 +166,17 @@ const routes: Routes = [
   },
   {
     path: 'monitoring/event-history',
-    component: EventHistoryComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: EventHistoryComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'STAFF'
+    }
+  },
+  {
+    path: 'health-control',
+    component: HealthControlComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'STAFF'
     }
   },
