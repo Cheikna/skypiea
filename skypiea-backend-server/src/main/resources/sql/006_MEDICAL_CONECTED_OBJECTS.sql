@@ -19,3 +19,5 @@ values (nextval(pg_get_serial_sequence('connected_object', 'id')), 1, 'Somfy', '
 
 insert into MEDICAL_CONNECTED_OBJECT values (currval(pg_get_serial_sequence('connected_object', 'id')),(select ID from SKYPIEA_USER where first_name = 'Leo'));
 
+insert into HEALTH_CONTROL_HISTORY values (nextval(pg_get_serial_sequence('health_control_history','id')),0,'HEART_RATE','2019-12-16 09:00:00.000',78,0,currval(pg_get_serial_sequence('connected_object', 'id')));
+insert into HEALTH_CONTROL_HISTORY values (nextval(pg_get_serial_sequence('health_control_history','id')),0,'HEART_RATE','2019-12-16 09:00:00.000',78,0,currval(pg_get_serial_sequence('connected_object', 'id')));
