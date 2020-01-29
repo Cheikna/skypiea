@@ -27,10 +27,13 @@ public class TimerTaskLauncherService {
 	
 	public void start() {		
 		Timer timer = new Timer(true);
-        timer.schedule(batchServerSocket, 0L);
         timer.scheduleAtFixedRate(memoryCacheCheckerTask, 0L, memoryCacheCheckerFrequency);
         // Add a delay in order to let the socket start
         timer.scheduleAtFixedRate(roomObjectsCheckerTask, roomCheckerDelay, roomCheckerFrequency);
+
+        Thread socketThread = new Thread(batchServerSocket);
+        socketThread.start();
+        
 	}
 
 }

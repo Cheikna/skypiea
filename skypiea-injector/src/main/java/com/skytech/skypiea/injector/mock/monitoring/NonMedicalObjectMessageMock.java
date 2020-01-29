@@ -5,6 +5,7 @@ import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skytech.skypiea.commons.enumeration.MessageSender;
 import com.skytech.skypiea.commons.message.Message;
 import com.skytech.skypiea.injector.mock.abstracts.Mock;
 import com.skytech.skypiea.injector.socket.client.ClientSocket;
@@ -30,9 +31,7 @@ public class NonMedicalObjectMessageMock extends Mock {
 			return str != null;
 		});
 		String value2 = "";
-		Message message = new Message(Long.parseLong(id), value1, value2);
-		clientSocket.sendMessage(message);	
-		message.setValue2("value 2");
+		Message message = new Message(Long.parseLong(id), MessageSender.NON_MEDICAL_CONNECTED_OBJECT, value1, value2);
 		clientSocket.sendMessage(message);	
 	}
 
