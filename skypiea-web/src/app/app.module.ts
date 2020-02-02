@@ -16,9 +16,8 @@ import { TrackingComponent } from './components/tracking/tracking.component';
 import { TracklistCharactersComponent } from './components/tracklist-characters/tracklist-characters.component';
 import { PersonnalFormComponent } from './components/personnal-form/personnal-form.component';
 
-import { ObjectListComponent } from './components/ObjectList/ObjectList.component';
 
-import { NonMedicalConnectedObjectListComponent } from './components/non-medical-connected-object-list/non-medical-connected-object-list.component';
+
 import { AlarmClockDetailsComponent } from './components/alarm-clock-details/alarm-clock-details.component';
 
 import { RoomPlanComponent } from './sub-components/room-plan/room-plan.component';
@@ -30,6 +29,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { UserVisibilityDirective } from './directives/user-visibility.directive';
 import { FloorOnePlanComponent } from './floors-plan-components/floor-one-plan/floor-one-plan.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { ObjectIhmComponent } from './components/object-ihm/object-ihm.component';
+import { ObjectConfigurationGroupe1Component } from './sub-components/object-configuration-groupe1/object-configuration-groupe1.component';
+
 
 
 
@@ -48,9 +50,8 @@ import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.com
     RoomInformationComponent,
     MonitoringComponent,
     RoomPlanComponent,
-    ObjectListComponent,
     AlarmClockDetailsComponent,
-    NonMedicalConnectedObjectListComponent,
+    
     AlarmClockDetailsComponent,
     TrackingComponent,
     TracklistCharactersComponent,
@@ -60,7 +61,9 @@ import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.com
     UserVisibilityDirective,
     PersonnalFormComponent,
     FloorOnePlanComponent,
-    DynamicFormComponent
+    DynamicFormComponent,
+    ObjectIhmComponent,
+    ObjectConfigurationGroupe1Component,
   ],
   imports: [
     BrowserModule,

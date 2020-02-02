@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { ObjectListComponent } from './components/ObjectList/ObjectList.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
 import { RoomInformationComponent } from './components/room-information/room-information.component';
 import { TrackingComponent } from './components/tracking/tracking.component';
@@ -10,6 +9,8 @@ import { PersonnalFormComponent } from './components/personnal-form/personnal-fo
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { ObjectIhmComponent } from './components/object-ihm/object-ihm.component';
+import { ObjectConfigurationGroupe1Component } from './sub-components/object-configuration-groupe1/object-configuration-groupe1.component';
 
 
 const routes: Routes = [
@@ -18,8 +19,8 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'ObjectList',
-    component: ObjectListComponent, 
+    path: 'ObjectIhm',
+    component: ObjectIhmComponent, 
     canActivate: [AuthenticationGuard], 
     data: { 
       userType: 'RESIDENT'
