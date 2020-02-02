@@ -14,7 +14,9 @@ import { EventHistoryComponent } from './components/event-history/event-history.
 import {HealthControlComponent} from "./components/health-control/health-control.component";
 import { ObjectIhmComponent } from './components/object-ihm/object-ihm.component';
 import { ObjectConfigurationGroupe1Component } from './sub-components/object-configuration-groupe1/object-configuration-groupe1.component';
-
+import { AlarmClockComponent } from './components/alarm-clock/alarm-clock.component';
+import { BulbComponent} from './components/bulb/bulb.component'; 
+import { DoorSensorComponent} from './components/door-sensor/door-sensor.component'; 
 
 const routes: Routes = [
   {
@@ -107,6 +109,30 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard],
     data: {
       userType: 'STAFF'
+    }
+  },
+  {
+    path: 'object-list/alarm-clock',
+    component: AlarmClockComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'object-list/bulb',
+    component: BulbComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'object-list/door-sensor',
+    component: DoorSensorComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
     }
   },
   {

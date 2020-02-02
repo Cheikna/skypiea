@@ -1,0 +1,27 @@
+
+<br> 
+<h1>Alarm Clock</h1>
+
+  <br>
+  <table class="table table-bordered">
+   <tbody>
+    <br>
+    <tr>
+        <td>Installation date : {{nonMedicalConnectedObject?.installationDate | date: 'medium'}}</td>
+        <td>Brand: {{nonMedicalConnectedObject?.brand}}</td>
+        <td>Status : {{ nonMedicalConnectedObject?.status}} </td>
+        <td>Ringing clock : {{setting?.currentTime | date: 'medium'}} </td>
+      </tr>
+      <br>
+    <h1>Update settings</h1>
+    <tr>
+        <td>  
+            <!--<mat-slide-toggle [formControl]="activate" ">Switch</mat-slide-toggle> -->
+        </td>
+        <td> Ringing clock :
+        </td>
+    </tr> 
+    </tbody>
+    <br> 
+    <button type="button" class="btn btn-success">Enregistrer</button>
+</table>

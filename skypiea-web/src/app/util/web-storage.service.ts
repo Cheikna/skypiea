@@ -8,6 +8,8 @@ import { storageKey } from './storageKey.util';
 })
 export class WebStorageService {
 
+  temporaryData: any;
+
   /**
    * 
    * @param sessionStorage : 
