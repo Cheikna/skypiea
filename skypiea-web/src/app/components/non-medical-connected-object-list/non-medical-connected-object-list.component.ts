@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NonMedicalConnectedObject} from 'src/app/models/nonMedicalConnectedObject.model';
 import { NonMedicalConnectedObjectService} from 'src/app/services/non-medical-connected-object.service';
-import { AlarmClockDetailsComponent} from 'src/app/components/alarm-clock-details/alarm-clock-details.component'
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 

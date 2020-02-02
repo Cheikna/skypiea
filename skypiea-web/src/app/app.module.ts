@@ -19,7 +19,6 @@ import { PersonnalFormComponent } from './components/personnal-form/personnal-fo
 import { ObjectListComponent } from './components/ObjectList/ObjectList.component';
 
 import { NonMedicalConnectedObjectListComponent } from './components/non-medical-connected-object-list/non-medical-connected-object-list.component';
-import { AlarmClockDetailsComponent } from './components/alarm-clock-details/alarm-clock-details.component';
 
 import { RoomPlanComponent } from './sub-components/room-plan/room-plan.component';
 import { RoomSummaryComponent } from './sub-components/room-summary/room-summary.component';
@@ -32,6 +31,9 @@ import { FloorOnePlanComponent } from './floors-plan-components/floor-one-plan/f
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { AnalysisComponent } from './components/analysis/analysis.component';
 import { DiseaseFormComponent } from './sub-components/disease-form/disease-form.component';
+import { AlarmClockConfigComponent } from './components/alarm-clock-config/alarm-clock-config.component';
+import { BulbConfigComponent } from './components/bulb-config/bulb-config.component';
+import { DoorSensorConfigComponent } from './components/door-sensor-config/door-sensor-config.component';
 
 
 
@@ -51,9 +53,7 @@ import { DiseaseFormComponent } from './sub-components/disease-form/disease-form
     MonitoringComponent,
     RoomPlanComponent,
     ObjectListComponent,
-    AlarmClockDetailsComponent,
     NonMedicalConnectedObjectListComponent,
-    AlarmClockDetailsComponent,
     TrackingComponent,
     TracklistCharactersComponent,
     PersonnalFormComponent,
@@ -64,7 +64,10 @@ import { DiseaseFormComponent } from './sub-components/disease-form/disease-form
     FloorOnePlanComponent,
     DynamicFormComponent,
     AnalysisComponent,
-    DiseaseFormComponent
+    DiseaseFormComponent,
+    AlarmClockConfigComponent,
+    BulbConfigComponent,
+    DoorSensorConfigComponent
   ],
   imports: [
     BrowserModule,

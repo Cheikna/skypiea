@@ -11,9 +11,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { AnalysisComponent } from './components/analysis/analysis.component';
-import { AlarmClockComponent } from './components/alarm-clock/alarm-clock.component';
-import { BulbComponent} from './components/bulb/bulb.component'; 
-import { DoorSensorComponent} from './components/door-sensor/door-sensor.component'; 
+import { AlarmClockConfigComponent } from './components/alarm-clock-config/alarm-clock-config.component';
+import { BulbConfigComponent} from './components/bulb-config/bulb-config.component'; 
+import { DoorSensorConfigComponent} from './components/door-sensor-config/door-sensor-config.component'; 
 const routes: Routes = [
   {
     path: '',
@@ -93,7 +93,7 @@ const routes: Routes = [
   },
   {
     path: 'object-list/alarm-clock',
-    component: AlarmClockComponent, 
+    component: AlarmClockConfigComponent, 
     canActivate: [AuthenticationGuard], 
     data: { 
       userType: 'RESIDENT'
@@ -101,7 +101,7 @@ const routes: Routes = [
   },
   {
     path: 'object-list/bulb',
-    component: BulbComponent, 
+    component: BulbConfigComponent, 
     canActivate: [AuthenticationGuard], 
     data: { 
       userType: 'RESIDENT'
@@ -109,7 +109,7 @@ const routes: Routes = [
   },
   {
     path: 'object-list/door-sensor',
-    component: DoorSensorComponent, 
+    component: DoorSensorConfigComponent, 
     canActivate: [AuthenticationGuard], 
     data: { 
       userType: 'RESIDENT'
