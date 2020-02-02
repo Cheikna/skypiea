@@ -11,14 +11,16 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { AnalysisComponent } from './components/analysis/analysis.component';
-
+import { AlarmClockComponent } from './components/alarm-clock/alarm-clock.component';
+import { BulbComponent} from './components/bulb/bulb.component'; 
+import { DoorSensorComponent} from './components/door-sensor/door-sensor.component'; 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent
   },
   {
-    path: 'ObjectList',
+    path: 'object-list',
     component: ObjectListComponent, 
     canActivate: [AuthenticationGuard], 
     data: { 
@@ -87,6 +89,30 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard], 
     data: { 
       userType: 'NOT_CONNECTED'
+    }
+  },
+  {
+    path: 'object-list/alarm-clock',
+    component: AlarmClockComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'object-list/bulb',
+    component: BulbComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'object-list/door-sensor',
+    component: DoorSensorComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
     }
   },
   {

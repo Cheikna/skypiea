@@ -7,6 +7,8 @@ import { ObjectInfoComponent } from 'src/app/dialogs/object-info/object-info.com
 import { WebStorageService } from 'src/app/util/web-storage.service';
 import { storageKey } from 'src/app/util/storageKey.util';
 import { ObjectSetting } from 'src/app/models/objectSetting.model';
+import { NonMedicalObjectType } from 'src/app/enums/nonMedicalObjectType.enum';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-ObjectList',
@@ -21,6 +23,9 @@ export class ObjectListComponent implements OnInit {
   nonMedicalConnectedObjects: Array<any>;
 
   constructor(private roomService: RoomService, private dialog: MatDialog, private webStorageService: WebStorageService) { }
+  constructor(private router: Router, private roomService: RoomService, private dialog: MatDialog, private webStorageService: WebStorageService) {
+
+  }
 
 
   ngOnInit() {
@@ -43,5 +48,22 @@ export class ObjectListComponent implements OnInit {
     }
 
     dialogRef.componentInstance.nonMedicalConnectedObject = nonMedicalConnectedObject.currentSetting;
+  }
+
+  redirectToObjectConfigurationPage(object) {
+    if (object.nonMedicalObjectType == NonMedicalObjectType.ALARM_CLOCK) {
+      this.webStorageService.temporaryData = object;
+      this.router.navigate(["object-list/alarm-clock"]);
+    }
+
+    if (object.nonMedicalObjectType == NonMedicalObjectType.BULB){
+      this.webStorageService.temporaryData = object; 
+      this.router.navigate(["object-list/bulb"]);
+    }
+
+    if (object.nonMedicalObjectType == NonMedicalObjectType.DOOR_SENSOR){
+      this.webStorageService.temporaryData = object; 
+      this.router.navigate(["object-list/door-sensor"]);
+    }
   }
 }
