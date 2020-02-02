@@ -10,9 +10,6 @@ import { storageKey } from '../util/storageKey.util';
 })
 export class AuthenticationService extends RestService {
 
-  private readonly userInfoStr: string = "USER_INFO";
-  private readonly isAuthenticatedStr: string = "IS_AUTHENTICATED";
-
   constructor(protected http: HttpClient, protected webStorageService: WebStorageService) { 
     super("users", http);
   }

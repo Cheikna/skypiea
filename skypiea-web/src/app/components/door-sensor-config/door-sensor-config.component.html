@@ -1,0 +1,27 @@
+<br> 
+<h1>Door Sensor</h1>
+
+  <br>
+  <table class="table table-bordered">
+   <tbody>
+    <br>
+    <tr>
+      <td>Installation date : {{nonMedicalConnectedObject?.installationDate | date: 'medium'}}</td>
+      <td>Brand: {{nonMedicalConnectedObject?.brand}}</td>
+      <td>Status : {{ nonMedicalConnectedObject?.status}} </td>
+        <td> Door locked :  {{setting?.isDoorLocked}} </td>
+        <td> Door Open:  {{setting?.isDoorOpen}} </td>
+      </tr>
+      <br>
+    <h1>Update settings</h1>
+    <tr>
+        <td>  
+           <!-- <mat-slide-toggle [formControl]="activate" (toggleChange)="onToggleChange($event)">Lock the door</mat-slide-toggle> -->
+        </td>
+ 
+    </tr> 
+    </tbody>
+    <br> 
+    <button type="button" class="btn btn-success">Enregistrer</button>
+</table>
+

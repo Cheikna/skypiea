@@ -1,5 +1,6 @@
 package com.skytech.skypiea.api.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.apache.commons.validator.GenericValidator;
@@ -8,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.skytech.skypiea.api.repository.UserRepository;
 import com.skytech.skypiea.commons.entity.Logon;
-import com.skytech.skypiea.commons.entity.Staff;
 import com.skytech.skypiea.commons.entity.User;
+import com.skytech.skypiea.commons.util.DateUtil;
 import com.skytech.skypiea.commons.util.PasswordUtil;
 
 @Service
@@ -27,14 +28,23 @@ public class UserService {
 		if(!GenericValidator.isBlankOrNull(username)) {
 			username = username.trim();
 			List<User> users = userRepository.findByUsername(username);
+			
 			//Check if a user with the same username exists in the database
 			if(users != null && users.size() > 0) {
+				// The username is unique, so if we can found 0 or 1 user at max
 				databaseUser = users.get(0);
+				// Check if the passwords are correct
 				if(PasswordUtil.verify(password, databaseUser.getPassword())) {
+					Timestamp previousAuthenticationTime = databaseUser.getLastConnectionDate();
+					//Save the last authentication date into the database
+					databaseUser.setLastConnectionDate(DateUtil.getCurrentTimestamp());
+					userRepository.save(databaseUser);					
+					
 					// We set the database to null, so that we do not it send to the front
 					databaseUser.setPassword(null);
-					if(databaseUser instanceof Staff)
-						return (Staff)databaseUser;
+					// Set the previous authentication time to the user
+					databaseUser.setLastConnectionDate(previousAuthenticationTime);
+					
 					return databaseUser;
 				}
 			}
@@ -43,10 +53,4 @@ public class UserService {
 		return null;
 		
 	}
-	
-	public User save(User user) {
-		return userRepository.save(user);
-	}
-
-
 }

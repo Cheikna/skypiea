@@ -1,10 +1,14 @@
 import { Inject, Injectable } from '@angular/core';
 import { SESSION_STORAGE, LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
+import { UserType } from '../enums/userType.enum';
+import { storageKey } from './storageKey.util';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebStorageService {
+
+  temporaryData: any;
 
   /**
    * 
@@ -26,11 +30,11 @@ export class WebStorageService {
   
 
   getConnectedUserType(){
-    const userInfo = this.getSessionAttribute("USER_INFO");
+    const userInfo = this.getSessionAttribute(storageKey.USER_INFO.name);
     if(userInfo){
       return userInfo.userType;
     }
-    return null;
+    return UserType.NOT_CONNECTED;
   }
   
 }

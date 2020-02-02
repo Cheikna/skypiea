@@ -18,8 +18,6 @@ import { PersonnalFormComponent } from './components/personnal-form/personnal-fo
 
 
 
-import { AlarmClockDetailsComponent } from './components/alarm-clock-details/alarm-clock-details.component';
-
 import { RoomPlanComponent } from './sub-components/room-plan/room-plan.component';
 import { RoomSummaryComponent } from './sub-components/room-summary/room-summary.component';
 import { RoomInformationComponent } from './components/room-information/room-information.component';
@@ -29,8 +27,14 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { UserVisibilityDirective } from './directives/user-visibility.directive';
 import { FloorOnePlanComponent } from './floors-plan-components/floor-one-plan/floor-one-plan.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+
 import { ObjectIhmComponent } from './components/object-ihm/object-ihm.component';
 import { ObjectConfigurationGroupe1Component } from './sub-components/object-configuration-groupe1/object-configuration-groupe1.component';
+import { AnalysisComponent } from './components/analysis/analysis.component';
+import { DiseaseFormComponent } from './sub-components/disease-form/disease-form.component';
+import { AlarmClockConfigComponent } from './components/alarm-clock-config/alarm-clock-config.component';
+import { BulbConfigComponent } from './components/bulb-config/bulb-config.component';
+import { DoorSensorConfigComponent } from './components/door-sensor-config/door-sensor-config.component';
 
 
 
@@ -50,9 +54,7 @@ import { ObjectConfigurationGroupe1Component } from './sub-components/object-con
     RoomInformationComponent,
     MonitoringComponent,
     RoomPlanComponent,
-    AlarmClockDetailsComponent,
-    
-    AlarmClockDetailsComponent,
+
     TrackingComponent,
     TracklistCharactersComponent,
     PersonnalFormComponent,
@@ -62,8 +64,16 @@ import { ObjectConfigurationGroupe1Component } from './sub-components/object-con
     PersonnalFormComponent,
     FloorOnePlanComponent,
     DynamicFormComponent,
+
     ObjectIhmComponent,
     ObjectConfigurationGroupe1Component,
+
+    AnalysisComponent,
+    DiseaseFormComponent,
+    AlarmClockConfigComponent,
+    BulbConfigComponent,
+    DoorSensorConfigComponent
+
   ],
   imports: [
     BrowserModule,
