@@ -22,7 +22,6 @@ export class ObjectListComponent implements OnInit {
 
   nonMedicalConnectedObjects: Array<any>;
 
-  constructor(private roomService: RoomService, private dialog: MatDialog, private webStorageService: WebStorageService) { }
   constructor(private router: Router, private roomService: RoomService, private dialog: MatDialog, private webStorageService: WebStorageService) {
 
   }
