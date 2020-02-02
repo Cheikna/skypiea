@@ -1,8 +1,11 @@
 <section>
 
     <div class="container">
-
+        <br>
+        <br>
+        <br>
         <h4>List of connected objects :</h4>
+        <br>
         <table class="table table-bordered table-dark">
             <thead>
                 <tr>
@@ -20,7 +23,7 @@
             </thead>
            <tbody>
                     <tr *ngFor="let nonMedicalConnectedObject of nonMedicalConnectedObjects">
-                        <td>{{ nonMedicalConnectedObject.installationDate }}</td>
+                        <td>{{ nonMedicalConnectedObject.installationDate |  date: 'medium' }}</td>
                         <td>{{ nonMedicalConnectedObject.nonMedicalObjectType}}</td>
                         <td>{{ nonMedicalConnectedObject.brand}}</td>
                         <td>{{ nonMedicalConnectedObject.status}}</td>

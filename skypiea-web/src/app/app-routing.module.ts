@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { ObjectListComponent } from './components/ObjectList/ObjectList.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
 import { RoomInformationComponent } from './components/room-information/room-information.component';
 import { TrackingComponent } from './components/tracking/tracking.component';
@@ -13,6 +12,8 @@ import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.com
 import { AnalysisComponent } from './components/analysis/analysis.component';
 import { EventHistoryComponent } from './components/event-history/event-history.component';
 import {HealthControlComponent} from "./components/health-control/health-control.component";
+import { ObjectIhmComponent } from './components/object-ihm/object-ihm.component';
+import { ObjectConfigurationGroupe1Component } from './sub-components/object-configuration-groupe1/object-configuration-groupe1.component';
 
 
 const routes: Routes = [
@@ -21,10 +22,10 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'ObjectList',
-    component: ObjectListComponent,
-    canActivate: [AuthenticationGuard],
-    data: {
+    path: 'ObjectIhm',
+    component: ObjectIhmComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
       userType: 'RESIDENT'
     }
   },

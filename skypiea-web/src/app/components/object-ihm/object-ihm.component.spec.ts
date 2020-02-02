@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ObjectListComponent } from './ObjectList.component';
+import { ObjectIhmComponent } from './object-ihm.component';
 
-describe('ObjectListComponent', () => {
-  let component: ObjectListComponent;
-  let fixture: ComponentFixture<ObjectListComponent>;
+describe('ObjectIhmComponent', () => {
+  let component: ObjectIhmComponent;
+  let fixture: ComponentFixture<ObjectIhmComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ObjectListComponent ]
+      declarations: [ ObjectIhmComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ObjectListComponent);
+    fixture = TestBed.createComponent(ObjectIhmComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

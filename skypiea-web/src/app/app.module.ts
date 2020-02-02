@@ -16,9 +16,8 @@ import { TrackingComponent } from './components/tracking/tracking.component';
 import { TracklistCharactersComponent } from './components/tracklist-characters/tracklist-characters.component';
 import { PersonnalFormComponent } from './components/personnal-form/personnal-form.component';
 
-import { ObjectListComponent } from './components/ObjectList/ObjectList.component';
 
-import { NonMedicalConnectedObjectListComponent } from './components/non-medical-connected-object-list/non-medical-connected-object-list.component';
+
 import { AlarmClockDetailsComponent } from './components/alarm-clock-details/alarm-clock-details.component';
 
 import { RoomPlanComponent } from './sub-components/room-plan/room-plan.component';
@@ -37,6 +36,9 @@ import { ObjectMonitoringExtraInfoComponent } from './dialogs/object-monitoring-
 import { FloorPlanComponent } from './sub-components/floor-plan/floor-plan.component';
 import { EventHistoryComponent } from './components/event-history/event-history.component';
 import { HealthControlComponent } from './components/health-control/health-control.component';
+import { ObjectIhmComponent } from './components/object-ihm/object-ihm.component';
+import { ObjectConfigurationGroupe1Component } from './sub-components/object-configuration-groupe1/object-configuration-groupe1.component';
+
 
 
 
@@ -56,9 +58,8 @@ import { HealthControlComponent } from './components/health-control/health-contr
     RoomInformationComponent,
     MonitoringComponent,
     RoomPlanComponent,
-    ObjectListComponent,
     AlarmClockDetailsComponent,
-    NonMedicalConnectedObjectListComponent,
+    
     AlarmClockDetailsComponent,
     TrackingComponent,
     TracklistCharactersComponent,
@@ -76,7 +77,9 @@ import { HealthControlComponent } from './components/health-control/health-contr
     FloorPlanComponent,
     EventHistoryComponent,
     AnalysisComponent,
-    HealthControlComponent
+    HealthControlComponent,
+    ObjectIhmComponent,
+    ObjectConfigurationGroupe1Component,
   ],
   imports: [
     BrowserModule,
