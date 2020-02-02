@@ -16,10 +16,6 @@ import { TrackingComponent } from './components/tracking/tracking.component';
 import { TracklistCharactersComponent } from './components/tracklist-characters/tracklist-characters.component';
 import { PersonnalFormComponent } from './components/personnal-form/personnal-form.component';
 
-
-
-import { AlarmClockDetailsComponent } from './components/alarm-clock-details/alarm-clock-details.component';
-
 import { RoomPlanComponent } from './sub-components/room-plan/room-plan.component';
 import { RoomSummaryComponent } from './sub-components/room-summary/room-summary.component';
 import { RoomInformationComponent } from './components/room-information/room-information.component';
@@ -39,6 +35,9 @@ import { HealthControlComponent } from './components/health-control/health-contr
 import { ObjectIhmComponent } from './components/object-ihm/object-ihm.component';
 import { ObjectConfigurationGroupe1Component } from './sub-components/object-configuration-groupe1/object-configuration-groupe1.component';
 
+import { AlarmClockConfigComponent } from './components/alarm-clock-config/alarm-clock-config.component';
+import { BulbConfigComponent } from './components/bulb-config/bulb-config.component';
+import { DoorSensorConfigComponent } from './components/door-sensor-config/door-sensor-config.component';
 
 
 
@@ -58,9 +57,6 @@ import { ObjectConfigurationGroupe1Component } from './sub-components/object-con
     RoomInformationComponent,
     MonitoringComponent,
     RoomPlanComponent,
-    AlarmClockDetailsComponent,
-    
-    AlarmClockDetailsComponent,
     TrackingComponent,
     TracklistCharactersComponent,
     PersonnalFormComponent,
@@ -80,6 +76,9 @@ import { ObjectConfigurationGroupe1Component } from './sub-components/object-con
     HealthControlComponent,
     ObjectIhmComponent,
     ObjectConfigurationGroupe1Component,
+    AlarmClockConfigComponent,
+    BulbConfigComponent,
+    DoorSensorConfigComponent
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlarmClockDetailsComponent } from './alarm-clock-details.component';
+import { DoorSensorConfigComponent } from './door-sensor-config.component';
 
-describe('AlarmClockDetailsComponent', () => {
-  let component: AlarmClockDetailsComponent;
-  let fixture: ComponentFixture<AlarmClockDetailsComponent>;
+describe('DoorSensorConfigComponent', () => {
+  let component: DoorSensorConfigComponent;
+  let fixture: ComponentFixture<DoorSensorConfigComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlarmClockDetailsComponent ]
+      declarations: [ DoorSensorConfigComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AlarmClockDetailsComponent);
+    fixture = TestBed.createComponent(DoorSensorConfigComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

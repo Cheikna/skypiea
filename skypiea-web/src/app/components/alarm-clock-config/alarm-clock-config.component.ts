@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { WebStorageService } from 'src/app/util/web-storage.service';
 
 @Component({
-  selector: 'app-bulb',
-  templateUrl: './bulb.component.html',
-  styleUrls: ['./bulb.component.scss']
+  selector: 'app-alarm-clock-config',
+  templateUrl: './alarm-clock-config.component.html',
+  styleUrls: ['./alarm-clock-config.component.scss']
 })
-export class BulbComponent implements OnInit {
-
+export class AlarmClockConfigComponent implements OnInit {
   nonMedicalConnectedObject: any;
   setting: any;
 
@@ -18,5 +17,4 @@ export class BulbComponent implements OnInit {
     this.nonMedicalConnectedObject = this.webStorageService.temporaryData;
     this.setting = this.nonMedicalConnectedObject.currentSetting;
   }
-
 }
