@@ -171,7 +171,8 @@ IS_AIR_CONDITIONNER_CONNECTED boolean
 
 CREATE TABLE ELECTRONIC_TAG(
 ID serial primary key, 
-VERSION integer, 
+VERSION integer,
+IP_ADDRESS VARCHAR(20), 
 RESIDENT_ID integer
 );
 
