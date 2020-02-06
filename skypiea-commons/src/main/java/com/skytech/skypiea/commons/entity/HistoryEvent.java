@@ -50,9 +50,7 @@ public class HistoryEvent extends Event {
 		this.reachedState = reachedState;
 	}
 
-	public void convertToHistory(RealTimeEvent realTimeEvent) {
-		this.id = realTimeEvent.id;
-		this.version = realTimeEvent.version;
+	public void cloneFromRealTimeEvent(RealTimeEvent realTimeEvent) {
 		this.eventType = realTimeEvent.eventType;
 		this.startTime = realTimeEvent.startTime;
 		this.description = realTimeEvent.description;

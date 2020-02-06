@@ -30,12 +30,13 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { UserVisibilityDirective } from './directives/user-visibility.directive';
 import { FloorOnePlanComponent } from './floors-plan-components/floor-one-plan/floor-one-plan.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { AnalysisComponent } from './components/analysis/analysis.component';
 import { DiseaseFormComponent } from './sub-components/disease-form/disease-form.component';
 import { ObjectMonitoringInfoComponent } from './sub-components/object-monitoring-info/object-monitoring-info.component';
 import { ObjectMonitoringExtraInfoComponent } from './dialogs/object-monitoring-extra-info/object-monitoring-extra-info.component';
 import { FloorPlanComponent } from './sub-components/floor-plan/floor-plan.component';
 import { EventHistoryComponent } from './components/event-history/event-history.component';
-import { AnalysisComponent } from './components/analysis/analysis.component';
+import { HealthControlComponent } from './components/health-control/health-control.component';
 
 
 
@@ -74,7 +75,8 @@ import { AnalysisComponent } from './components/analysis/analysis.component';
     ObjectMonitoringExtraInfoComponent,
     FloorPlanComponent,
     EventHistoryComponent,
-    AnalysisComponent
+    AnalysisComponent,
+    HealthControlComponent
   ],
   imports: [
     BrowserModule,

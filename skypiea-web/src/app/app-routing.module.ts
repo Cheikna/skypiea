@@ -12,6 +12,7 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { AnalysisComponent } from './components/analysis/analysis.component';
 import { EventHistoryComponent } from './components/event-history/event-history.component';
+import {HealthControlComponent} from "./components/health-control/health-control.component";
 
 
 const routes: Routes = [
@@ -21,81 +22,89 @@ const routes: Routes = [
   },
   {
     path: 'ObjectList',
-    component: ObjectListComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: ObjectListComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'RESIDENT'
     }
   },
   {
     path: 'monitoring',
-    component: MonitoringComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: MonitoringComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'STAFF'
     }
   },
   {
     path: 'monitoring/room/:doorNumber',
-    component: RoomInformationComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: RoomInformationComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'STAFF'
     }
   },
   {
     path: 'personnalForm',
-    component: PersonnalFormComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: PersonnalFormComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'NOT_CONNECTED'
     }
   },
   {
-    path: 'tracking', 
-    component: TrackingComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    path: 'tracking',
+    component: TrackingComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'STAFF'
     }
   },
   {
-    path: 'tracking/:id', 
-    component: TrackingComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    path: 'tracking/:id',
+    component: TrackingComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'STAFF'
     }
   },
   {
-    path: 'tracklist', 
-    component: TracklistCharactersComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    path: 'tracklist',
+    component: TracklistCharactersComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'STAFF'
     }
   },
   {
-    path: 'analysis', 
-    component: AnalysisComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    path: 'analysis',
+    component: AnalysisComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'STAFF'
     }
   },
   {
-    path: 'dynamicForm', 
-    component: DynamicFormComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    path: 'dynamicForm',
+    component: DynamicFormComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'NOT_CONNECTED'
     }
   },
   {
     path: 'monitoring/event-history',
-    component: EventHistoryComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: EventHistoryComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'STAFF'
+    }
+  },
+  {
+    path: 'health-control',
+    component: HealthControlComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'STAFF'
     }
   },

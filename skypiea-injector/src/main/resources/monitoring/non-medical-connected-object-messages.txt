@@ -1,0 +1,4 @@
+--OBJECT ID ; VALUE; SLEEP (=time to wait before sending the other massage)
+1;5;2
+2;7;1
+1;8;3

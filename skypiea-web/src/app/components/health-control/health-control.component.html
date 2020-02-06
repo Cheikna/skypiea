@@ -1,0 +1,7 @@
+<div *ngFor="let medicalConnectedObject of medicalConnectedObjects">
+  {{medicalConnectedObject.resident.firstName}} <br>
+  <div *ngFor="let healthControlHistory of medicalConnectedObject.healthControlHistories">
+    {{healthControlHistory.value}}
+  </div>
+
+</div>

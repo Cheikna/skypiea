@@ -8,9 +8,17 @@ public class Message {
 	private MessageSender messageSender;
 	private String value1;
 	private String value2;
+	private String ipAddress;
 	
 	public Message(Long objectId, MessageSender messageSender, String value1, String value2) {
 		this.objectId = objectId;
+		this.messageSender = messageSender;
+		this.value1 = value1;
+		this.value2 = value2;
+	}
+	
+	public Message(String ipAddress, MessageSender messageSender, String value1, String value2) {
+		this.ipAddress = ipAddress;
 		this.messageSender = messageSender;
 		this.value1 = value1;
 		this.value2 = value2;
@@ -51,9 +59,20 @@ public class Message {
 	public void setValue2(String value2) {
 		this.value2 = value2;
 	}
+	
+
+	public String getIpAddress() {
+		return ipAddress;
+	}
+
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
+	}
 
 	@Override
 	public String toString() {
-		return "Message [objectId=" + objectId + ", value1=" + value1 + ", value2=" + value2 + "]";
+		return "Message [objectId=" + objectId + ", messageSender=" + messageSender + ", value1=" + value1 + ", value2="
+				+ value2 + ", ipAddress=" + ipAddress + "]";
 	}
+
 }
