@@ -26,10 +26,10 @@ public class CacheInfoTest {
 		String oldestValue = "old";
 		cacheInfo.add(oldestValue);
 		cacheInfo.add("2");
-		assertEquals(2, cacheInfo.getNumberOfReceivedMessage());
+		assertEquals(2, cacheInfo.getNumberOfSavedMessage());
 		cacheInfo.add("3");
 		Pair<Timestamp, String> oldestInfo = cacheInfo.add("4");
-		assertEquals(3, cacheInfo.getNumberOfReceivedMessage());
+		assertEquals(3, cacheInfo.getNumberOfSavedMessage());
 		assertNotNull(oldestInfo);
 		assertEquals(oldestValue, oldestInfo.getValue1());
 	}

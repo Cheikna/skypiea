@@ -61,4 +61,12 @@ public class RealTimeEvent extends Event {
 	public void setCheckingCount(Long checkingCount) {
 		this.checkingCount = checkingCount;
 	}
+
+	@Override
+	public String toString() {
+		return "RealTimeEvent [lastCheckingTime=" + lastCheckingTime + ", currentState=" + currentState
+				+ ", checkingCount=" + checkingCount + ", eventType=" + eventType + ", startTime=" + startTime
+				+ ", description=" + description + ", lastMeasuredValue=" + lastMeasuredValue + ", id=" + id
+				+ ", version=" + version + "]";
+	}
 }
