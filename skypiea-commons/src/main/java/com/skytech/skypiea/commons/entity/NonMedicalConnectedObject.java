@@ -59,9 +59,10 @@ public class NonMedicalConnectedObject extends ConnectedObject {
 
 	public NonMedicalConnectedObject(Long id, Long version, Timestamp lastParameterModificationDate,
 			String brand, String ipAddress, String macAddress, Timestamp lastMeasurementDate,
-			Status status, State state, Long sensitivity, NonMedicalObjectType nonMedicalObjectType, Timestamp installationDate, String svgPoint) {
+			Status status, State state, Long sensitivity, NonMedicalObjectType nonMedicalObjectType, 
+			Timestamp installationDate, String svgPoint, Long frequency) {
 		super(id, version, lastParameterModificationDate, brand, ipAddress, macAddress, lastMeasurementDate,
-				status, state, sensitivity);
+				status, state, sensitivity, frequency);
 		this.nonMedicalObjectType = nonMedicalObjectType;
 		this.installationDate = installationDate;
 		this.svgPoint = svgPoint;

@@ -49,6 +49,9 @@ public abstract class ConnectedObject extends com.skytech.skypiea.commons.entity
 	@Column(name="SENSITIVITY")
 	protected Long sensitivity;
 	
+	@Column(name="FREQUENCY")
+	protected Long frequency;
+	
 	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true)
     @JoinColumn(name = "REAL_TIME_EVENT_ID")
 	protected RealTimeEvent realTimeEvent;
@@ -63,7 +66,7 @@ public abstract class ConnectedObject extends com.skytech.skypiea.commons.entity
 
 	public ConnectedObject(Long id, Long version, Timestamp lastParameterModificationDate,
 			String brand, String ipAddress, String macAddress, Timestamp lastMeasurementDate, Status status, State state,
-			Long sensitivity) {
+			Long sensitivity, Long frequency) {
 		super(id, version);
 		this.lastParameterModificationDate = lastParameterModificationDate;
 		this.brand = brand;
@@ -73,6 +76,7 @@ public abstract class ConnectedObject extends com.skytech.skypiea.commons.entity
 		this.status = status;
 		this.state = state;
 		this.sensitivity = sensitivity;
+		this.frequency = frequency;
 	}
 
 	public Timestamp getLastParameterModification() {
@@ -162,6 +166,14 @@ public abstract class ConnectedObject extends com.skytech.skypiea.commons.entity
 	public void setHistoryEvents(Set<HistoryEvent> historyEvents) {
 		this.historyEvents = historyEvents;
 	}	
+
+	public Long getFrequency() {
+		return frequency;
+	}
+
+	public void setFrequency(Long frequency) {
+		this.frequency = frequency;
+	}
 
 	@Override
 	public int hashCode() {

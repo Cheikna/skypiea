@@ -30,8 +30,8 @@ public class MedicalConnectedObject extends ConnectedObject {
         super();
     }
 
-    public MedicalConnectedObject(Long id, Long version, Timestamp lastParameterModificationDate, String brand, String ipAddress, String macAddress, Timestamp lastMeasurementDate, Status status, State state, Long sensitivity) {
-        super(id, version, lastParameterModificationDate, brand, ipAddress, macAddress, lastMeasurementDate, status, state, sensitivity);
+    public MedicalConnectedObject(Long id, Long version, Timestamp lastParameterModificationDate, String brand, String ipAddress, String macAddress, Timestamp lastMeasurementDate, Status status, State state, Long sensitivity, Long frequency) {
+        super(id, version, lastParameterModificationDate, brand, ipAddress, macAddress, lastMeasurementDate, status, state, sensitivity, frequency);
     }
 
     @Override
