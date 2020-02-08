@@ -51,8 +51,6 @@ public class RoomService {
 		rooms.forEach((room) -> {
 			room.initObjectQuantityByType();
 			room.setNumberOfNonMedicalObjects(room.getNonMedicalConnectedObjects().size());
-			// We do not need the details of the connected objects for the summary
-			room.setNonMedicalConnectedObjects(null);
 		}); 
 		return rooms;	
 	}
