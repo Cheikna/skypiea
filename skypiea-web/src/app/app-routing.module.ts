@@ -9,18 +9,20 @@ import { PersonnalFormComponent } from './components/personnal-form/personnal-fo
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+
+import { ObjectIhmComponent } from './components/object-ihm/object-ihm.component';
+import { ObjectConfigurationGroupe1Component } from './sub-components/object-configuration-groupe1/object-configuration-groupe1.component';
+
+
+
 import { AnalysisComponent } from './components/analysis/analysis.component';
 import { EventHistoryComponent } from './components/event-history/event-history.component';
 import {HealthControlComponent} from "./components/health-control/health-control.component";
-import { ObjectIhmComponent } from './components/object-ihm/object-ihm.component';
-import { ObjectConfigurationGroupe1Component } from './sub-components/object-configuration-groupe1/object-configuration-groupe1.component';
-import { AlarmClockComponent } from './components/alarm-clock/alarm-clock.component';
-import { BulbComponent} from './components/bulb/bulb.component'; 
-import { DoorSensorComponent} from './components/door-sensor/door-sensor.component'; 
-
 import { AlarmClockConfigComponent } from './components/alarm-clock-config/alarm-clock-config.component';
 import { BulbConfigComponent} from './components/bulb-config/bulb-config.component'; 
-import { DoorSensorConfigComponent} from './components/door-sensor-config/door-sensor-config.component'; 
+import { DoorSensorConfigComponent} from './components/door-sensor-config/door-sensor-config.component';
+
+
 const routes: Routes = [
   {
     path: '',
@@ -112,6 +114,30 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard],
     data: {
       userType: 'STAFF'
+    }
+  },
+  {
+    path: 'object-list/alarm-clock',
+    component: AlarmClockConfigComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'object-list/bulb',
+    component: BulbConfigComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'object-list/door-sensor',
+    component: DoorSensorConfigComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
     }
   },
   {
