@@ -37,6 +37,7 @@ import { ObjectMonitoringExtraInfoComponent } from './dialogs/object-monitoring-
 import { FloorPlanComponent } from './sub-components/floor-plan/floor-plan.component';
 import { EventHistoryComponent } from './components/event-history/event-history.component';
 import { HealthControlComponent } from './components/health-control/health-control.component';
+import { FailuresViewComponent } from './sub-components/failures-view/failures-view.component';
 
 
 
@@ -76,7 +77,8 @@ import { HealthControlComponent } from './components/health-control/health-contr
     FloorPlanComponent,
     EventHistoryComponent,
     AnalysisComponent,
-    HealthControlComponent
+    HealthControlComponent,
+    FailuresViewComponent
   ],
   imports: [
     BrowserModule,
