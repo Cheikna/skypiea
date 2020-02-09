@@ -1,0 +1,9 @@
+<h3>Percentage of rooms with at least one broken object : {{ brokenRoomsPercentage }}%</h3>
+<div *ngFor="let room of roomsWithBrokenObjects">
+    <h2>Room n°{{room.doorNumber}}</h2>
+    <div *ngFor="let object of room.nonMedicalConnectedObjects">
+        <div *ngIf="object.state == State.BROKEN">
+            {{object.ipAddress}}
+        </div>
+    </div>
+</div>
