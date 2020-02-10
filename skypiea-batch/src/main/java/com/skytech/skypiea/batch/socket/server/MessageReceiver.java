@@ -9,6 +9,7 @@ import java.net.Socket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.skytech.skypiea.commons.enumeration.MessageSender;
 import com.skytech.skypiea.commons.message.Message;
 import com.skytech.skypiea.commons.util.JsonUtil;
 
@@ -42,6 +43,9 @@ public class MessageReceiver implements Runnable {
 			String result = readFromClient.readLine();
 			Message message = JsonUtil.deserializeMessage(result);
 			System.out.println("Message received " + message.toString());
+			if(message.getMessageSender() == MessageSender.NON_MEDICAL_CONNECTED_OBJECT) {
+				//TODO Cheikna
+			}
 		}
 		catch (Exception e) 
 		{

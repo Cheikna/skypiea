@@ -1,10 +1,22 @@
 section {
+    background: url("../../../assets/images/backgrounds/sky_buildings.jpg") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1000px;
+    background-attachment: local;
+  }
+
+.trackmap {
+    margin: 0 auto;
+    height: 500px;
+    width: 1000px;
     background: url("../../../assets/images/backgrounds/map.jpg") !important;
     background-repeat: no-repeat;
     background-size: cover;
   }
 
-.empty {
-    height: 500px;
-  }
-  
+  .mat-icon {
+    height: 24px;
+    width: 24px;
+    color: red;
+    }

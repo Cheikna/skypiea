@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RoomService } from 'src/app/services/room.service';
 import { Room } from 'src/app/models/room.model';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { stateInfo } from 'src/app/enums/state.enum';
 
 @Component({
   selector: 'app-monitoring',

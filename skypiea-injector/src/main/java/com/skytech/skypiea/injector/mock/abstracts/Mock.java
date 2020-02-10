@@ -3,12 +3,15 @@ package com.skytech.skypiea.injector.mock.abstracts;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Consumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.skytech.skypiea.commons.entity.Entity;
+import com.skytech.skypiea.commons.util.FileReader;
+import com.skytech.skypiea.injector.util.ScannerUtil;
 
 public abstract class Mock {
 	
@@ -44,5 +47,20 @@ public abstract class Mock {
 
 	public List<Long> getCreatedIds() {
 		return createdIds;
+	}
+	
+	public void chooseFileLocationAndLaunch(Scanner sc, String projectMockFileLocation, Consumer<String> consumerToApplyOnFileLines) {
+		String askForSystemFile = ScannerUtil.askForString(sc, "Read file from system (y/N) ? [N] ", null, "N");
+		Boolean isSystemFile = askForSystemFile.equalsIgnoreCase("y");
+		String filePath = null;
+		
+		if(isSystemFile) {
+			String currentDirectory = FileReader.getCurrentDirectory();
+			System.out.println("Current directory : " + currentDirectory);
+			filePath = ScannerUtil.askForString(sc, "Enter the file path : ", null, "N");
+		} else {
+			filePath = projectMockFileLocation;
+		}
+		FileReader.readLine(filePath, consumerToApplyOnFileLines, isSystemFile);
 	}
 }

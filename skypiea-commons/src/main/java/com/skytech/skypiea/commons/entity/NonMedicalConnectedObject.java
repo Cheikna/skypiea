@@ -36,7 +36,7 @@ public class NonMedicalConnectedObject extends ConnectedObject {
 	
 	@JsonBackReference
 	@ManyToOne
-    @JoinColumn(name = "ROOM_ID", nullable = false)
+    @JoinColumn(name = "ROOM_ID")
 	private Room room;
 	
 	@Column(name="SVG_POINT")
@@ -58,9 +58,9 @@ public class NonMedicalConnectedObject extends ConnectedObject {
 
 	public NonMedicalConnectedObject(Long id, Long version, Timestamp lastParameterModificationDate,
 			String brand, String ipAddress, String macAddress, Timestamp lastMeasurementDate,
-			Status status, State state, NonMedicalObjectType nonMedicalObjectType, Timestamp installationDate, String svgPoint) {
+			Status status, State state, Long sensitivity, NonMedicalObjectType nonMedicalObjectType, Timestamp installationDate, String svgPoint) {
 		super(id, version, lastParameterModificationDate, brand, ipAddress, macAddress, lastMeasurementDate,
-				status, state);
+				status, state, sensitivity);
 		this.nonMedicalObjectType = nonMedicalObjectType;
 		this.installationDate = installationDate;
 		this.svgPoint = svgPoint;
@@ -90,7 +90,7 @@ public class NonMedicalConnectedObject extends ConnectedObject {
 		this.svgPoint = svgPoint;
 	}
 
-	public Set<ObjectSetting> getObjectSettings() {
+	public Set<? extends ObjectSetting> getObjectSettings() {
 		return objectSettings;
 	}
 
