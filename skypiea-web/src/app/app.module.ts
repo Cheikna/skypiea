@@ -43,6 +43,8 @@ import { BulbConfigComponent } from './components/bulb-config/bulb-config.compon
 import { DoorSensorConfigComponent } from './components/door-sensor-config/door-sensor-config.component';
 import { ShutterConfigComponent } from './components/shutter-config/shutter-config.component';
 import { TemperatureControllerConfigComponent } from './components/temperature-controller-config/temperature-controller-config.component';
+import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smoke-sensor-config.component';
+import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
 
 import 'hammerjs';
 
@@ -86,7 +88,9 @@ import 'hammerjs';
     BulbConfigComponent,
     DoorSensorConfigComponent,
     ShutterConfigComponent,
-    TemperatureControllerConfigComponent
+    TemperatureControllerConfigComponent,
+    SmokeSensorConfigComponent,
+    SunshineSensorConfigComponent
 
   ],
   imports: [
