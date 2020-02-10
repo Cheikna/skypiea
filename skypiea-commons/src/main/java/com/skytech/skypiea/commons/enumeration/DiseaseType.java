@@ -1,6 +1,6 @@
 package com.skytech.skypiea.commons.enumeration;
 
-public enum Disease {
+public enum DiseaseType {
 	DIABETIC,
 	
 	ARTHRITIS,

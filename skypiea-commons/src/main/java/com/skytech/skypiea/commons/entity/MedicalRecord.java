@@ -8,15 +8,18 @@ import com.skytech.skypiea.commons.enumeration.DiseaseType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-@Table(name="DISEASE")
-public class Disease extends com.skytech.skypiea.commons.entity.Entity{
+@Table(name="MEDICAL_RECORD")
+public class MedicalRecord extends com.skytech.skypiea.commons.entity.Entity{
 
 
 	@Enumerated(EnumType.STRING)
-	@Column(name="TYPE_OF_DISEASE")
-	protected DiseaseType typeOfDisease;
+	@Column(name="DISEASE_TYPE")
+	protected DiseaseType disease;
 
 	@Column(name="DURATION")
 	protected String duration;
@@ -25,23 +28,24 @@ public class Disease extends com.skytech.skypiea.commons.entity.Entity{
 	protected String treatment;
 	
 	
-	public Disease() {
-		super();
+	
+	public MedicalRecord() {
+		
 	}
 	
-	public Disease(Long id, Long version, DiseaseType typeOfDisease, String duration, String treatment) {
+	public MedicalRecord(Long id, Long version, DiseaseType disease, String duration, String treatment) {
 		super(id, version);
-		this.typeOfDisease = typeOfDisease;
+		this.disease = disease;
 		this.duration = duration;
 		this.treatment = treatment;
 	}
 
-	public DiseaseType getTypeOfDisease() {
-		return typeOfDisease;
+	public DiseaseType getDisease() {
+		return disease;
 	}
 
-	public void setTypeOfDisease(DiseaseType typeOfDisease) {
-		this.typeOfDisease = typeOfDisease;
+	public void setDisease(DiseaseType disease) {
+		this.disease = disease;
 	}
 
 	public String getDuration() {
@@ -59,14 +63,4 @@ public class Disease extends com.skytech.skypiea.commons.entity.Entity{
 	public void setTreatment(String treatment) {
 		this.treatment = treatment;
 	}
-
-	@Override
-	public String toString() {
-		return "Disease [typeOfDisease=" + typeOfDisease + ", duration=" + duration + ", treatment=" + treatment + "]";
-	}
-
-	
-	
-	
-
 }

@@ -1,4 +1,4 @@
-export enum Disease {
+export enum DiseaseType {
 	
 	DIABETIC = "DIABETIC",
 	

@@ -29,6 +29,7 @@ export class PersonnalFormComponent implements OnInit {
       (data) => {
         if(data){
           console.log("client created");
+          console.log("ID client : " + data.id);
           this.router.navigate(['/dynamicForm', data.id]).then(() => {
             this.toastService.displayToast(ToastType.SUCCESS, 'Successful connection', true, 'Please wait, the page will reload');
           });

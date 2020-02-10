@@ -41,8 +41,8 @@ public class Client extends com.skytech.skypiea.commons.entity.Entity{
 	@Column(name="COUNTRY")
 	protected String country;
 	
-	@OneToMany(mappedBy = "client")
-	private Collection<MedicalRecord> medicalRecords;
+	/*@OneToMany(mappedBy = "client")
+	private Collection<Disease> medicalRecords;*/
 
 	public Client() {
 		super();
@@ -141,12 +141,12 @@ public class Client extends com.skytech.skypiea.commons.entity.Entity{
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Collection<MedicalRecord> getMedicalRecords() {
+	/*public Collection<Disease> getMedicalRecords() {
 		return medicalRecords;
 	}
 
-	public void setMedicalRecords(Collection<MedicalRecord> medicalRecords) {
+	public void setMedicalRecords(Collection<Disease> medicalRecords) {
 		this.medicalRecords = medicalRecords;
-	}
+	}*/
 
 }

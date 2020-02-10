@@ -1,16 +1,21 @@
 <mat-card fxLayoutAlign="start start">
-    <form class="needs-validation" [formGroup]="diseaseForm" ngNativeValidate>
+    <form class="needs-validation" ngNativeValidate [formGroup]="diseaseForm" (ngSubmit)="create()">
         <div class="form-group">
                 <div>
                     <label for="duration">How long have you been treated ?</label>
-                    <input type="text" class="form-control-center" formControlName="duration" [(ngModel)]="duration" name="duration" placeholder="Ex : 3 years" required>
+                    <input type="text" class="form-control-center" formControlName="duration" [(ngModel)]="newDisease.duration" name="duration" placeholder="Ex : 3 years" required>
                 </div>
         </div>
         <div class="form-group">
                 <div>
                     <label for="treatment">Which treatments do you take ?</label>
-                    <input type="text" class="form-control" formControlName="treatment" name="treatment" [(ngModel)]="treatment" placeholder="Ex : Insuline" required>
+                    <input type="text" class="form-control" formControlName="treatment" name="treatment" [(ngModel)]="newDisease.treatment" placeholder="Ex : Insuline" required>
                 </div>
+        </div>
+        <div mat-dialog-actions class="d-flex justify-content-left">
+            <button mat-raised-button class="btn btn-success" type="submit">
+                <mat-icon>done</mat-icon>Valid
+            </button> 
         </div>
     </form>
 </mat-card>

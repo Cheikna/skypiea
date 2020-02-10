@@ -10,25 +10,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skytech.skypiea.api.service.MedicalRecordService;
-import com.skytech.skypiea.commons.entity.MedicalRecord;
+import com.skytech.skypiea.api.service.DiseaseService;
+import com.skytech.skypiea.commons.entity.Disease;
+import com.skytech.skypiea.commons.enumeration.DiseaseType;
+
+import superObject.DiseaseSuper;
 
 @RestController
-@RequestMapping("/medical-records")
+@RequestMapping("/diseases")
 @CrossOrigin(origins="*", allowedHeaders="*")
-public class MedicalRecordController {
+public class DiseaseController {
 	
 	@Autowired
-	private MedicalRecordService medicalRecordService;
+	private DiseaseService diseaseService;
 	
 	@PostMapping("")
-	public MedicalRecord createNewMedicalRecord(@RequestBody MedicalRecord medicalRecord) {
-		return medicalRecordService.save(medicalRecord);
+	public Disease createNewDisease(@RequestBody Disease disease) {
+		return diseaseService.save(disease);
 	}	
 	
 	@GetMapping("")
-	public List<MedicalRecord> getMedicalRecord() {
-		return medicalRecordService.findAll();
+	public List<Disease> getDisease() {
+		return diseaseService.findAll();
 	}
+
+	/*@PostMapping("/typeOfDisease")
+	public Disease setTypeOfDisease(DiseaseSuper diseaseSuper) {
+		return diseaseService.setDiseaseType(diseaseSuper);
+	}*/
+	
+	
 
 }

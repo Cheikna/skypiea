@@ -5,21 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.skytech.skypiea.api.repository.MedicalRecordRepository;
-import com.skytech.skypiea.commons.entity.MedicalRecord;
+import com.skytech.skypiea.api.repository.DiseaseRepository;
+import com.skytech.skypiea.commons.entity.Client;
+import com.skytech.skypiea.commons.entity.Disease;
+import com.skytech.skypiea.commons.enumeration.DiseaseType;
+
+import superObject.DiseaseSuper;
 
 @Service
-public class MedicalRecordService {
+public class DiseaseService {
 	
 	@Autowired
-	private MedicalRecordRepository medicalRecordRepository;
+	private DiseaseRepository diseaseRepository;
 	
-	public MedicalRecord save(MedicalRecord medicalRecord) {
-		return medicalRecordRepository.save(medicalRecord);
+	public Disease save(Disease disease/*, int id_client*/) {
+		/*Client client = new Client();
+		client.getId();*/
+		System.out.println(disease);
+		return diseaseRepository.save(disease);
 	}
 
-	public List<MedicalRecord> findAll(){
-		List<MedicalRecord> medicalRecords = this.medicalRecordRepository.findAll();
-		return medicalRecords;
+	public List<Disease> findAll(){
+		List<Disease> diseases = this.diseaseRepository.findAll();
+		return diseases;
 	}
 }

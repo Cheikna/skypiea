@@ -10,6 +10,7 @@ import { PersonnalFormComponent } from './components/personnal-form/personnal-fo
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { DiseaseFormComponent } from './sub-components/disease-form/disease-form.component';
 
 
 const routes: Routes = [
@@ -76,6 +77,14 @@ const routes: Routes = [
   {
     path: 'dynamicForm/:id', 
     component: DynamicFormComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'NOT_CONNECTED'
+    }
+  },
+  {
+    path: 'diseaseForm', 
+    component: DiseaseFormComponent, 
     canActivate: [AuthenticationGuard], 
     data: { 
       userType: 'NOT_CONNECTED'
