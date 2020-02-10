@@ -1,22 +1,31 @@
 package com.skytech.skypiea.injector.mock.healthcare;
 
 import com.skytech.skypiea.commons.enumeration.MessageSender;
+import com.skytech.skypiea.commons.message.Message;
 import com.skytech.skypiea.injector.mock.abstracts.Mock;
+import com.skytech.skypiea.injector.socket.client.ClientSocket;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Scanner;
 import java.util.function.Consumer;
 
+@Service
 public class HealthControlMock extends Mock {
 
     private static Logger log = LoggerFactory.getLogger(HealthControlMock.class);
 
     private final String FILE_PATH = "health-control/mock-health-rate.txt";
 
+    @Autowired
+    private ClientSocket clientSocket;
+
     @Override
     public void start(Scanner sc) {
+        super.chooseFileLocationAndLaunch(sc,FILE_PATH, formatMockTextFileAndSend);
 
     }
 
@@ -25,10 +34,10 @@ public class HealthControlMock extends Mock {
         if(line != null && (line.trim().length() > 0) && !line.startsWith("--")) {
             String[] splitted = line.split(";");
             if(splitted.length >= 3) {
-                String macAddress = splitted[0];
+                String ipAddress = splitted[0];
                 String valueStr = splitted[1];
                 String sleepStr = splitted[2];
-                Message message = new Message(macAddress, MessageSender.NON_MEDICAL_CONNECTED_OBJECT, valueStr, "");
+                Message message = new Message(ipAddress, MessageSender.MEDICAL_CONNECTED_OBJECT, valueStr, "");
                 clientSocket.sendMessage(message);
 
                 Long sleep = NumberUtils.toLong(sleepStr, 1) * 1000;
@@ -39,7 +48,7 @@ public class HealthControlMock extends Mock {
                 }
             }
             else {
-                log.info("One of the values is missing : ID;VALUE;SLEEP");
+                log.info("One of the values is missing : IP_ADDRESS;VALUE;SLEEP");
             }
         }
     };

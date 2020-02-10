@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.function.Predicate;
 
+import com.skytech.skypiea.injector.mock.healthcare.HealthControlMock;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.validator.GenericValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ public class Console {
 	private NonMedicalObjectMessageMock nonMedicalObjectMessageMock;
 	@Autowired
 	private FailureMessageMock failureMessageMock;
+	@Autowired
+	private HealthControlMock healthControlMock;
 	
 	
 	/******* END MOCKS DECLARATION *******/
@@ -80,6 +83,7 @@ public class Console {
 		mocks.add(userMock);
 		mocks.add(nonMedicalObjectMessageMock);
 		mocks.add(failureMessageMock);
+		mocks.add(healthControlMock);
 		/********** END MOCKS ADDING **********/
 
 		mockDisplayNames = "\n====== List of mock(s) : ======\n";		
