@@ -7,8 +7,6 @@ import { Disease } from 'src/app/models/disease.model';
 import { DiseaseService } from 'src/app/services/disease.service';
 import { ToastType } from 'src/app/enums/toastType.enum';
 import { DiseaseType } from 'src/app/enums/disease.enum';
-import { DiseaseSuper } from 'src/app/models/diseaseSuper.model';
-
 
 @Component({
   selector: 'app-disease-form',
@@ -19,13 +17,11 @@ export class DiseaseFormComponent implements OnInit {
   diseaseForm: FormGroup;
   dynamicDisease: DynamicFormComponent;
   @Output() newDisease: Disease;
-  diseaseSuper: DiseaseSuper;
 
 
 
   constructor(private diseaseService: DiseaseService,  private toastService: ToastService, private router: Router) {
     this.newDisease = new Disease();
-    this.diseaseSuper = new DiseaseSuper();
     this.diseaseForm = this.createFormGroup();
    }
 
