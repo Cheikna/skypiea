@@ -1,4 +1,4 @@
-insert into electronic_tag values(nextval(pg_get_serial_sequence('electronic_tag', 'id')),1,(SELECT id from skypiea_user where username='leo'));
+insert into electronic_tag values(nextval(pg_get_serial_sequence('electronic_tag', 'id')),1, '192.168.3.1', (SELECT id from skypiea_user where username='leo'));
 
 insert into history_moving(posx, posy, saving_time, electronic_tag_id) values (5, 6, '2019-12-16 11:00:00.000', currval(pg_get_serial_sequence('electronic_tag', 'id')));
 insert into history_moving(posx, posy, saving_time, electronic_tag_id) values (5, 6, '2019-12-16 11:02:00.000', currval(pg_get_serial_sequence('electronic_tag', 'id')));
@@ -32,8 +32,8 @@ insert into history_moving(posx, posy, saving_time, electronic_tag_id) values (5
 insert into history_moving(posx, posy, saving_time, electronic_tag_id) values (5, 6, '2019-12-16 11:58:00.000', currval(pg_get_serial_sequence('electronic_tag', 'id')));
 insert into history_moving(posx, posy, saving_time, electronic_tag_id) values (5, 6, '2019-12-16 12:00:00.000', currval(pg_get_serial_sequence('electronic_tag', 'id')));
 
-insert into electronic_tag values(nextval(pg_get_serial_sequence('electronic_tag', 'id')),1,(SELECT id from skypiea_user where username='gerard'));
-insert into electronic_tag values(nextval(pg_get_serial_sequence('electronic_tag', 'id')),1,(SELECT id from skypiea_user where username='fabrice'));
-insert into electronic_tag values(nextval(pg_get_serial_sequence('electronic_tag', 'id')),1,(SELECT id from skypiea_user where username='solange'));
-insert into electronic_tag values(nextval(pg_get_serial_sequence('electronic_tag', 'id')),1,(SELECT id from skypiea_user where username='catherine'));
-insert into electronic_tag values(nextval(pg_get_serial_sequence('electronic_tag', 'id')),1,(SELECT id from skypiea_user where username='angele'));
+insert into electronic_tag values(nextval(pg_get_serial_sequence('electronic_tag', 'id')),1,'192.168.3.2', (SELECT id from skypiea_user where username='gerard'));
+insert into electronic_tag values(nextval(pg_get_serial_sequence('electronic_tag', 'id')),1,'192.168.3.3', (SELECT id from skypiea_user where username='fabrice'));
+insert into electronic_tag values(nextval(pg_get_serial_sequence('electronic_tag', 'id')),1,'192.168.3.4', (SELECT id from skypiea_user where username='solange'));
+insert into electronic_tag values(nextval(pg_get_serial_sequence('electronic_tag', 'id')),1,'192.168.3.5', (SELECT id from skypiea_user where username='catherine'));
+insert into electronic_tag values(nextval(pg_get_serial_sequence('electronic_tag', 'id')),1,'192.168.3.6', (SELECT id from skypiea_user where username='angele'));
