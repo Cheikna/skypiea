@@ -52,7 +52,7 @@ public class FileReader {
 	 */
 	public static void readLine(String filePath, Consumer<String> consumerToApplyOnLine, boolean isSystemFile)
 	{
-		System.out.println(currentDirectory);
+		System.out.println("==> " + filePath);
 		try 
 		{
 			InputStream inputStream = null;
@@ -78,6 +78,11 @@ public class FileReader {
 		catch (Exception e) 
 		{
 			log.error("Error when getting the file '" + filePath + "'");
+			e.printStackTrace();
 		}
 	}
+
+	public static String getCurrentDirectory() {
+		return currentDirectory + fileSeparator;
+	}	
 }

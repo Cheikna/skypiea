@@ -20,7 +20,7 @@ public class ScannerUtil {
 	 * @return
 	 */
 	public static String askForString(Scanner sc, String question, Predicate<String> predicate, String defaultValue) {
-		boolean isAnswerCorrect = false;
+		boolean isAnswerCorrect = true;
 		String answer = null;
 		do {
 			// Display the question to the user

@@ -1,4 +1,13 @@
---OBJECT ID ; VALUE; SLEEP (=time to wait before sending the other massage)
-1;5;2
-2;7;1
-1;8;3
+--OBJECT IP ADDRESS ; VALUE; SLEEP (=time to wait before sending the other massage)
+--SMOKE SENSOR
+192.168.0.7;100;3
+192.168.0.7;100;3
+192.168.0.7;800;3
+192.168.0.7;800;3
+192.168.0.7;800;3
+192.168.0.7;800;3
+192.168.0.7;800;3
+192.168.0.7;800;3
+192.168.0.7;800;3
+192.168.0.7;100;3
+192.168.0.7;100;3
