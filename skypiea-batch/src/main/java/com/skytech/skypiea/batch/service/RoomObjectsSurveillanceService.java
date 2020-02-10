@@ -39,11 +39,11 @@ public class RoomObjectsSurveillanceService {
 		State newObjectState = State.getDefaultState();
 		
 		if(nonMedicalConnectedObject != null) {
-			newObjectState = failureAlgo.check(nonMedicalConnectedObject, message);
+			//newObjectState = failureAlgo.check(nonMedicalConnectedObject, message);
 			
 			// If the object is not broken we can monitor it
 			if(newObjectState != State.BROKEN) {
-				newObjectState = monitoringAlgo.check(nonMedicalConnectedObject, message);
+				//newObjectState = monitoringAlgo.check(nonMedicalConnectedObject, message);
 			}
 			
 			// Check if the object state has changed

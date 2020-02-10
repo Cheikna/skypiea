@@ -10,11 +10,15 @@ public enum State {
 
 	private int level;
 	
-	State(int priority){
-		this.priority = priority;
+	State(int level){
+		this.level = level;
 	}
 
-	public int getPriority() {
-		return priority;
+	public int getLevel() {
+		return level;
+	}
+	
+	public static State getDefaultState() {
+		return State.OPERATIONAL;
 	}
 }

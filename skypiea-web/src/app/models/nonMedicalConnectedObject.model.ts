@@ -10,5 +10,4 @@ export class NonMedicalConnectedObject extends ConnectedObject {
     measurementUnit: string;
     currentSetting: any;
     objectSettings: Array<any>;
-    measurementUnit: string;
 }
