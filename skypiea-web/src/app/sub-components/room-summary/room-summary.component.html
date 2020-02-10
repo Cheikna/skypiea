@@ -1,6 +1,9 @@
 <mat-card>
     <mat-card-header>
-        <mat-card-title>{{ resident.lastName | uppercase }} {{ resident.firstName }}</mat-card-title>
+        <mat-card-title>
+            <img src="{{ stateInfo[room.state]?.icon }}"> &nbsp;
+            {{ resident.lastName | uppercase }} {{ resident.firstName }}
+        </mat-card-title>
         <mat-card-subtitle>Room n°{{ room.doorNumber }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>

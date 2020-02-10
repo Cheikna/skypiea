@@ -1,32 +1,41 @@
 <mat-card id="object_info_{{ nonMedicalConnectedObject?.id}}">
     <mat-card-header>
-        <mat-card-title>
-            <mat-chip-list>
-                {{ typeName(nonMedicalConnectedObject.nonMedicalObjectType) }}
-                <mat-chip class="text-white"
-                    [ngStyle]="{'background-color': statusInfo[nonMedicalConnectedObject.status].color }">
-                    <b>{{ nonMedicalConnectedObject.status }}</b>                    
-                </mat-chip>
-                <mat-chip>
-                    MAC Address : {{ nonMedicalConnectedObject.macAddress }}
-                </mat-chip>
-                <div></div>
-                <mat-chip color="primary" selected>
-                    IP Address : &nbsp;
-                    <span *ngIf="nonMedicalConnectedObject.status != StatusEnum.OFF">
-                        {{ nonMedicalConnectedObject.ipAddress }}
-                    </span>
-                    <span *ngIf="nonMedicalConnectedObject.status == StatusEnum.OFF"> Not connected </span>
-                </mat-chip>
-                <mat-chip color="accent" selected>
-                    Installation date : {{ nonMedicalConnectedObject.installationDate | date: 'd MMM y, HH:mm' }}
-                </mat-chip>
-            </mat-chip-list>
-        </mat-card-title>
+        <div class="container">
+            <mat-card-title>            
+                <div class="d-flex justify-content-between">
+                    <div>
+                        {{ typeName(nonMedicalConnectedObject.nonMedicalObjectType) }}
+                    </div>
+                    <div>
+                        <img src="{{ stateInfo[nonMedicalConnectedObject.state].icon }}">
+                    </div>
+                </div>          
+            </mat-card-title>
+        </div>
     </mat-card-header>
     <mat-card-content>
         <div class="container">
             <div class="row">
+                <mat-chip-list>
+                    <mat-chip class="text-white"
+                        [ngStyle]="{'background-color': statusInfo[nonMedicalConnectedObject.status].color }">
+                        <b>{{ nonMedicalConnectedObject.status }}</b>                    
+                    </mat-chip>
+                    <mat-chip>
+                        MAC Address : {{ nonMedicalConnectedObject.macAddress }}
+                    </mat-chip>
+                    <div></div>
+                    <mat-chip color="primary" selected>
+                        IP Address : &nbsp;
+                        <span *ngIf="nonMedicalConnectedObject.status != StatusEnum.OFF">
+                            {{ nonMedicalConnectedObject.ipAddress }}
+                        </span>
+                        <span *ngIf="nonMedicalConnectedObject.status == StatusEnum.OFF"> Not connected </span>
+                    </mat-chip>
+                    <mat-chip color="accent" selected>
+                        Installation date : {{ nonMedicalConnectedObject.installationDate | date: 'd MMM y, HH:mm' }}
+                    </mat-chip>
+                </mat-chip-list>
                 <!-- TODO Cheikna : Display specific information of the object according to its type -->
                 <!-- TODO Cheikna : Add a button which will show/hide the other information -->
                 <!-- TODO Cheikna : Display monitoring alert of the object and some graphics -->
