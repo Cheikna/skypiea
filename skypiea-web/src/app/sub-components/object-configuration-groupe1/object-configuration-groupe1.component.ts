@@ -58,6 +58,16 @@ export class ObjectConfigurationGroupe1Component implements OnInit {
       this.webStorageService.temporaryData = object; 
       this.router.navigate(["object-list/sunshine-sensor"]);
     }
+
+    if (object.nonMedicalObjectType == NonMedicalObjectType.SHUTTER){
+      this.webStorageService.temporaryData = object; 
+      this.router.navigate(["object-list/shutter"]);
+    }
+
+    if (object.nonMedicalObjectType == NonMedicalObjectType.TEMPERATURE_CONTROLLER){
+      this.webStorageService.temporaryData = object; 
+      this.router.navigate(["object-list/temperature-controller"]);
+    }
   }
 
 }
