@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.skytech.skypiea.commons.entity.ElectronicTag;
 import com.skytech.skypiea.api.repository.ElectronicTagRepository;
@@ -16,8 +17,7 @@ public class ElectronicTagService {
 	private ElectronicTagRepository electronicTagRepository;
 	
 	public List<ElectronicTag> findAll(){
-		List<ElectronicTag> eTag = this.electronicTagRepository.findAll();
-		return eTag;
+		return electronicTagRepository.findAll();
 	}
 	
 	public ElectronicTag createOrUpdate(ElectronicTag eTag) {
@@ -42,6 +42,23 @@ public class ElectronicTagService {
 			
 		}
 		return eTag;
+	}
+	
+	public ElectronicTag findHistoryMovingByResident(@PathVariable Long id)
+	{
+		ElectronicTag electronicTag = null;
+		System.out.println(id);
+		List<ElectronicTag> tags = electronicTagRepository.findAll();
+		if(tags != null) {
+			for(ElectronicTag tag: tags) {
+				System.out.println(tag.getId() + " " + tag.getResident().getId());
+				if(tag.getResident().getId() == id) {
+					electronicTag = tag;
+					break;
+				}
+			}
+		}
+		return electronicTag;
 	}
 
 }

@@ -46,7 +46,7 @@ public class NonMedicalConnectedObjectTest {
 		//settings.forEach((set) -> System.out.println(set.getSavingDate()));
 		
 		obj.setObjectSettings(settings);
-		obj.initCurrentSetting();
+		obj.initAfterLoad();
 		
 		ObjectSetting lastSetting = obj.getCurrentSetting();
 		assertEquals(ts3, lastSetting.getSavingDate());		

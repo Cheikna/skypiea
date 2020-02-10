@@ -1,7 +1,24 @@
 package com.skytech.skypiea.commons.enumeration;
 
 public enum State {
-	OPERATIONAL,
-	IN_REPAIR,
-	BROKEN
+	OPERATIONAL(1),
+	IN_REPAIR(2),
+	WARNING(3),
+	DANGER(4),
+	BROKEN(5),
+	MISSING(6);
+
+	private int level;
+	
+	State(int level){
+		this.level = level;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+	
+	public static State getDefaultState() {
+		return State.OPERATIONAL;
+	}
 }

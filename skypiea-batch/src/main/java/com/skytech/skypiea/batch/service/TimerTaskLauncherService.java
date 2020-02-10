@@ -5,19 +5,35 @@ import java.util.Timer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.skytech.skypiea.batch.timer.TasksRunner;
+import com.skytech.skypiea.batch.socket.server.BatchMessageReceiverSocket;
+import com.skytech.skypiea.batch.task.implementation.MemoryCacheCheckerTask;
+import com.skytech.skypiea.batch.task.implementation.RoomStateCheckerTask;
 
 @Service
 public class TimerTaskLauncherService {
 	
-	private final Long breakTime = 5000L;
+	private final Long roomCheckerDelay = 5000L;
+	private final Long roomCheckerFrequency = 10000L;
+	private final Long memoryCacheCheckerFrequency = 30000L;
+	
+	@Autowired
+	private BatchMessageReceiverSocket batchServerSocket;
 	
 	@Autowired	
-	private TasksRunner tasksRunner;
+	private RoomStateCheckerTask roomObjectsCheckerTask;
+	
+	@Autowired
+	private MemoryCacheCheckerTask memoryCacheCheckerTask;
 	
 	public void start() {		
 		Timer timer = new Timer(true);
-        timer.scheduleAtFixedRate(tasksRunner, 0L, breakTime);
+        timer.scheduleAtFixedRate(memoryCacheCheckerTask, 0L, memoryCacheCheckerFrequency);
+        // Add a delay in order to let the socket start
+        timer.scheduleAtFixedRate(roomObjectsCheckerTask, roomCheckerDelay, roomCheckerFrequency);
+
+        Thread socketThread = new Thread(batchServerSocket);
+        socketThread.start();
+        
 	}
 
 }

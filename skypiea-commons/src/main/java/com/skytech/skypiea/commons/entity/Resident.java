@@ -4,14 +4,12 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import com.skytech.skypiea.commons.enumeration.UserType;
 
 @Entity
 @Table(name="RESIDENT")
-@PrimaryKeyJoinColumn(name="USER_ID")
 public class Resident extends User {
 	
 	@Column(name="BIRTH_DAY")

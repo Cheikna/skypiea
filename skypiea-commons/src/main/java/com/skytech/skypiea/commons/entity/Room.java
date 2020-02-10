@@ -15,7 +15,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
+import com.skytech.skypiea.commons.enumeration.State;
 import com.skytech.skypiea.commons.enumeration.Wing;
 
 @Entity
@@ -42,15 +45,19 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
 	private Wing wing;
 	
 	@Column(name="SVG_POINT")
-	private String svgPoint;
-	
+	private String svgPoint;	
 	
 	@OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "RESIDENT_ID")
 	private Resident resident;
 	
-	@OneToMany(mappedBy="room")
+	@JsonManagedReference
+	@OneToMany(mappedBy="room", cascade=CascadeType.ALL)
 	private Set<NonMedicalConnectedObject> nonMedicalConnectedObjects;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="STATE")
+	private State state;
 	
 	@Transient
 	private Map<NonMedicalObjectType, Integer> objectQuantityByType;
@@ -139,6 +146,14 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
 
 	public void setNonMedicalConnectedObjects(Set<NonMedicalConnectedObject> nonMedicalConnectedObjects) {
 		this.nonMedicalConnectedObjects = nonMedicalConnectedObjects;
+	}	
+
+	public State getState() {
+		return state;
+	}
+
+	public void setState(State state) {
+		this.state = state;
 	}
 
 	public Map<NonMedicalObjectType, Integer> getObjectQuantityByType() {
@@ -168,6 +183,8 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
 				NonMedicalObjectType objectType = object.getNonMedicalObjectType();
 				Integer quantity;
 				try {
+					// Try to retrieve the previous quantity of the object type
+					// and add 1 to the quantity if the type already exists in the hashmap
 					quantity = objectQuantityByType.get(objectType) + 1;
 				}
 				catch(Exception e) {

@@ -9,7 +9,7 @@
         <div class="object-icon text-center" *ngFor="let object of room.objectQuantityByType | keyvalue">
             <img src="{{ nonMedicalObjectIcons[object.key].iconPath }}">
             <br>
-            <span>{{ nonMedicalObjectIcons[object.key].name }}</span>
+            <span>{{ typeName(object.key) }}</span>
             <br>
             <span>{{ object.value }}</span>
         </div>

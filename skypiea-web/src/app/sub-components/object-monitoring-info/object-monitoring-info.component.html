@@ -1,0 +1,44 @@
+<mat-card id="object_info_{{ nonMedicalConnectedObject?.id}}">
+    <mat-card-header>
+        <mat-card-title>
+            <mat-chip-list>
+                {{ typeName(nonMedicalConnectedObject.nonMedicalObjectType) }}
+                <mat-chip class="text-white"
+                    [ngStyle]="{'background-color': statusInfo[nonMedicalConnectedObject.status].color }">
+                    <b>{{ nonMedicalConnectedObject.status }}</b>                    
+                </mat-chip>
+                <mat-chip>
+                    MAC Address : {{ nonMedicalConnectedObject.macAddress }}
+                </mat-chip>
+                <div></div>
+                <mat-chip color="primary" selected>
+                    IP Address : &nbsp;
+                    <span *ngIf="nonMedicalConnectedObject.status != StatusEnum.OFF">
+                        {{ nonMedicalConnectedObject.ipAddress }}
+                    </span>
+                    <span *ngIf="nonMedicalConnectedObject.status == StatusEnum.OFF"> Not connected </span>
+                </mat-chip>
+                <mat-chip color="accent" selected>
+                    Installation date : {{ nonMedicalConnectedObject.installationDate | date: 'd MMM y, HH:mm' }}
+                </mat-chip>
+            </mat-chip-list>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="container">
+            <div class="row">
+                <!-- TODO Cheikna : Display specific information of the object according to its type -->
+                <!-- TODO Cheikna : Add a button which will show/hide the other information -->
+                <!-- TODO Cheikna : Display monitoring alert of the object and some graphics -->
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <div class="d-flex justify-content-end">
+            <button type="button" class="col-12 btn btn-outline-info" (click)="extraObjectInformationDialog()">
+                <mdb-icon fas icon="info"></mdb-icon>&nbsp; <b>More information...</b>
+            </button>
+        </div>
+    </mat-card-actions>
+</mat-card>
+<br>

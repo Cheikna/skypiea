@@ -1,0 +1,26 @@
+<br> 
+<h1>Smoke Sensor</h1>
+
+  <br>
+  <table class="table table-bordered">
+   <tbody>
+    <br>
+    <tr>
+        <td>Installation date : {{nonMedicalConnectedObject?.installationDate | date: 'medium'}}</td>
+        <td>Brand: {{nonMedicalConnectedObject?.brand}}</td>
+        <td>Status : {{ nonMedicalConnectedObject?.status}} </td>
+        <td>threshold : {{setting?.threshold}} </td>
+        <td>Sensitivity : {{setting?.sensitivity}}</td>
+        <td>Min Threshold : {{setting?.minThreshold}}</td>
+        <td>Max Threshold : {{setting?.maxThreshold}}</td>
+      </tr>
+      <br>
+    <h1>You can't configure the smoke sensor</h1>
+    
+    </tbody>
+    </table>
+    <br>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" >
+        <button type="button" class="btn btn-success" (click)="redirectToObjectListPage()">Exit</button>
+    </div>
+    <br>

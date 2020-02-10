@@ -1,0 +1,27 @@
+<br> 
+<h1>Bulb</h1>
+
+  <br>
+  <table class="table table-bordered">
+   <tbody>
+    <br>
+    <tr>
+        <td>Installation date : {{nonMedicalConnectedObject?.installationDate | date: 'medium'}} </td>
+        <td>Brand: {{nonMedicalConnectedObject?.brand}} </td>
+        <td>Switch: {{ nonMedicalConnectedObject?.status}} </td>
+        <td>Color:  {{setting?.currentColor}} </td>
+      </tr>
+      <br>
+    <h1>Update settings</h1>
+    <tr>
+        <td>  
+            <!--<mat-slide-toggle [formControl]="activate" (toggleChange)="onToggleChange($event)">Switch</mat-slide-toggle>-->
+        </td>
+        <td> Update Luminosity :
+        </td>
+    </tr> 
+    </tbody>
+    <br> 
+    <button type="button" class="btn btn-success">Enregistrer</button>
+</table>
+
