@@ -15,7 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { TrackingComponent } from './components/tracking/tracking.component';
 import { TracklistCharactersComponent } from './components/tracklist-characters/tracklist-characters.component';
 import { PersonnalFormComponent } from './components/personnal-form/personnal-form.component';
-
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 
 import { RoomPlanComponent } from './sub-components/room-plan/room-plan.component';
@@ -35,6 +35,8 @@ import { DiseaseFormComponent } from './sub-components/disease-form/disease-form
 import { AlarmClockConfigComponent } from './components/alarm-clock-config/alarm-clock-config.component';
 import { BulbConfigComponent } from './components/bulb-config/bulb-config.component';
 import { DoorSensorConfigComponent } from './components/door-sensor-config/door-sensor-config.component';
+import { ShutterConfigComponent } from './components/shutter-config/shutter-config.component';
+import { TemperatureControllerConfigComponent } from './components/temperature-controller-config/temperature-controller-config.component';
 
 
 
@@ -72,7 +74,9 @@ import { DoorSensorConfigComponent } from './components/door-sensor-config/door-
     DiseaseFormComponent,
     AlarmClockConfigComponent,
     BulbConfigComponent,
-    DoorSensorConfigComponent
+    DoorSensorConfigComponent,
+    ShutterConfigComponent,
+    TemperatureControllerConfigComponent
 
   ],
   imports: [
@@ -82,6 +86,7 @@ import { DoorSensorConfigComponent } from './components/door-sensor-config/door-
     AngularMaterialModule,
     HttpClientModule,
     FormsModule,
+    FlexLayoutModule,
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
     ToastrModule.forRoot({      

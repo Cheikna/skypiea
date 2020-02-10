@@ -1,0 +1,28 @@
+<br> 
+<h1>Shutter</h1>
+
+  <br>
+  <table class="table table-bordered">
+   <tbody>
+    <br>
+    <tr>
+        <td>Installation date : {{nonMedicalConnectedObject?.installationDate | date: 'medium'}}</td>
+        <td>Brand: {{nonMedicalConnectedObject?.brand}}</td>
+        <td>Status : {{ nonMedicalConnectedObject?.status}} </td>
+        <td>Is Automatic Mode Enabled : {{setting?.isAutomaticModeEnabled}} </td>
+        <td>Window Coverage : {{setting?.windowCoverage}}</td>
+      </tr>
+      <br>
+    <h1>Update settings</h1>
+    <tr>
+       
+        <td> Window Coverage : <input type="search" ng-model="text"> </td>
+    </tr> 
+    </tbody>
+    </table>
+    <br>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" >
+        <button type="button" class="btn btn-success" (click)="save()">Save</button>
+        <button type="button" class="btn btn-success" (click)="redirectToObjectListPage()">Exit</button>
+    </div>
+    <br>
