@@ -14,7 +14,7 @@ public class TimerTaskLauncherService {
 	
 	private final Long roomCheckerDelay = 5000L;
 	private final Long roomCheckerFrequency = 10000L;
-	private final Long memoryCacheCheckerFrequency = 10000L;
+	private final Long memoryCacheCheckerFrequency = 30000L;
 	
 	@Autowired
 	private BatchMessageReceiverSocket batchServerSocket;

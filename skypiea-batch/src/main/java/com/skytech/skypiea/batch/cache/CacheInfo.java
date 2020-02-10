@@ -37,8 +37,7 @@ public class CacheInfo {
 		this.creationDate = DateUtil.getCurrentTimestamp();
 		this.lastCheckingDate = DateUtil.getCurrentTimestamp();
 		this.warningMessageCount = 0L;
-		this.comments = "";
-		this.isCacheInfoNeedToBeSavedInDatabase = false;
+		this.isCacheInfoNeedToBeSavedInDatabase = true;
 	}	
 
 	public CacheInfo(String value) {
@@ -81,9 +80,8 @@ public class CacheInfo {
 		return (valuesReached != null) ? valuesReached.size() : 0;
 	}
 
-	public Long increaseWarningMessageCount() {
+	public void increaseWarningMessageCount() {
 		warningMessageCount++;
-		return warningMessageCount;
 	}
 
 	public void setWarningMessageCount(Long warningMessageCount) {
@@ -101,10 +99,7 @@ public class CacheInfo {
 	public void setCurrentState(State newState) {		
 		if(newState != currentState) {
 			stateChangingDate = DateUtil.getCurrentTimestamp();
-			isCacheInfoNeedToBeSavedInDatabase = false;
-			if(newState == State.OPERATIONAL) {
-				reset();
-			}
+			isCacheInfoNeedToBeSavedInDatabase = true;
 		}
 		lastCheckingDate = DateUtil.getCurrentTimestamp();
 		currentState = newState;
@@ -116,7 +111,7 @@ public class CacheInfo {
 
 	public void setComments(String newComments) {
 		// We need to save the changes in the database if the old comment and the new one are different
-		this.isCacheInfoNeedToBeSavedInDatabase = (!comments.equalsIgnoreCase(newComments));
+		this.isCacheInfoNeedToBeSavedInDatabase = (!newComments.equalsIgnoreCase(comments));
 		this.comments = newComments;
 	}	
 
@@ -140,7 +135,7 @@ public class CacheInfo {
 		this.lastCheckingDate = lastCheckingDate;
 	}
 
-	private void reset() {
+	public void reset() {
 		this.warningMessageCount = 0L;
 		this.comments = "";
 	}
