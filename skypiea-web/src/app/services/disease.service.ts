@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { RestService } from './rest.service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { DiseaseFormComponent } from '../sub-components/disease-form/disease-form.component';
+import { DiseaseType } from '../enums/disease.enum';
 
 @Injectable({
   providedIn: 'root'
