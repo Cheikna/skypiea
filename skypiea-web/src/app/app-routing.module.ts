@@ -20,8 +20,11 @@ import { EventHistoryComponent } from './components/event-history/event-history.
 import {HealthControlComponent} from "./components/health-control/health-control.component";
 import { AlarmClockConfigComponent } from './components/alarm-clock-config/alarm-clock-config.component';
 import { BulbConfigComponent} from './components/bulb-config/bulb-config.component'; 
-import { DoorSensorConfigComponent} from './components/door-sensor-config/door-sensor-config.component';
-
+import { DoorSensorConfigComponent} from './components/door-sensor-config/door-sensor-config.component'; 
+import { ShutterConfigComponent } from './components/shutter-config/shutter-config.component';
+import { TemperatureControllerConfigComponent } from './components/temperature-controller-config/temperature-controller-config.component';
+import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smoke-sensor-config.component';
+import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
 
 const routes: Routes = [
   {
@@ -178,6 +181,38 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard],
     data: {
       userType: 'STAFF'
+    }
+  },
+  {
+    path: 'object-list/shutter',
+    component: ShutterConfigComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'object-list/temperature-controller',
+    component: TemperatureControllerConfigComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'object-list/smoke-sensor',
+    component: SmokeSensorConfigComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'object-list/sunshine-sensor',
+    component: SunshineSensorConfigComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
     }
   },
   {

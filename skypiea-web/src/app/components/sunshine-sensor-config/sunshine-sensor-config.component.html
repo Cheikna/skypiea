@@ -1,0 +1,23 @@
+<br> 
+<h1>Sunshine Sensor </h1>
+
+  <br>
+  <table class="table table-bordered">
+   <tbody>
+    <br>
+    <tr>
+        <td>Installation date : {{nonMedicalConnectedObject?.installationDate | date: 'medium'}}</td>
+        <td>Brand: {{nonMedicalConnectedObject?.brand}}</td>
+        <td>Status : {{ nonMedicalConnectedObject?.status}} </td>
+        <td>External Temperature : {{setting?.externalTemperature}} </td>
+        <td>External Sunshine : {{setting?.externalSunshine}}</td>
+      </tr>
+      <br>
+    <h1>You can't configure the sunshine sensor</h1>
+    </tbody>
+    </table>
+    <br>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" >
+        <button type="button" class="btn btn-success" (click)="redirectToObjectListPage()">Exit</button>
+    </div>
+    <br>
