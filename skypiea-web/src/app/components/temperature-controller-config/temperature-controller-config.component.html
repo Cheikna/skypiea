@@ -1,0 +1,38 @@
+<br> 
+<h1>Temperature Controller</h1>
+
+  <br>
+  <table class="table table-bordered">
+   <tbody>
+    <br>
+    <tr>
+        <td>Installation date : {{nonMedicalConnectedObject?.installationDate | date: 'medium'}}</td>
+        <td>Brand: {{nonMedicalConnectedObject?.brand}}</td>
+        <td>Status : {{ nonMedicalConnectedObject?.status}} </td>
+    </tr>
+    <br>
+    <tr>
+        <td>Threshold : {{setting?.threshold}} </td>
+        <td>Temperature Max : {{setting?.temperatureMax}}</td>
+        <td>Temperature Min : {{setting?.temperatureMin}}</td>
+        <td>Current Temperature : {{setting?.currentTemperature}}</td>
+        <td>Temperature Settled : {{setting?.temperatureSettled}}</td>
+    </tr>
+    <br>
+    <tr>
+        <td>Is Healthing Connected : {{setting?.isHealthingConnected}}</td>
+        <td>Is Air Conditionner Connected : {{setting?.isAirConditionnerConnected}}</td>
+      </tr>
+      <br>
+    <h1>Update settings</h1>
+    <tr>
+        <td> Temperature Settled : <input type="search" ng-model="text"> </td>
+    </tr> 
+    </tbody>
+    </table>
+    <br>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" >
+        <button type="button" class="btn btn-success" (click)="save()">Save</button>
+        <button type="button" class="btn btn-success" (click)="redirectToObjectListPage()">Exit</button>
+    </div>
+    <br>

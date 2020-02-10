@@ -1,16 +1,14 @@
 
 <section>
 
-    <div class="container" >
-       
-        <thead>
-           
-            <tr >
-                <td><button class="btn btn-success" (click)="onClickObjectGroup('1')">Smoke sensor, temperature controller, shutter</button></td>
-                <td><button class="btn btn-success" (click)="onClickObjectGroup('2')">alarm Clock, door sensor, bulb</button></td>
-            </tr>
-       
-        </thead>
+    <div class="container" >    
+        <br>
+        <div fxLayout="row" fxLayoutAlign="space-evenly center" >
+            <td><button type="button" class="btn btn-success" (click)="onClickObjectGroup('1')">Smoke Sensor, Temperature Controller, Shutter, Sunshine Sensor</button></td>
+            <td><button type="button" class="btn btn-success" (click)="onClickObjectGroup('2')">Alarm Clock, Door Sensor, Bulb</button></td>
+        </div> 
+        <br>     
+        
     <ng-container *ngIf="selectedGroup == '1'">
         <app-object-configuration-groupe1 [nonMedicalConnectedObjects]="firstGroupObjects"> </app-object-configuration-groupe1>
     </ng-container>
