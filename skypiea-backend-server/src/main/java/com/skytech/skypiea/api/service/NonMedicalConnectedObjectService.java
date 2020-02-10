@@ -3,6 +3,9 @@ package com.skytech.skypiea.api.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import org.hibernate.Hibernate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +33,12 @@ public class NonMedicalConnectedObjectService {
 		return new ArrayList<NonMedicalConnectedObject>();
 	}
 	
+	@Transactional
 	public NonMedicalConnectedObject findById(Long id) {
 		NonMedicalConnectedObject object = null;
 		try {
 			object = nonMedicalConnectedObjectRepository.findById(id).get();
+			Hibernate.initialize(object.getHistoryEvents());
 		} catch (Exception e) {
 			log.error(e.getMessage());
 			e.printStackTrace();
@@ -50,7 +55,16 @@ public class NonMedicalConnectedObjectService {
 			e.printStackTrace();
 		}
 		return savedObject;
-	}
+	}	
 	
+	public List<NonMedicalConnectedObject> findByRoomId(Long roomId){
+		try {
+			List<NonMedicalConnectedObject> nonMedicalConnectedObjects = this.nonMedicalConnectedObjectRepository.findByRoomId(roomId);
+			return nonMedicalConnectedObjects;
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		}
+		return new ArrayList<NonMedicalConnectedObject>();
+	}
 	
 }
