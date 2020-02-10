@@ -18,10 +18,12 @@ export class ObjectIhmComponent implements OnInit {
   residentId: number;
   room: Room = new Room();
   firstGroupObjects: Array<any>;
+  secondGroupObjects: Array<any>; 
   nonMedicalConnectedObjects: Array<any>;
 
   constructor(private roomService: RoomService,private dialog: MatDialog, private webStorageService: WebStorageService) {
     this.firstGroupObjects = new Array<any>();
+    this.secondGroupObjects = new Array<any>(); 
    }
 
 
@@ -38,6 +40,11 @@ export class ObjectIhmComponent implements OnInit {
             || object.nonMedicalObjectType == NonMedicalObjectType.SHUTTER
             || object.nonMedicalObjectType == NonMedicalObjectType.SUNSHINE_SENSOR){
             this.firstGroupObjects.push(object);
+          }
+          if(object.nonMedicalObjectType == NonMedicalObjectType.ALARM_CLOCK 
+            || object.nonMedicalObjectType == NonMedicalObjectType.BULB
+            || object.nonMedicalObjectType == NonMedicalObjectType.DOOR_SENSOR){
+            this.secondGroupObjects.push(object);
           }
         });
       }

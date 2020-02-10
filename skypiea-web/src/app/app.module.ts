@@ -35,6 +35,7 @@ import { DiseaseFormComponent } from './sub-components/disease-form/disease-form
 import { AlarmClockConfigComponent } from './components/alarm-clock-config/alarm-clock-config.component';
 import { BulbConfigComponent } from './components/bulb-config/bulb-config.component';
 import { DoorSensorConfigComponent } from './components/door-sensor-config/door-sensor-config.component';
+import { ObjectConfigurationGroupe2Component } from './sub-components/object-configuration-groupe2/object-configuration-groupe2.component';
 
 
 
@@ -72,7 +73,8 @@ import { DoorSensorConfigComponent } from './components/door-sensor-config/door-
     DiseaseFormComponent,
     AlarmClockConfigComponent,
     BulbConfigComponent,
-    DoorSensorConfigComponent
+    DoorSensorConfigComponent,
+    ObjectConfigurationGroupe2Component
 
   ],
   imports: [
