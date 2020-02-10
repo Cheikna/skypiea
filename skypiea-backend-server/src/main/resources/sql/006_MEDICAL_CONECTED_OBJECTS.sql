@@ -21,3 +21,6 @@ insert into MEDICAL_CONNECTED_OBJECT values (currval(pg_get_serial_sequence('con
 
 insert into HEALTH_CONTROL_HISTORY values (nextval(pg_get_serial_sequence('health_control_history','id')),0,'HEART_RATE','2019-12-16 09:00:00.000',78,0,currval(pg_get_serial_sequence('connected_object', 'id')));
 insert into HEALTH_CONTROL_HISTORY values (nextval(pg_get_serial_sequence('health_control_history','id')),0,'HEART_RATE','2019-12-16 09:00:00.000',78,0,currval(pg_get_serial_sequence('connected_object', 'id')));
+
+
+
