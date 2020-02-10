@@ -15,7 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { TrackingComponent } from './components/tracking/tracking.component';
 import { TracklistCharactersComponent } from './components/tracklist-characters/tracklist-characters.component';
 import { PersonnalFormComponent } from './components/personnal-form/personnal-form.component';
-
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 import { RoomPlanComponent } from './sub-components/room-plan/room-plan.component';
@@ -36,6 +36,8 @@ import { AlarmClockConfigComponent } from './components/alarm-clock-config/alarm
 import { BulbConfigComponent } from './components/bulb-config/bulb-config.component';
 import { DoorSensorConfigComponent } from './components/door-sensor-config/door-sensor-config.component';
 import { ObjectConfigurationGroupe2Component } from './sub-components/object-configuration-groupe2/object-configuration-groupe2.component';
+import { ShutterConfigComponent } from './components/shutter-config/shutter-config.component';
+import { TemperatureControllerConfigComponent } from './components/temperature-controller-config/temperature-controller-config.component';
 
 
 
@@ -74,7 +76,9 @@ import { ObjectConfigurationGroupe2Component } from './sub-components/object-con
     AlarmClockConfigComponent,
     BulbConfigComponent,
     DoorSensorConfigComponent,
-    ObjectConfigurationGroupe2Component
+    ObjectConfigurationGroupe2Component,
+    ShutterConfigComponent,
+    TemperatureControllerConfigComponent
 
   ],
   imports: [
@@ -84,6 +88,7 @@ import { ObjectConfigurationGroupe2Component } from './sub-components/object-con
     AngularMaterialModule,
     HttpClientModule,
     FormsModule,
+    FlexLayoutModule,
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
     ToastrModule.forRoot({      
