@@ -92,7 +92,7 @@ public class NonMedicalConnectedObject extends ConnectedObject {
 		this.svgPoint = svgPoint;
 	}
 
-	public Set<? extends ObjectSetting> getObjectSettings() {
+	public Set<ObjectSetting> getObjectSettings() {
 		return objectSettings;
 	}
 
