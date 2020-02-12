@@ -1,11 +1,13 @@
 package com.skytech.skypiea.batch.cache;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
+import java.util.function.Predicate;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,23 +18,27 @@ public class MemoryCache {
 	
 	private Logger log = LoggerFactory.getLogger(MemoryCache.class);
 	
-	public List<NonMedicalConnectedObject> nonMedicalConnectedObjects = Collections 
-            .synchronizedList(new ArrayList<NonMedicalConnectedObject>());
+	public Set<NonMedicalConnectedObject> nonMedicalConnectedObjects = Collections 
+            .synchronizedSet(new HashSet<NonMedicalConnectedObject>());
 
-	public Map<Long, CacheInfo> cacheInfoByObjectId = Collections.synchronizedMap(new HashMap<Long, CacheInfo>());
+	public Map<Long, CacheInfo> cacheInfoByNonMedicalConnectedObjectId = Collections.synchronizedMap(new HashMap<Long, CacheInfo>());
 	
-	public synchronized List<NonMedicalConnectedObject> getNonMedicalConnectedObjects() {
+	public synchronized Set<NonMedicalConnectedObject> getNonMedicalConnectedObjects() {
 		return nonMedicalConnectedObjects;
 	}
 	
 	public synchronized void setNonMedicalConnectedObjects(Collection<NonMedicalConnectedObject> objects) {
-		nonMedicalConnectedObjects = Collections.synchronizedList(new ArrayList<>(objects));
+		nonMedicalConnectedObjects = Collections.synchronizedSet(new HashSet<>(objects));
 	}
 	
-	public synchronized CacheInfo getCacheInfoByObjectId(Long objectId) {
+	public synchronized void addNonMedicalConnectedObject(NonMedicalConnectedObject object) {
+		nonMedicalConnectedObjects.add(object);
+	}
+	
+	public synchronized CacheInfo getCacheInfoByNonMedicalConnectedObjectId(Long objectId) {
 		CacheInfo cacheInfo = null;
 		try {
-			cacheInfo = cacheInfoByObjectId.get(objectId);
+			cacheInfo = cacheInfoByNonMedicalConnectedObjectId.get(objectId);
 		} catch (Exception e) {
 			log.error(e.getMessage());
 			e.printStackTrace();
@@ -48,27 +54,50 @@ public class MemoryCache {
 	 *  @true if the value has been updated (=an info with the ID already exists)
 	 *  @false if the value did not exist (=it is a new value which will be inserted)
 	 */
-	public synchronized boolean addCacheInfoByObjectId(Long objectId, CacheInfo cacheInfo) {
-		CacheInfo previousInfo = cacheInfoByObjectId.put(objectId, cacheInfo);
+	public synchronized boolean addCacheInfoByNonMedicalConnectedObjectId(Long objectId, CacheInfo cacheInfo) {
+		CacheInfo previousInfo = cacheInfoByNonMedicalConnectedObjectId.put(objectId, cacheInfo);
 		return previousInfo != null;
 	}
 	
-	public synchronized NonMedicalConnectedObject getNonMedicalConnectedObjectById(Long objectId) {
+	public synchronized CacheInfo removeCacheInfoByNonMedicalConnectedObjectId(Long objectId) {
+		CacheInfo previousInfo = null;
+		try {
+			previousInfo = cacheInfoByNonMedicalConnectedObjectId.remove(objectId);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+		}
+		return previousInfo;
+	}
+	
+	public synchronized NonMedicalConnectedObject getNonMedicalConnectedObjectByPredicate(Predicate<NonMedicalConnectedObject> predicate) {
 		boolean isObjectFound = false;
 		NonMedicalConnectedObject object = null;
 		NonMedicalConnectedObject currentObject = null;
-		int size = nonMedicalConnectedObjects.size();
-		int i = 0;
-		while(i < size && !isObjectFound) {
-			currentObject = nonMedicalConnectedObjects.get(i);
-			if(currentObject.getId() == objectId) {
+		Iterator<NonMedicalConnectedObject> iterator = nonMedicalConnectedObjects.iterator();
+		
+		while(iterator.hasNext() && !isObjectFound) {
+			currentObject = iterator.next();
+			if(predicate.test(currentObject)) {
 				object = currentObject;
 				isObjectFound = true;
 			}
-					
-			i++;
 		}
 		return object;
+	}
+	
+	public synchronized NonMedicalConnectedObject getNonMedicalConnectedObjectById(Long objectId) {
+		Predicate<NonMedicalConnectedObject> predicate = (obj) -> {
+			return obj.getId() == objectId;
+		};
+		return getNonMedicalConnectedObjectByPredicate(predicate);
+	}
+	
+	public synchronized NonMedicalConnectedObject getNonMedicalConnectedObjectByIpAddress(String ipAddress) {
+		Predicate<NonMedicalConnectedObject> predicate = (obj) -> {
+			return obj.getIpAddress().equalsIgnoreCase(ipAddress);
+		};
+		return getNonMedicalConnectedObjectByPredicate(predicate);
 	}
 
 }

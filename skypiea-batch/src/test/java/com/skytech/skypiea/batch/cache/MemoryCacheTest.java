@@ -29,15 +29,15 @@ public class MemoryCacheTest {
 	@Test
 	public void testAddCacheInfoByObjectIdNewCache() {
 		CacheInfo cacheInfo = new CacheInfo("1");
-		boolean oldValueExistance = memoryCache.addCacheInfoByObjectId(1L, cacheInfo);
+		boolean oldValueExistance = memoryCache.addCacheInfoByNonMedicalConnectedObjectId(1L, cacheInfo);
 		assertFalse(oldValueExistance);
 	}
 
 	@Test
 	public void testAddCacheInfoByObjectIdUpdateCache() {
 		CacheInfo cacheInfo = new CacheInfo("1");
-		memoryCache.addCacheInfoByObjectId(1L, cacheInfo);
-		boolean oldValueExistance = memoryCache.addCacheInfoByObjectId(1L, cacheInfo);
+		memoryCache.addCacheInfoByNonMedicalConnectedObjectId(1L, cacheInfo);
+		boolean oldValueExistance = memoryCache.addCacheInfoByNonMedicalConnectedObjectId(1L, cacheInfo);
 		assertTrue(oldValueExistance);
 	}
 	
@@ -68,14 +68,14 @@ public class MemoryCacheTest {
 		 CacheInfo cacheInfo1 = new CacheInfo("1");
 		 CacheInfo cacheInfo2 = new CacheInfo("2");
 		 
-		 memoryCache.addCacheInfoByObjectId(1L, cacheInfo1);
-		 memoryCache.addCacheInfoByObjectId(2L, cacheInfo2);
+		 memoryCache.addCacheInfoByNonMedicalConnectedObjectId(1L, cacheInfo1);
+		 memoryCache.addCacheInfoByNonMedicalConnectedObjectId(2L, cacheInfo2);
 		 
-		 CacheInfo findCache = memoryCache.getCacheInfoByObjectId(2L);
+		 CacheInfo findCache = memoryCache.getCacheInfoByNonMedicalConnectedObjectId(2L);
 		 assertNotNull(findCache);
 		 assertEquals("2", findCache.getLastValue().getValue1());
 		 
-		 assertNull(memoryCache.getCacheInfoByObjectId(3L));
+		 assertNull(memoryCache.getCacheInfoByNonMedicalConnectedObjectId(3L));
 	 }
 
 }

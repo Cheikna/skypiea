@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { WebStorageService } from 'src/app/util/web-storage.service';
 import { Router } from '@angular/router';
+import { WebStorageService } from 'src/app/util/web-storage.service';
 
 @Component({
-  selector: 'app-shutter-config',
-  templateUrl: './shutter-config.component.html',
-  styleUrls: ['./shutter-config.component.scss']
+  selector: 'app-sunshine-sensor-config',
+  templateUrl: './sunshine-sensor-config.component.html',
+  styleUrls: ['./sunshine-sensor-config.component.scss']
 })
-export class ShutterConfigComponent implements OnInit {
+export class SunshineSensorConfigComponent implements OnInit {
+  
   nonMedicalConnectedObject: any;
   setting: any;
   input: any;
- 
 
   constructor(private webStorageService: WebStorageService, private router: Router) {
   }
@@ -21,12 +21,11 @@ export class ShutterConfigComponent implements OnInit {
     this.setting = this.nonMedicalConnectedObject.currentSetting;
   }
 
-  save(){
-    // TO DO 
-  }
+
 
   redirectToObjectListPage(){
     this.router.navigate(["ObjectIhm"]);
   }
+
 
 }

@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
 import com.skytech.skypiea.commons.enumeration.State;
 import com.skytech.skypiea.commons.enumeration.Status;
@@ -41,9 +42,9 @@ public class NonMedicalConnectedObject extends ConnectedObject {
 	
 	@Column(name="SVG_POINT")
 	private String svgPoint;
-	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "NON_MEDICAL_CONNECTED_OBJECT_ID")
+
+	@JsonManagedReference
+	@OneToMany(mappedBy="nonMedicalConnectedObject",cascade=CascadeType.ALL)
 	private Set<ObjectSetting> objectSettings;
 	
 	@Transient
@@ -90,7 +91,7 @@ public class NonMedicalConnectedObject extends ConnectedObject {
 		this.svgPoint = svgPoint;
 	}
 
-	public Set<? extends ObjectSetting> getObjectSettings() {
+	public Set<ObjectSetting> getObjectSettings() {
 		return objectSettings;
 	}
 

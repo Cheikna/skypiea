@@ -3,15 +3,15 @@ import { WebStorageService } from 'src/app/util/web-storage.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-shutter-config',
-  templateUrl: './shutter-config.component.html',
-  styleUrls: ['./shutter-config.component.scss']
+  selector: 'app-smoke-sensor-config',
+  templateUrl: './smoke-sensor-config.component.html',
+  styleUrls: ['./smoke-sensor-config.component.scss']
 })
-export class ShutterConfigComponent implements OnInit {
+export class SmokeSensorConfigComponent implements OnInit {
   nonMedicalConnectedObject: any;
   setting: any;
   input: any;
- 
+  
 
   constructor(private webStorageService: WebStorageService, private router: Router) {
   }
@@ -21,9 +21,7 @@ export class ShutterConfigComponent implements OnInit {
     this.setting = this.nonMedicalConnectedObject.currentSetting;
   }
 
-  save(){
-    // TO DO 
-  }
+
 
   redirectToObjectListPage(){
     this.router.navigate(["ObjectIhm"]);

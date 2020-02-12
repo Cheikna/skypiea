@@ -73,5 +73,28 @@ public class RoomService {
 		
 		return room;
 	}
+	
+	public Room save(Room room) {
+		Room savedRoom = null;
+		try {
+			savedRoom = roomRepository.save(room);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+		}		
+		
+		return savedRoom;
+	}
+	
+	public Room findById(Long roomId) {
+		Room room = null;
+		try {
+			room = roomRepository.findById(roomId).get();
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+		}
+		return room;
+	}
 
 }

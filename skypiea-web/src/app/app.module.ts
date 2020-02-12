@@ -17,7 +17,6 @@ import { TracklistCharactersComponent } from './components/tracklist-characters/
 import { PersonnalFormComponent } from './components/personnal-form/personnal-form.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 
-
 import { RoomPlanComponent } from './sub-components/room-plan/room-plan.component';
 import { RoomSummaryComponent } from './sub-components/room-summary/room-summary.component';
 import { RoomInformationComponent } from './components/room-information/room-information.component';
@@ -43,6 +42,8 @@ import { BulbConfigComponent } from './components/bulb-config/bulb-config.compon
 import { DoorSensorConfigComponent } from './components/door-sensor-config/door-sensor-config.component';
 import { ShutterConfigComponent } from './components/shutter-config/shutter-config.component';
 import { TemperatureControllerConfigComponent } from './components/temperature-controller-config/temperature-controller-config.component';
+import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smoke-sensor-config.component';
+import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
 
 import 'hammerjs';
 
@@ -86,7 +87,9 @@ import 'hammerjs';
     BulbConfigComponent,
     DoorSensorConfigComponent,
     ShutterConfigComponent,
-    TemperatureControllerConfigComponent
+    TemperatureControllerConfigComponent,
+    SmokeSensorConfigComponent,
+    SunshineSensorConfigComponent
 
   ],
   imports: [
