@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { stateInfo, State } from 'src/app/enums/state.enum';
+import { Room } from 'src/app/models/room.model';
 
 @Component({
   selector: 'app-floor-plan',
@@ -10,6 +11,7 @@ import { stateInfo, State } from 'src/app/enums/state.enum';
 export class FloorPlanComponent implements OnInit, OnChanges {
 
   @Input() rooms: Array<any>;
+  emptyRoomDoorNumber: string = "";
   // Room which is hovered by the user
   roomOvered: any;
   // Info for stairs and elevator
@@ -22,14 +24,17 @@ export class FloorPlanComponent implements OnInit, OnChanges {
   isHover: boolean = false;
   stateInfoArray: any[];
   stateInfo = stateInfo;
+  floorMax: number = 0;
 
-  private readonly floor = 1;
-  private readonly numberOfRoomsByFloor = 100;
+  selectedFloor = 1;
+  floorNumberCollection: Array<number>;
   readonly doorBegin: string = "room_";
+  private readonly floorSeparator: string = "_";
 
   constructor(private router: Router) {
     this.roomBySvgPointMap = new Map();
     this.stateInfoArray = Object.entries(stateInfo);
+    this.floorNumberCollection = new Array<number>();
   }
 
   ngOnInit() {
@@ -42,21 +47,26 @@ export class FloorPlanComponent implements OnInit, OnChanges {
         /* The first number is the floor number
          * ex: 102 means it is on the floor 1
          */
-        const doorNumber = room.doorNumber;
-        const floor = Math.floor(doorNumber / this.numberOfRoomsByFloor);
-        const lastNumber: number = doorNumber % this.numberOfRoomsByFloor;
-        let lastNumberWithZero: string = lastNumber.toString();
-        if (lastNumber < 10) {
-          lastNumberWithZero = `0${lastNumber}`;
+        const floor = room.floor;
+        if(floor && floor > this.floorMax){
+          this.floorMax = floor;
         }
-        this.roomBySvgPointMap.set(`${this.doorBegin}${lastNumberWithZero}`, room);
+
+        const lastNumber = room.doorNumber.toString().substring(1);
+        // Adding the floor number info in order to save multiple rooms which have the same end for the door number
+        this.roomBySvgPointMap.set(`${floor}${this.floorSeparator}${this.doorBegin}${lastNumber}`, room);
       });
     }
+    if(!this.floorMax){
+      this.floorMax = 1;
+    }
+
+    this.floorNumberCollection = new Array<number>(this.floorMax);
   }
 
   getRoomFillColor(svgPoint: string): string {
     const defaultColor: string = stateInfo.OPERATIONAL.color;
-    const room = this.roomBySvgPointMap.get(svgPoint);
+    const room = this.getRoomFromRoomBySvgPointMap(svgPoint);
     if(room){
       const roomState = room.state;
       if(roomState){
@@ -79,12 +89,19 @@ export class FloorPlanComponent implements OnInit, OnChanges {
       this.roomOvered = room;
     } else if (event != null && event.target != null) {
       let id = event.target.id;
-      if (id.includes("elevator")) {
-        this.otherRoomInfo = "Elevator";
+      // Case where there is not resident in this room : the room is not occupied
+      if (id.includes(this.doorBegin)) {
+        const doorNumberSplitted: any[] = id.split(this.doorBegin);
+        // The index 0 contains an empty string and the index 1 contains the last numbers of room door number
+        if(doorNumberSplitted.length >= 2){
+          this.emptyRoomDoorNumber = this.selectedFloor + doorNumberSplitted[1];
+        }
       } else if (id.includes("stairs")) {
         this.otherRoomInfo = "Stairs";
       } else if (id.includes("storage")) {
         this.otherRoomInfo = "Storage";
+      } else if (id.includes("elevator")) {
+        this.otherRoomInfo = "Elevator";
       }
     }
   }
@@ -101,10 +118,14 @@ export class FloorPlanComponent implements OnInit, OnChanges {
       let svgPoint = event.target.id;
       if (svgPoint) {
         //Retrieve the room corresponding to this svg point in the map
-        return this.roomBySvgPointMap.get(svgPoint);
+        return this.getRoomFromRoomBySvgPointMap(svgPoint);
       }
     }
     return null;
+  }
+
+  private getRoomFromRoomBySvgPointMap(svgPoint){
+    return this.roomBySvgPointMap.get(`${this.selectedFloor}${this.floorSeparator}${svgPoint}`);
   }
 
 }
