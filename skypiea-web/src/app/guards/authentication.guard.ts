@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { WebStorageService } from '../util/web-storage.service';
-import { UserType } from '../enums/userType.enum';
+import { ToastType } from '../enums/toastType.enum';
+import { ToastService } from '../util/toast.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationGuard implements CanActivate {
 
-  constructor(private router: Router, private webStorageService: WebStorageService) { }
+  constructor(private router: Router, private webStorageService: WebStorageService, private toastService: ToastService) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -21,6 +22,7 @@ export class AuthenticationGuard implements CanActivate {
     }
     
     //Redirection to the home page
+    this.toastService.displayToast(ToastType.WARNING, 'The page you wanted is not reachable !', true, 'Please be sure that you are connected or contact the administrator', 5500);
     this.router.navigate(['']);
     return false;
   }

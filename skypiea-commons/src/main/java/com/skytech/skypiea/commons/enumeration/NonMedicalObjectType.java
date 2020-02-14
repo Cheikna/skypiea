@@ -2,21 +2,29 @@ package com.skytech.skypiea.commons.enumeration;
 
 public enum NonMedicalObjectType {
 	
-	BINARY_SENSOR,
+	BINARY_SENSOR(""),
 	
-	SHUTTER,
+	SHUTTER(""),
 	
-	SUNSHINE_SENSOR,
+	SUNSHINE_SENSOR("lux"),
 	
-	SMOKE_SENSOR,
+	SMOKE_SENSOR("ppm"),
 	
-	DOOR_SENSOR,
+	DOOR_SENSOR(""),
 	
-	BULB,
+	BULB("lux"),
 	
-	TEMPERATURE_CONTROLLER,
+	TEMPERATURE_CONTROLLER("°C"),
 	
-	ALARM_CLOCK;
+	ALARM_CLOCK("");
 	
+	private String measurementUnit;
 	
+	private NonMedicalObjectType(String measurementUnit) {
+		this.measurementUnit = measurementUnit;
+	}
+
+	public String getMeasurementUnit() {
+		return measurementUnit;
+	}	
 }

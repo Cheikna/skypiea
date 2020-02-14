@@ -50,7 +50,10 @@
         </mat-tab>
 
         <mat-tab label="Map view">
-            <app-floor-one-plan [rooms]="roomsFromBackCall"></app-floor-one-plan>
+            <div class="table-responsive">
+                <app-floor-plan [rooms]="roomsFromBackCall"></app-floor-plan>
+                <!--<app-floor-one-plan [rooms]="roomsFromBackCall"></app-floor-one-plan>-->
+            </div>
         </mat-tab>
     </mat-tab-group>
 </section>

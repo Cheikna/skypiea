@@ -13,9 +13,11 @@ import com.skytech.skypiea.batch.service.TimerTaskLauncherService;
 
 @EntityScan(basePackages= {"com.skytech.skypiea.commons.entity"})
 @ComponentScan(basePackages = {
+		"com.skytech.skypiea.api.service",
 		"com.skytech.skypiea.batch.service",
 		"com.skytech.skypiea.batch.timer",
-		"com.skytech.skypiea.batch.task.implementation"
+		"com.skytech.skypiea.batch.task.implementation",
+		"com.skytech.skypiea.batch.socket.server"
 })
 @EnableJpaRepositories(basePackages = "com.skytech.skypiea.api.repository")
 @SpringBootApplication

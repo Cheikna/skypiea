@@ -5,7 +5,8 @@ public enum State {
 	IN_REPAIR(2),
 	WARNING(3),
 	DANGER(4),
-	BROKEN(5);
+	BROKEN(5),
+	MISSING(6);
 
 	private int level;
 	
@@ -15,5 +16,9 @@ public enum State {
 
 	public int getLevel() {
 		return level;
+	}
+	
+	public static State getDefaultState() {
+		return State.OPERATIONAL;
 	}
 }

@@ -133,10 +133,4 @@ public class Client extends com.skytech.skypiea.commons.entity.Entity{
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
-	
-	
-	
-	
-
 }
