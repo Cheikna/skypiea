@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
 import com.skytech.skypiea.commons.enumeration.State;
 import com.skytech.skypiea.commons.enumeration.Status;
@@ -36,14 +37,14 @@ public class NonMedicalConnectedObject extends ConnectedObject {
 	
 	@JsonBackReference
 	@ManyToOne
-    @JoinColumn(name = "ROOM_ID", nullable = false)
+    @JoinColumn(name = "ROOM_ID")
 	private Room room;
 	
 	@Column(name="SVG_POINT")
 	private String svgPoint;
-	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "NON_MEDICAL_CONNECTED_OBJECT_ID")
+
+	@JsonManagedReference
+	@OneToMany(mappedBy="nonMedicalConnectedObject",cascade=CascadeType.ALL)
 	private Set<ObjectSetting> objectSettings;
 	
 	@Transient
@@ -58,9 +59,9 @@ public class NonMedicalConnectedObject extends ConnectedObject {
 
 	public NonMedicalConnectedObject(Long id, Long version, Timestamp lastParameterModificationDate,
 			String brand, String ipAddress, String macAddress, Timestamp lastMeasurementDate,
-			Status status, State state, NonMedicalObjectType nonMedicalObjectType, Timestamp installationDate, String svgPoint) {
+			Status status, State state, Long sensitivity, NonMedicalObjectType nonMedicalObjectType, Timestamp installationDate, String svgPoint) {
 		super(id, version, lastParameterModificationDate, brand, ipAddress, macAddress, lastMeasurementDate,
-				status, state);
+				status, state, sensitivity);
 		this.nonMedicalObjectType = nonMedicalObjectType;
 		this.installationDate = installationDate;
 		this.svgPoint = svgPoint;

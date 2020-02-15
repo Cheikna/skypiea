@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skytech.skypiea.injector.mock.abstracts.Mock;
+import com.skytech.skypiea.injector.mock.monitoring.NonMedicalObjectMessageMock;
 import com.skytech.skypiea.injector.mock.user.UserMock;
 import com.skytech.skypiea.injector.util.ScannerUtil;
 
@@ -24,6 +25,8 @@ public class Console {
 	/******* BEGIN MOCKS DECLARATION *******/
 	@Autowired
 	private UserMock userMock;
+	@Autowired
+	private NonMedicalObjectMessageMock nonMedicalObjectMessageMock;
 	
 	
 	/******* END MOCKS DECLARATION *******/
@@ -72,7 +75,7 @@ public class Console {
 		
 		/********** BEGIN MOCKS ADDING **********/
 		mocks.add(userMock);
-
+		mocks.add(nonMedicalObjectMessageMock);
 		/********** END MOCKS ADDING **********/
 
 		mockDisplayNames = "\n====== List of mock(s) : ======\n";		

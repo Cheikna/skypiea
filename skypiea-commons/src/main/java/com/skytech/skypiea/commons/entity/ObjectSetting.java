@@ -4,14 +4,21 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import com.skytech.skypiea.commons.enumeration.Status;
 
 @JsonTypeInfo(use = Id.NAME,
 include = JsonTypeInfo.As.PROPERTY,
@@ -29,18 +36,32 @@ property = "type")
 @Entity
 @Table(name="OBJECT_SETTING")
 @Inheritance(strategy=InheritanceType.JOINED)
-public abstract class ObjectSetting extends com.skytech.skypiea.commons.entity.Entity {
+public class ObjectSetting extends com.skytech.skypiea.commons.entity.Entity {
 	
 	@Column(name="SAVING_DATE")
 	protected Timestamp savingDate;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="STATUS")
+	protected Status status; 
+	
+	@JsonBackReference
+	@ManyToOne
+	@JoinColumn(name = "NON_MEDICAL_CONNECTED_OBJECT_ID")
+	private NonMedicalConnectedObject nonMedicalConnectedObject;
 	
 	public ObjectSetting() {
 		super();
 	}
 
-	public ObjectSetting(Long id, Long version, Timestamp savingDate) {
+	public ObjectSetting(Long id, Long version, Timestamp savingDate, Status status) {
 		super(id, version);
 		this.savingDate = savingDate;
+		this.status = status;
+	}
+
+	public ObjectSetting(Long id, Long version, Timestamp savingDate) {
+		this(id, version, savingDate, null);
 	}
 
 	public Timestamp getSavingDate() {
@@ -49,6 +70,14 @@ public abstract class ObjectSetting extends com.skytech.skypiea.commons.entity.E
 
 	public void setSavingDate(Timestamp savingDate) {
 		this.savingDate = savingDate;
+	}	
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	@Override
@@ -74,5 +103,13 @@ public abstract class ObjectSetting extends com.skytech.skypiea.commons.entity.E
 		} else if (!savingDate.equals(other.savingDate))
 			return false;
 		return true;
+	}
+
+	public NonMedicalConnectedObject getNonMedicalConnectedObject() {
+		return nonMedicalConnectedObject;
+	}
+
+	public void setNonMedicalConnectedObject(NonMedicalConnectedObject nonMedicalConnectedObject) {
+		this.nonMedicalConnectedObject = nonMedicalConnectedObject;
 	}
 }

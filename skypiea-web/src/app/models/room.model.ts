@@ -1,6 +1,7 @@
 import { NonMedicalConnectedObject } from './nonMedicalConnectedObject.model';
 import { Resident } from './resident.model';
 import { Entity } from './entity.model';
+import { State } from '../enums/state.enum';
 
 export class Room extends Entity {
     doorNumber: number;
@@ -15,4 +16,5 @@ export class Room extends Entity {
     nonMedicalConnectedObjects: Array<NonMedicalConnectedObject>;
     objectQuantityByType: Map<string, number>;
     numberOfNonMedicalObjects: number;
+    state: State;
 }

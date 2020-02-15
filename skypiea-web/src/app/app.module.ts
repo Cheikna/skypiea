@@ -17,7 +17,6 @@ import { TracklistCharactersComponent } from './components/tracklist-characters/
 import { PersonnalFormComponent } from './components/personnal-form/personnal-form.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 
-
 import { RoomPlanComponent } from './sub-components/room-plan/room-plan.component';
 import { RoomSummaryComponent } from './sub-components/room-summary/room-summary.component';
 import { RoomInformationComponent } from './components/room-information/room-information.component';
@@ -28,24 +27,33 @@ import { UserVisibilityDirective } from './directives/user-visibility.directive'
 import { FloorOnePlanComponent } from './floors-plan-components/floor-one-plan/floor-one-plan.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 
-import { ObjectIhmComponent } from './components/object-ihm/object-ihm.component';
-import { ObjectConfigurationGroupe1Component } from './sub-components/object-configuration-groupe1/object-configuration-groupe1.component';
 import { AnalysisComponent } from './components/analysis/analysis.component';
 import { DiseaseFormComponent } from './sub-components/disease-form/disease-form.component';
+import { ObjectMonitoringInfoComponent } from './sub-components/object-monitoring-info/object-monitoring-info.component';
+import { ObjectMonitoringExtraInfoComponent } from './dialogs/object-monitoring-extra-info/object-monitoring-extra-info.component';
+import { FloorPlanComponent } from './sub-components/floor-plan/floor-plan.component';
+import { EventHistoryComponent } from './components/event-history/event-history.component';
+import { HealthControlComponent } from './components/health-control/health-control.component';
+import { ObjectIhmComponent } from './components/object-ihm/object-ihm.component';
+import { ObjectConfigurationGroupe1Component } from './sub-components/object-configuration-groupe1/object-configuration-groupe1.component';
+
 import { AlarmClockConfigComponent } from './components/alarm-clock-config/alarm-clock-config.component';
 import { BulbConfigComponent } from './components/bulb-config/bulb-config.component';
 import { DoorSensorConfigComponent } from './components/door-sensor-config/door-sensor-config.component';
 import { ObjectConfigurationGroupe2Component } from './sub-components/object-configuration-groupe2/object-configuration-groupe2.component';
 import { ShutterConfigComponent } from './components/shutter-config/shutter-config.component';
 import { TemperatureControllerConfigComponent } from './components/temperature-controller-config/temperature-controller-config.component';
+import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smoke-sensor-config.component';
+import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
 
-
+import 'hammerjs';
 
 
 @NgModule({
   entryComponents: [
     SignInComponent,
-    ObjectInfoComponent
+    ObjectInfoComponent,
+    ObjectMonitoringExtraInfoComponent
   ],
   declarations: [
     AppComponent,
@@ -57,7 +65,6 @@ import { TemperatureControllerConfigComponent } from './components/temperature-c
     RoomInformationComponent,
     MonitoringComponent,
     RoomPlanComponent,
-
     TrackingComponent,
     TracklistCharactersComponent,
     PersonnalFormComponent,
@@ -67,18 +74,24 @@ import { TemperatureControllerConfigComponent } from './components/temperature-c
     PersonnalFormComponent,
     FloorOnePlanComponent,
     DynamicFormComponent,
-
-    ObjectIhmComponent,
-    ObjectConfigurationGroupe1Component,
-
     AnalysisComponent,
     DiseaseFormComponent,
+    ObjectMonitoringInfoComponent,
+    ObjectMonitoringExtraInfoComponent,
+    FloorPlanComponent,
+    EventHistoryComponent,
+    AnalysisComponent,
+    HealthControlComponent,
+    ObjectIhmComponent,
+    ObjectConfigurationGroupe1Component,
     AlarmClockConfigComponent,
     BulbConfigComponent,
     DoorSensorConfigComponent,
     ObjectConfigurationGroupe2Component,
     ShutterConfigComponent,
-    TemperatureControllerConfigComponent
+    TemperatureControllerConfigComponent,
+    SmokeSensorConfigComponent,
+    SunshineSensorConfigComponent
 
   ],
   imports: [

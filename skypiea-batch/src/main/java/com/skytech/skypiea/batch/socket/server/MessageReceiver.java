@@ -5,10 +5,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.skytech.skypiea.batch.service.IMessageProcessor;
+import com.skytech.skypiea.commons.enumeration.MessageSender;
 import com.skytech.skypiea.commons.message.Message;
 import com.skytech.skypiea.commons.util.JsonUtil;
 
@@ -25,13 +28,17 @@ public class MessageReceiver implements Runnable {
 	//This writer will allow us to send a response to the client
 	private PrintWriter writeToClient;
 	
+	// Parameter retrieved on this class creation in BatchMessageReceiver Socket
+	private Map<MessageSender, IMessageProcessor> messageProcessors;
+	
 	private String encodage;
 
 	private Socket socket;
 
-	public MessageReceiver(Socket socket, String encodage) {
+	public MessageReceiver(Socket socket, String encodage, Map<MessageSender, IMessageProcessor> messageProcessors) {
 		this.socket = socket;
 		this.encodage = encodage;
+		this.messageProcessors = messageProcessors;
 	}
 
 	@Override
@@ -42,6 +49,12 @@ public class MessageReceiver implements Runnable {
 			String result = readFromClient.readLine();
 			Message message = JsonUtil.deserializeMessage(result);
 			System.out.println("Message received " + message.toString());
+			MessageSender messageSender = message.getMessageSender();
+			
+			if(messageSender != null) {
+				IMessageProcessor messageProcessor = messageProcessors.get(messageSender);
+				messageProcessor.processObjectMessage(message);
+			}
 		}
 		catch (Exception e) 
 		{

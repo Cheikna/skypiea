@@ -15,7 +15,6 @@ import org.junit.Test;
 public class ScannerUtilTest {
 	
 	private Scanner sc;
-	private Predicate<String> nullPredicate = null;
 	private Predicate<String> stringSizePredicate = (str) -> {
 		return str != null && str.length() >= 3;
 	};
@@ -25,14 +24,6 @@ public class ScannerUtilTest {
 		if(sc != null) {
 			sc.close();
 		}
-	}
-
-	@Test
-	public void testAskForStringNullPredicate() {
-		String[] inputs = {"testTEST"};
-		setScannerInputs(inputs);
-		assertNull(ScannerUtil.askForString(sc, "question", nullPredicate));
-		
 	}
 	
 	@Test

@@ -1,4 +1,8 @@
 import { Entity } from './entity.model';
+import { Status } from '../enums/status.enum';
+import { State } from '../enums/state.enum';
+import { RealTimeEvent } from './realTimeEvent.model';
+import { HistoryEvent } from './historyEvent.model';
 
 
 export abstract class ConnectedObject extends Entity {
@@ -7,6 +11,8 @@ export abstract class ConnectedObject extends Entity {
     ipAddress: string; 
     macAddress: string; 
     lastMeasurementDate: Date; 
-    status: string; 
-    state: string; 
+    status: Status; 
+    state: State; 
+    realTimeEvent: RealTimeEvent;
+    historyEvents: Array<HistoryEvent>;
 }

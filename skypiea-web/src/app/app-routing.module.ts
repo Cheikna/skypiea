@@ -16,11 +16,15 @@ import { ObjectConfigurationGroupe1Component } from './sub-components/object-con
 
 
 import { AnalysisComponent } from './components/analysis/analysis.component';
+import { EventHistoryComponent } from './components/event-history/event-history.component';
+import {HealthControlComponent} from "./components/health-control/health-control.component";
 import { AlarmClockConfigComponent } from './components/alarm-clock-config/alarm-clock-config.component';
 import { BulbConfigComponent} from './components/bulb-config/bulb-config.component'; 
 import { DoorSensorConfigComponent} from './components/door-sensor-config/door-sensor-config.component'; 
 import { ShutterConfigComponent } from './components/shutter-config/shutter-config.component';
 import { TemperatureControllerConfigComponent } from './components/temperature-controller-config/temperature-controller-config.component';
+import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smoke-sensor-config.component';
+import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
 
 const routes: Routes = [
   {
@@ -28,7 +32,6 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-
     path: 'ObjectIhm',
     component: ObjectIhmComponent, 
     canActivate: [AuthenticationGuard], 
@@ -38,66 +41,82 @@ const routes: Routes = [
   },
   {
     path: 'monitoring',
-    component: MonitoringComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: MonitoringComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'STAFF'
     }
   },
   {
     path: 'monitoring/room/:doorNumber',
-    component: RoomInformationComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: RoomInformationComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'STAFF'
     }
   },
   {
     path: 'personnalForm',
-    component: PersonnalFormComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: PersonnalFormComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'NOT_CONNECTED'
     }
   },
   {
-    path: 'tracking', 
-    component: TrackingComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    path: 'tracking',
+    component: TrackingComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'STAFF'
     }
   },
   {
-    path: 'tracking/:id', 
-    component: TrackingComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    path: 'tracking/:id',
+    component: TrackingComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'STAFF'
     }
   },
   {
-    path: 'tracklist', 
-    component: TracklistCharactersComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    path: 'tracklist',
+    component: TracklistCharactersComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'STAFF'
     }
   },
   {
-    path: 'analysis', 
-    component: AnalysisComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    path: 'analysis',
+    component: AnalysisComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'STAFF'
     }
   },
   {
-    path: 'dynamicForm', 
-    component: DynamicFormComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    path: 'dynamicForm',
+    component: DynamicFormComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'NOT_CONNECTED'
+    }
+  },
+  {
+    path: 'monitoring/event-history',
+    component: EventHistoryComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'STAFF'
+    }
+  },
+  {
+    path: 'health-control',
+    component: HealthControlComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'STAFF'
     }
   },
   {
@@ -125,6 +144,46 @@ const routes: Routes = [
     }
   },
   {
+    path: 'object-list/alarm-clock',
+    component: AlarmClockConfigComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'object-list/bulb',
+    component: BulbConfigComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'object-list/door-sensor',
+    component: DoorSensorConfigComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'monitoring/event-history',
+    component: EventHistoryComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'STAFF'
+    }
+  },
+  {
+    path: 'health-control',
+    component: HealthControlComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'STAFF'
+    }
+  },
+  {
     path: 'object-list/shutter',
     component: ShutterConfigComponent, 
     canActivate: [AuthenticationGuard], 
@@ -135,6 +194,22 @@ const routes: Routes = [
   {
     path: 'object-list/temperature-controller',
     component: TemperatureControllerConfigComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'object-list/smoke-sensor',
+    component: SmokeSensorConfigComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'object-list/sunshine-sensor',
+    component: SunshineSensorConfigComponent, 
     canActivate: [AuthenticationGuard], 
     data: { 
       userType: 'RESIDENT'
