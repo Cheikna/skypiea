@@ -9,14 +9,14 @@
         <td>Installation date : {{nonMedicalConnectedObject?.installationDate | date: 'medium'}}</td>
         <td>Brand: {{nonMedicalConnectedObject?.brand}}</td>
         <td>Status : {{ nonMedicalConnectedObject?.status}} </td>
-        <td>Is Automatic Mode Enabled : {{setting?.isAutomaticModeEnabled}} </td>
+        <td>Is Automatic Mode Enabled : {{setting?.automaticModeEnabled}} </td>
         <td>Window Coverage : {{setting?.windowCoverage}}</td>
       </tr>
       <br>
     <h1>Update settings</h1>
     <tr>
        
-        <td> Window Coverage : <input type="search" ng-model="text"> </td>
+        <td> Window Coverage : <input type="search"  [(ngModel)]="windowCoverage"> </td>
     </tr> 
     </tbody>
     </table>

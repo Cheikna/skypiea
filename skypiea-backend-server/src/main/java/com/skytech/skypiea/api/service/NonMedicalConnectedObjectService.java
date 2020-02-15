@@ -12,16 +12,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skytech.skypiea.api.repository.NonMedicalConnectedObjectRepository;
+import com.skytech.skypiea.api.repository.ObjectSettingRepository;
 import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;
+import com.skytech.skypiea.commons.entity.ObjectSetting;
+import com.skytech.skypiea.commons.util.DateUtil;
 
 
 @Service
 public class NonMedicalConnectedObjectService {
 	
+
 	private static Logger log = LoggerFactory.getLogger(NonMedicalConnectedObjectService.class);
 
 	@Autowired
 	private NonMedicalConnectedObjectRepository nonMedicalConnectedObjectRepository;
+	
+	@Autowired
+	private ObjectSettingRepository objectSettingRepository;
 	
 	public List<NonMedicalConnectedObject> findAll(){
 		try {
@@ -66,5 +73,35 @@ public class NonMedicalConnectedObjectService {
 		}
 		return new ArrayList<NonMedicalConnectedObject>();
 	}
+	
+	@Transactional
+	public ObjectSetting saveNewSetting(Long objectId, ObjectSetting objectSetting) {
+		ObjectSetting savedSetting = null;
+		try {
+			NonMedicalConnectedObject object = findById(objectId);
+			
+			if(object != null) {
+				objectSetting.setId(0L);
+				objectSetting.setVersion(0L);
+				objectSetting.setSavingDate(DateUtil.getCurrentTimestamp());
+				objectSetting.setNonMedicalConnectedObject(object);
+				savedSetting = objectSettingRepository.save(objectSetting);	
+				if(object.getStatus() != savedSetting.getStatus()) {
+					object.setStatus(objectSetting.getStatus());
+					save(object);
+				}
+				
+			} else {
+				throw new Exception("Object with ID nÂ°" + objectId + " not found !");
+			}
+			
+			
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+		}
+		return savedSetting;
+	}
+
 	
 }
