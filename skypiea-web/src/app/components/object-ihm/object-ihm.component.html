@@ -12,6 +12,8 @@
     <ng-container *ngIf="selectedGroup == '1'">
         <app-object-configuration-groupe1 [nonMedicalConnectedObjects]="firstGroupObjects"> </app-object-configuration-groupe1>
     </ng-container>
-    
+    <ng-container *ngIf="selectedGroup == '2'">
+        <app-object-configuration-groupe1 [nonMedicalConnectedObjects]="secondGroupObjects"> </app-object-configuration-groupe1>
+    </ng-container>
     </div>
 </section>

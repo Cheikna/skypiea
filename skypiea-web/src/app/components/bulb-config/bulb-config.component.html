@@ -9,7 +9,7 @@
         <td>Installation date : {{nonMedicalConnectedObject?.installationDate | date: 'medium'}} </td>
         <td>Brand: {{nonMedicalConnectedObject?.brand}} </td>
         <td>Switch: {{ nonMedicalConnectedObject?.status}} </td>
-        <td>Color:  {{setting?.currentColor}} </td>
+        <td>Color: {{setting?.currentColor}} </td>
       </tr>
       <br>
     <h1>Update settings</h1>
@@ -17,11 +17,14 @@
         <td>  
             <!--<mat-slide-toggle [formControl]="activate" (toggleChange)="onToggleChange($event)">Switch</mat-slide-toggle>-->
         </td>
-        <td> Update Luminosity :
+        <td> Color :
         </td>
     </tr> 
     </tbody>
     <br> 
-    <button type="button" class="btn btn-success">Enregistrer</button>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" >
+      <button type="button" class="btn btn-success" (click)="save()">Save</button>
+      <button type="button" class="btn btn-success" (click)="redirectToObjectListPage()">Exit</button>
+  </div>
 </table>
 

@@ -23,5 +23,8 @@
     </tr> 
     </tbody>
     <br> 
-    <button type="button" class="btn btn-success">Enregistrer</button>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" >
+      <button type="button" class="btn btn-success" (click)="save()">Save</button>
+      <button type="button" class="btn btn-success" (click)="redirectToObjectListPage()">Exit</button>
+  </div>
 </table>
