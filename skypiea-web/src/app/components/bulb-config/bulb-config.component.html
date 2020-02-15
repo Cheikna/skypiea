@@ -15,9 +15,19 @@
     <h1>Update settings</h1>
     <tr>
         <td>  
-            <!--<mat-slide-toggle [formControl]="activate" (toggleChange)="onToggleChange($event)">Switch</mat-slide-toggle>-->
+          <mat-slide-toggle (change)="changed()" [(ngModel)]="myStatus" >Switch</mat-slide-toggle>
         </td>
-        <td> Color :
+        <td> 
+          <mat-form-field>
+            <mat-label>Color</mat-label>
+            <mat-select [(value)]= "selected">
+              <mat-option value="#FF00FF">Rose</mat-option>
+              <mat-option value="#FFFF00">Jaune</mat-option>
+              <mat-option value="#00BFFF">Bleu</mat-option>
+              <mat-option value="#FF0000">Rouge</mat-option>
+              <mat-option value="#00FF00">Vert</mat-option>
+            </mat-select>
+          </mat-form-field>
         </td>
     </tr> 
     </tbody>
