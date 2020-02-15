@@ -29,13 +29,14 @@ export class AlarmClockConfigComponent implements OnInit {
 
     if(this.setting){
       this.ringingClock = this.setting.ringingClock;
-      this.myStatus=this.setting.status;
+      this.status=this.setting.status;
     }
   }
 
   save(){
     // We affect the new value to the object 
     console.log(this.setting.ringingClock);
+    this.changed();
     this.setting.status = this.status; 
     this.setting.currentTime = this.ringingClock;
     this.nonMedicalConnectedObjectService.saveNewObjectSetting(this.nonMedicalConnectedObject.id, this.setting).subscribe((data)=> {

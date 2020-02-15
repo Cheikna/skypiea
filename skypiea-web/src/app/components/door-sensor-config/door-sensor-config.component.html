@@ -13,10 +13,10 @@
         <td> Door Open:  {{setting?.isDoorOpen}} </td>
       </tr>
       <br>
-    <h1>Update settings</h1>
+    <h1>Settings</h1>
     <tr>
         <td>  
-           <!-- <mat-slide-toggle [formControl]="activate" (toggleChange)="onToggleChange($event)">Lock the door</mat-slide-toggle> -->
+          <mat-slide-toggle (change)="changed()" [(ngModel)]="doorLocked" >Lock</mat-slide-toggle>
         </td>
  
     </tr> 
