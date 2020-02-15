@@ -13,12 +13,15 @@
         <td>Ringing clock : {{setting?.currentTime | date: 'medium'}} </td>
       </tr>
       <br>
-    <h1>Update settings</h1>
+    <h1>Settings: </h1>
     <tr>
         <td>  
-            <!--<mat-slide-toggle [formControl]="activate" ">Switch</mat-slide-toggle> -->
+            <mat-slide-toggle (change)="changed()" [(ngModel)]="myStatus" >Switch</mat-slide-toggle>
         </td>
         <td> Ringing clock :
+          <mat-form-field>
+            <input matInput type="datetime-local" placeholder="alarm" [(ngModel)]="ringingClock">
+          </mat-form-field>
         </td>
     </tr> 
     </tbody>

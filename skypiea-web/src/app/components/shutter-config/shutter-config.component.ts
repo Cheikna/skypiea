@@ -35,6 +35,7 @@ export class ShutterConfigComponent implements OnInit {
 
   save(){
         // We affect the new value to the object
+        console.log(this.setting.windowCoverage)
         this.setting.windowCoverage = this.windowCoverage;
         this.nonMedicalConnectedObjectService.saveNewObjectSetting(this.nonMedicalConnectedObject.id, this.setting).subscribe((data)=> {
           this.setting = data;
