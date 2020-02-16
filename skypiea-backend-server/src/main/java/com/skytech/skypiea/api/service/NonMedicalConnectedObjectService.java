@@ -2,6 +2,7 @@ package com.skytech.skypiea.api.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -13,8 +14,13 @@ import org.springframework.stereotype.Service;
 
 import com.skytech.skypiea.api.repository.NonMedicalConnectedObjectRepository;
 import com.skytech.skypiea.api.repository.ObjectSettingRepository;
+import com.skytech.skypiea.commons.entity.HistoryEvent;
 import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;
 import com.skytech.skypiea.commons.entity.ObjectSetting;
+import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
+import com.skytech.skypiea.commons.object.statistic.NonMedicalObjectStatistic;
+import com.skytech.skypiea.commons.object.statistic.NonMedicalObjectStatisticFactory;
+import com.skytech.skypiea.commons.object.statistic.ObjectStatisticFilter;
 import com.skytech.skypiea.commons.util.DateUtil;
 
 
@@ -92,7 +98,7 @@ public class NonMedicalConnectedObjectService {
 				}
 				
 			} else {
-				throw new Exception("Object with ID nÂ°" + objectId + " not found !");
+				throw new Exception("Object with ID " + objectId + " not found !");
 			}
 			
 			
@@ -101,6 +107,18 @@ public class NonMedicalConnectedObjectService {
 			e.printStackTrace();
 		}
 		return savedSetting;
+	}
+
+	public NonMedicalObjectStatistic getStatistics(Long objectId, ObjectStatisticFilter filter) {
+		NonMedicalConnectedObject object = findById(objectId);
+		NonMedicalObjectStatistic statistic = null;
+		if(object != null) {
+			Set<ObjectSetting> settings = object.getBoundedObjectSettings(filter);	
+			Set<HistoryEvent> events = object.getBoundedHistoryEvents(filter);
+			NonMedicalObjectType type = object.getNonMedicalObjectType();
+			statistic = NonMedicalObjectStatisticFactory.getStatistic(type, settings, events);
+		}
+		return statistic;
 	}
 
 	
