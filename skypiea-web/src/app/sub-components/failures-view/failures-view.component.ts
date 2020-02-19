@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Room } from 'src/app/models/room.model';
 import { State } from 'src/app/enums/state.enum';
+import { getNonMedicalObjectTypeName } from 'src/app/enums/nonMedicalObjectType.enum';
 
 @Component({
   selector: 'app-failures-view',
@@ -14,6 +15,7 @@ export class FailuresViewComponent implements OnInit, OnChanges {
   brokenObjects: Array<any>;
   brokenRoomsPercentage: number;
   State = State;
+  getObjectTypeName = (type) => getNonMedicalObjectTypeName(type);
 
   constructor() {
     this.brokenObjects = new Array<any>();
