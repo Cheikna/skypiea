@@ -3,6 +3,7 @@ import { statusInfo, Status } from 'src/app/enums/status.enum';
 import { getNonMedicalObjectTypeName } from 'src/app/enums/nonMedicalObjectType.enum';
 import { MatDialog } from '@angular/material/dialog';
 import { ObjectMonitoringExtraInfoComponent } from 'src/app/dialogs/object-monitoring-extra-info/object-monitoring-extra-info.component';
+import { stateInfo } from 'src/app/enums/state.enum';
 
 @Component({
   selector: 'app-object-monitoring-info',
@@ -13,6 +14,7 @@ export class ObjectMonitoringInfoComponent implements OnInit {
 
   @Input() nonMedicalConnectedObject: any;
   statusInfo = statusInfo;
+  stateInfo = stateInfo;
   StatusEnum = Status;
   typeName = (type) => getNonMedicalObjectTypeName(type);
 

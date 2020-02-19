@@ -38,6 +38,26 @@ export class ObjectConfigurationGroupe1Component implements OnInit {
       this.webStorageService.temporaryData = object; 
       this.router.navigate(["object-list/sunshine-sensor"]);
     }
+
+    if (object.nonMedicalObjectType == NonMedicalObjectType.SMOKE_SENSOR){
+      this.webStorageService.temporaryData = object; 
+      this.router.navigate(["object-list/smoke-sensor"]);
+    }
+
+    if (object.nonMedicalObjectType == NonMedicalObjectType.SUNSHINE_SENSOR){
+      this.webStorageService.temporaryData = object; 
+      this.router.navigate(["object-list/sunshine-sensor"]);
+    }
+
+    if (object.nonMedicalObjectType == NonMedicalObjectType.SMOKE_SENSOR){
+      this.webStorageService.temporaryData = object; 
+      this.router.navigate(["object-list/smoke-sensor"]);
+    }
+
+    if (object.nonMedicalObjectType == NonMedicalObjectType.SUNSHINE_SENSOR){
+      this.webStorageService.temporaryData = object; 
+      this.router.navigate(["object-list/sunshine-sensor"]);
+    }
   }
 
 }

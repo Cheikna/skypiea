@@ -36,6 +36,7 @@ import { EventHistoryComponent } from './components/event-history/event-history.
 import { HealthControlComponent } from './components/health-control/health-control.component';
 import { ObjectIhmComponent } from './components/object-ihm/object-ihm.component';
 import { ObjectConfigurationGroupe1Component } from './sub-components/object-configuration-groupe1/object-configuration-groupe1.component';
+import { FailuresViewComponent } from './sub-components/failures-view/failures-view.component';
 
 import { AlarmClockConfigComponent } from './components/alarm-clock-config/alarm-clock-config.component';
 import { BulbConfigComponent } from './components/bulb-config/bulb-config.component';
@@ -91,8 +92,8 @@ import 'hammerjs';
     ShutterConfigComponent,
     TemperatureControllerConfigComponent,
     SmokeSensorConfigComponent,
-    SunshineSensorConfigComponent
-
+    SunshineSensorConfigComponent,
+    FailuresViewComponent
   ],
   imports: [
     BrowserModule,
