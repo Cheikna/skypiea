@@ -47,6 +47,7 @@ import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smo
 import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
 
 import 'hammerjs';
+import { ObjectsMapComponent } from './components/objects-map/objects-map.component';
 
 
 @NgModule({
@@ -91,7 +92,8 @@ import 'hammerjs';
     ShutterConfigComponent,
     TemperatureControllerConfigComponent,
     SmokeSensorConfigComponent,
-    SunshineSensorConfigComponent
+    SunshineSensorConfigComponent,
+    ObjectsMapComponent
 
   ],
   imports: [

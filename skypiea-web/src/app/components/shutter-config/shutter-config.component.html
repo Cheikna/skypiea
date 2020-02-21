@@ -8,7 +8,7 @@
     <tr>
         <td>Installation date : {{nonMedicalConnectedObject?.installationDate | date: 'medium'}}</td>
         <td>Brand: {{nonMedicalConnectedObject?.brand}}</td>
-        <td>Status : {{ nonMedicalConnectedObject?.status}} </td>
+        <td>Status : {{ setting?.status}} </td>
         <td>Is Automatic Mode Enabled : {{setting?.automaticModeEnabled}} </td>
         <td>Window Coverage : {{setting?.windowCoverage}}</td>
       </tr>
@@ -16,7 +16,14 @@
     <h1>Update settings</h1>
     <tr>
        
-        <td> Window Coverage : <input type="search"  [(ngModel)]="windowCoverage"> </td>
+        <td> Window Coverage : <input type="number"  [(ngModel)]="windowCoverage"> </td>
+        <td>
+          <div fxLayout="row" fxLayoutAlign="space-evenly center">
+            Status 
+              <mat-radio-button (click)="onClickOn()">ON</mat-radio-button>
+              <mat-radio-button (click)="onClickOff()">OFF</mat-radio-button>
+          </div>
+        </td>
     </tr> 
     </tbody>
     </table>
