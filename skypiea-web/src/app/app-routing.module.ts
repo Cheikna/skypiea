@@ -25,6 +25,7 @@ import { ShutterConfigComponent } from './components/shutter-config/shutter-conf
 import { TemperatureControllerConfigComponent } from './components/temperature-controller-config/temperature-controller-config.component';
 import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smoke-sensor-config.component';
 import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
+import { ObjectsMapComponent } from './components/objects-map/objects-map.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,14 @@ const routes: Routes = [
   {
     path: 'ObjectIhm',
     component: ObjectIhmComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'objects-map',
+    component: ObjectsMapComponent, 
     canActivate: [AuthenticationGuard], 
     data: { 
       userType: 'RESIDENT'
