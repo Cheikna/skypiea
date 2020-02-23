@@ -111,7 +111,9 @@ public class CacheInfo {
 
 	public void setComments(String newComments) {
 		// We need to save the changes in the database if the old comment and the new one are different
-		this.isCacheInfoNeedToBeSavedInDatabase = (!newComments.equalsIgnoreCase(comments));
+		if(newComments != null && comments != null) {
+			this.isCacheInfoNeedToBeSavedInDatabase = (!newComments.equalsIgnoreCase(comments));
+		}
 		this.comments = newComments;
 	}	
 

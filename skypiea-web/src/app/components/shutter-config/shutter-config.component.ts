@@ -16,7 +16,7 @@ export class ShutterConfigComponent implements OnInit {
 
  // List of the shutter properties
    windowCoverage: number;
- 
+   status: string;
  
 
   constructor(private webStorageService: WebStorageService, private router: Router,   private nonMedicalConnectedObjectService: NonMedicalConnectedObjectService) {
@@ -33,14 +33,22 @@ export class ShutterConfigComponent implements OnInit {
     }
   }
 
+  onClickOn(){
+      this.status = 'ON'
+  }
+
+  onClickOff(){
+    this.status = 'OFF'
+  }
+
   save(){
         // We affect the new value to the object
         console.log(this.setting.windowCoverage)
         this.setting.windowCoverage = this.windowCoverage;
+        this.setting.status = this.status;
         this.nonMedicalConnectedObjectService.saveNewObjectSetting(this.nonMedicalConnectedObject.id, this.setting).subscribe((data)=> {
           this.setting = data;
         });
-        // TO DO 
   }
 
   redirectToObjectListPage(){

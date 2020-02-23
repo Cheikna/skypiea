@@ -36,6 +36,7 @@ import { EventHistoryComponent } from './components/event-history/event-history.
 import { HealthControlComponent } from './components/health-control/health-control.component';
 import { ObjectIhmComponent } from './components/object-ihm/object-ihm.component';
 import { ObjectConfigurationGroupe1Component } from './sub-components/object-configuration-groupe1/object-configuration-groupe1.component';
+import { FailuresViewComponent } from './sub-components/failures-view/failures-view.component';
 
 import { AlarmClockConfigComponent } from './components/alarm-clock-config/alarm-clock-config.component';
 import { BulbConfigComponent } from './components/bulb-config/bulb-config.component';
@@ -47,6 +48,7 @@ import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smo
 import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
 
 import 'hammerjs';
+import { ObjectsMapComponent } from './components/objects-map/objects-map.component';
 
 
 @NgModule({
@@ -91,7 +93,9 @@ import 'hammerjs';
     ShutterConfigComponent,
     TemperatureControllerConfigComponent,
     SmokeSensorConfigComponent,
-    SunshineSensorConfigComponent
+    SunshineSensorConfigComponent,
+    FailuresViewComponent,
+    ObjectsMapComponent
 
   ],
   imports: [

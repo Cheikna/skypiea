@@ -33,6 +33,11 @@
                     <mdb-icon fas icon="network-wired"></mdb-icon> My Smart Objects
                 </a>
             </li>
+            <li class="nav-item" *appUserVisibility="['RESIDENT']">
+                    <a class="nav-link waves-effect" mdbWavesEffect [routerLink]="['/objects-map']">
+                        <mdb-icon fas icon="map"></mdb-icon> My Plan
+                    </a>
+                </li>
             <li class="nav-item" *appUserVisibility="['STAFF']">
                 <a class="nav-link waves-effect" mdbWavesEffect [routerLink]="['/health-control']">
                     <mdb-icon fas icon="briefcase-medical"></mdb-icon> Health Monitoring

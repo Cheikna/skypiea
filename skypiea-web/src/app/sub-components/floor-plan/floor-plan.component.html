@@ -1,23 +1,35 @@
 <br>
 <!-- Legend for the room color -->
 <div class="container d-flex justify-content-center">
-        <table class="table table-bordered text-center table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col" [attr.colspan]="stateInfoArray.length">Legend</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="col" *ngFor="let info of stateInfoArray">
-                            <!-- Index 0 -> key   -->
-                            <!-- Index 1 -> value with name and color for instance -->
-                            <span class="color-circle" [style.background-color]="info[1].color"></span>
-                            {{ info[1].name }}
-                        </th>
-                    </tr>
-                </tbody>
-            </table>
+    <table class="table table-bordered text-center table-dark">
+        <thead>
+            <tr>
+                <th scope="col" [attr.colspan]="stateInfoArray.length">Legend</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="col" *ngFor="let info of stateInfoArray">
+                    <!-- Index 0 -> key   -->
+                    <!-- Index 1 -> value with name and color for instance -->
+                    <span class="color-circle" [style.background-color]="info[1].color"></span>
+                    {{ info[1].name }}
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Selection of the floor  -->
+<div class="d-flex justify-content-center">
+    <mat-form-field class="col-6">
+        <mat-label>Select a floor (Default 1)</mat-label>
+        <mat-select [(value)]="selectedFloor">
+            <mat-option *ngFor="let element of floorNumberCollection; let i=index" value="{{ i+1 }}">
+              {{ i+1 }}
+            </mat-option>
+        </mat-select>
+      </mat-form-field>
 </div>
 
 <!-- Information about the room which is overed -->
@@ -27,7 +39,7 @@
     </h1>
     <h1 *ngIf="isHover">
         <span *ngIf="!otherRoomInfo && (!roomOvered || !roomOvered?.resident)">
-            The room is not occupied
+            Room n°{{ emptyRoomDoorNumber }} : The room is not occupied
         </span>
         <span *ngIf="roomOvered?.resident">
             Room n°{{ roomOvered?.doorNumber }} : {{roomOvered?.resident?.lastName | uppercase }}

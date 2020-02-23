@@ -1,0 +1,38 @@
+<div class="container">
+    <h3><b>Percentage of rooms with at least one broken object : {{ brokenRoomsPercentage }}%</b></h3>
+    <div *ngFor="let room of roomsWithBrokenObjects">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Room n° {{ room?.doorNumber }}</mat-card-title>
+                <mat-card-subtitle>Resident : {{ room?.resident?.lastName }} {{ room?.resident?.firstName }}
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Type of the object</th>
+                                <th scope="col">IP Address</th>
+                                <th scope="col">Mac Address</th>
+                                <th scope="col">Failure cause</th>
+                                <th scope="col">Triggering time </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let object of room.nonMedicalConnectedObjects">
+                                <ng-container *ngIf="object.state == State.BROKEN">
+                                    <th scope="row">{{getObjectTypeName(object?.nonMedicalObjectType) }}</th>
+                                    <td>{{object?.ipAddress}}</td>
+                                    <td>{{object?.macAddress}}</td>
+                                    <td>{{object?.realTimeEvent?.description}}</td>
+                                    <td>{{object?.realTimeEvent?.startTime | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+                                </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
