@@ -1,66 +1,51 @@
 package com.skytech.skypiea.commons.entity;
 
-import javax.persistence.Column;
+import java.util.Set;
+
 import javax.persistence.Table;
 
-import com.skytech.skypiea.commons.enumeration.DiseaseType;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 
 @Entity
 @Table(name="MEDICAL_RECORD")
 public class MedicalRecord extends com.skytech.skypiea.commons.entity.Entity{
 
-
-	@Enumerated(EnumType.STRING)
-	@Column(name="DISEASE_TYPE")
-	protected DiseaseType disease;
-
-	@Column(name="DURATION")
-	protected String duration;
+	@ManyToMany
+	@JoinColumn(name="ID_CLIENT")
+	private Set<Client> clients;
 	
-	@Column(name="TREATMENT")
-	protected String treatment;
-	
-	
+	@JoinColumn(name="ID_DISEASE")
+	private int idDisease;
 	
 	public MedicalRecord() {
-		
+		super();
+	}
+
+	public MedicalRecord(Long id, Long version, Set<Client> clients, int idDisease) {
+		super(id, version);
+		this.clients = clients;
+		this.idDisease = idDisease;
+	}
+
+	public Set<Client> getClients() {
+		return clients;
+	}
+
+	public void setClients(Set<Client> clients) {
+		this.clients = clients;
+	}
+
+	public int getIdDisease() {
+		return idDisease;
+	}
+
+	public void setIdDisease(int idDisease) {
+		this.idDisease = idDisease;
 	}
 	
-	public MedicalRecord(Long id, Long version, DiseaseType disease, String duration, String treatment) {
-		super(id, version);
-		this.disease = disease;
-		this.duration = duration;
-		this.treatment = treatment;
-	}
+	
 
-	public DiseaseType getDisease() {
-		return disease;
-	}
-
-	public void setDisease(DiseaseType disease) {
-		this.disease = disease;
-	}
-
-	public String getDuration() {
-		return duration;
-	}
-
-	public void setDuration(String duration) {
-		this.duration = duration;
-	}
-
-	public String getTreatment() {
-		return treatment;
-	}
-
-	public void setTreatment(String treatment) {
-		this.treatment = treatment;
-	}
 }

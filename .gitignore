@@ -85,3 +85,7 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 .idea/*
+skypiea-web/src/app/components/hobbies-form/hobbies-form.component.ts
+skypiea-web/src/app/components/hobbies-form/hobbies-form.component.spec.ts
+skypiea-web/src/app/components/hobbies-form/hobbies-form.component.html
+skypiea-web/src/app/components/hobbies-form/hobbies-form.component.scss

@@ -1,12 +1,11 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { DynamicFormComponent } from 'src/app/components/dynamic-form/dynamic-form.component';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { DynamicFormComponent } from '../../components/dynamic-form/dynamic-form.component';
-import { Router } from '@angular/router';
-import { ToastService } from 'src/app/util/toast.service';
 import { Disease } from 'src/app/models/disease.model';
-import { DiseaseService } from 'src/app/services/disease.service';
+import { ToastService } from 'src/app/util/toast.service';
+import { Router } from '@angular/router';
 import { ToastType } from 'src/app/enums/toastType.enum';
-import { DiseaseType } from 'src/app/enums/disease.enum';
+import { DiseaseService } from '../../services/disease.service';
 
 @Component({
   selector: 'app-disease-form',
@@ -14,11 +13,11 @@ import { DiseaseType } from 'src/app/enums/disease.enum';
   styleUrls: ['./disease-form.component.scss']
 })
 export class DiseaseFormComponent implements OnInit {
+  treatment: String;
+  duration: String;
   diseaseForm: FormGroup;
   dynamicDisease: DynamicFormComponent;
-  @Output() newDisease: Disease;
-
-
+  newDisease: Disease;
 
   constructor(private diseaseService: DiseaseService,  private toastService: ToastService, private router: Router) {
     this.newDisease = new Disease();
@@ -29,7 +28,7 @@ export class DiseaseFormComponent implements OnInit {
   }
 
   create(){
-    console.log(this.diseaseService.getTypeOfDisease());
+    /*console.log(this.diseaseService.getTypeOfDisease());
     this.newDisease.typeOfDisease = this.diseaseService.getTypeOfDisease();
 
     console.log(JSON.stringify(this.newDisease));
@@ -45,7 +44,11 @@ export class DiseaseFormComponent implements OnInit {
           'Your username or your password is incorrect.', 7000);
         }        
       },
-      (error) => this.toastService.displayToast(ToastType.ERROR, 'An error occured !', true, JSON.stringify(error)));
+      (error) => this.toastService.displayToast(ToastType.ERROR, 'An error occured !', true, JSON.stringify(error)));*/
+      console.log(this.newDisease.treatment);
+      console.log(this.newDisease.duration);
+      this.diseaseService.setTreatment(this.newDisease.treatment);
+      this.diseaseService.setDuration(this.newDisease.duration);
   }
 
   createFormGroup(){
@@ -54,6 +57,7 @@ export class DiseaseFormComponent implements OnInit {
       duration: new FormControl('', [Validators.required])
     })
   }
+
 
 
 }

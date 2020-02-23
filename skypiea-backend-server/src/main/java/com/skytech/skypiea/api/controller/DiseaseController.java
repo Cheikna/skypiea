@@ -14,7 +14,7 @@ import com.skytech.skypiea.api.service.DiseaseService;
 import com.skytech.skypiea.commons.entity.Disease;
 import com.skytech.skypiea.commons.enumeration.DiseaseType;
 
-import superObject.DiseaseSuper;
+import ch.qos.logback.core.net.server.Client;
 
 @RestController
 @RequestMapping("/diseases")

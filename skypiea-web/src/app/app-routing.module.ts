@@ -26,6 +26,7 @@ import { ShutterConfigComponent } from './components/shutter-config/shutter-conf
 import { TemperatureControllerConfigComponent } from './components/temperature-controller-config/temperature-controller-config.component';
 import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smoke-sensor-config.component';
 import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
+import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.component';
 
 const routes: Routes = [
   {
@@ -227,6 +228,14 @@ const routes: Routes = [
   {
     path: 'diseaseForm',
     component: DiseaseFormComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'NOT_CONNECTED'
+    }
+  },  
+  {
+    path: 'hobbiesForm',
+    component: HobbiesFormComponent,
     canActivate: [AuthenticationGuard],
     data: {
       userType: 'NOT_CONNECTED'
