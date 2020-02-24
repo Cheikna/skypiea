@@ -36,7 +36,7 @@ INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (8
 INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (80, 625, '2020-02-23 07:00:00.000', (select ID from electronic_tag where IP_ADDRESS='192.168.3.1'));
 INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (160, 630, '2020-02-23 08:00:00.000', (select ID from electronic_tag where IP_ADDRESS='192.168.3.1'));
 INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (78, 349, '2020-02-23 09:00:00.000', (select ID from electronic_tag where IP_ADDRESS='192.168.3.1'));
-INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (68, 93, '2020-02-23 10:00:00.000', (select ID from electronic_tag where IP_ADDRESS='192.168.3.1'));
+INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (68, 53, '2020-02-23 10:00:00.000', (select ID from electronic_tag where IP_ADDRESS='192.168.3.1'));
 INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (202, 191, '2020-02-23 11:00:00.000', (select ID from electronic_tag where IP_ADDRESS='192.168.3.1'));
 INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (160, 620, '2020-02-23 12:00:00.000', (select ID from electronic_tag where IP_ADDRESS='192.168.3.1'));
 INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (165, 890, '2020-02-23 13:00:00.000', (select ID from electronic_tag where IP_ADDRESS='192.168.3.1'));
@@ -95,7 +95,7 @@ INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (8
 INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (80, 625, '2020-02-23 07:00:00.000', (select ID from electronic_tag where IP_ADDRESS='192.168.3.2'));
 INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (160, 630, '2020-02-23 08:00:00.000', (select ID from electronic_tag where IP_ADDRESS='192.168.3.2'));
 INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (78, 349, '2020-02-23 09:00:00.000', (select ID from electronic_tag where IP_ADDRESS='192.168.3.2'));
-INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (68, 93, '2020-02-23 10:00:00.000', (select ID from electronic_tag where IP_ADDRESS='192.168.3.2'));
+INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (68, 70, '2020-02-23 10:00:00.000', (select ID from electronic_tag where IP_ADDRESS='192.168.3.2'));
 INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (202, 191, '2020-02-23 11:00:00.000', (select ID from electronic_tag where IP_ADDRESS='192.168.3.2'));
 INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (160, 620, '2020-02-23 12:00:00.000', (select ID from electronic_tag where IP_ADDRESS='192.168.3.2'));
 INSERT INTO history_moving(posx, posy, saving_time, electronic_tag_id) values (165, 890, '2020-02-23 13:00:00.000', (select ID from electronic_tag where IP_ADDRESS='192.168.3.2'));
