@@ -46,7 +46,7 @@ import { ShutterConfigComponent } from './components/shutter-config/shutter-conf
 import { TemperatureControllerConfigComponent } from './components/temperature-controller-config/temperature-controller-config.component';
 import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smoke-sensor-config.component';
 import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
-
+import { MatPaginatorModule } from '@angular/material';
 import 'hammerjs';
 import { ObjectsMapComponent } from './components/objects-map/objects-map.component';
 
@@ -110,7 +110,8 @@ import { ObjectsMapComponent } from './components/objects-map/objects-map.compon
     ReactiveFormsModule,
     ToastrModule.forRoot({      
     positionClass: 'toast-top-center',
-    })
+    }),
+    MatPaginatorModule,
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
