@@ -24,7 +24,7 @@ INSERT INTO staff (id) VALUES (currval(pg_get_serial_sequence('skypiea_user', 'i
 -- New user with its room
 INSERT INTO skypiea_user (id, version, last_name, first_name, username, password, user_type, last_connection_date) 
 VALUES (nextval(pg_get_serial_sequence('skypiea_user', 'id')), 1, 'Gonzales', 'Leo', 'leo', '$2a$10$o72wE0wLkRkfgDGvI8tAU.Bys6i2A2zdetuIxdRQgLWoFkqsVNjfG', 'RESIDENT', '2019-12-09 09:00:00.000');
-INSERT INTO resident (id, BIRTH_DAY) VALUES (currval(pg_get_serial_sequence('skypiea_user', 'id')), '1939-12-09 09:00:00.000');
+INSERT INTO resident (id, BIRTH_DAY,SUPERVISION) VALUES (currval(pg_get_serial_sequence('skypiea_user', 'id')), '1939-12-09 09:00:00.000','Heart Rate');
 insert into room(id, version, door_number, floor, width,length, height, wing, svg_point, resident_id) 
 values(nextval(pg_get_serial_sequence('room', 'id')), 1, 101, 1, 6.6, 3.0, 2.0, 'NORTH', 'room-1', currval(pg_get_serial_sequence('skypiea_user', 'id')));
 
@@ -67,7 +67,7 @@ insert into SMOKE_SENSOR values(currval(pg_get_serial_sequence('object_setting',
 -- New user with its room
 INSERT INTO skypiea_user (id, version, last_name, first_name, username, password, user_type, last_connection_date) 
 VALUES (nextval(pg_get_serial_sequence('skypiea_user', 'id')), 1, 'James', 'Gerard', 'gerard', '$2a$10$lPpeMwB/PMVTRrs1mCdQHO7o5UVHg4EZcIEWl3CtN8sMfuz6BnXZC', 'RESIDENT', '2019-12-09 09:00:00.000');
-INSERT INTO resident (id, BIRTH_DAY) VALUES (currval(pg_get_serial_sequence('skypiea_user', 'id')), '1945-12-09 09:00:00.000');
+INSERT INTO resident (id, BIRTH_DAY,SUPERVISION) VALUES (currval(pg_get_serial_sequence('skypiea_user', 'id')), '1945-12-09 09:00:00.000','Blood Pressure');
 insert into room(id, version, door_number, floor, width,length, height, wing, svg_point, resident_id)  
 values(nextval(pg_get_serial_sequence('room', 'id')), 1, 102, 1, 6.6, 3.0, 2.0, 'NORTH', 'room-2', currval(pg_get_serial_sequence('skypiea_user', 'id')));
 
@@ -85,7 +85,7 @@ insert into BULB values (currval(pg_get_serial_sequence('object_setting', 'id'))
 -- New user with its room
 INSERT INTO skypiea_user (id, version, last_name, first_name, username, password, user_type, last_connection_date) 
 VALUES (nextval(pg_get_serial_sequence('skypiea_user', 'id')), 1, 'Jackson', 'Fabrice', 'fabrice', '$2a$10$zcaTtMMbPLRxhnmTt2W1zujly81lwBM480aOMs.2aT1M2lketUmMu', 'RESIDENT', '2019-12-09 09:00:00.000');
-INSERT INTO resident (id, BIRTH_DAY) VALUES (currval(pg_get_serial_sequence('skypiea_user', 'id')), '1942-12-09 09:00:00.000');
+INSERT INTO resident (id, BIRTH_DAY,SUPERVISION) VALUES (currval(pg_get_serial_sequence('skypiea_user', 'id')), '1942-12-09 09:00:00.000','Heart Rate');
 insert into room(id, version, door_number, floor, width,length, height, wing, svg_point, resident_id)  
 values(nextval(pg_get_serial_sequence('room', 'id')), 1, 103, 1, 6.6, 3.0, 2.0, 'NORTH', 'room-3', currval(pg_get_serial_sequence('skypiea_user', 'id')));
 
@@ -98,7 +98,7 @@ insert into BULB values (currval(pg_get_serial_sequence('object_setting', 'id'))
 -- New user with its room
 INSERT INTO skypiea_user (id, version, last_name, first_name, username, password, user_type, last_connection_date) 
 VALUES (nextval(pg_get_serial_sequence('skypiea_user', 'id')), 1, 'Smith', 'Solange', 'solange', '$2a$10$gIG7lawIbdM7tixggaUqkeeNPX4FjGImbLgt423aZ16ML/B6IRKZS', 'RESIDENT', '2019-12-09 09:00:00.000');
-INSERT INTO resident (id, BIRTH_DAY) VALUES (currval(pg_get_serial_sequence('skypiea_user', 'id')), '1940-12-09 09:00:00.000');
+INSERT INTO resident (id, BIRTH_DAY,SUPERVISION) VALUES (currval(pg_get_serial_sequence('skypiea_user', 'id')), '1940-12-09 09:00:00.000','Heart Rate');
 insert into room(id, version, door_number, floor, width,length, height, wing, svg_point, resident_id)  
 values(nextval(pg_get_serial_sequence('room', 'id')), 1, 104, 1, 6.6, 3.0, 2.0, 'NORTH', 'room-4', currval(pg_get_serial_sequence('skypiea_user', 'id')));
 
@@ -111,7 +111,7 @@ insert into BULB values (currval(pg_get_serial_sequence('object_setting', 'id'))
 -- New user with its room
 INSERT INTO skypiea_user (id, version, last_name, first_name, username, password, user_type, last_connection_date) 
 VALUES (nextval(pg_get_serial_sequence('skypiea_user', 'id')), 1, 'Wilson', 'Catherine', 'catherine', '$2a$10$wMjZYog9XEuSXZkZKML3gumUrst2fPwrWPvDO/c9AmwctSXjelSlW', 'RESIDENT', '2019-12-09 09:00:00.000');
-INSERT INTO resident (id, BIRTH_DAY) VALUES (currval(pg_get_serial_sequence('skypiea_user', 'id')), '1920-12-09 09:00:00.000');
+INSERT INTO resident (id, BIRTH_DAY,SUPERVISION) VALUES (currval(pg_get_serial_sequence('skypiea_user', 'id')), '1920-12-09 09:00:00.000','Heart Rate');
 insert into room(id, version, door_number, floor, width,length, height, wing, svg_point, resident_id)  
 values(nextval(pg_get_serial_sequence('room', 'id')), 1, 105, 1, 6.6, 3.0, 2.0, 'NORTH', 'room-5', currval(pg_get_serial_sequence('skypiea_user', 'id')));
 
@@ -124,7 +124,7 @@ insert into BULB values (currval(pg_get_serial_sequence('object_setting', 'id'))
 -- New user with its room
 INSERT INTO skypiea_user (id, version, last_name, first_name, username, password, user_type, last_connection_date) 
 VALUES (nextval(pg_get_serial_sequence('skypiea_user', 'id')), 1, 'Taylor', 'Angele', 'angele', '$2a$10$pGgbjag2kiQIgEwFcdWMLevCkcgEQCGe6.oA8JwTLtQKUoozEd.J6', 'RESIDENT', '2019-12-09 09:00:00.000');
-INSERT INTO resident (id, BIRTH_DAY) VALUES (currval(pg_get_serial_sequence('skypiea_user', 'id')), '1927-12-09 09:00:00.000');
+INSERT INTO resident (id, BIRTH_DAY,SUPERVISION) VALUES (currval(pg_get_serial_sequence('skypiea_user', 'id')), '1927-12-09 09:00:00.000','Heart Rate');
 insert into room(id, version, door_number, floor, width,length, height, wing, svg_point, resident_id) 
 values(nextval(pg_get_serial_sequence('room', 'id')), 1, 106, 1, 6.6, 3.0, 2.0, 'NORTH', 'room-6', currval(pg_get_serial_sequence('skypiea_user', 'id')));
 

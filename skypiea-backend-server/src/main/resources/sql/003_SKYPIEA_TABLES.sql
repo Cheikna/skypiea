@@ -29,6 +29,14 @@ duration VARCHAR(255),
 client_id integer REFERENCES CLIENT(ID)
 );
 
+CREATE TABLE profile
+(
+id serial primary key,
+version integer,
+criteria VARCHAR(255),
+client_id integer REFERENCES CLIENT(ID)
+);
+
 CREATE TABLE SKYPIEA_USER (
 ID serial primary key, 
 VERSION integer, 
@@ -46,7 +54,8 @@ ID serial primary key REFERENCES SKYPIEA_USER(ID)
 				  
 CREATE TABLE RESIDENT (
 ID serial primary key REFERENCES SKYPIEA_USER(ID),
-BIRTH_DAY TIMESTAMP
+BIRTH_DAY TIMESTAMP,
+SUPERVISION VARCHAR(100)
 );
 
 CREATE TABLE ROOM(

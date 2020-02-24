@@ -46,9 +46,11 @@ import { ShutterConfigComponent } from './components/shutter-config/shutter-conf
 import { TemperatureControllerConfigComponent } from './components/temperature-controller-config/temperature-controller-config.component';
 import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smoke-sensor-config.component';
 import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
-
+import { MatPaginatorModule } from '@angular/material';
 import 'hammerjs';
 import { ObjectsMapComponent } from './components/objects-map/objects-map.component';
+import { ResidentComponent } from './components/resident/resident.component';
+import { HealthHistoryComponent } from './components/health-history/health-history.component';
 import { ObjectSettingsEventsHistoryComponent } from './dialogs/object-settings-events-history/object-settings-events-history.component';
 import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.component';
 import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
@@ -103,6 +105,10 @@ import { WaitingClientComponent } from './components/waiting-client/waiting-clie
     ObjectSettingsEventsHistoryComponent,
     HobbiesFormComponent,
     WaitingClientComponent
+    ResidentComponent,
+    HealthHistoryComponent,
+    ObjectsMapComponent,
+    ObjectSettingsEventsHistoryComponent
 
   ],
   imports: [
@@ -115,13 +121,14 @@ import { WaitingClientComponent } from './components/waiting-client/waiting-clie
     FlexLayoutModule,
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
-    ToastrModule.forRoot({      
+    ToastrModule.forRoot({
     positionClass: 'toast-top-center',
-    })
+    }),
+    MatPaginatorModule,
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
-  
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

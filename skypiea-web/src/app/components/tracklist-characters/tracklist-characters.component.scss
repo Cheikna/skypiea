@@ -6,15 +6,21 @@ section {
     background-attachment: local;
   }
 
-.track-list {
-    margin: 0 auto;
-    width: 1000px;
-    text-align: center;
-}
-
 .header {
     font-family: "one-piece";
     font-size: 2rem;
     font-weight: bold;
     margin: 35%;
+}
+
+table {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 500px;
+}
+ 
+th.mat-header-cell {
+    text-align: left;
+    max-width: 300px;
 }
