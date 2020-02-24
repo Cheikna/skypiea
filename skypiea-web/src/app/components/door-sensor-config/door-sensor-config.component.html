@@ -9,14 +9,13 @@
       <td>Installation date : {{nonMedicalConnectedObject?.installationDate | date: 'medium'}}</td>
       <td>Brand: {{nonMedicalConnectedObject?.brand}}</td>
       <td>Status : {{ nonMedicalConnectedObject?.status}} </td>
-        <td> Door locked :  {{setting?.isDoorLocked}} </td>
-        <td> Door Open:  {{setting?.isDoorOpen}} </td>
-      </tr>
+      <td> Door locked :  {{setting?.doorLocked}} </td>
+    </tr>
       <br>
     <h1>Settings</h1>
     <tr>
         <td>  
-          <mat-slide-toggle (change)="changed()" [(ngModel)]="doorLocked" >Lock</mat-slide-toggle>
+          <mat-slide-toggle (change)="changed()" [(ngModel)]="doorLock" >Lock</mat-slide-toggle>
         </td>
  
     </tr> 
