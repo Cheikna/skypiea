@@ -58,7 +58,7 @@ public abstract class ConnectedObject extends com.skytech.skypiea.commons.entity
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "CONNECTED_OBJECT_ID")
-	private Set<HistoryEvent> historyEvents;
+	protected Set<HistoryEvent> historyEvents;
 
 	public ConnectedObject() {
 		super();

@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.skytech.skypiea.api.service.NonMedicalConnectedObjectService;
 import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;
 import com.skytech.skypiea.commons.entity.ObjectSetting;
-import com.skytech.skypiea.commons.entity.Shutter;
+import com.skytech.skypiea.commons.object.statistic.NonMedicalObjectStatistic;
+import com.skytech.skypiea.commons.object.statistic.ObjectStatisticFilter;
 
 
 @RestController
@@ -33,6 +34,11 @@ public class NonMedicalConnectedObjectController {
 	@PostMapping("/setting/{objectId}")
 	public ObjectSetting saveNewSetting(@PathVariable Long objectId, @RequestBody ObjectSetting objectSetting) {
 		return this.nonMedicalConnectedObjectService.saveNewSetting(objectId, objectSetting);
+	}
+	
+	@PostMapping("/statistics/{objectId}")
+	public NonMedicalObjectStatistic getStatisticsOnObject(@PathVariable Long objectId, @RequestBody ObjectStatisticFilter filter) {
+		return this.nonMedicalConnectedObjectService.getStatistics(objectId, filter);
 	}
 
 }

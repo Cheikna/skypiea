@@ -2,8 +2,10 @@ package com.skytech.skypiea.commons.entity;
 
 import java.sql.Timestamp;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
@@ -23,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
 import com.skytech.skypiea.commons.enumeration.State;
 import com.skytech.skypiea.commons.enumeration.Status;
+import com.skytech.skypiea.commons.object.statistic.ObjectStatisticFilter;
 
 @Entity
 @Table(name="NON_MEDICAL_CONNECTED_OBJECT")
@@ -204,5 +207,24 @@ public class NonMedicalConnectedObject extends ConnectedObject {
 	@Override
 	public String toString() {
 		return "NonMedicalConnectedObject [id=" + id + ", nonMedicalObjectType=" + nonMedicalObjectType + "]";
+	}	
+
+	public Set<ObjectSetting> getBoundedObjectSettings(ObjectStatisticFilter filter){
+		Set<ObjectSetting> boundedObjectSettings = new HashSet<ObjectSetting>();
+		Predicate<ObjectSetting> datesPredicate = filter.objectSettingDatesPredicate;
+		if(objectSettings != null) {
+			boundedObjectSettings = this.objectSettings.stream().filter(setting -> datesPredicate.test(setting)).collect(Collectors.toSet());
+		}
+		return boundedObjectSettings;
+	}	
+
+	public Set<HistoryEvent> getBoundedHistoryEvents(ObjectStatisticFilter filter){
+		Set<HistoryEvent> boundedHistoryEvents = new HashSet<HistoryEvent>();
+		Predicate<HistoryEvent> datesPredicate = filter.eventDatesPredicate;
+		if(objectSettings != null) {
+			boundedHistoryEvents = this.historyEvents.stream().filter(event -> datesPredicate.test(event)).collect(Collectors.toSet());
+		}
+		return boundedHistoryEvents;
 	}
+	
 }
