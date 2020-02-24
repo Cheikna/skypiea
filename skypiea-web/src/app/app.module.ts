@@ -46,6 +46,8 @@ import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smo
 import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
 
 import 'hammerjs';
+import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.component';
+import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
 
 
 @NgModule({
@@ -89,7 +91,9 @@ import 'hammerjs';
     ShutterConfigComponent,
     TemperatureControllerConfigComponent,
     SmokeSensorConfigComponent,
-    SunshineSensorConfigComponent
+    SunshineSensorConfigComponent,
+    HobbiesFormComponent,
+    WaitingClientComponent
 
   ],
   imports: [

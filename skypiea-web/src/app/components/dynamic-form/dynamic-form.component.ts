@@ -20,7 +20,6 @@ import { Client } from 'src/app/models/client.model';
 export class DynamicFormComponent implements OnInit {
   client: Client;
   dynamicForm: FormGroup;
-  yesForm: FormGroup;
   disease: Disease;
   diseaseDiabetic: Disease;
   diseaseArthritis: Disease;
@@ -35,8 +34,6 @@ export class DynamicFormComponent implements OnInit {
   fracture: any;
   parkinson: any;
   numberOfDisease: any;
-  yes: any;
-  no: any;
 
   constructor(private clientService: ClientService, private diseaseService: DiseaseService, private router : Router, private fb: FormBuilder, private toastService : ToastService) {
     this.dynamicForm = new FormGroup({
@@ -46,10 +43,6 @@ export class DynamicFormComponent implements OnInit {
       fracture: new FormControl(),
       parkinson: new FormControl()
     });
-    this.yesForm = new FormGroup({
-      yes: new FormControl(),
-      no: new FormControl()
-    })
     this.diseaseDetail = [];
     this.disease = new Disease();
     this.diseaseDiabetic = new Disease();
@@ -87,10 +80,6 @@ export class DynamicFormComponent implements OnInit {
         this.diabetic += 1;
         this.diseaseService.clearDisease();
       }
-      console.log("reserez" + this.yes);
-      this.yes = this.yesForm.get('disease');
-      console.log("reserez" + this.yes);
-      console.log(this.yesForm.get('disease').statusChanges);
       return checked;
   }
 
@@ -101,7 +90,6 @@ export class DynamicFormComponent implements OnInit {
       this.diseaseArthritis.typeOfDisease = DiseaseType.ARTHRITIS;
       this.diseaseArthritis.treatment = this.diseaseService.getTreatment();
       this.diseaseArthritis.duration = this.diseaseService.getDuration();
-      console.log('ARTH ' + this.diseaseArthritis.treatment + " " + this.diseaseArthritis.duration);
       this.diseaseDetail.push(this.diseaseArthritis);
       this.arthritis += 1;
       this.diseaseService.clearDisease();
@@ -152,12 +140,8 @@ export class DynamicFormComponent implements OnInit {
   }
 
   createDisease(){
-    console.log("reserez" + this.yes);
-    this.yes = this.yesForm.get('disease');
-    console.log("reserez" + this.yes);
-    console.log(this.yesForm.get('disease'));
-    
-    this.client = this.clientService.getClient();
+   
+    this.client = this.clientService.getOneClient();
     this.numberOfDisease += this.diabetic + this.arthritis + this.parkinson + this.fracture + this.alzheimer;
       for (var i = 0; i < this.numberOfDisease; i++){
         this.diseaseDetail[i].client = this.client;
@@ -169,6 +153,7 @@ export class DynamicFormComponent implements OnInit {
               this.router.navigate(['/hobbiesForm']).then(() => {
                 this.toastService.displayToast(ToastType.SUCCESS, 'Successful connection', true, 'Please wait, the page will reload');
               });
+              this.diseaseService.setClient(data.client);
             } else {
               this.toastService.displayToast(ToastType.ERROR, 'Authentication failed !', true, 
               'Your username or your password is incorrect.', 7000);

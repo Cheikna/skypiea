@@ -12,6 +12,7 @@ export class DiseaseService extends RestService {
   tmp: any;
   treatment: any;
   duration: any;
+  client: any;
 
   constructor(protected http: HttpClient) { 
     super("diseases", http);
@@ -47,10 +48,15 @@ export class DiseaseService extends RestService {
     this.duration = duration;
   }
 
-  toFormGroup(diseaseForm: DiseaseFormComponent[] ) {
-    return new FormGroup({
-      treatment: new FormControl('', [Validators.required]),
-      duration: new FormControl('', [Validators.required])
-    });
+  getOneClient(){
+    return this.client;
+  }
+
+  setClient(client: any){
+      this.client = client;
+  }
+
+  getDiseaseByClient(clientId: number){
+    return this.http.get(`${this.completeBackendServerUrl}/diseases/${clientId}`, { headers: this.headers });
   }
 }

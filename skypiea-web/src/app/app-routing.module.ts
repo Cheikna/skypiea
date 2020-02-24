@@ -27,6 +27,7 @@ import { TemperatureControllerConfigComponent } from './components/temperature-c
 import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smoke-sensor-config.component';
 import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
 import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.component';
+import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
 
 const routes: Routes = [
   {
@@ -186,14 +187,6 @@ const routes: Routes = [
     }
   },
   {
-    path: 'dynamicForm/:id',
-    component: DynamicFormComponent,
-    canActivate: [AuthenticationGuard],
-    data: {
-      userType: 'NOT_CONNECTED'
-    }
-  },
-  {
     path: 'object-list/shutter',
     component: ShutterConfigComponent,
     canActivate: [AuthenticationGuard],
@@ -239,6 +232,14 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard],
     data: {
       userType: 'NOT_CONNECTED'
+    }
+  },
+  {
+    path: 'waitingClient',
+    component: WaitingClientComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'STAFF'
     }
   },
   {

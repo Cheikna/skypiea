@@ -6,7 +6,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Table;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -150,6 +149,15 @@ public class Client extends com.skytech.skypiea.commons.entity.Entity{
 	public void setDiseases(Collection<Disease> diseases) {
 		this.diseases = diseases;
 	}
+
+	@Override
+	public String toString() {
+		return "Client [lastName=" + lastName + ", firstName=" + firstName + ", age=" + age + ", email=" + email
+				+ ", streetNumber=" + streetNumber + ", streetName=" + streetName + ", zipCode=" + zipCode + ", city="
+				+ city + ", phoneNumber=" + phoneNumber + ", country=" + country + ", diseases=" + diseases + "]";
+	}
+	
+	
 
 	
 

@@ -14,12 +14,18 @@ export class ClientService extends RestService {
     this.client = client;
   }
 
-  getClient(){
+  getOneClient(){
     return this.client;
+  }
+
+  getClient(){
+    return this.http.get(`${this.completeBackendServerUrl}/clients`, { headers: this.headers });
   }
 
   constructor(protected http: HttpClient) { 
     super("clients", http);
   }
+
+  
 
 }

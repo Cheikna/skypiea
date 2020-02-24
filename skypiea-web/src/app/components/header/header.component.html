@@ -38,6 +38,11 @@
                     <mdb-icon fas icon="briefcase-medical"></mdb-icon> Health Monitoring
                 </a>
             </li>
+            <li class="nav-item" *appUserVisibility="['STAFF']">
+                <a class="nav-link waves-effect" mdbWavesEffect [routerLink]="['/waitingClient']">
+                    <mdb-icon fas icon="hourglass-half"></mdb-icon> Waiting client
+                </a>
+            </li>
           <li class="nav-item" *appUserVisibility="['STAFF']">
                 <a class="nav-link waves-effect" mdbWavesEffect [routerLink]="['/tracklist']">
                     <mdb-icon fas icon="map-marker-alt"></mdb-icon> Tracking
