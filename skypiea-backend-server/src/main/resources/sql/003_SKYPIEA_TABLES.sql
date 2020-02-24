@@ -29,6 +29,14 @@ duration VARCHAR(255),
 client_id integer REFERENCES CLIENT(ID)
 );
 
+CREATE TABLE profile
+(
+id serial primary key,
+version integer,
+criteria VARCHAR(255),
+client_id integer REFERENCES CLIENT(ID)
+)
+
 CREATE TABLE SKYPIEA_USER (
 ID serial primary key, 
 VERSION integer, 
