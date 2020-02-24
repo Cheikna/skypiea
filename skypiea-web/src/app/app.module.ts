@@ -101,7 +101,7 @@ import { ObjectSettingsEventsHistoryComponent } from './dialogs/object-settings-
     FailuresViewComponent,
     ObjectsMapComponent,
     ResidentComponent,
-    HealthHistoryComponent
+    HealthHistoryComponent,
     ObjectsMapComponent,
     ObjectSettingsEventsHistoryComponent
 
