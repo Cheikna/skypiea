@@ -28,7 +28,9 @@ public abstract class NonMedicalObjectStatistic {
 	private Set<HistoryEvent> events;
 	
 	public NonMedicalObjectStatistic(Set<ObjectSetting> settings, Set<HistoryEvent> events) {
-		this.settings = settings.stream().sorted(Comparator.comparing(ObjectSetting::getSavingDate)).collect(Collectors.toList());
+		if(settings != null) {
+			this.settings = settings.stream().sorted(Comparator.comparing(ObjectSetting::getSavingDate)).collect(Collectors.toList());
+		}
 		this.events = events;
 		numberOfStateChanges = 0L;
 		numberOfStatusChanges = 0L;			
@@ -124,20 +126,16 @@ public abstract class NonMedicalObjectStatistic {
 	
 
 	protected Triplet<Double, Double, Double> getMinMaxAverageValues(List<Float> values){
-		int valuesSize = values.size();
-		Double sumOfValues = 0.0;
 		Double min = 0.0;
 		Double max = 0.0;
 		Double average = 0.0;
-		if(valuesSize > 0) {
-			sumOfValues = values.stream().mapToDouble(Float::floatValue).sum();
+		if(values != null && values.size() > 0) {
 			min = values.stream().mapToDouble(Float::floatValue).min().orElse(0);
 			max = values.stream().mapToDouble(Float::floatValue).max().orElse(0);
-		} else {
-			valuesSize = 1;
-		}
-		// Round (2 numbers after the point)
-		average = Math.ceil(sumOfValues / valuesSize * 100) / 100;
+			average = values.stream().mapToDouble(Float::floatValue).average().orElse(0);
+			// To keep only 2 number after the point
+			average = Math.ceil(average * 100) / 100;
+		} 
 		
 		return new Triplet<Double, Double, Double>(min, max, average);
 	}
