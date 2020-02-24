@@ -47,13 +47,15 @@ import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smo
 import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
 
 import 'hammerjs';
+import { ObjectSettingsEventsHistoryComponent } from './dialogs/object-settings-events-history/object-settings-events-history.component';
 
 
 @NgModule({
   entryComponents: [
     SignInComponent,
     ObjectInfoComponent,
-    ObjectMonitoringExtraInfoComponent
+    ObjectMonitoringExtraInfoComponent,
+    ObjectSettingsEventsHistoryComponent
   ],
   declarations: [
     AppComponent,
@@ -91,7 +93,8 @@ import 'hammerjs';
     ShutterConfigComponent,
     TemperatureControllerConfigComponent,
     SmokeSensorConfigComponent,
-    SunshineSensorConfigComponent
+    SunshineSensorConfigComponent,
+    ObjectSettingsEventsHistoryComponent
 
   ],
   imports: [
