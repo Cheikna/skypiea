@@ -1,5 +1,6 @@
 package com.skytech.skypiea.api.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;
 import com.skytech.skypiea.commons.enumeration.State;
 import com.skytech.skypiea.commons.enumeration.Status;
 import com.skytech.skypiea.commons.statistic.FailureRate;
+import com.skytech.skypiea.commons.statistic.StateRate;
 
 @Service
 public class StatisticService {
@@ -35,6 +37,25 @@ public class StatisticService {
 		
 		return failureRate;
 		
+	}
+	
+	public StateRate getStateRate(String dateBeginInString, String dateEndInString) {
+		try { 
+			StateRate stateRate = new StateRate();
+			/*dateBeginInString = dateBeginInString.replace('T', ' ');
+			dateEndInString = dateEndInString.replace('T', ' ');
+			Timestamp dateBegin = Timestamp.valueOf(dateBeginInString);
+			Timestamp dateEnd = Timestamp.valueOf(dateEndInString);*/
+			List<NonMedicalConnectedObject> objects = nonMedicalConnectedObjectService.findAllWithEvents();
+			for(NonMedicalConnectedObject object : objects) {
+				stateRate.put(object.getNonMedicalObjectType(), 1L);
+				System.out.println(object);
+			}
+			return stateRate;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

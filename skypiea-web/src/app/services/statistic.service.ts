@@ -7,15 +7,18 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class StatisticService extends RestService{
+export class StatisticService extends RestService {
 
-  constructor(protected http: HttpClient) { 
+  constructor(protected http: HttpClient) {
     super("statistics", http);
   }
 
-getFailureRate():Observable<any>{
-  return this.http.get(`${this.completeBackendServerUrl}/failure-rate`, { headers: this.headers });
+  getFailureRate(): Observable<any> {
+    return this.http.get(`${this.completeBackendServerUrl}/failure-rate`, { headers: this.headers });
+  }
 
-}
+  getStateRate(dateBeginInString : string, dateEndInString : string ): Observable<any> {
+    return this.http.get(`${this.completeBackendServerUrl}/state-rate/${dateBeginInString}/${dateEndInString}`, { headers: this.headers });
+  }
 
 }

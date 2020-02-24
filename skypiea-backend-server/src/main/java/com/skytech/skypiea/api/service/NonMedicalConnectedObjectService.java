@@ -120,6 +120,22 @@ public class NonMedicalConnectedObjectService {
 		}
 		return statistic;
 	}
+	
+	
+	//@Transactional
+	public List<NonMedicalConnectedObject> findAllWithEvents(){
+		try {
+			List<NonMedicalConnectedObject> nonMedicalConnectedObjects = this.nonMedicalConnectedObjectRepository.findAll();
+			for(NonMedicalConnectedObject object : nonMedicalConnectedObjects) {
+				//Hibernate.initialize(object.getHistoryEvents());
+				//object.getHistoryEvents().size();
+			}
+			return nonMedicalConnectedObjects;
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		}
+		return new ArrayList<NonMedicalConnectedObject>();
+	}
 
 	
 }
