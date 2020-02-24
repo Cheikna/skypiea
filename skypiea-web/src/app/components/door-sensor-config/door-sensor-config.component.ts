@@ -13,8 +13,8 @@ export class DoorSensorConfigComponent implements OnInit {
   setting: any;
 
    // List of the door Sensor properties
-   doorLocked: boolean;
-   isDoorLocked: boolean; 
+   doorLock: boolean;
+   doorLocked: boolean; 
 
   constructor(private webStorageService: WebStorageService, private router: Router, private nonMedicalConnectedObjectService: NonMedicalConnectedObjectService) {
   }
@@ -25,7 +25,7 @@ export class DoorSensorConfigComponent implements OnInit {
   }
 
   save(){
-    this.setting.isDoorLocked = this.isDoorLocked;
+    this.setting.doorLocked = this.doorLocked;
     this.nonMedicalConnectedObjectService.saveNewObjectSetting(this.nonMedicalConnectedObject.id, this.setting).subscribe((data)=> {
     this.setting = data;
     }); 
@@ -35,11 +35,11 @@ export class DoorSensorConfigComponent implements OnInit {
     this.router.navigate(["ObjectIhm"]);
   }
   changed(){
-    if (this.doorLocked === false){
-        this.isDoorLocked= false;
+    if (this.doorLock === false){
+        this.doorLocked= false;
     }
-    if (this.doorLocked === true){
-      this.isDoorLocked= true;
+    if (this.doorLock === true){
+      this.doorLocked= true;
   } 
 } 
 
