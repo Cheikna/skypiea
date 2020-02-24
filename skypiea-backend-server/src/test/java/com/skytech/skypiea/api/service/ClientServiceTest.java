@@ -27,7 +27,7 @@ public class ClientServiceTest {
 	
 	@Test
 	public void testIfClientIsSaved() {
-		Client client1 = new Client("lastNameTest", "firstNameTest", 85, "test@email.fr", 1, "streetName test", "zipCode", "cityTest", "0101010101");
+		Client client1 = new Client(null, null, "lastNameTest", "firstNameTest", 85, "test@email.fr", 1, "streetName test", "zipCode", "cityTest", "0101010101");
 		assertEquals(client1, clientRepository.save(client1));
 	}
 	
