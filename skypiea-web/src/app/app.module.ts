@@ -53,7 +53,7 @@ import { ResidentComponent } from './components/resident/resident.component';
 import { HealthHistoryComponent } from './components/health-history/health-history.component';
 import { ObjectSettingsEventsHistoryComponent } from './dialogs/object-settings-events-history/object-settings-events-history.component';
 import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.component';
-import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
+//import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
 
 
 @NgModule({
@@ -104,7 +104,7 @@ import { WaitingClientComponent } from './components/waiting-client/waiting-clie
     ObjectsMapComponent,
     ObjectSettingsEventsHistoryComponent,
     HobbiesFormComponent,
-    WaitingClientComponent
+    //WaitingClientComponent,
     ResidentComponent,
     HealthHistoryComponent,
     ObjectsMapComponent,
