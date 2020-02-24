@@ -13,12 +13,11 @@ import { DiseaseService } from '../../services/disease.service';
   styleUrls: ['./disease-form.component.scss']
 })
 export class DiseaseFormComponent implements OnInit {
-
+  treatment: String;
+  duration: String;
   diseaseForm: FormGroup;
   dynamicDisease: DynamicFormComponent;
-  @Output() newDisease: Disease;
-
-
+  newDisease: Disease;
 
   constructor(private diseaseService: DiseaseService,  private toastService: ToastService, private router: Router) {
     this.newDisease = new Disease();
@@ -35,7 +34,7 @@ export class DiseaseFormComponent implements OnInit {
     console.log(JSON.stringify(this.newDisease));
     console.log("test : " + this.newDisease.typeOfDisease);
     
-    this.diseaseService.create(this.newDisease).subscribe(
+    /*this.diseaseService.create(this.newDisease).subscribe(
       (data) => {
         if(data){
           console.log("disease created");
@@ -46,6 +45,9 @@ export class DiseaseFormComponent implements OnInit {
         }        
       },
       (error) => this.toastService.displayToast(ToastType.ERROR, 'An error occured !', true, JSON.stringify(error)));
+      */
+      this.diseaseService.setTreatment(this.newDisease.treatment);
+      this.diseaseService.setDuration(this.newDisease.duration);
   }
 
   createFormGroup(){

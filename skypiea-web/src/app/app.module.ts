@@ -50,6 +50,8 @@ import { SunshineSensorConfigComponent } from './components/sunshine-sensor-conf
 import 'hammerjs';
 import { ObjectsMapComponent } from './components/objects-map/objects-map.component';
 import { ObjectSettingsEventsHistoryComponent } from './dialogs/object-settings-events-history/object-settings-events-history.component';
+import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.component';
+import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
 
 
 @NgModule({
@@ -98,7 +100,9 @@ import { ObjectSettingsEventsHistoryComponent } from './dialogs/object-settings-
     SunshineSensorConfigComponent,
     FailuresViewComponent,
     ObjectsMapComponent,
-    ObjectSettingsEventsHistoryComponent
+    ObjectSettingsEventsHistoryComponent,
+    HobbiesFormComponent,
+    WaitingClientComponent
 
   ],
   imports: [

@@ -18,31 +18,31 @@
             <label for="age">Age</label>
             <input type="number" class="form-control" formControlName="age" [(ngModel)]="newClient.age" name="age" placeholder="Exemple : 88" required>
         </div>
-        </div>
-        <div class="form-group">
+    </div>
+    <div class="form-group">
         <div class="col-md-6 mb-3">
             <label for="streetNumber">Street number</label>
             <input type="number" class="form-control" formControlName="streetNumber" [(ngModel)]="newClient.streetNumber" name="streetNumber" placeholder="Exemple : 15" required>
         </div>
     </div>
-        <div class="form-group">
+    <div class="form-group">
         <div class="col-md-6 mb-3">
             <label for="streetName">Street name</label>
             <input type="text" class="form-control" formControlName="streetName" [(ngModel)]="newClient.streetName" name="streetName" placeholder="Ex : rue de Paris" required>
         </div>
     </div>
-        <div class="form-group">
-            <div class="col-md-6 mb-3">
-                <label for="city">City</label>
-                <input type="text" class="form-control" formControlName="city" [(ngModel)]="newClient.city" name="city" placeholder="Ex : Paris" required>
-            </div>
+    <div class="form-group">
+        <div class="col-md-6 mb-3">
+            <label for="city">City</label>
+            <input type="text" class="form-control" formControlName="city" [(ngModel)]="newClient.city" name="city" placeholder="Ex : Paris" required>
         </div>
-        <div class="form-group">
-            <div class="col-md-3 mb-3">
-                <label for="zipCode">Zip code</label>
-                <input type="text" class="form-control" formControlName="zipCode" [(ngModel)]="newClient.zipCode" name="zipCode" placeholder="Ex : 75001" required>
-            </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-3 mb-3">
+            <label for="zipCode">Zip code</label>
+            <input type="text" class="form-control" formControlName="zipCode" [(ngModel)]="newClient.zipCode" name="zipCode" placeholder="Ex : 75001" required>
         </div>
+    </div>
     <div class="form-group">
         <div class="col-md-3 mb-3">
             <label for="country">Country</label>
@@ -61,16 +61,16 @@
             <input type="text" class="form-control" formControlName="phoneNumber" [(ngModel)]="newClient.phoneNumber" name="phoneNumber" placeholder="Ex : 0110101010" required>
         </div>
     </div>
-        <div class="form-group">
-            <div class="form-check">
-            <input class="form-check-input" type="checkbox" formControlName="cgu" value="" id="cgu" required>
-            <label class="form-check-label" for="cgu">I accept the conservation of my data</label>
-            </div>
+    <div class="form-group">
+        <div class="form-check">
+        <input class="form-check-input" type="checkbox" formControlName="cgu" value="" id="cgu" required>
+        <label class="form-check-label" for="cgu">I accept the conservation of my data</label>
         </div>
-        <div mat-dialog-actions class="d-flex justify-content-left">
-            <button mat-raised-button [disabled]="personnalForm.invalid" class="btn btn-success" type="submit">
-                <mat-icon>done</mat-icon>Valid
-            </button> 
-        </div>    
+    </div>
+    <div mat-dialog-actions class="d-flex justify-content-left">
+        <button mat-raised-button [disabled]="personnalForm.invalid" class="btn btn-success" type="submit">
+            <mat-icon>done</mat-icon>Valid
+        </button> 
+    </div>    
     </form>
 </div>

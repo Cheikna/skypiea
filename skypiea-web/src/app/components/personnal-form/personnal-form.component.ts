@@ -13,11 +13,9 @@ import { ToastType } from 'src/app/enums/toastType.enum';
 })
 export class PersonnalFormComponent implements OnInit {
   personnalForm: FormGroup;
-  clients: Array<Client>;
   newClient: Client;
 
   constructor(private clientService: ClientService, private toastService: ToastService, private router: Router) { 
-    this.clients = new Array<Client>();
     this.newClient = new Client();
     this.personnalForm = this.createFormGroup();
   }
@@ -34,6 +32,7 @@ export class PersonnalFormComponent implements OnInit {
           this.router.navigate(['/dynamicForm']).then(() => {
             this.toastService.displayToast(ToastType.SUCCESS, 'Successful connection', true, 'Please wait, the page will reload');
           });
+          this.clientService.setClient(data);
         } else {
           this.toastService.displayToast(ToastType.ERROR, 'Authentication failed !', true, 
           'Your username or your password is incorrect.', 7000);

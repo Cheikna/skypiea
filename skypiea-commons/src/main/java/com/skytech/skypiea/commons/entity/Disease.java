@@ -3,11 +3,14 @@ package com.skytech.skypiea.commons.entity;
 import javax.persistence.Column;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.skytech.skypiea.commons.enumeration.DiseaseType;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Table(name="DISEASE")
@@ -23,6 +26,10 @@ public class Disease extends com.skytech.skypiea.commons.entity.Entity{
 	
 	@Column(name="TREATMENT")
 	protected String treatment;
+	
+	@ManyToOne
+    @JoinColumn(name = "CLIENT_ID")
+	private Client client;
 	
 	
 	public Disease() {
@@ -58,6 +65,14 @@ public class Disease extends com.skytech.skypiea.commons.entity.Entity{
 
 	public void setTreatment(String treatment) {
 		this.treatment = treatment;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	@Override

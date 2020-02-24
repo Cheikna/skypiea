@@ -10,26 +10,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skytech.skypiea.api.service.ClientService;
-import com.skytech.skypiea.commons.entity.Character;
-import com.skytech.skypiea.commons.entity.Client;
+import com.skytech.skypiea.api.service.ProfileService;
+import com.skytech.skypiea.commons.entity.Profile;
 
 @RestController
-@RequestMapping("/clients")
+@RequestMapping("/profiles")
 @CrossOrigin(origins="*", allowedHeaders="*")
-public class ClientController {
+public class ProfileController {
 	
 	@Autowired
-	private ClientService clientService;
+	private ProfileService profileService;
 	
-
 	@PostMapping("")
-	public Client createNewClient(@RequestBody Client client) {
-		return clientService.save(client);
+	public Profile createNewDisease(@RequestBody Profile profile) {
+		return profileService.save(profile);
 	}	
 	
 	@GetMapping("")
-	public List<Client> getClients() {
-		return clientService.findAll();
+	public List<Profile> getProfile() {
+		return profileService.findAll();
 	}
+
 }
