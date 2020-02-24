@@ -4,6 +4,15 @@
             <br>
             <div class="container">
                 <div class="row">
+                    <div class="col-12">
+                        <h3>Number of residents : {{ roomsFromBackCall?.length }}</h3>
+                    </div>
+                    <div class="col-12">
+                    <h3>Number of connected objects : {{ totalNumberOfConnectedObjects }}</h3>
+                </div>
+                </div>
+                <br>
+                <div class="row">
                     <mat-accordion class="col-12">
                         <mat-expansion-panel>
                             <mat-expansion-panel-header>
@@ -41,10 +50,24 @@
                         <br>
                         <span><b>No match !</b></span>
                     </div>
-                    <div class="col-12" *ngFor="let room of roomsFiltered">
+                    <div class="col-12">
+                        <table mat-table [dataSource]="dataSource">
+                            <ng-container matColumnDef="info">
+                                <td mat-cell *matCellDef="let room">
+                                    <app-room-summary [room]="room" [resident]="room.resident"></app-room-summary>
+                                    <br>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                        <mat-paginator [pageSize]="3" [pageSizeOptions]="[3, 5, 7]">
+                        </mat-paginator>
+                    </div>
+                    <!--<div class="col-12" *ngFor="let room of roomsFiltered">
                         <app-room-summary [room]="room" [resident]="room.resident"></app-room-summary>
                         <br>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </mat-tab>
@@ -52,7 +75,6 @@
         <mat-tab label="Map view">
             <div class="table-responsive">
                 <app-floor-plan [rooms]="roomsFromBackCall"></app-floor-plan>
-                <!--<app-floor-one-plan [rooms]="roomsFromBackCall"></app-floor-one-plan>-->
             </div>
         </mat-tab>
         <mat-tab label="Failures view">
