@@ -50,8 +50,8 @@ public class RoomServiceTest {
 	@Before
 	public void init() {
 		Timestamp timestamp = new Timestamp(new Date().getTime());
-		User user1 = new Resident(0L,0L, "lastName", "leo", "", "", timestamp, timestamp);
-		room0.setResident((Resident)user1);
+		// User user1 = new Resident(0L,0L, "lastName", "leo", "", "", timestamp, timestamp,"");
+		//room0.setResident((Resident)user1);
 		Room savedRoom = roomRepository.save(room0);
 		residentId = savedRoom.getResident().getId();
 		

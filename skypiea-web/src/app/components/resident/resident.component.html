@@ -1,0 +1,32 @@
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Heart Rate">
+</mat-form-field>
+<div>
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>First name</th>
+      <td mat-cell *matCellDef="let residents"> {{residents.firstName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Last name</th>
+      <td mat-cell *matCellDef="let residents"> {{residents.lastName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="birthday">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Birthday</th>
+      <td mat-cell *matCellDef="let residents"> {{residents.birthDay | date: 'dd/MM/yyyy'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="supervision">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Supervision</th>
+      <td mat-cell *matCellDef="let residents"> {{residents.supervision}} </td>
+    </ng-container>
+
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

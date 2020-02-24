@@ -49,6 +49,8 @@ import { SunshineSensorConfigComponent } from './components/sunshine-sensor-conf
 import { MatPaginatorModule } from '@angular/material';
 import 'hammerjs';
 import { ObjectsMapComponent } from './components/objects-map/objects-map.component';
+import { ResidentComponent } from './components/resident/resident.component';
+import { HealthHistoryComponent } from './components/health-history/health-history.component';
 import { ObjectSettingsEventsHistoryComponent } from './dialogs/object-settings-events-history/object-settings-events-history.component';
 
 
@@ -98,6 +100,9 @@ import { ObjectSettingsEventsHistoryComponent } from './dialogs/object-settings-
     SunshineSensorConfigComponent,
     FailuresViewComponent,
     ObjectsMapComponent,
+    ResidentComponent,
+    HealthHistoryComponent
+    ObjectsMapComponent,
     ObjectSettingsEventsHistoryComponent
 
   ],
@@ -111,14 +116,14 @@ import { ObjectSettingsEventsHistoryComponent } from './dialogs/object-settings-
     FlexLayoutModule,
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
-    ToastrModule.forRoot({      
+    ToastrModule.forRoot({
     positionClass: 'toast-top-center',
     }),
     MatPaginatorModule,
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
-  
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

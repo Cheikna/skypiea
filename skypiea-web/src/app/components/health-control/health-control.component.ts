@@ -17,8 +17,7 @@ export class HealthControlComponent implements OnInit {
   ngOnInit() {
     this.healthControlService.findAll().subscribe((data) =>{
       this.medicalConnectedObjects = data;
-      console.log(JSON.stringify(data));
-    });
+     });
   }
 
 }
