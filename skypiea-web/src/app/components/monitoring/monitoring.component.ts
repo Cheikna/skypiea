@@ -1,31 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { RoomService } from 'src/app/services/room.service';
 import { Room } from 'src/app/models/room.model';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { stateInfo } from 'src/app/enums/state.enum';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-monitoring',
   templateUrl: './monitoring.component.html',
   styleUrls: ['./monitoring.component.scss']
 })
-export class MonitoringComponent implements OnInit {
+export class MonitoringComponent implements OnInit, AfterViewInit {
 
   roomsFilterForm: FormGroup;
-
   roomsFromBackCall: Array<Room>;
   roomsFiltered: Array<Room>;
+  totalNumberOfConnectedObjects: number;
+
+  displayedColumns = ['info'];
+  dataSource = new MatTableDataSource<Room>();
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(private roomService: RoomService, private formBuilder: FormBuilder) { 
     this.roomsFiltered = new Array<Room>();
+    this.totalNumberOfConnectedObjects = 0;
     this.initializeForms();
   }
 
   ngOnInit() {
     this.roomService.getRoomsSummary().subscribe((data: Array<Room>) => {
       this.roomsFromBackCall = Object.assign(new Array<Room>(), data);
+      this.roomsFromBackCall.forEach((room)=>{
+        const connectedObjectsList: any[] = room.nonMedicalConnectedObjects;
+        if(connectedObjectsList){
+          this.totalNumberOfConnectedObjects += connectedObjectsList.length;
+        }
+      });
       Object.assign(this.roomsFiltered, data);
+      this.dataSource.data = this.roomsFiltered;
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
   }
 
   initializeForms(){
@@ -59,7 +77,8 @@ export class MonitoringComponent implements OnInit {
       }
 
       return true;
-    });
+    });    
+    this.dataSource.data = this.roomsFiltered;
   }
 
   private isEmpty(str: string){

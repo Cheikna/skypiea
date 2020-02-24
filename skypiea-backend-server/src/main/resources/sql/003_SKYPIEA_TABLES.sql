@@ -20,6 +20,15 @@ CITY character varying(60),
 COUNTRY VARCHAR(255)
 );
 
+CREATE TABLE disease(
+id serial primary key,
+version integer,
+type_of_disease VARCHAR(255),
+treatment VARCHAR(255),
+duration VARCHAR(255),
+client_id integer REFERENCES CLIENT(ID)
+);
+
 CREATE TABLE SKYPIEA_USER (
 ID serial primary key, 
 VERSION integer, 

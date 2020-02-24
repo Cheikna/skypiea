@@ -1,7 +1,6 @@
 section {
   background: url("../../../assets/images/backgrounds/eneru-wallpaper.jpg") no-repeat;
   background-size: cover;
-  height: 120%;
   width: auto;
 }
 
@@ -13,4 +12,22 @@ section {
 
 hr {
     border: 1px white solid;
+}
+
+.statistic-section-title,
+.statistic-card-title {
+  font-weight: bold;
+}
+
+.statistic-section-title {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+mat-card {
+  margin-bottom: 15px;
+}
+
+.data-lack-info {
+  font-weight: bold;
+  font-style: italic;
 }

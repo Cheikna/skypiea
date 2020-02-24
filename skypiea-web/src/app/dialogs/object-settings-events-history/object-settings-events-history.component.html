@@ -1,0 +1,193 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <h1 mat-dialog-title>{{ nonMedicalObjectTypeFormat }} settings & events history</h1>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            <h3 mat-dialog-title>IP Address {{ nonMedicalConnectedObject?.ipAddress }} - MAC Address
+                {{ nonMedicalConnectedObject?.macAddress }}</h3>
+        </div>
+    </div>
+    <mat-tab-group>
+        <mat-tab label="Settings">
+            <div class="table-responsive">
+                <ng-container [ngSwitch]="nonMedicalConnectedObject?.nonMedicalObjectType">
+                    <ng-container *ngSwitchCase="NonMedicalObjectType.BULB">
+                        <ng-container *ngTemplateOutlet="bulbSettingsEventsHistory"></ng-container>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="NonMedicalObjectType.SHUTTER">
+                        <ng-container *ngTemplateOutlet="shutterSettingsEventsHistory"></ng-container>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="NonMedicalObjectType.SMOKE_SENSOR">
+                        <ng-container *ngTemplateOutlet="smokeSensorSettingsEventsHistory"></ng-container>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="NonMedicalObjectType.TEMPERATURE_CONTROLLER">
+                        <ng-container *ngTemplateOutlet="temperatureControllerSettingsEventsHistory"></ng-container>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </mat-tab>
+        <mat-tab label="Events">
+            <div class="table-responsive">
+                <table mat-table [dataSource]="eventsDataSource">
+                    <ng-container matColumnDef="startTime">
+                        <th mat-header-cell *matHeaderCellDef> Saving date </th>
+                        <td mat-cell *matCellDef="let event">{{ event.startTime | date: 'MMM d, y, HH:mm' }}</td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="endTime">
+                        <th mat-header-cell *matHeaderCellDef> Status </th>
+                        <td mat-cell *matCellDef="let event">{{ event.endTime | date: 'MMM d, y, HH:mm' }}</td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="object">
+                        <th mat-header-cell *matHeaderCellDef> Type </th>
+                        <td mat-cell *matCellDef="let event">{{ event.eventType }}</td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="description">
+                        <th mat-header-cell *matHeaderCellDef> Description </th>
+                        <td mat-cell *matCellDef="let event">{{ event.description }}</td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="reachedState">
+                        <th mat-header-cell *matHeaderCellDef> Reached state </th>
+                        <td mat-cell *matCellDef="let event">{{ event.reachedState }}</td>
+                    </ng-container>
+            
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns.historyEventsDisplayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns.historyEventsDisplayedColumns;"></tr>
+                </table>
+                <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 7]" #eventsPaginator></mat-paginator>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+</div>
+
+<ng-template #bulbSettingsEventsHistory>
+    <table mat-table [dataSource]="settingsDataSource">
+        <ng-container matColumnDef="savingDate">
+            <th mat-header-cell *matHeaderCellDef> Saving date </th>
+            <td mat-cell *matCellDef="let setting"> {{ setting.savingDate | date: 'MMM d, y, HH:mm' }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let setting"> {{ setting.status }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="color">
+            <th mat-header-cell *matHeaderCellDef> Color </th>
+            <td mat-cell *matCellDef="let setting" [ngStyle]="{'background-color':setting.currentColor}">
+                <span *ngIf="setting?.currentColor != null">{{setting.currentColor}}</span>
+                <span *ngIf="setting?.currentColor == null">Color unknown</span>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns.bulbDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns.bulbDisplayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[7, 10, 15]" #settingsPaginator></mat-paginator>
+</ng-template>
+
+<ng-template #shutterSettingsEventsHistory>
+    <table mat-table [dataSource]="settingsDataSource">
+        <ng-container matColumnDef="savingDate">
+            <th mat-header-cell *matHeaderCellDef> Saving date </th>
+            <td mat-cell *matCellDef="let setting"> {{ setting.savingDate | date: 'MMM d, y, HH:mm' }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let setting"> {{ setting.status }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="automaticModeEnabled">
+            <th mat-header-cell *matHeaderCellDef> Automatic mode enabled </th>
+            <td mat-cell *matCellDef="let setting">
+                <span *ngIf="setting?.automaticModeEnabled">Yes</span>
+                <span *ngIf="!setting?.automaticModeEnabled">No</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="windowCoverage">
+            <th class="thead-dark" mat-header-cell *matHeaderCellDef> Window Coverage </th>
+            <td mat-cell *matCellDef="let setting">
+                <span *ngIf="setting?.windowCoverage">Yes</span>
+                <span *ngIf="!setting?.windowCoverage">No</span>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns.shutterDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns.shutterDisplayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[10, 20, 30]" #settingsPaginator></mat-paginator>
+</ng-template>
+
+<ng-template #smokeSensorSettingsEventsHistory>
+    <table mat-table [dataSource]="settingsDataSource">
+        <ng-container matColumnDef="savingDate">
+            <th mat-header-cell *matHeaderCellDef> Saving date </th>
+            <td mat-cell *matCellDef="let setting"> {{ setting.savingDate | date: 'MMM d, y, HH:mm' }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let setting"> {{ setting.status }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="minThreshold">
+            <th mat-header-cell *matHeaderCellDef> Min. threshold </th>
+            <td mat-cell *matCellDef="let setting"> {{ setting.minThreshold }} ppm </td>
+        </ng-container>
+
+        <ng-container matColumnDef="maxThreshold">
+            <th mat-header-cell *matHeaderCellDef> Max. threshold </th>
+            <td mat-cell *matCellDef="let setting"> {{ setting.maxThreshold }} ppm </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns.smokeSensorDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns.smokeSensorDisplayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[10, 20, 30]" #settingsPaginator></mat-paginator>
+</ng-template>
+
+<ng-template #temperatureControllerSettingsEventsHistory>
+    <table mat-table [dataSource]="settingsDataSource">
+        <ng-container matColumnDef="savingDate">
+            <th mat-header-cell *matHeaderCellDef> Saving date </th>
+            <td mat-cell *matCellDef="let setting"> {{ setting.savingDate | date: 'MMM d, y, HH:mm' }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let setting"> {{ setting.status }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="temperatureSettled">
+            <th mat-header-cell *matHeaderCellDef> Temperature Settled </th>
+            <td mat-cell *matCellDef="let setting"> {{ setting.temperatureSettled }}°C </td>
+        </ng-container>
+
+        <ng-container matColumnDef="healthingConnected">
+            <th mat-header-cell *matHeaderCellDef> Healthing connected </th>
+            <td mat-cell *matCellDef="let setting">
+                <span *ngIf="setting?.healthingConnected">Yes</span>
+                <span *ngIf="!setting?.healthingConnected">No</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="airConditionnerConnected">
+            <th class="thead-dark" mat-header-cell *matHeaderCellDef> Air conditionner connected </th>
+            <td mat-cell *matCellDef="let setting">
+                <span *ngIf="setting?.airConditionnerConnected">Yes</span>
+                <span *ngIf="!setting?.airConditionnerConnected">No</span>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns.temperatureControllerDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns.temperatureControllerDisplayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[10, 20, 30]" #settingsPaginator></mat-paginator>
+</ng-template>
