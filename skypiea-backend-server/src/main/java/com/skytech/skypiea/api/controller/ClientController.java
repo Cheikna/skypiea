@@ -29,7 +29,7 @@ public class ClientController {
 	}	
 	
 	@GetMapping("")
-	public List<Client> getClient() {
+	public List<Client> getClients() {
 		return clientService.findAll();
 	}
 }

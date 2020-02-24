@@ -10,6 +10,11 @@ export class ClientService extends RestService {
 
   client: any;
 
+  
+  constructor(protected http: HttpClient) { 
+    super("clients", http);
+  }
+
   setClient(client: any){
     this.client = client;
   }
@@ -18,13 +23,6 @@ export class ClientService extends RestService {
     return this.client;
   }
 
-  getClient(){
-    return this.http.get(`${this.completeBackendServerUrl}/clients`, { headers: this.headers });
-  }
-
-  constructor(protected http: HttpClient) { 
-    super("clients", http);
-  }
 
   
 
