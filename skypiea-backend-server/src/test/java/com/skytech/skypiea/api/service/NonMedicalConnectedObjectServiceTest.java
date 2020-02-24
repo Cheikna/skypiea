@@ -1,6 +1,9 @@
 package com.skytech.skypiea.api.service;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
+
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +18,7 @@ import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;
 import com.skytech.skypiea.commons.entity.RealTimeEvent;
 import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
 import com.skytech.skypiea.commons.enumeration.State;
+import com.skytech.skypiea.commons.enumeration.Status;
 
 @ComponentScan(basePackageClasses = {
 		NonMedicalConnectedObjectRepository.class
@@ -59,5 +63,23 @@ public class NonMedicalConnectedObjectServiceTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void testSave() {
+		// préparation du test
+		NonMedicalConnectedObject obj1 = new NonMedicalConnectedObject();  
+		obj1.setStatus(Status.ON); 
+		NonMedicalConnectedObject savedObj = nonMedicalConnectedObjectRepository.save(obj1);
+		obj1.setStatus(Status.OFF);
+		
+		// on vérifie que la valeur a bien été enregistré. 
+		assertEquals(Status.ON, savedObj.getStatus());
+		
+		//TODO: test dans le cas contraire 
+		//TODO: mocker BD pour test
+		
+	}
+	
+
 
 }
