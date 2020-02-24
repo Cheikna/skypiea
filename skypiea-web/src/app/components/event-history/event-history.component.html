@@ -1,5 +1,185 @@
 <section>
     <h1 class="title">&nbsp; &nbsp; Event history</h1>
     <hr>
-    <h1 class="title">&nbsp; &nbsp; COMING SOON</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 filter">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>Scope of analysis</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="date-filter-from col-4">
+                                <mat-form-field>
+                                    <mat-label>From</mat-label>
+                                    <input matInput [matDatepicker]="datePickerFrom" [formControl]="dateFrom">
+                                    <mat-datepicker-toggle matSuffix [for]="datePickerFrom"></mat-datepicker-toggle>
+                                    <mat-datepicker #datePickerFrom></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div class="date-filter-to col-4">
+                                <mat-form-field>
+                                    <mat-label>To</mat-label>
+                                    <input matInput [matDatepicker]="datePickerTo" [formControl]="dateTo">
+                                    <mat-datepicker-toggle matSuffix [for]="datePickerTo"></mat-datepicker-toggle>
+                                    <mat-datepicker #datePickerTo></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="room-filter col-4">
+                                <mat-form-field>
+                                    <mat-label>Select a room</mat-label>
+                                    <mat-select [(value)]="selectedRoom">
+                                        <mat-option>All</mat-option>
+                                        <ng-container
+                                            *ngFor="let objectPerRoom of nonMedicalConnectedObjectsPerRoom | keyvalue">
+                                            <mat-option [value]="objectPerRoom.key">
+                                                {{ formatRoomOptionDisplay(objectPerRoom.key) }}</mat-option>
+                                        </ng-container>
+                                    </mat-select>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="object-type-filter col-4">
+                                <mat-form-field>
+                                    <mat-label>Select an object type</mat-label>
+                                    <mat-select [formControl]="selectedNonMedicalConnectedObjectTypes" multiple>
+                                        <mat-option *ngFor="let type of nonMedicalObjectTypes" [value]="type.id">
+                                            {{type.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="object-filter col-8">
+                                <mat-form-field class="col-8">
+                                    <mat-label>Select an object</mat-label>
+                                    <mat-select [(value)]="selectedNonMedicalConnectedObject">
+                                        <mat-option>None</mat-option>
+                                        <ng-container *ngFor="let object of getSelectedRoomAssociatedObjects()">
+                                            <mat-option [value]="object">{{ formatObjectOptionDisplay(object) }}
+                                            </mat-option>
+                                        </ng-container>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-outline-success" (click)="getStatistics()"
+                                [disabled]="!selectedNonMedicalConnectedObject || !isDateFormValid">
+                                <mdb-icon fas icon="chart-pie"></mdb-icon> Get the statistics
+                            </button>
+                            &nbsp;&nbsp;
+                            <button type="button" class="btn btn-outline-info"
+                                (click)="openObjectSettingsHistoryDialog()"
+                                [disabled]="!selectedNonMedicalConnectedObject">
+                                <mdb-icon fas icon="file-alt"></mdb-icon> Raw data
+                            </button>
+                        </div>
+                        <div class="d-flex justify-content-end text-danger font-italic">
+                            <span *ngIf="!isDateFormValid"><b>The date 'From' cannot be greater than the date 'To' !</b></span>
+                        </div>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+
+        <!-- General Information -->
+        <div class="row">
+            <mat-card class="col-12 statistic-section-title text-center">General Information</mat-card>
+
+            <mat-card class="col-5">
+                <span class="statistic-card-title">Number of status changes</span>
+                <div>
+                    <canvas baseChart [data]="selectedObjectStatistics?.numberOfChangesOnEachStatusData"
+                        [labels]="selectedObjectStatistics?.numberOfChangesOnEachStatusLabels" [colors]="chartColors2"
+                        [chartType]="'pie'"></canvas>
+                </div>
+            </mat-card>
+
+            <div class="col-2"></div>
+
+            <mat-card class="col-5">
+                <span class="statistic-card-title">Time spent in each status (in minutes)</span>
+                <div>
+                    <canvas baseChart [data]="selectedObjectStatistics?.timeSpentOnEachStatusData"
+                        [labels]="selectedObjectStatistics?.timeSpentOnEachStatusLabels" [chartType]="'pie'"
+                        [colors]="chartColors1"></canvas>
+                </div>
+            </mat-card>
+        </div>
+
+        <div class="row">
+            <mat-card class="col-12">
+                <span class="statistic-card-title">Number of repetition in each state</span>
+                <div class="chart-wrapper">
+                    <canvas baseChart [datasets]="selectedObjectStatistics?.statesData" [options]="radarChartOptions"
+                        [labels]="selectedObjectStatistics?.statesLabels"
+                        [chartType]="'radar'">
+                    </canvas>
+                </div>
+            </mat-card>
+        </div>
+
+        <!-- Specific Information -->
+        <div class="row">
+            <mat-card class="col-12 statistic-section-title text-center">Specific Information</mat-card>
+
+            <ng-container [ngSwitch]="currentObjectType">
+                <ng-container *ngSwitchCase="NonMedicalObjectType.TEMPERATURE_CONTROLLER">
+                    <ng-container *ngTemplateOutlet="temperatureControllerStatistics"></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="NonMedicalObjectType.SUNSHINE_SENSOR">
+                    <ng-container *ngTemplateOutlet="sunshineSensorStatistics"></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                    <mat-card class="col-12 text-center data-lack-info">The object did not provide enough data for the
+                        statistics</mat-card>
+                </ng-container>
+            </ng-container>
+        </div>
+
+    </div>
 </section>
+
+<ng-template #temperatureControllerStatistics>
+    <mat-card class="col-5">
+        <span class="statistic-card-title">Indoor temperatures (in Celsius Degree)</span>
+        <div class="chart-wrapper">
+            <canvas baseChart [datasets]="selectedObjectStatistics?.temperaturesData"
+                [labels]="selectedObjectStatistics?.temperaturesLabels" [options]="barChartOptions" [legend]="'true'"
+                [chartType]="'bar'">
+            </canvas>
+        </div>
+    </mat-card>
+</ng-template>
+
+
+<ng-template #sunshineSensorStatistics>
+    <mat-card class="col-5">
+        <span class="statistic-card-title">External temperature (in Celsius Degree)</span>
+        <div class="chart-wrapper">
+            <canvas baseChart [datasets]="selectedObjectStatistics?.sunshineSensorTemperaturesData"
+                [labels]="selectedObjectStatistics?.sunshineSensorTemperaturesLabels" [options]="barChartOptions"
+                [legend]="'true'" [chartType]="'bar'">
+            </canvas>
+        </div>
+    </mat-card>
+
+    <div class="col-2"></div>
+
+    <mat-card class="col-5">
+        <span class="statistic-card-title">Sunshine rate (in lux)</span>
+        <div class="chart-wrapper">
+            <canvas baseChart [datasets]="selectedObjectStatistics?.sunshineSensorSunshinesData"
+                [labels]="selectedObjectStatistics?.sunshineSensorSunshinesLabels" [options]="barChartOptions"
+                [legend]="'true'" [chartType]="'bar'">
+            </canvas>
+        </div>
+    </mat-card>
+</ng-template>

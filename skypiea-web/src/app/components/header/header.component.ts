@@ -37,12 +37,10 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.webStorageService.removeSessionAttribute(storageKey.USER_INFO.name);
     this.toastService.displayToast(ToastType.SUCCESS, 'You are leaving us', true, 'Please wait, the page will reload');
-
+    this.router.navigate(['']);
     setTimeout(() => {
       window.location.reload();
-      this.router.navigate(['']);
-    }, 1000);
-
+    }, 700);
   }
 
 }
