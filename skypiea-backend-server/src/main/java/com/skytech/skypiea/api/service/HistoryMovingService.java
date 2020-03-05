@@ -34,7 +34,10 @@ public class HistoryMovingService {
 		if(id >= 1) {			
 			try {
 				Optional<HistoryMoving> optionalHistoryMoving = historyMovingRepository.findById(id);
-				historyMoving = optionalHistoryMoving.get();				
+				if(optionalHistoryMoving.isPresent()) {
+					historyMoving = optionalHistoryMoving.get();
+				}
+				else {return historyMoving;}				
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
