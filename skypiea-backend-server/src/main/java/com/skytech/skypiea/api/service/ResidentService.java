@@ -35,7 +35,10 @@ public class ResidentService {
 		if(id >= 1) {			
 			try {
 				Optional<Resident> optionalResident = residentRepository.findById(id);
-				resident = optionalResident.get();				
+				if(optionalResident.isPresent()) {
+					resident = optionalResident.get();
+				}
+				else {return resident;}			
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
