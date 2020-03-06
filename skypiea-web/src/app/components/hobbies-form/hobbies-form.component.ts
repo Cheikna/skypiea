@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
 import { ClientService } from 'src/app/services/client.service';
 import { ToastService } from 'src/app/util/toast.service';
 import { Router } from '@angular/router';
@@ -8,6 +7,7 @@ import { ToastType } from 'src/app/enums/toastType.enum';
 import { Client } from 'src/app/models/client.model';
 import { ProfileService } from 'src/app/services/profile.service';
 import { DiseaseService } from 'src/app/services/disease.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-hobbies-form',
@@ -18,6 +18,10 @@ export class HobbiesFormComponent implements OnInit {
   profile: Profile;
   hobbiesForm: FormGroup;
   client: Client;
+  cinephile: FormGroup;
+  timeSports: FormGroup;
+  income: FormGroup;
+  sports: FormGroup;
 
   constructor(private profileService: ProfileService, private clientService: ClientService, private toastService: ToastService, private router: Router) {
     this.hobbiesForm = new FormGroup({
@@ -25,17 +29,38 @@ export class HobbiesFormComponent implements OnInit {
       smoker: new FormControl(),
       cinephile: new FormControl(),
       sedentary: new FormControl(),
+      timeSports: new FormControl(),
+      income: new FormControl(),
+      sports: new FormControl(),
+      sedentaryHours: new FormControl()
     });
     this.profile = new Profile();
     this.client = new Client();
+    this.cinephile = new FormGroup({});
+    this.timeSports = new FormGroup({});
+    this.income = new FormGroup({});
+    this.sports = new FormGroup({});
    }
 
   ngOnInit() {
   }
 
+  isSmoker(){
+    return this.hobbiesForm.get('smoker').value === "true";
+  }
+
+  isSportive(){
+    return this.hobbiesForm.get('sports').value === "true";
+  }
+
+  isSedentary(){
+    return this.hobbiesForm.get('sedentary').value === "true";
+  }
+
   createHobby(){
-    
-    console.log("laaaa " + JSON.stringify(this.hobbiesForm.value));
+    console.log("income : " + this.income);
+    this.profileService.isCinephile(this.cinephile);
+    this.profileService.createJsonForProfile().subscribe((data) => console.log(data));
     this.client = this.clientService.getOneClient();
     this.profile.client = this.client;
     this.profile.criteria = JSON.stringify(this.hobbiesForm.value);

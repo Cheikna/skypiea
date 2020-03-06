@@ -1,10 +1,10 @@
 package com.skytech.skypiea.api.controller;
 
-import java.util.List;
-
+import java.util.List;import org.hibernate.validator.constraints.ParameterScriptAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +29,21 @@ public class ProfileController {
 	@GetMapping("")
 	public List<Profile> getProfile() {
 		return profileService.findAll();
+	}
+	
+	@GetMapping("/{hours}")
+	public void isCinephile(@PathVariable int hours) {
+		profileService.isCinephile(hours);
+	}
+	
+	@GetMapping("/{smoker}")
+	public void isSmoker(@PathVariable boolean smoker) {
+		profileService.isSmoker(smoker);
+	}
+	
+	@PostMapping("/createProfileJson")
+	public String createJsonForProfile(@RequestBody int hours, @RequestBody boolean smoker) {
+		return profileService.createJsonForCriteria(hours, smoker);
 	}
 
 }

@@ -2,57 +2,77 @@
     <h1>What do you do on your free time ? </h1>
     <form class="needs-validation" [formGroup]="hobbiesForm" (ngSubmit)="createHobby()" ngNativeValidate>
         <div class="form-group">
+            <div class="form-group">
                 <div class="col-md-4 mb-3">
-                    <label>How many hours do you watch TV ?</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" value="false" name="cinephile" formControlName="cinephile" id="falseCinephile" aria-checked="true">
-                        <label class="form-check-label" for="false">Less than 8 hours</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" value ="true" name="cinephile" formControlName="cinephile" id="trueCinephile">
-                        <label class="form-check-label" for="true">More than 8 hours</label>
-                    </div>
+                    <label for="cinephile">How many hours do you watch TV ?</label>
+                    <input type="number" class="form-control" formControlName="cinephile" name="cinephile" placeholder="Ex : 8" required> hours
                 </div>
+            </div>
+    
 
-                <div class="col-md-4 mb-3">
-                    <label>Do you prefer to ...</label><br>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" value="true" name="cooker" formControlName="cooker" id="trueCooker" aria-checked="true">
-                        <label class="form-check-label" for="true">Cook alone</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" value="false" name="cooker" formControlName="cooker" id="falseCooker">
-                        <label class="form-check-label" for="false">To have a cantine</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" value="mixed" name="cooker" formControlName="cooker" id="mixedCooker">
-                        <label class="form-check-label" for="mixed">To have both options</label>
-                    </div>
+            <div class="col-md-4 mb-3">
+                <label>Do you prefer to ...</label><br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="true" name="cooker" formControlName="cooker" id="trueCooker" aria-checked="true">
+                    <label class="form-check-label" for="true">Cook alone</label>
                 </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="false" name="cooker" formControlName="cooker" id="falseCooker">
+                    <label class="form-check-label" for="false">To have a cantine</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="mixed" name="cooker" formControlName="cooker" id="mixedCooker">
+                    <label class="form-check-label" for="mixed">To have both options</label>
+                </div>
+            </div>
 
-                <div class="col-md-4 mb-3">
-                    <label>Do you smoke ?</label><br>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" value="true" name="smoker" formControlName="smoker" id="trueSmoker" aria-checked="true">
-                        <label class="form-check-label" for="true">Yes</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" value="false" name="smoker" formControlName="smoker" id="falseSmoker">
-                        <label class="form-check-label" for="false">No</label>
-                    </div>
+            <div class="col-md-4 mb-3">
+                <label>Do you smoke ?</label><br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="true" name="smoker" formControlName="smoker" id="trueSmoker" aria-checked="true">
+                    <label class="form-check-label" for="true">Yes</label>
+                    <label *ngIf=isSmoker()>How many cigarettes do you smoke per day ?</label>
+                    <input *ngIf=isSmoker() type="number" class="form-control" placeholder="Ex : 2" required>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <label>Do you prefer to</label><br>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" value="true" name="sedentary" formControlName="sedentary" id="trueSedentary" aria-checked="true">
-                        <label class="form-check-label" for="true">be at home</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" value="false" name="sedentary" formControlName="sedentary" id="falseSedentary">
-                        <label class="form-check-label" for="false">be outside</label>
-                    </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="false" name="smoker" formControlName="smoker" id="falseSmoker">
+                    <label class="form-check-label" for="false">No</label>
                 </div>
-                  
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Do you prefer to</label><br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="true" name="sedentary" formControlName="sedentary" id="trueSedentary" aria-checked="true">
+                    <label class="form-check-label" for="true">be at home</label>
+                    <label *ngIf=isSedentary()>What are your time pass at home ?</label>
+                    <input *ngIf=isSedentary() type="text" class="form-control" placeholder="Ex : play video games" required>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="false" name="sedentary" formControlName="sedentary" id="falseSedentary">
+                    <label class="form-check-label" for="false">be outside</label>
+                    <label *ngIf=!isSedentary()>How many time do you spend outside ?</label>
+                    <input *ngIf=!isSedentary() type="number" class="form-control" formControlName="sedentaryHours" placeholder="Ex : 5" required>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Do you practices any sports ?</label><br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="true" name="sports" formControlName="sports" id="trueSports" aria-checked="true">
+                    <label class="form-check-label" for="true">Yes</label>
+                    <label *ngIf=isSportive()>Which sports do you practice ?</label>
+                    <input *ngIf=isSportive() type="text" class="form-control" placeholder="Ex : Football" required>
+                    <label *ngIf=isSportive()>How many time do you practices per week ?</label>
+                    <input *ngIf=isSportive() type="number" class="form-control" formControlName="timeSports" [(ngModel)]="timeSports" placeholder="Ex : 2" required>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="false" name="sports" formControlName="sports" id="falseSports">
+                    <label class="form-check-label" for="false">No</label>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="income">What is your monthly income ? </label>
+                <input type="text" class="form-control" formControlName="income" [(ngModel)]="income" name="income" placeholder="Ex : 200 €" required>
+            </div>
         </div>
         <div mat-dialog-actions class="d-flex justify-content-left">
             <button mat-raised-button class="btn btn-success" type="submit">
