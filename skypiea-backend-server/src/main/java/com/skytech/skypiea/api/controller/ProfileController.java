@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skytech.skypiea.api.service.ProfileService;
 import com.skytech.skypiea.commons.entity.Profile;
+import com.skytech.skypiea.commons.util.ProfileCriteriaJsonParameter;
 
 @RestController
 @RequestMapping("/profiles")
@@ -22,7 +23,7 @@ public class ProfileController {
 	private ProfileService profileService;
 	
 	@PostMapping("")
-	public Profile createNewDisease(@RequestBody Profile profile) {
+	public Profile createNewDisease(@RequestBody ProfileCriteriaJsonParameter profile) {
 		return profileService.save(profile);
 	}	
 	
@@ -31,19 +32,29 @@ public class ProfileController {
 		return profileService.findAll();
 	}
 	
-	@GetMapping("/{hours}")
+	/*@PostMapping("/cinephile/{hours}")
 	public void isCinephile(@PathVariable int hours) {
 		profileService.isCinephile(hours);
 	}
 	
-	@GetMapping("/{smoker}")
+	@PostMapping("/smoker/{smoker}")
 	public void isSmoker(@PathVariable boolean smoker) {
 		profileService.isSmoker(smoker);
 	}
 	
-	@PostMapping("/createProfileJson")
-	public String createJsonForProfile(@RequestBody int hours, @RequestBody boolean smoker) {
-		return profileService.createJsonForCriteria(hours, smoker);
+	@PostMapping("/sedentary/{hours}")
+	public void isSedentary(@PathVariable int hours) {
+		profileService.isSedentary(hours);
 	}
+	
+	@PostMapping("/income/{income}")
+	public void incomeValue(int income) {
+		profileService.incomeValue(income);
+	}
+	
+	@GetMapping("/createProfileJson/{hours}")
+	public String createJsonForProfile(@PathVariable int hours) {
+		return profileService.createJsonForCriteria(hours);
+	}*/
 
 }

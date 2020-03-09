@@ -8,6 +8,7 @@ import { Client } from 'src/app/models/client.model';
 import { ProfileService } from 'src/app/services/profile.service';
 import { DiseaseService } from 'src/app/services/disease.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ProfileCriteriaJsonParameter } from 'src/app/util/ProfileCriteriaJsonParameter.module';
 
 @Component({
   selector: 'app-hobbies-form',
@@ -18,10 +19,11 @@ export class HobbiesFormComponent implements OnInit {
   profile: Profile;
   hobbiesForm: FormGroup;
   client: Client;
-  cinephile: FormGroup;
-  timeSports: FormGroup;
-  income: FormGroup;
-  sports: FormGroup;
+  cinephile: number;
+  income: number;
+  timeSports: number;
+  outsideHours: number;
+  profileCriteriaJsonParameter: ProfileCriteriaJsonParameter;
 
   constructor(private profileService: ProfileService, private clientService: ClientService, private toastService: ToastService, private router: Router) {
     this.hobbiesForm = new FormGroup({
@@ -31,15 +33,11 @@ export class HobbiesFormComponent implements OnInit {
       sedentary: new FormControl(),
       timeSports: new FormControl(),
       income: new FormControl(),
-      sports: new FormControl(),
-      sedentaryHours: new FormControl()
+      sports: new FormControl(), 
+      outsideHours: new FormControl()
     });
     this.profile = new Profile();
     this.client = new Client();
-    this.cinephile = new FormGroup({});
-    this.timeSports = new FormGroup({});
-    this.income = new FormGroup({});
-    this.sports = new FormGroup({});
    }
 
   ngOnInit() {
@@ -58,16 +56,11 @@ export class HobbiesFormComponent implements OnInit {
   }
 
   createHobby(){
-    console.log("income : " + this.income);
-    this.profileService.isCinephile(this.cinephile);
-    this.profileService.createJsonForProfile().subscribe((data) => console.log(data));
+    this.profileCriteriaJsonParameter = new ProfileCriteriaJsonParameter(this.profile, this.cinephile, this.isSmoker(), this.outsideHours, this.income, this.hobbiesForm.get('cooker').value, this.isSportive(), this.timeSports);
     this.client = this.clientService.getOneClient();
     this.profile.client = this.client;
-    this.profile.criteria = JSON.stringify(this.hobbiesForm.value);
 
-    console.log("PROFILE : " + this.profile);
-
-    this.profileService.create(this.profile).subscribe(
+    this.profileService.create(this.profileCriteriaJsonParameter).subscribe(
       (data) => {
         if(data){
           console.log("profile created");
