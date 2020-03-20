@@ -14,15 +14,14 @@ public class ClientService {
 	
 	@Autowired
 	private ClientRepository clientRepository;
-	
-	
-	public Client save(Client client) {
-		return clientRepository.save(client);
-	}
 
 	public List<Client> findAll(){
 		List<Client> clients = this.clientRepository.findAll();
 		return clients;
+	}
+	
+	public Client save(Client client) {
+		return clientRepository.save(client);
 	}
 
 }

@@ -57,7 +57,7 @@ export class DiseaseService extends RestService {
       this.client = client;
   }
 
-  getDiseaseByClient(clientId: number){
-    return this.http.get(`${this.completeBackendServerUrl}/diseases/${clientId}`, { headers: this.headers });
+  findNumberOfDiseaseByClientId(clientId: number){
+    return this.http.get(`${this.completeBackendServerUrl}/client/${clientId}`, { headers: this.headers });
   }
 }

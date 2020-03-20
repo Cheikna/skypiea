@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.skytech.skypiea.api.repository.DiseaseRepository;
 import com.skytech.skypiea.commons.entity.Disease;
 import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;
+import com.skytech.skypiea.commons.entity.Room;
 
 @Service
 public class DiseaseService {
@@ -25,8 +26,14 @@ public class DiseaseService {
 		return diseases;
 	}
 	
-	public List<Disease> findByClientId(Long clientId){
-		List<Disease> diseases = this.diseaseRepository.findByClientId(clientId);
-		return diseases;
+	public int findNumberOfDiseaseByClientId(Long id) {
+		List<Disease> diseases = null;
+		try {
+			diseases = diseaseRepository.findByClientId(id);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return diseases.size();
 	}
 }

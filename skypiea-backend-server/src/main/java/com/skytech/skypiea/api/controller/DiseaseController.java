@@ -37,16 +37,12 @@ public class DiseaseController {
 	public List<Disease> getDisease() {
 		return diseaseService.findAll();
 	}
-
-	/*@PostMapping("/typeOfDisease")
-	public Disease setTypeOfDisease(DiseaseSuper diseaseSuper) {
-		return diseaseService.setDiseaseType(diseaseSuper);
-	}*/
-	@GetMapping("/diseases/{id}")
-	public List<Disease> getDiseaseByClient(@PathVariable Long id) {
-		return this.diseaseService.findByClientId(id);
-	}
 	
+	@GetMapping("/client/{id}")
+	public int getClientDiseaseDetails(@PathVariable Long id) {
+		return this.diseaseService.findNumberOfDiseaseByClientId(id);
+		
+	}
 	
 
 }

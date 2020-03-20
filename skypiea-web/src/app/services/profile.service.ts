@@ -13,23 +13,15 @@ export class ProfileService extends RestService {
     super("profiles", http);
   }
 
-  isCinephile(hours: any){
-    return this.http.post(`${this.completeBackendServerUrl}/cinephile/${hours}`, { headers: this.headers });
-  }
-
-  isSmoker(smoker: any){
-    return this.http.post(`${this.completeBackendServerUrl}/smoker/${smoker}`, { headers: this.headers });
-  }
-
-  isSedentary(hours: any){
-    return this.http.post(`${this.completeBackendServerUrl}/sedentary/${hours}`, { headers: this.headers });
-  }
-
-  incomeValue(income: any){
-    return this.http.post(`${this.completeBackendServerUrl}/income/${income}`, { headers: this.headers });
-  }
-
   createJsonForProfile(hours: any): any{
     return this.http.get(`${this.completeBackendServerUrl}/createProfileJson/${hours}`, { headers: this.headers }).subscribe((value: any) => this.criteria.next(value));
+  }
+
+  getProfileCriteriaForClient(clientId: any){
+    return this.http.get(`${this.completeBackendServerUrl}/client/${clientId}`, { headers: this.headers });
+  }
+
+  isSporty(criteria: any){
+    return this.http.get(`${this.completeBackendServerUrl}/sporty/${criteria}`, { headers: this.headers });
   }
 }

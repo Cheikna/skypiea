@@ -23,7 +23,7 @@ public class ProfileController {
 	private ProfileService profileService;
 	
 	@PostMapping("")
-	public Profile createNewDisease(@RequestBody ProfileCriteriaJsonParameter profile) {
+	public Profile createNewProfile(@RequestBody ProfileCriteriaJsonParameter profile) {
 		return profileService.save(profile);
 	}	
 	
@@ -56,5 +56,15 @@ public class ProfileController {
 	public String createJsonForProfile(@PathVariable int hours) {
 		return profileService.createJsonForCriteria(hours);
 	}*/
+	
+	@GetMapping("/client/{clientId}")
+	public String getProfileCriteriaForClient(@PathVariable Long clientId) {
+		return profileService.getProfileCriteriaForClient(clientId);
+	}
+	
+	@GetMapping("/sporty/{criteria}")
+	public String isSporty(@PathVariable String criteria) {
+		return profileService.isSporty(criteria);
+	}
 
 }

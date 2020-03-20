@@ -53,6 +53,8 @@ import { ResidentComponent } from './components/resident/resident.component';
 import { HealthHistoryComponent } from './components/health-history/health-history.component';
 import { ObjectSettingsEventsHistoryComponent } from './dialogs/object-settings-events-history/object-settings-events-history.component';
 import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.component';
+import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
+import { ClientComponent } from './components/client/client.component';
 //import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
 
 
@@ -108,7 +110,9 @@ import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.com
     ResidentComponent,
     HealthHistoryComponent,
     ObjectsMapComponent,
-    ObjectSettingsEventsHistoryComponent
+    ObjectSettingsEventsHistoryComponent,
+    WaitingClientComponent,
+    ClientComponent
 
   ],
   imports: [

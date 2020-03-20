@@ -1,12 +1,8 @@
 package com.skytech.skypiea.commons.entity;
 
-import java.util.Collection;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Table;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 
 @Entity
 @Table(name="CLIENT")
@@ -42,9 +38,6 @@ public class Client extends com.skytech.skypiea.commons.entity.Entity{
 	@Column(name="COUNTRY")
 	protected String country;
 	
-	@OneToMany(mappedBy = "client", cascade=CascadeType.ALL)
-    private Collection<Disease> diseases ;
-
 	public Client() {
 		super();
 	}
@@ -142,19 +135,11 @@ public class Client extends com.skytech.skypiea.commons.entity.Entity{
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Collection<Disease> getDiseases() {
-		return diseases;
-	}
-
-	public void setDiseases(Collection<Disease> diseases) {
-		this.diseases = diseases;
-	}
-
 	@Override
 	public String toString() {
 		return "Client [lastName=" + lastName + ", firstName=" + firstName + ", age=" + age + ", email=" + email
 				+ ", streetNumber=" + streetNumber + ", streetName=" + streetName + ", zipCode=" + zipCode + ", city="
-				+ city + ", phoneNumber=" + phoneNumber + ", country=" + country + ", diseases=" + diseases + "]";
+				+ city + ", phoneNumber=" + phoneNumber + ", country=" + country + "]";
 	}
 	
 	

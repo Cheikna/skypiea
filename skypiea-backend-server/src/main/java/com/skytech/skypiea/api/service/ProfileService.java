@@ -15,34 +15,34 @@ public class ProfileService {
 	
 	
 	@Autowired
-	private ProfileRepository ProfileRepository;
+	private ProfileRepository profileRepository;
 	
 	private JSONObject criteriaJson = new JSONObject();
 	
 	public Profile save(ProfileCriteriaJsonParameter profileCriteriaJsonParameter) {
 		Profile profile = profileCriteriaJsonParameter.getProfile();
 		profile.setCriteria(createJsonForCriteria(profileCriteriaJsonParameter));
-		return ProfileRepository.save(profile);
+		return profileRepository.save(profile);
 	}
 
 	public List<Profile> findAll(){
-		List<Profile> profiles = this.ProfileRepository.findAll();
+		List<Profile> profiles = this.profileRepository.findAll();
 		return profiles;
 	}
 	
-	public void isCinephile(int hours) {
+	public void setIsCinephile(int hours) {
 		criteriaJson.put("cinephile", (hours > 7));
 	}
 	
-	public void isSmoker(boolean smoker) {
+	public void setIsSmoker(boolean smoker) {
 		criteriaJson.put("smoker", smoker);
 	}
 	
-	public void isSedentary(int hours) {
+	public void setIsSedentary(int hours) {
 		criteriaJson.put("sedentary", (hours < 5));
 	}
 	
-	public void incomeValue(int income) {
+	public void setIncomeValue(int income) {
 		if (income < 500) {
 			criteriaJson.put("income", "difficulties");
 		}else if (income > 1200) {
@@ -52,7 +52,7 @@ public class ProfileService {
 		}
 	}
 	
-	public void isCooker(String cook) {
+	public void setIsCooker(String cook) {
 		if (cook.contentEquals("true")) {
 			criteriaJson.put("cook", "alone");
 		}else if (cook.contentEquals("false")) {
@@ -62,7 +62,7 @@ public class ProfileService {
 		}
 	}
 	
-	public void isSporty(boolean isSporty, int sportsHours) {
+	public void setIsSporty(boolean isSporty, int sportsHours) {
 		if (isSporty && sportsHours > 3) {
 			System.out.println("SPORTS : " + sportsHours);
 			criteriaJson.put("sporty", "true");
@@ -73,13 +73,33 @@ public class ProfileService {
 	}
 	
 	public String createJsonForCriteria(ProfileCriteriaJsonParameter profileCriteriaJsonParameter) {
-		isCinephile(profileCriteriaJsonParameter.getHourTelevision());
-		isSmoker(profileCriteriaJsonParameter.getIsSmoker());
-		isSedentary(profileCriteriaJsonParameter.getHoursOutside());
-		incomeValue(profileCriteriaJsonParameter.getIncome());
-		isCooker(profileCriteriaJsonParameter.getIsCook());
-		isSporty(profileCriteriaJsonParameter.getIsSporty(), profileCriteriaJsonParameter.getSportsHours());
+		setIsCinephile(profileCriteriaJsonParameter.getHourTelevision());
+		setIsSmoker(profileCriteriaJsonParameter.getIsSmoker());
+		setIsSedentary(profileCriteriaJsonParameter.getHoursOutside());
+		setIncomeValue(profileCriteriaJsonParameter.getIncome());
+		setIsCooker(profileCriteriaJsonParameter.getIsCook());
+		setIsSporty(profileCriteriaJsonParameter.getIsSporty(), profileCriteriaJsonParameter.getSportsHours());
 		return criteriaJson.toString();
-		
+	}
+	
+	public String isSporty(String criteria) {
+		String[] criterias = criteria.split(",");
+		for (String c: criterias) {
+			if (c.contains("sports")) {
+				return c.split(":")[1];
+			}
+		}
+		return null;
+	}
+	
+	public String getProfileCriteriaForClient(Long id) {
+		Profile profile = null;
+		try {
+			profile = profileRepository.findByClientId(id);
+			System.out.println(profile == null);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return profile.getCriteria();
 	}
 }
