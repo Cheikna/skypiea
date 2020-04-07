@@ -1,11 +1,15 @@
 package com.skytech.skypiea.commons.entity;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.skytech.skypiea.commons.enumeration.UserType;
 
 @Entity
@@ -16,6 +20,10 @@ public class Resident extends User {
 	private Timestamp birthDay;
 	@Column(name="SUPERVISION")
 	private String supervision;
+	
+	@JsonManagedReference
+	@OneToMany(mappedBy="resident", cascade=CascadeType.ALL)
+	private Set<Notification> notifications;
 
 	public Resident() {		
 		super();
@@ -42,4 +50,13 @@ public class Resident extends User {
 	public void setBirthDay(Timestamp birthDay) {
 		this.birthDay = birthDay;
 	}
+
+	public Set<Notification> getNotifications() {
+		return notifications;
+	}
+
+	public void setNotifications(Set<Notification> notifications) {
+		this.notifications = notifications;
+	}
+	
 }
