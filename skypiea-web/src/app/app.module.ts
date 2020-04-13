@@ -123,6 +123,7 @@ import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.com
     ReactiveFormsModule,
     ToastrModule.forRoot({
     positionClass: 'toast-top-center',
+    enableHtml: true,
     }),
     MatPaginatorModule,
   ],

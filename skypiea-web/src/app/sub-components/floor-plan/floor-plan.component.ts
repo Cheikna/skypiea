@@ -2,6 +2,8 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { stateInfo, State } from 'src/app/enums/state.enum';
 import { Room } from 'src/app/models/room.model';
+import { ToastService } from 'src/app/util/toast.service';
+import { ToastType } from 'src/app/enums/toastType.enum';
 
 @Component({
   selector: 'app-floor-plan',
@@ -25,13 +27,16 @@ export class FloorPlanComponent implements OnInit, OnChanges {
   stateInfoArray: any[];
   stateInfo = stateInfo;
   floorMax: number = 0;
+  lastRoom: string = "";
 
   selectedFloor = 1;
   floorNumberCollection: Array<number>;
   readonly doorBegin: string = "room_";
   private readonly floorSeparator: string = "_";
 
-  constructor(private router: Router) {
+  objectsStateSummary: string = "";
+
+  constructor(private router: Router, private toastService: ToastService) {
     this.roomBySvgPointMap = new Map();
     this.stateInfoArray = Object.entries(stateInfo);
     this.floorNumberCollection = new Array<number>();
@@ -87,6 +92,13 @@ export class FloorPlanComponent implements OnInit, OnChanges {
     const room = this.getRoomFromEvent(event);
     if (room) {
       this.roomOvered = room;
+      this.lastRoom = `Room n°${room.doorNumber}`;
+      //this.objectsStateSummary = `----- Room n°${room.doorNumber} -----<br/>`;
+      this.objectsStateSummary = "";
+      for (const [key, value] of Object.entries(room.objectQuantityByState)) {
+        this.objectsStateSummary += `${key} : ${value}<br/>`;
+      }
+      this.toastService.displayToast(ToastType.WARNING, this.lastRoom, true, this.objectsStateSummary, 7000);
     } else if (event != null && event.target != null) {
       let id = event.target.id;
       // Case where there is not resident in this room : the room is not occupied
