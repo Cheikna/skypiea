@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.function.Function;
 
 import org.apache.commons.lang3.RandomUtils;
+import org.javatuples.Pair;
 import org.javatuples.Triplet;
 
 public class DateUtil {
@@ -47,5 +48,12 @@ public class DateUtil {
 		int numberToRemove = RandomUtils.nextInt(1, 30);
 		cal.add(typeChoice, numberToRemove * (-1));
 		return new Timestamp(cal.getTimeInMillis());
+	}
+	
+	public static Pair<Long, Long> convertMillisecondsInMinutesAndSeconds(Long milliseconds){
+		Long millisecondsToSeconds = (long)Math.ceil(milliseconds / 1000);
+		Long minutes = (long)Math.ceil(millisecondsToSeconds / 60);
+		Long seconds = millisecondsToSeconds % 60;
+		return new Pair<Long, Long>(minutes,seconds);
 	}
 }

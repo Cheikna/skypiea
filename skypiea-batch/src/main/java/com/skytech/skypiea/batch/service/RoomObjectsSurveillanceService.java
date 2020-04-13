@@ -16,7 +16,6 @@ import com.skytech.skypiea.batch.algorithm.implementation.RoomObjectsFailureAlgo
 import com.skytech.skypiea.batch.algorithm.implementation.RoomObjectsMonitoringAlgorithm;
 import com.skytech.skypiea.batch.cache.CacheFactory;
 import com.skytech.skypiea.batch.cache.CacheInfo;
-import com.skytech.skypiea.commons.entity.HistoryEvent;
 import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;
 import com.skytech.skypiea.commons.entity.RealTimeEvent;
 import com.skytech.skypiea.commons.entity.Room;
@@ -91,7 +90,8 @@ public class RoomObjectsSurveillanceService implements IMessageProcessor {
 						saveHistory = true;
 					}
 					
-					nonMedicalConnectedObject = saveNonMedicalConnectedObjectEvent(objectId, cacheInfo, eventType, saveHistory);
+					RealTimeEvent realTimeEvent = cacheInfo.convertToRealTimeEvent(eventType);
+					nonMedicalConnectedObject = nonMedicalConnectedObjectService.saveNonMedicalConnectedObjectEvent(objectId, realTimeEvent, cacheInfo.getCurrentState(), saveHistory);
 					cacheInfo.setIsCacheInfoNeedToBeSavedInDatabase(false);
 				}
 				if(objectStateBeforeAlgo != newObjectState) {
@@ -115,39 +115,13 @@ public class RoomObjectsSurveillanceService implements IMessageProcessor {
 			e.printStackTrace();
 		}
 	}
-	
-	private NonMedicalConnectedObject saveNonMedicalConnectedObjectEvent(Long objectId, CacheInfo cacheInfo, EventType eventType, boolean saveHistory) {
-		//Retrieve the last version of the object
-		NonMedicalConnectedObject nonMedicalConnectedObject = nonMedicalConnectedObjectService.findById(objectId);
-		log.debug("Saving the new state in the database");
-		if(saveHistory) {
-			//Retrieve the current realTime event attached at the object
-			RealTimeEvent realTimeEventToArchive = nonMedicalConnectedObject.getRealTimeEvent();
-			if(realTimeEventToArchive != null) {
-				log.debug("Saving the old value in the history : " + realTimeEventToArchive.toString());
-				HistoryEvent historyEvent = new HistoryEvent();
-				historyEvent.cloneFromRealTimeEvent(realTimeEventToArchive);
-				nonMedicalConnectedObject.getHistoryEvents();
-				nonMedicalConnectedObject.getHistoryEvents().add(historyEvent);
-			}
-		}
-		
-		RealTimeEvent realTimeEvent = cacheInfo.convertToRealTimeEvent(eventType);
-		if(realTimeEvent != null) {
-			log.debug("Saving the new realTimeEvent : " + realTimeEvent.toString());
-		}
-		nonMedicalConnectedObject.setRealTimeEvent(realTimeEvent);
-		nonMedicalConnectedObject.setState(cacheInfo.getCurrentState());
-		nonMedicalConnectedObject = nonMedicalConnectedObjectService.save(nonMedicalConnectedObject);
-		return nonMedicalConnectedObject;
-	}
 
 	private void updateRoomState(Room objectRoom) {
 		State roomState = objectRoom.getState();
 		
 		log.debug("Updating room state, previous sate : " + roomState);
 		List<NonMedicalConnectedObject> roomObjects = nonMedicalConnectedObjectService.findByRoomId(objectRoom.getId());
-		NonMedicalConnectedObject objectWithHigherState = (NonMedicalConnectedObject) Util.getObjectWithHighestState(roomObjects);
+		NonMedicalConnectedObject objectWithHigherState = (NonMedicalConnectedObject) Util.getObjectWithHighestState(roomObjects, null);
 		
 		if(objectWithHigherState != null) {
 			roomState = objectWithHigherState.getState();
