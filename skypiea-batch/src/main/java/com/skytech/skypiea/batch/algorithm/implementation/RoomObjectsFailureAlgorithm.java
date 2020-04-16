@@ -130,6 +130,6 @@ public class RoomObjectsFailureAlgorithm extends NonMedicalConnectedObjectAlgori
 	}
 
 	private State resetStateToOperationalWhenEndOfBrokenState(State state) {
-		return (state == State.BROKEN) ? State.OPERATIONAL : state;
+		return (state == State.BROKEN || state == State.MISSING) ? State.OPERATIONAL : state;
 	}
 }

@@ -116,10 +116,10 @@ public class RoomStateCheckerTask extends CheckerTask {
 			}			
 
 			difference = Math.abs(currentTimestamp.getTime() - lastReceivedMessageTimestamp.getTime());
-			
+			minutesAndSeconds = DateUtil.convertMillisecondsInMinutesAndSeconds(difference);
+
 			if(difference > objectFrequency) {
 				object.setState(State.MISSING);
-				minutesAndSeconds = DateUtil.convertMillisecondsInMinutesAndSeconds(difference);
 				comments += "It has been " + minutesAndSeconds.getValue0() + " minute(s) and " + minutesAndSeconds.getValue1() + " second(s) since the last recevied message of this object";
 				isPreviousMessageTooOld = true;
 				
@@ -132,7 +132,7 @@ public class RoomStateCheckerTask extends CheckerTask {
 					realTimeEvent.setForMissingState(comments);
 				}
 				object.setRealTimeEvent(realTimeEvent);
-			} 
+			}
 			
 			displayObjectActivityResult(object, currentTimestamp, lastReceivedMessageTimestamp, minutesAndSeconds, !isPreviousMessageTooOld);
 		}
@@ -142,7 +142,10 @@ public class RoomStateCheckerTask extends CheckerTask {
 	private void displayObjectActivityResult(ConnectedObject object, Timestamp currentTimestamp, Timestamp lastReceivedMessageTimestamp, Pair<Long, Long> minutesAndSeconds, Boolean isDifferenceOk) {
 		Long id = object.getId();
 		String ipAddress = object.getIpAddress();
-		String convertedTime = minutesAndSeconds.getValue0() + ":" + minutesAndSeconds.getValue1();
+		String convertedTime = "unknown";
+		if(minutesAndSeconds != null) {
+			convertedTime = minutesAndSeconds.getValue0() + ":" + minutesAndSeconds.getValue1();
+		}
 		String frequencyStr = String.valueOf(object.getFrequency() / 1000);
 		String result = "\n" + StringFormatterUtil.formatObjectActivityChecker(id, ipAddress, lastReceivedMessageTimestamp, currentTimestamp, convertedTime, frequencyStr, isDifferenceOk, object.getState());
 		log.info(result);

@@ -23,7 +23,7 @@ public class Util {
 		
 		if(functionToApplyOnEachObject == null) {
 			// Creation of an empty consumer which will prevent us to repeat the test for each object in the loop wit the iterator
-			functionToApplyOnEachObject = obj -> null;
+			functionToApplyOnEachObject = obj -> obj.getState();
 		}
 		
 		int size = objects.size();
