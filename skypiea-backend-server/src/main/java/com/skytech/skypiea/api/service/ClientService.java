@@ -24,26 +24,5 @@ public class ClientService {
 	public Client save(Client client) {
 		return clientRepository.save(client);
 	}
-	
-	public List<ClientDetails> getClientsDetails(List<Client> clients){
-		System.out.println("CLIENT DETAILS");
-		List<ClientDetails> clientsDetails = new ArrayList<ClientDetails>();
-		ClientDetails oneClientDetails;
-		for (Client client : clients) {
-			oneClientDetails = new ClientDetails();
-			oneClientDetails.setLastName(client.getLastName());
-			oneClientDetails.setFirstName(client.getFirstName());
-			oneClientDetails.setAge(client.getAge());
-			oneClientDetails.setAdress(client.getStreetNumber() + ", " + client.getStreetName() + "\n " + client.getZipCode() + " " + client.getCity());
-			oneClientDetails.setPhoneNumber(client.getPhoneNumber());
-			oneClientDetails.setEmail(client.getEmail());
-			
-			oneClientDetails.setNumberOfDisease(new DiseaseService().findNumberOfDiseaseByClientId(client.getId()));
-			clientsDetails.add(oneClientDetails);
-			System.out.println("ONE : " + oneClientDetails);
-		}
-		
-		return clientsDetails;
-	}
 
 }

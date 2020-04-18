@@ -33,9 +33,4 @@ public class ClientController {
 	public List<Client> getClients() {
 		return clientService.findAll();
 	}
-	
-	@GetMapping("/clientDetails/{clients}")
-	public List<ClientDetails> getClientsDetails(@RequestBody List<Client> clients){
-		return clientService.getClientsDetails(clients);
-	}
 }
