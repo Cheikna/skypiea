@@ -12,8 +12,14 @@ import com.skytech.skypiea.commons.util.ProfileCriteriaJsonParameter;
 
 @Service
 public class ProfileService {
-	
-	
+	private static String sporty = "sporty";
+	private static String sedentary = "sedentary";	
+	private static String cooker = "cook";
+	private static String income = "income";
+	private static String cinephile = "cinephile";
+	private static String smoker = "smoker";
+
+		
 	@Autowired
 	private ProfileRepository profileRepository;
 	
@@ -31,43 +37,51 @@ public class ProfileService {
 	}
 	
 	public void setIsCinephile(int hours) {
-		criteriaJson.put("cinephile", (hours > 7));
+		if (hours > 7) {
+			criteriaJson.put(this.cinephile, "true");
+		} else {
+			criteriaJson.put(this.cinephile, "false");
+		}
 	}
 	
-	public void setIsSmoker(boolean smoker) {
-		criteriaJson.put("smoker", smoker);
+	public void setIsSmoker(String smoker) {
+		criteriaJson.put(this.smoker, smoker);
 	}
 	
 	public void setIsSedentary(int hours) {
-		criteriaJson.put("sedentary", (hours < 5));
+		if (hours < 5) {
+			criteriaJson.put(this.sedentary, "true");
+		} else {
+			criteriaJson.put(this.sedentary, "false");
+		}
+		
 	}
 	
 	public void setIncomeValue(int income) {
 		if (income < 500) {
-			criteriaJson.put("income", "difficulties");
+			criteriaJson.put(this.income, "difficulties");
 		}else if (income > 1200) {
-			criteriaJson.put("income", "rich");
+			criteriaJson.put(this.income, "rich");
 		}else {
-			criteriaJson.put("income", "normal");
+			criteriaJson.put(this.income, "normal");
 		}
 	}
 	
 	public void setIsCooker(String cook) {
 		if (cook.contentEquals("true")) {
-			criteriaJson.put("cook", "alone");
+			criteriaJson.put(this.cooker, "alone");
 		}else if (cook.contentEquals("false")) {
-			criteriaJson.put("cook", "cantine");
+			criteriaJson.put(this.cooker, "cantine");
 		}else{
-			criteriaJson.put("cook", "mixed");
+			criteriaJson.put(this.cooker, "mixed");
 		}
 	}
 	
 	public void setIsSporty(boolean isSporty, int sportsHours) {
 		if (isSporty && sportsHours > 3) {
-			System.out.println("SPORTS : " + sportsHours);
-			criteriaJson.put("sporty", "true");
+			criteriaJson.put(this.sporty, "true");
 		} else {
-			criteriaJson.put("sporty", "false");
+			criteriaJson.put(this.sporty, "false");
 		}
 		
 	}
@@ -85,8 +99,64 @@ public class ProfileService {
 	public String isSporty(String criteria) {
 		String[] criterias = criteria.split(",");
 		for (String c: criterias) {
-			if (c.contains("sports")) {
-				return c.split(":")[1];
+			if (c.contains(this.sporty)) {
+				return c.split(":")[1].split("\"")[1];
+			}
+		}
+		return null;
+	}
+	
+	public String isSedentary(String criteria) {
+		String[] criterias = criteria.split(",");
+		for (String c: criterias) {
+			if (c.contains(this.sedentary)) {				
+				return c.split(":")[1].split("\"")[1];
+			}
+		}
+		return null;
+	}
+	
+	public String isCooker(String criteria) {
+		System.out.println("GETCOOKER : " + criteria);
+		String[] criterias = criteria.split(",");
+		for (String c: criterias) {
+			if (c.contains(this.cooker)) {			
+				System.out.println("COOKER : " + c.split(":")[1].split("\"")[1]);
+				return c.split(":")[1].split("\"")[1];
+			}
+		}
+		return null;
+	}
+	
+	public String isCinephile(String criteria) {
+		String[] criterias = criteria.split(",");
+		for (String c: criterias) {
+			if (c.contains(this.cinephile)) {				
+				return c.split(":")[1].split("\"")[1];
+			}
+		}
+		return null;
+	}
+	
+	public String getIncome(String criteria) {
+		String[] criterias = criteria.split(",");
+		for (String c: criterias) {
+			if (c.contains(this.income)) {		
+				return c.split(":")[1].split("\"")[1];
+			}
+		}
+		return null;
+	}
+	
+	public String isSmoker(String criteria) {
+		System.out.println("GETSMOEKR : " + criteria);
+		String[] criterias = criteria.split(",");
+		System.out.println("LINES : " + criterias[0]);
+		for (String c: criterias) {
+			System.out.println("C : " + c);
+			if (c.contains(this.smoker)) {				
+				System.out.println("SMOKER : " + c.split(":")[1].split("\"")[1]);
+				return c.split(":")[1].split("\"")[1];
 			}
 		}
 		return null;
@@ -96,10 +166,10 @@ public class ProfileService {
 		Profile profile = null;
 		try {
 			profile = profileRepository.findByClientId(id);
-			System.out.println(profile == null);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("getProfileCriteria : " + profile.getCriteria());
 		return profile.getCriteria();
 	}
 }

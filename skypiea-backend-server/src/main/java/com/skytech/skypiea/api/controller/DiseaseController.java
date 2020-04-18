@@ -39,7 +39,7 @@ public class DiseaseController {
 	}
 	
 	@GetMapping("/client/{id}")
-	public int getClientDiseaseDetails(@PathVariable Long id) {
+	public int getNumberOfDiseasePerClient(@PathVariable Long id) {
 		return this.diseaseService.findNumberOfDiseaseByClientId(id);
 		
 	}

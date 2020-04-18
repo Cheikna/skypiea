@@ -1,6 +1,5 @@
 package com.skytech.skypiea.api.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.skytech.skypiea.api.repository.DiseaseRepository;
 import com.skytech.skypiea.commons.entity.Disease;
-import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;
-import com.skytech.skypiea.commons.entity.Room;
 
 @Service
 public class DiseaseService {

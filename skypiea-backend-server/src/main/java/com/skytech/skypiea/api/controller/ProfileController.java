@@ -1,6 +1,6 @@
 package com.skytech.skypiea.api.controller;
 
-import java.util.List;import org.hibernate.validator.constraints.ParameterScriptAssert;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,39 +32,39 @@ public class ProfileController {
 		return profileService.findAll();
 	}
 	
-	/*@PostMapping("/cinephile/{hours}")
-	public void isCinephile(@PathVariable int hours) {
-		profileService.isCinephile(hours);
-	}
-	
-	@PostMapping("/smoker/{smoker}")
-	public void isSmoker(@PathVariable boolean smoker) {
-		profileService.isSmoker(smoker);
-	}
-	
-	@PostMapping("/sedentary/{hours}")
-	public void isSedentary(@PathVariable int hours) {
-		profileService.isSedentary(hours);
-	}
-	
-	@PostMapping("/income/{income}")
-	public void incomeValue(int income) {
-		profileService.incomeValue(income);
-	}
-	
-	@GetMapping("/createProfileJson/{hours}")
-	public String createJsonForProfile(@PathVariable int hours) {
-		return profileService.createJsonForCriteria(hours);
-	}*/
-	
-	@GetMapping("/client/{clientId}")
-	public String getProfileCriteriaForClient(@PathVariable Long clientId) {
-		return profileService.getProfileCriteriaForClient(clientId);
+	@GetMapping("/client/{id}")
+	public String getProfileCriteriaForClient(@PathVariable Long id) {
+		return this.profileService.getProfileCriteriaForClient(id);
 	}
 	
 	@GetMapping("/sporty/{criteria}")
 	public String isSporty(@PathVariable String criteria) {
 		return profileService.isSporty(criteria);
+	}
+	
+	@GetMapping("/sedentary/{criteria}")
+	public String isSedentary(@PathVariable String criteria) {
+		return profileService.isSedentary(criteria);
+	}
+	
+	@GetMapping("/smoker/{criteria}")
+	public String isSmoker(@PathVariable String criteria) {
+		return profileService.isSmoker(criteria);
+	}
+	
+	@GetMapping("/income/{criteria}")
+	public String getIncome(@PathVariable String criteria) {
+		return profileService.getIncome(criteria);
+	}
+	
+	@GetMapping("/cinephile/{criteria}")
+	public String isCinephile(@PathVariable String criteria) {
+		return profileService.isCinephile(criteria);
+	}
+	
+	@GetMapping("/cooker/{criteria}")
+	public String isCooker(@PathVariable String criteria) {
+		return profileService.isCooker(criteria);
 	}
 
 }

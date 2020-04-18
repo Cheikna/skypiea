@@ -5,7 +5,7 @@ import com.skytech.skypiea.commons.entity.Profile;
 public class ProfileCriteriaJsonParameter {
 	private Profile profile;
 	private int hourTelevision;
-	private boolean isSmoker;
+	private String isSmoker;
 	private int hoursOutside;
 	private int income;
 	private String isCook;
@@ -16,7 +16,7 @@ public class ProfileCriteriaJsonParameter {
 		super();
 	}
 	
-	public ProfileCriteriaJsonParameter(Profile profile, int hourTelevision, boolean isSmoker, int hoursOutside,
+	public ProfileCriteriaJsonParameter(Profile profile, int hourTelevision, String isSmoker, int hoursOutside,
 			int income, String isCook, int sportsHours, boolean isSporty) {
 		super();
 		this.profile = profile;
@@ -45,11 +45,11 @@ public class ProfileCriteriaJsonParameter {
 		this.hourTelevision = hourTelevision;
 	}
 
-	public boolean getIsSmoker() {
+	public String getIsSmoker() {
 		return isSmoker;
 	}
 
-	public void setIsSmoker(boolean isSmoker) {
+	public void setIsSmoker(String isSmoker) {
 		this.isSmoker = isSmoker;
 	}
 

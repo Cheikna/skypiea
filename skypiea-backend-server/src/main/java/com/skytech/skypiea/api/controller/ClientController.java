@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.skytech.skypiea.api.service.ClientService;
 import com.skytech.skypiea.commons.entity.Character;
 import com.skytech.skypiea.commons.entity.Client;
+import com.skytech.skypiea.commons.util.ClientDetails;
 
 @RestController
 @RequestMapping("/clients")
@@ -31,5 +32,10 @@ public class ClientController {
 	@GetMapping("")
 	public List<Client> getClients() {
 		return clientService.findAll();
+	}
+	
+	@GetMapping("/clientDetails/{clients}")
+	public List<ClientDetails> getClientsDetails(@RequestBody List<Client> clients){
+		return clientService.getClientsDetails(clients);
 	}
 }

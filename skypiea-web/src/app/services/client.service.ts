@@ -23,6 +23,9 @@ export class ClientService extends RestService {
     return this.client;
   }
 
+  getClientsDetails(clients: Client[]){
+    return this.http.get(`${this.completeBackendServerUrl}/clientDetails/{clients}`,{ headers: this.headers });
+  }
 
   
 
