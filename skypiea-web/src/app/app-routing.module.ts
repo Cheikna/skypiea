@@ -28,7 +28,7 @@ import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smo
 import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
 import { ObjectsMapComponent } from './components/objects-map/objects-map.component';
 import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.component';
-import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
+//import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
 
 const routes: Routes = [
   {
@@ -243,14 +243,14 @@ const routes: Routes = [
       userType: 'NOT_CONNECTED'
     }
   },
-  {
+  /*{
     path: 'waitingClient',
     component: WaitingClientComponent,
     canActivate: [AuthenticationGuard],
     data: {
       userType: 'STAFF'
     }
-  },
+  },*/
   {
     path: '**',
     component: PageNotFoundComponent

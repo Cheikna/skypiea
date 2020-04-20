@@ -1,49 +1,111 @@
-<p></p>
+
   <!-- broken object : {{failureRate?.numberOfBrokenObjects}} <br>
     total object : {{failureRate?.numberTotalOfObjects}} <br>
     rate of broken objects : {{failureRate?.numberOfBrokenObjects/failureRate?.numberTotalOfObjects*100}}% <br>
     active object : {{failureRate?.numberOfActiveObjects}} <br>
     rate of active objects : {{failureRate?.numberOfActiveObjects/failureRate?.numberTotalOfObjects*100}}% <br> -->
-<p></p>
 
-<button (click)="getStateRate()">Statistics</button>
+<section>
+    <h1 class="title">&nbsp; &nbsp; Statistics</h1>
+    <hr>
+    <div class="container">
+        <mat-card>
+            <mat-card-content>
+                <div class="row">
+                    <div class="date-filter-from col-4">
+                        <mat-form-field>
+                            <mat-label>From</mat-label>
+                            <input matInput [matDatepicker]="datePickerFrom" [formControl]="dateFrom">
+                            <mat-datepicker-toggle matSuffix [for]="datePickerFrom"></mat-datepicker-toggle>
+                            <mat-datepicker #datePickerFrom></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="date-filter-to col-4">
+                        <mat-form-field>
+                            <mat-label>To</mat-label>
+                            <input matInput [matDatepicker]="datePickerTo" [formControl]="dateTo">
+                            <mat-datepicker-toggle matSuffix [for]="datePickerTo"></mat-datepicker-toggle>
+                            <mat-datepicker #datePickerTo></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="indicator-filter col-4">
+                        <mat-form-field>
+                            <mat-label>Select an indicator</mat-label>
+                            <mat-select [(value)]="selectedIndicator">
+                                <mat-option>All</mat-option>
+                                <ng-container>
+                                    <mat-option [value]="failureRate">
+                                        failure rate of connected object</mat-option>
+                                    <mat-option [value]="useRate">rate of use of connected objects</mat-option>
+                                    <mat-option [value]="occupancyRate">occupancy rate of the residence</mat-option>
 
-<p></p>
+                                </ng-container>
+                            </mat-select>
+                        </mat-form-field>
 
-<p> Number of failures occurences per object since the 1st january 2020 : </p>
+                    </div>
+                </div>
+             </mat-card-content>
+             <mat-card-actions>
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-outline-success" (click)="getStateRate()"
+                        [disabled]="!selectedIndicator || !isDateFormValid">
+                        <mdb-icon fas icon="chart-pie"></mdb-icon> Get the statistics
+                    </button>
+                    &nbsp;&nbsp;
+                </div>
+                <div class="d-flex justify-content-end text-danger font-italic">
+                    <span *ngIf="!isDateFormValid"><b>The date 'From' cannot be greater than the date 'To' !</b></span>
+                </div>
+            </mat-card-actions>
+        </mat-card>
 
-<p></p>
-<div class="col-12">
-    broken alarm clock : {{alarmClock}}
-</div>
+    </div>
 
-<div class="col-12">
-    binary sensor : {{binarySensor}}
-</div>
+    <div class="row">
+        <mat-card class="col-12 statistic-section-title text-center">Results</mat-card>
 
-<div class="col-12">
-    bulb : {{bulb}}
-</div>
+        <mat-card class="col-5">
+            <span class="statistic-card-title">Number of failures occurences per object since the 1st january 2020 :</span>
+            <div>
+                <p></p>
+                <div class="col-12">
+                 broken alarm clock : {{alarmClock}}
+                </div>
 
-<div class="col-12">
-    door sensor : {{doorSensor}}
-</div>
+                <div class="col-12">
+                 binary sensor : {{binarySensor}}
+                </div>
 
-<div class="col-12">
-    shutter : {{shutter}}
-</div>
+                <div class="col-12">
+                bulb : {{bulb}}
+                </div>
 
-<div class="col-12">
-    smoke sensor : {{smokeSensor}}
-</div>
+                <div class="col-12">
+                door sensor : {{doorSensor}}
+                </div>
 
-<div class="col-12">
-    sunshine sensor : {{sunshineSensor}}
-</div>
+                <div class="col-12">
+                shutter : {{shutter}}
+                </div>
 
-<div class="col-12">
-    total number of failure occurences : {{alarmClock+binarySensor+bulb+doorSensor+shutter+smokeSensor+sunshineSensor}}
-</div>
+                <div class="col-12">
+                smoke sensor : {{smokeSensor}}
+                </div>
 
+                <div class="col-12">
+                sunshine sensor : {{sunshineSensor}}
+                </div>
 
-<p></p>
+                <div class="col-12">
+                total number of failure occurences : {{alarmClock+binarySensor+bulb+doorSensor+shutter+smokeSensor+sunshineSensor}}
+                </div>
+            </div>
+        </mat-card>
+
+        <div class="col-2"></div>
+
+    </div>>
+
+</section>
+

@@ -21,4 +21,8 @@ export class StatisticService extends RestService {
     return this.http.get(`${this.completeBackendServerUrl}/state-rate/${dateBeginInString}/${dateEndInString}`, { headers: this.headers });
   }
 
+  /*getIndicator(): string {
+   return this.http.get(`${this.completeBackendServerUrl}/indicator/${this.getIndicator});
+  }*/
+
 }

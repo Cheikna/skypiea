@@ -3,6 +3,9 @@ import { StatisticService } from 'src/app/services/statistic.service';
 import { State } from 'src/app/enums/state.enum';
 import { FormControl } from '@angular/forms';
 import { NonMedicalObjectType } from 'src/app/enums/nonMedicalObjectType.enum';
+import { Indicator } from 'src/app/enums/indicator.enum';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-analysis',
@@ -11,6 +14,7 @@ import { NonMedicalObjectType } from 'src/app/enums/nonMedicalObjectType.enum';
 })
 export class AnalysisComponent implements OnInit {
 
+  Indicator = Indicator;
   failureRate : any; 
   dateBeginStr = new FormControl(new Date(2018, 0));
   dateEndStr = new FormControl(new Date());
@@ -32,14 +36,39 @@ export class AnalysisComponent implements OnInit {
   sunshineSensorTotal : number = 1;
   temperatureControllerTotal : number = 1;
   
+  dateFrom = new FormControl(new Date(2018, 0));
+  dateTo = new FormControl(new Date());
+  isDateFormValid: boolean;
+
+
   constructor(private statisticService : StatisticService) { 
     this.stateRate = new Map<State, number>();
+    const currentDayAtMidnight: Date = new Date();
+    this.isDateFormValid = true;
+    currentDayAtMidnight.setHours(23, 59, 59);
+    this.dateTo.setValue(currentDayAtMidnight);
   }
 
   ngOnInit() {
     this.statisticService.getFailureRate().subscribe((data)=>{
       this.failureRate=data;
     });
+
+    // Enable date checking
+    this.dateFrom.valueChanges.subscribe((value: Date) => this.checkDates());
+    this.dateTo.valueChanges.subscribe((value: Date) => this.checkDates());
+
+  }
+
+  checkDates(){
+    const dateFromValue: Date = this.dateFrom.value;
+    const dateToValue: Date = this.dateTo.value;
+    if(dateFromValue && dateToValue){
+      this.isDateFormValid = (dateFromValue.getTime() <= dateToValue.getTime());
+    } else {
+      this.isDateFormValid = true;
+    }
+
   }
 
   getStateRate() {
