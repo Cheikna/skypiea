@@ -25,6 +25,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.skytech.skypiea.api.repository.NotificationRepository;
 import com.skytech.skypiea.commons.entity.Notification;
 import com.skytech.skypiea.commons.entity.Resident;
+import com.skytech.skypiea.commons.enumeration.NotificationObject;
 import com.skytech.skypiea.commons.enumeration.NotificationState;
 import com.skytech.skypiea.commons.enumeration.UserType;
 import com.skytech.skypiea.commons.util.DateUtil;
@@ -148,7 +149,7 @@ public class NotificationServiceTest {
 	
 	private Notification prepareNotification(String messageObject, String messageBody) {
 		Timestamp current = DateUtil.getCurrentTimestamp();
-		return new Notification(0L, 0L, messageObject, messageBody, DateUtil.getRandomDateUntil(current), null, NotificationState.SENT, false);
+		return new Notification(0L, 0L, NotificationObject.OTHER, messageObject, messageBody, DateUtil.getRandomDateUntil(current), null, NotificationState.SENT, false);
 	}
 
 }
