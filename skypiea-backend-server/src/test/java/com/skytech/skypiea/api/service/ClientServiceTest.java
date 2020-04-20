@@ -42,7 +42,7 @@ public class ClientServiceTest {
 	
 	@Test
 	public void testIfClientIsSaved() {
-		Client client1 = new Client(null, null, "lastNameTest", "firstNameTest", 85, "test@email.fr", 1, "streetName test", "zipCode", "cityTest", "0101010101");
+		Client client1 = new Client(null, null, "lastNameTest", "firstNameTest", 85, "test@email.fr", 1, "streetName test", "zipCode", "cityTest", "0101010101", 0);
 		assertEquals(client1, clientRepository.save(client1));
 	}
 	
@@ -55,7 +55,7 @@ public class ClientServiceTest {
 	@Test
 	public void testCreate() {
 		// Check that there is no record of the client we want to create
-		Client client = new Client(null, null, null, "firstNameTest", 85, "test@email.fr", 1, "streetName test", "zipCode", "cityTest", "0101010101");
+		Client client = new Client(null, null, null, "firstNameTest", 85, "test@email.fr", 1, "streetName test", "zipCode", "cityTest", "0101010101", 0);
 		assertThat(clientRepository.findAll(), hasSize(0));
 		// Check if the client has been created
 		Client client1 = clientService.save(client);

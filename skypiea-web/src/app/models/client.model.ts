@@ -11,4 +11,5 @@ export class Client extends Entity{
     phoneNumber: string;
     email: string;
     country: string;
+    priorityPoints: number;
 }

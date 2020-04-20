@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skytech.skypiea.api.service.ClientService;
-import com.skytech.skypiea.commons.entity.Character;
 import com.skytech.skypiea.commons.entity.Client;
-import com.skytech.skypiea.commons.util.ClientDetails;
 
 @RestController
 @RequestMapping("/clients")

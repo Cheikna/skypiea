@@ -44,7 +44,7 @@ public class ProfileServiceTest {
 	@org.junit.Before
 	public void beforeTest() {
 		profileRepository.deleteAll();
-		client = clientService.save(new Client(null, null, "lastNameTest", "firstNameTest", 85, "test@email.fr", 1, "streetName test", "zipCode", "cityTest", "0101010101"));
+		client = clientService.save(new Client(null, null, "lastNameTest", "firstNameTest", 85, "test@email.fr", 1, "streetName test", "zipCode", "cityTest", "0101010101", 0));
 	}
 	
 	@Test

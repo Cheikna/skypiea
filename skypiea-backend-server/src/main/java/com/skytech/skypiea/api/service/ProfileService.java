@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.skytech.skypiea.api.repository.ProfileRepository;
+import com.skytech.skypiea.commons.entity.Disease;
 import com.skytech.skypiea.commons.entity.Profile;
 import com.skytech.skypiea.commons.util.ProfileCriteriaJsonParameter;
 
