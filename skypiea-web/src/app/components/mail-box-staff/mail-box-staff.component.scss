@@ -1,0 +1,14 @@
+// Variables for the styles
+@import "../../../variables.scss";
+
+.concerned-objects-icon {
+    padding: 0 5px;
+}
+
+.object-tile:hover {
+    background-color: rgb(69, 155, 235);
+}
+
+.object-tile-selected{
+    background-color: $mat-grid-tile-hover-selected-color;
+}

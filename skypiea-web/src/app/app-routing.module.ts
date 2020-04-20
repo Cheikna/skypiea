@@ -28,6 +28,8 @@ import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smo
 import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
 import { ObjectsMapComponent } from './components/objects-map/objects-map.component';
 import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.component';
+import { MailBoxStaffComponent } from './components/mail-box-staff/mail-box-staff.component';
+import { MailBoxResidentComponent } from './components/mail-box-resident/mail-box-resident.component';
 //import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
 
 const routes: Routes = [
@@ -241,6 +243,22 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard],
     data: {
       userType: 'NOT_CONNECTED'
+    }
+  },
+  {
+    path: 'mail-box/staff',
+    component: MailBoxStaffComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'STAFF'
+    }
+  },
+  {
+    path: 'mail-box/resident',
+    component: MailBoxResidentComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'RESIDENT'
     }
   },
   /*{

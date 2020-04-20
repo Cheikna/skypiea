@@ -53,6 +53,9 @@ import { ResidentComponent } from './components/resident/resident.component';
 import { HealthHistoryComponent } from './components/health-history/health-history.component';
 import { ObjectSettingsEventsHistoryComponent } from './dialogs/object-settings-events-history/object-settings-events-history.component';
 import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.component';
+import { MailBoxStaffComponent } from './components/mail-box-staff/mail-box-staff.component';
+import { MailBoxResidentComponent } from './components/mail-box-resident/mail-box-resident.component';
+import { MailsListComponent } from './sub-components/mails-list/mails-list.component';
 //import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
 
 
@@ -108,8 +111,10 @@ import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.com
     ResidentComponent,
     HealthHistoryComponent,
     ObjectsMapComponent,
-    ObjectSettingsEventsHistoryComponent
-
+    ObjectSettingsEventsHistoryComponent,
+    MailBoxStaffComponent,
+    MailBoxResidentComponent,
+    MailsListComponent
   ],
   imports: [
     BrowserModule,
