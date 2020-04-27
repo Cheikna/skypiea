@@ -168,9 +168,9 @@ export class MailBoxStaffComponent implements OnInit {
         //Search if the user entered a state in the notification object
         if (object.indexOf(State.BROKEN) >= 0) {
           enteredState = State.BROKEN;
-        } /*else if(object.indexOf(State.MISSING) >= 0){
+        } else if(object.indexOf(State.MISSING) >= 0){
         enteredState = State.MISSING;
-        }*/ else if (object.indexOf(State.DANGER) >= 0) {
+        } else if (object.indexOf(State.DANGER) >= 0) {
           enteredState = State.DANGER;
         } else if (object.indexOf(State.WARNING) >= 0) {
           enteredState = State.WARNING;
