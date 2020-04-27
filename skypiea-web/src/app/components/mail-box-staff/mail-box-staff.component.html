@@ -14,13 +14,13 @@
                         <mat-label>
                             <h5>Select a recipient</h5>
                         </mat-label>
-                        <mat-select [(value)]="selectedRoom">
+                        <mat-select (selectionChange)="onRoomSelectionChange($event)" [(value)]="selectedRoom">
                             <ng-container *ngIf="occupiedRooms">
-                                <mat-option (onSelectionChange)="onRoomSelectionChange($event)">None</mat-option>
-                                <mat-option (onSelectionChange)="onRoomSelectionChange($event)" [value]="roomAllOption">
+                                <mat-option>None</mat-option>
+                                <mat-option [value]="roomAllOption">
                                     All</mat-option>
                                 <ng-container *ngFor="let room of occupiedRooms">
-                                    <mat-option (onSelectionChange)="onRoomSelectionChange($event)" [value]="room">Room
+                                    <mat-option [value]="room">Room
                                         n°{{room.doorNumber}} -
                                         {{ room.resident.lastName | uppercase }}
                                         {{ room.resident.firstName }}</mat-option>
@@ -50,19 +50,29 @@
                                             </ng-container>
                                         </mat-select>
                                     </mat-form-field>
-                                    <input type="text" placeholder="Choose or type a subject" class="col-8"
-                                        [(ngModel)]="notificationToSend.messageObject"
-                                        [ngModelOptions]="{standalone: true}" [matAutocomplete]="auto">
-                                    <mat-autocomplete #auto="matAutocomplete">
-                                        <span *ngFor="let notificationTemplate of notificationTemplates">
-                                            <mat-option
-                                                *ngIf="notificationTemplate?.notificationObject == notificationToSend?.notificationObject"
-                                                [value]="notificationTemplate.messageObject"
-                                                (click)="fillMessageBody(notificationTemplate)">
-                                                {{notificationTemplate.messageObject}}
-                                            </mat-option>
-                                        </span>
-                                    </mat-autocomplete>
+                                    <mat-form-field class="col-8">
+                                        <mat-label>Choose or type a subject</mat-label>
+                                        <input matInput type="text" (keyup)="onNotificationTemplateChange($event)"
+                                            placeholder="Choose or type a subject" class="col-8"
+                                            [(ngModel)]="notificationToSend.messageObject"
+                                            [ngModelOptions]="{standalone: true}" [matAutocomplete]="auto">
+                                        <button *ngIf="notificationToSend.messageObject" mat-button matSuffix mat-icon-button aria-label="Clear"
+                                            (click)="clearMessageObject()">
+                                            <mat-icon>close</mat-icon>
+                                        </button>
+                                        <mat-autocomplete #auto="matAutocomplete"
+                                            (optionSelected)="onNotificationTemplateChange($event)">
+                                            <span *ngFor="let notificationTemplate of notificationTemplates">
+                                                <mat-option
+                                                    *ngIf="notificationTemplate?.notificationObject == notificationToSend?.notificationObject"
+                                                    [value]="notificationTemplate.messageObject"
+                                                    (click)="fillMessageBody(notificationTemplate)">
+                                                    {{notificationTemplate.messageObject}}
+                                                </mat-option>
+                                            </span>
+                                        </mat-autocomplete>
+                                    </mat-form-field>
+
                                 </div>
                             </div>
                             <mat-error
@@ -77,7 +87,8 @@
                                 <h5>Message</h5>
                             </label>
                             <mat-accordion class="col-12">
-                                <mat-expansion-panel [disabled]="disableConcernedObjectExpansionPanel()" #concernedObjectExpansionPanel>
+                                <mat-expansion-panel [disabled]="disableConcernedObjectExpansionPanel()"
+                                    #concernedObjectExpansionPanel>
                                     <mat-expansion-panel-header>
                                         <mat-panel-title
                                             class="d-flex justify-content-center font-italic font-weight-bold text-center">
@@ -95,8 +106,7 @@
                                         <mat-grid-tile
                                             [ngClass]="{'object-tile-selected': concernedObject && object.macAddress == concernedObject.macAddress}"
                                             (click)="updateConcernedObject(object)" class="object-tile rounded-lg"
-                                            *ngFor="let object of selectedRoom?.nonMedicalConnectedObjects"
-                                            [colspan]="1" [rowspan]="1">
+                                            *ngFor="let object of roomFilteredObjects" [colspan]="1" [rowspan]="1">
                                             <span class="concerned-objects-icon">
                                                 <img
                                                     src="{{ nonMedicalObjectIcons[object.nonMedicalObjectType].iconPath }}">
@@ -111,7 +121,8 @@
                                 </mat-expansion-panel>
                             </mat-accordion>
                             <mat-error *ngIf="disableConcernedObjectExpansionPanel()">
-                                In order to select an object from the room you have to choose a resident and choose the <span class="font-weight-bold font-italic">About an object</span> subject item !
+                                In order to select an object from the room you have to choose a resident and choose the
+                                <span class="font-weight-bold font-italic">About an object</span> subject item !
                             </mat-error>
                             <br>
                             <textarea id="messageBody" class="form-control" [(ngModel)]="notificationToSend.messageBody"
