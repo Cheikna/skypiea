@@ -54,7 +54,9 @@ import { HealthHistoryComponent } from './components/health-history/health-histo
 import { ObjectSettingsEventsHistoryComponent } from './dialogs/object-settings-events-history/object-settings-events-history.component';
 import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.component';
 import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
-
+import { MailBoxStaffComponent } from './components/mail-box-staff/mail-box-staff.component';
+import { MailBoxResidentComponent } from './components/mail-box-resident/mail-box-resident.component';
+import { MailsListComponent } from './sub-components/mails-list/mails-list.component';
 
 @NgModule({
   entryComponents: [
@@ -108,7 +110,10 @@ import { WaitingClientComponent } from './components/waiting-client/waiting-clie
     HealthHistoryComponent,
     ObjectsMapComponent,
     ObjectSettingsEventsHistoryComponent,
-    WaitingClientComponent
+    WaitingClientComponent,
+    MailBoxStaffComponent,
+    MailBoxResidentComponent,
+    MailsListComponent
   ],
   imports: [
     BrowserModule,

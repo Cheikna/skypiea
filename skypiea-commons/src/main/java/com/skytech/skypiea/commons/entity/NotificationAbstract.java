@@ -1,10 +1,18 @@
 package com.skytech.skypiea.commons.entity;
 
 import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
+
+import com.skytech.skypiea.commons.enumeration.NotificationObject;
 
 @MappedSuperclass
 public class NotificationAbstract extends Entity {
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="NOTIFICATION_OBJECT")
+	protected NotificationObject notificationObject;
 	
 	@Column(name="MESSAGE_OBJECT")
 	protected String messageObject;
@@ -17,8 +25,9 @@ public class NotificationAbstract extends Entity {
 		super();
 	}
 
-	public NotificationAbstract(Long id, Long version, String messageObject, String messageBody) {
+	public NotificationAbstract(Long id, Long version, NotificationObject notificationObject, String messageObject, String messageBody) {
 		super(id, version);
+		this.notificationObject = notificationObject;
 		this.messageObject = messageObject;
 		this.messageBody = messageBody;
 	}
@@ -39,12 +48,21 @@ public class NotificationAbstract extends Entity {
 		this.messageBody = messageBody;
 	}
 
+	public NotificationObject getNotificationObject() {
+		return notificationObject;
+	}
+
+	public void setNotificationObject(NotificationObject notificationObject) {
+		this.notificationObject = notificationObject;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + ((messageBody == null) ? 0 : messageBody.hashCode());
 		result = prime * result + ((messageObject == null) ? 0 : messageObject.hashCode());
+		result = prime * result + ((notificationObject == null) ? 0 : notificationObject.hashCode());
 		return result;
 	}
 
@@ -67,7 +85,9 @@ public class NotificationAbstract extends Entity {
 				return false;
 		} else if (!messageObject.equals(other.messageObject))
 			return false;
+		if (notificationObject != other.notificationObject)
+			return false;
 		return true;
-	}
+	}	
 	
 }

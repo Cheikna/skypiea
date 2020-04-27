@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.skytech.skypiea.commons.enumeration.NotificationObject;
 import com.skytech.skypiea.commons.enumeration.NotificationState;
 
 @Entity
@@ -44,9 +45,9 @@ public class Notification extends NotificationAbstract {
 		super();
 	}
 
-	public Notification(Long id, Long version, String messageObject, String messageBody, Timestamp sendingDate,
+	public Notification(Long id, Long version, NotificationObject notificationObject, String messageObject, String messageBody, Timestamp sendingDate,
 			Timestamp readingDate, NotificationState notificationState, Boolean isGroupedMessage) {
-		super(id, version, messageObject, messageBody);
+		super(id, version, notificationObject, messageObject, messageBody);
 		this.sendingDate = sendingDate;
 		this.readingDate = readingDate;
 		this.notificationState = notificationState;

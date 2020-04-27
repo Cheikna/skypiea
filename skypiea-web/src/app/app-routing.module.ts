@@ -29,7 +29,8 @@ import { SunshineSensorConfigComponent } from './components/sunshine-sensor-conf
 import { ObjectsMapComponent } from './components/objects-map/objects-map.component';
 import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.component';
 import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
-
+import { MailBoxStaffComponent } from './components/mail-box-staff/mail-box-staff.component';32	
+import { MailBoxResidentComponent } from './components/mail-box-resident/mail-box-resident.component';
 const routes: Routes = [
   {
     path: '',
@@ -249,6 +250,22 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard],
     data: {
       userType: 'STAFF'
+    }
+  },
+  {
+    path: 'mail-box/staff',
+    component: MailBoxStaffComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'STAFF'
+    }
+  },
+  {
+    path: 'mail-box/resident',
+    component: MailBoxResidentComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'RESIDENT'
     }
   },
   {
