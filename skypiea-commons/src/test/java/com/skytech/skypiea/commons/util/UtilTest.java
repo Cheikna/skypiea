@@ -58,7 +58,7 @@ public class UtilTest {
 		objects.add(nco9);
 		objects.add(nco10);
 		
-		NonMedicalConnectedObject highest = (NonMedicalConnectedObject)Util.getObjectWithHighestState(objects); 
+		NonMedicalConnectedObject highest = (NonMedicalConnectedObject)Util.getObjectWithHighestState(objects, null); 
 		assertEquals(nco5, highest);				
 	}
 	
@@ -71,20 +71,20 @@ public class UtilTest {
 		List<NonMedicalConnectedObject> objects = new ArrayList<NonMedicalConnectedObject>();
 		objects.add(nco1);
 		
-		NonMedicalConnectedObject highest = (NonMedicalConnectedObject)Util.getObjectWithHighestState(objects); 
+		NonMedicalConnectedObject highest = (NonMedicalConnectedObject)Util.getObjectWithHighestState(objects, null); 
 		assertEquals(nco1, highest);				
 	}
 	
 	@Test
 	public void testGetNonMedicalObjectWithHighestStateEmptyList() {		
 		List<NonMedicalConnectedObject> objects = new ArrayList<NonMedicalConnectedObject>();	
-		NonMedicalConnectedObject highest = (NonMedicalConnectedObject)Util.getObjectWithHighestState(objects); 
+		NonMedicalConnectedObject highest = (NonMedicalConnectedObject)Util.getObjectWithHighestState(objects, null); 
 		assertEquals(null, highest);				
 	}
 	
 	@Test
 	public void testGetNonMedicalObjectWithHighestStateNullList() {
-		NonMedicalConnectedObject highest = (NonMedicalConnectedObject)Util.getObjectWithHighestState(null); 
+		NonMedicalConnectedObject highest = (NonMedicalConnectedObject)Util.getObjectWithHighestState(null, null); 
 		assertEquals(null, highest);				
 	}
 

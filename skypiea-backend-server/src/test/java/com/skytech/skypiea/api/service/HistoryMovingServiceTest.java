@@ -57,7 +57,7 @@ public class HistoryMovingServiceTest {
 		Long id = savedhm1.getId();
 		assertThat(historyMovingRepository.findAll(), hasSize(1));		
 		// Update the historymoving and save it
-		savedhm1.setId((long) 1);;
+		//savedhm1.setId((long) 1);;
 		HistoryMoving savedhm2 = historyMovingService.createOrUpdate(savedhm1);
 		// Check if a new record has not been created
 		assertThat(historyMovingRepository.findAll(), hasSize(1));

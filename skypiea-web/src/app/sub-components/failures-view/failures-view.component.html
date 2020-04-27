@@ -4,7 +4,8 @@
         <mat-card>
             <mat-card-header>
                 <mat-card-title>Room n° {{ room?.doorNumber }}</mat-card-title>
-                <mat-card-subtitle>Resident : {{ room?.resident?.lastName }} {{ room?.resident?.firstName }}
+                <mat-card-subtitle>
+                    Resident : {{ room?.resident?.lastName }} {{ room?.resident?.firstName }}
                 </mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
@@ -14,17 +15,17 @@
                             <tr>
                                 <th scope="col">Type of the object</th>
                                 <th scope="col">IP Address</th>
-                                <th scope="col">Mac Address</th>
+                                <th scope="col">State</th>
                                 <th scope="col">Failure cause</th>
                                 <th scope="col">Triggering time </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let object of room.nonMedicalConnectedObjects">
-                                <ng-container *ngIf="object.state == State.BROKEN">
+                                <ng-container *ngIf="object.state == State.BROKEN || object.state == State.MISSING">
                                     <th scope="row">{{getObjectTypeName(object?.nonMedicalObjectType) }}</th>
                                     <td>{{object?.ipAddress}}</td>
-                                    <td>{{object?.macAddress}}</td>
+                                    <td>{{object?.state}}</td>
                                     <td>{{object?.realTimeEvent?.description}}</td>
                                     <td>{{object?.realTimeEvent?.startTime | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
                                 </ng-container>
@@ -33,6 +34,13 @@
                     </table>
                 </div>
             </mat-card-content>
+            <mat-card-actions>
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-outline-warning" (click)="moreDetailsOnRoom(room.doorNumber)">
+                        <mdb-icon fas icon="search"></mdb-icon> Zoom on the room
+                    </button>
+                </div>
+            </mat-card-actions>
         </mat-card>
     </div>
 </div>

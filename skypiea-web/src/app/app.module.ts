@@ -122,6 +122,7 @@ import { WaitingClientComponent } from './components/waiting-client/waiting-clie
     ReactiveFormsModule,
     ToastrModule.forRoot({
     positionClass: 'toast-top-center',
+    enableHtml: true,
     }),
     MatPaginatorModule,
   ],

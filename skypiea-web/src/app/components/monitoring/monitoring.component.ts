@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
 import { RoomService } from 'src/app/services/room.service';
 import { Room } from 'src/app/models/room.model';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
@@ -11,13 +11,15 @@ import { MatPaginator } from '@angular/material/paginator';
   templateUrl: './monitoring.component.html',
   styleUrls: ['./monitoring.component.scss']
 })
-export class MonitoringComponent implements OnInit, AfterViewInit {
+export class MonitoringComponent implements OnInit, AfterViewInit, OnDestroy {
+  
+  readonly connectedObjectsUpdateFrequencyInMilliseconds: number = 15000;
 
   roomsFilterForm: FormGroup;
   roomsFromBackCall: Array<Room>;
   roomsFiltered: Array<Room>;
   totalNumberOfConnectedObjects: number;
-
+  connectedObjectsInterval;
   displayedColumns = ['info'];
   dataSource = new MatTableDataSource<Room>();
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -29,6 +31,14 @@ export class MonitoringComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.reloadConnectedObjects();
+    this.connectedObjectsInterval = setInterval(()=> {
+      this.reloadConnectedObjects();
+    }, this.connectedObjectsUpdateFrequencyInMilliseconds);
+  }
+
+  private reloadConnectedObjects(){
+    this.totalNumberOfConnectedObjects = 0;
     this.roomService.getRoomsSummary().subscribe((data: Array<Room>) => {
       this.roomsFromBackCall = Object.assign(new Array<Room>(), data);
       this.roomsFromBackCall.forEach((room)=>{
@@ -44,6 +54,10 @@ export class MonitoringComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.connectedObjectsInterval);
   }
 
   initializeForms(){
