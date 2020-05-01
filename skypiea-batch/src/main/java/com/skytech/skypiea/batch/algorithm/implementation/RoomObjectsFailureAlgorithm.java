@@ -132,4 +132,13 @@ public class RoomObjectsFailureAlgorithm extends NonMedicalConnectedObjectAlgori
 	private State resetStateToOperationalWhenEndOfBrokenState(State state) {
 		return (state == State.BROKEN || state == State.MISSING) ? State.OPERATIONAL : state;
 	}
+
+	public Long getACCEPTABLE_CLOCK_DELAY_IN_MINUTES() {
+		return ACCEPTABLE_CLOCK_DELAY_IN_MINUTES;
+	}
+
+	public Long getACCEPTABLE_TEMPERATURE_GAP() {
+		return ACCEPTABLE_TEMPERATURE_GAP;
+	}	
+	
 }

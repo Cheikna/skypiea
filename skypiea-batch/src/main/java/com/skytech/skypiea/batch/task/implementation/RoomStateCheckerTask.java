@@ -1,6 +1,7 @@
 package com.skytech.skypiea.batch.task.implementation;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Set;
 import java.util.function.Function;
 
@@ -86,7 +87,7 @@ public class RoomStateCheckerTask extends CheckerTask {
 		});
 	}
 	
-	private Function<NonMedicalConnectedObject, State> checkConnectedObjectActivity = (object) -> {
+	public Function<NonMedicalConnectedObject, State> checkConnectedObjectActivity = (object) -> {
 		Long objectId = object.getId();
 		State objectState = object.getState();
 		Status objectStatus = object.getStatus();
@@ -98,8 +99,15 @@ public class RoomStateCheckerTask extends CheckerTask {
 		if(objectStatus == Status.ON) {
 			Long difference = Long.MAX_VALUE;
 			Timestamp currentTimestamp = DateUtil.getCurrentTimestamp();
-			Timestamp lastReceivedMessageTimestamp = object.getInstallationDate();
 			Pair<Long, Long> minutesAndSeconds = null; 
+			Timestamp lastReceivedMessageTimestamp = object.getInstallationDate();
+			
+			if(lastReceivedMessageTimestamp == null) {
+				Calendar c = Calendar.getInstance();
+				c.set(2019, 1, 1);
+				lastReceivedMessageTimestamp = new Timestamp(c.getTimeInMillis());
+			}
+			
 			
 			CacheInfo objectCacheInfo = CacheFactory.getMemoryCache().getCacheInfoByNonMedicalConnectedObjectId(object.getId());
 			
