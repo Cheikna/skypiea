@@ -19,6 +19,9 @@ public class TemperatureControllerStatisticTest {
 
 	@Test
 	public void testStatisticsWithStatus() {
+		/**
+		 * Given
+		 */
 		List<Float> temps = new ArrayList<>();
 		temps.add(20f);
 		temps.add(32f);
@@ -49,21 +52,28 @@ public class TemperatureControllerStatisticTest {
 		settings.add(t1);
 		settings.add(t2);
 		settings.add(t3);
+		TemperatureControllerStatistic stat = new TemperatureControllerStatistic(settings, null);
+		Long changes = 2L;
+		Long onStatus = 1L;
+		Long offStatus = 1L;
 		
+		/**
+		 * When
+		 */
 		Double avg = temps.stream().mapToDouble(Float::floatValue).average().orElse(0);
 		Double min = temps.stream().mapToDouble(Float::floatValue).min().orElse(0);
-		Double max = temps.stream().mapToDouble(Float::floatValue).max().orElse(0);
-		
-		TemperatureControllerStatistic stat = new TemperatureControllerStatistic(settings, null);
+		Double max = temps.stream().mapToDouble(Float::floatValue).max().orElse(0);		
 		stat.initStatistics();
+		
+		/**
+		 * Then
+		 */
 		assertEquals(min, stat.getMinSettledTemperature());
 		assertEquals(max, stat.getMaxSettledTemperature());
 		assertEquals(avg, stat.getAverageSettledTemperature());
-		Long changes = 2L;
 		assertEquals(changes, stat.getNumberOfStatusChanges());
-		//The last is not counted because it is the current state
-		Long onStatus = 1L;
-		Long offStatus = 1L;
+		
+		//The last is not counted because it is the current state		
 		assertEquals(onStatus, stat.getTotalChangesOnEachStatus().get(Status.ON));
 		assertEquals(offStatus, stat.getTotalChangesOnEachStatus().get(Status.OFF));
 	}

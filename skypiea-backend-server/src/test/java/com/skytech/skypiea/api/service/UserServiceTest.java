@@ -52,8 +52,19 @@ public class UserServiceTest {
 
 	@Test
 	public void authenticationTestWithCorrectPassword() {
+		/**
+		 * Given
+		 */
 		logon = new Logon(username, password);
+		
+		/**
+		 * When
+		 */
 		User user = userService.login(logon);
+		
+		/**
+		 * Then
+		 */
 		assertNotNull(user);
 		assertNull(user.getPassword());
 		assertEquals(createdUser, user);
@@ -61,15 +72,39 @@ public class UserServiceTest {
 
 	@Test
 	public void authenticationTestWithIncorrectPassword() {
+		/**
+		 * Given
+		 */
 		logon = new Logon(username, password+"test");
-		assertNull(userService.login(logon));
+		
+		/**
+		 * When
+		 */
+		User u = userService.login(logon);
+		
+		/**
+		 * Then
+		 */
+		assertNull(u);
 
 	}
 
 	@Test
 	public void authenticationTestWithIncorrectUsername() {
+		/**
+		 * Given
+		 */
 		logon = new Logon(null, password);
-		assertNull(userService.login(logon));
+		
+		/**
+		 * When
+		 */
+		User u = userService.login(logon);
+		
+		/**
+		 * Then
+		 */
+		assertNull(u);
 	}
 
 }

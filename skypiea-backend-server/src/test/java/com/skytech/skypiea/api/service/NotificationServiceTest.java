@@ -62,15 +62,18 @@ public class NotificationServiceTest {
 	
 	@Test
 	public void testFindAllByDescendantOrder() {
+		/**
+		 * Given
+		 */
 		notifications.forEach((notif) -> {
 			notificationRepository.save(notif);
 		});
+		
+		/**
+		 * When
+		 */
 		List<Notification> notificationsFromRepository = notificationRepository.findAll();
 		List<Notification> notificationsFromService = notificationService.findAll();
-		assertNotNull(notificationsFromRepository);
-		System.out.println(notificationsFromService);
-		assertNotNull(notificationsFromService);
-		assertThat(notificationsFromService, hasSize(notificationsFromRepository.size()));
 		int numberOfNotifs = notificationsFromService.size();
 		boolean isOrdered = true;
 		for(int i = 0; i < numberOfNotifs -1; i++) {
@@ -78,12 +81,21 @@ public class NotificationServiceTest {
 					&& (notificationsFromService.get(i).getSendingDate().getTime() >= notificationsFromService.get(i+1).getSendingDate().getTime());
 		}
 		
+		/**
+		 * Then
+		 */
+		assertNotNull(notificationsFromRepository);
+		assertNotNull(notificationsFromService);
+		assertThat(notificationsFromService, hasSize(notificationsFromRepository.size()));		
 		assertTrue(isOrdered);
 		
 	}
 	
 	@Test
 	public void testFindAllByResidentId() {
+		/**
+		 * Given
+		 */
 		AtomicReference<List<Notification>> savedNotifs  = new AtomicReference<>(new ArrayList<Notification>());
 		Resident resident = residentService.createOrUpdate(new Resident(0L, 0L, "DANSOKO", "Cheikna", "cheikna", null, UserType.RESIDENT, null, null, null));
 		notifications.forEach((notif) -> {
@@ -91,39 +103,65 @@ public class NotificationServiceTest {
 			Notification savedNotif = notificationRepository.save(notif);
 			savedNotifs.get().add(savedNotif);
 		});
+		
+		/**
+		 * When
+		 */
 		List<Notification> notificationsFromService = notificationService.findAllByResidentId(resident.getId());
+		
+		/**
+		 * Then
+		 */
 		assertThat(notificationsFromService, hasSize(savedNotifs.get().size()));
-		//FIXME, TODO Cheikna 
-		//Check if we have the same notification in notificationsFromService and savedNotifs.get() lists
 		
 	}
 	
 	@Test
 	public void testSendToOneResident() {
+		/**
+		 * Given
+		 */
 		Resident resident = residentService.createOrUpdate(new Resident(0L, 0L, "DANSOKO", "Cheikna", "cheikna", null, UserType.RESIDENT, null, null, null));
 		Long residentId = resident.getId();
 		Notification notifBeforeSaving = notifications.get(3);
 		notifBeforeSaving.setResident(resident);
+		
+		/**
+		 * When
+		 */
 		Notification notifAfterSaving = notificationService.send(notifBeforeSaving, residentId);
 		List<Notification> notifsRetrievedAfterSaving = notificationService.findAllByResidentId(residentId);
+		
+		/**
+		 * Then
+		 */
 		assertThat(notifsRetrievedAfterSaving, hasSize(1));
 		assertEquals(notifAfterSaving, notifsRetrievedAfterSaving.get(0));
 	}
 	
 	@Test
 	public void testSendToAllOfTheResidents() {
+		/**
+		 * Given
+		 */
 		Resident r1 = residentService.createOrUpdate(new Resident(0L, 0L, "DANSOKO1", "Cheikna1", "cheikna1", null, UserType.RESIDENT, null, null, null));
 		Resident r2 = residentService.createOrUpdate(new Resident(0L, 0L, "DANSOKO2", "Cheikna2", "cheikna2", null, UserType.RESIDENT, null, null, null));
 		Resident r3 = residentService.createOrUpdate(new Resident(0L, 0L, "DANSOKO3", "Cheikna3", "cheikna3", null, UserType.RESIDENT, null, null, null));
-		List<Resident> residents = residentService.findAll();
-		
-		Notification notificationToSend = notifications.get(6);		
-		List<Notification> notifsSentToResidents = notificationService.sendToAllResidents(notificationToSend);
-		// Check if all residents have received the notification
-		assertThat(notifsSentToResidents, hasSize(residents.size()));
-
+		List<Resident> residents = residentService.findAll();		
+		Notification notificationToSend = notifications.get(6);	
 		Notification notificationToCompare = new Notification();
+		
+		/**
+		 * When
+		 */
+		List<Notification> notifsSentToResidents = notificationService.sendToAllResidents(notificationToSend);
 		notificationToCompare.clone(notifsSentToResidents.get(0));
+		// Check if all residents have received the notification
+		
+		/**
+		 * Then
+		 */
+		assertThat(notifsSentToResidents, hasSize(residents.size()));
 		residents.forEach(res-> {
 			List<Notification> notifs = notificationService.findAllByResidentId(res.getId());
 			assertThat(notifs, hasSize(1));
@@ -136,12 +174,22 @@ public class NotificationServiceTest {
 	
 	@Test
 	public void testNotificationStateChange() {
+		/**
+		 * Given
+		 */
 		Notification notifNotSaved = notifications.get(0);
-		Notification notifSaved = notificationRepository.save(notifNotSaved);
-		Notification notifRead = notificationService.readNotification(notifSaved.getId());
 		
+		/**
+		 * When
+		 */
+		Notification notifSaved = notificationRepository.save(notifNotSaved);
+		notificationService.readNotification(notifSaved.getId());		
 		// Check if it is the same notification an that not another one has been created
 		Notification retrievedNotif = notificationService.findById(notifSaved.getId());
+		
+		/**
+		 * Then
+		 */
 		assertNotNull(retrievedNotif);
 		assertEquals(NotificationState.READ, retrievedNotif.getNotificationState());
 		

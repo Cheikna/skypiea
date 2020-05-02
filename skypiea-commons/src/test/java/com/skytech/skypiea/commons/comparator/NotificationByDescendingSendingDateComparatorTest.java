@@ -21,6 +21,9 @@ public class NotificationByDescendingSendingDateComparatorTest {
 	
 	@Test
 	public void testUnorderedListInDescendingOrderFromHighestToLowestSendingDate() {
+		/**
+		 * Given
+		 */	
 		Calendar c1 = Calendar.getInstance();
 		c1.set(2020, 1, 1, 12, 30);
 		Timestamp t1 = new Timestamp(c1.getTimeInMillis());
@@ -44,21 +47,23 @@ public class NotificationByDescendingSendingDateComparatorTest {
 		
 		List<Notification> notifications = Arrays.asList(n1, n3, n2);		
 		
-		// We check that the list is not already ordered
-		boolean isOrdered = isNotificationsListInDescendingOrder(notifications);
-		
-		if(isOrdered) {
-			fail("The list is already ordered. This test is useless");
-		}
-		
+		/**
+		 * When
+		 */	
 		Collections.sort(notifications, new NotificationByDescendingSendingDateComparator());
+		Boolean isOrdered = isNotificationsListInDescendingOrder(notifications);
 		
-		isOrdered = isNotificationsListInDescendingOrder(notifications);
+		/**
+		 * Then
+		 */	
 		assertTrue(isOrdered);		
 	}
 	
 	@Test
 	public void testAlreadyOrderedListWichImpliesNoModificationOfCollection() {
+		/**
+		 * Given
+		 */
 		Calendar c1 = Calendar.getInstance();
 		c1.set(2020, 1, 1, 12, 30);
 		Timestamp t1 = new Timestamp(c1.getTimeInMillis());
@@ -82,16 +87,15 @@ public class NotificationByDescendingSendingDateComparatorTest {
 		
 		List<Notification> notifications = Arrays.asList(n3, n2, n1);		
 		
-		// We check that the list is not already ordered
-		boolean isOrdered = isNotificationsListInDescendingOrder(notifications);
+		/**
+		 * When
+		 */		
+		Collections.sort(notifications, new NotificationByDescendingSendingDateComparator());		
+		Boolean isOrdered = isNotificationsListInDescendingOrder(notifications);
 		
-		if(!isOrdered) {
-			fail("The list is not already ordered");
-		}
-		
-		Collections.sort(notifications, new NotificationByDescendingSendingDateComparator());
-		
-		isOrdered = isNotificationsListInDescendingOrder(notifications);
+		/**
+		 * Then
+		 */
 		assertTrue(isOrdered);	
 	}
 	
