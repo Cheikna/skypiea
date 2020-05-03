@@ -159,10 +159,10 @@ export class MailBoxStaffComponent implements OnInit {
   }
 
   onNotificationTemplateChange(event) {
-
     if (this.notificationToSend.notificationObject && this.notificationToSend.notificationObject == NotificationObject.ABOUT_OBJECT) {
       let object: string = this.notificationToSend.messageObject;
       let enteredState: State = null;
+      this.updateConcernedObject(undefined);
       if (object && object.trim().length > 0) {
         object = object.toUpperCase();
         //Search if the user entered a state in the notification object
@@ -187,6 +187,9 @@ export class MailBoxStaffComponent implements OnInit {
   }
 
   clearMessageObject(){
+    if(this.concernedObject){
+      this.updateConcernedObject(undefined);
+    }
     this.notificationToSend.messageObject = "";
   }
 
@@ -199,6 +202,9 @@ export class MailBoxStaffComponent implements OnInit {
       || (!this.notificationToSend || this.notificationToSend.notificationObject != NotificationObject.ABOUT_OBJECT);
 
     if (disable && this.concernedObjectExpansionPanel) {
+      if(this.concernedObject){
+        this.updateConcernedObject(null);
+      }
       this.concernedObjectExpansionPanel.close();
     }
 
