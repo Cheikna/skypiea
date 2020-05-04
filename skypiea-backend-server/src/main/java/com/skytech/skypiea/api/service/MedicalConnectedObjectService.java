@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class MedicalConnectedObjectService {
 
-    private static Logger log = LoggerFactory.getLogger(NonMedicalConnectedObjectService.class);
+    private static Logger log = LoggerFactory.getLogger(MedicalConnectedObjectService.class);
 
     @Autowired
     private MedicalConnectedObjectRepository medicalConnectedObjectRepository;
@@ -43,23 +43,20 @@ public class MedicalConnectedObjectService {
         return savedObject;
     }
 
+
+
     @Transactional
-    public MedicalConnectedObject saveHistory(String ipAddress, HealthControlHistory healthControlHistory){
-        MedicalConnectedObject savedMedicalConnectedObject = null;
-        List<MedicalConnectedObject> medicalConnectedObjects = findAll();
-        if(medicalConnectedObjects != null){
-            for(MedicalConnectedObject medicalConnectedObject : medicalConnectedObjects){
-                System.out.println("---------> " + medicalConnectedObject.getIpAddress());
-                if(medicalConnectedObject.getIpAddress().equalsIgnoreCase(ipAddress)){
-                    System.out.println("------> found");
-                    Hibernate.initialize(medicalConnectedObject.getHealthControlHistories());
-                    medicalConnectedObject.getHealthControlHistories().add(healthControlHistory);
-                    savedMedicalConnectedObject = save(medicalConnectedObject);
-
-                }
-
-            }
+    public MedicalConnectedObject findById(Long id) {
+        MedicalConnectedObject object = null;
+        try {
+            object = medicalConnectedObjectRepository.findById(id).get();
+            Hibernate.initialize(object.getHistoryEvents());
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            e.printStackTrace();
         }
-        return savedMedicalConnectedObject;
+        return object;
     }
+
+
 }

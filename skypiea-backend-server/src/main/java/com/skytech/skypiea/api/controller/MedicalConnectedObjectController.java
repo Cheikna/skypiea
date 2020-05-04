@@ -21,9 +21,6 @@ public class MedicalConnectedObjectController {
         return medicalConnectedObjectService.findAll();
     }
 
-    @PostMapping("/save/{ipAddress}")
-    public MedicalConnectedObject saveHistory(@PathVariable String ipAddress, HealthControlHistory healthControlHistory){
-        return this.medicalConnectedObjectService.saveHistory(ipAddress,healthControlHistory);
-    }
+
 
 }

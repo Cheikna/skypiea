@@ -2,6 +2,10 @@ package com.skytech.skypiea.batch.task.implementation;
 
 import java.util.List;
 
+import com.skytech.skypiea.api.service.MedicalConnectedObjectService;
+import com.skytech.skypiea.commons.entity.MedicalConnectedObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +18,13 @@ import com.skytech.skypiea.commons.enumeration.Parameter;
 @Service
 public class MemoryCacheCheckerTask extends CheckerTask {
 
-	//private static Logger log = LoggerFactory.getLogger(MemoryCacheCheckerTask.class);
+	private static Logger log = LoggerFactory.getLogger(MemoryCacheCheckerTask.class);
 
 	@Autowired
 	private NonMedicalConnectedObjectService nonMedicalConnectedObjectService;
+
+	@Autowired
+	private MedicalConnectedObjectService medicalConnectedObjectService;
 	
 	/**
 	 * First method of the class which will be called automatically 
@@ -31,5 +38,8 @@ public class MemoryCacheCheckerTask extends CheckerTask {
 	protected void runJob() {
 		List<NonMedicalConnectedObject> objects = nonMedicalConnectedObjectService.findAll();
 		CacheFactory.getMemoryCache().setNonMedicalConnectedObjects(objects);
+
+		List<MedicalConnectedObject> medicalConnectedObjects = medicalConnectedObjectService.findAll();
+		CacheFactory.getMemoryCache().setMedicalConnectedObjects(medicalConnectedObjects);
 	}
 }
