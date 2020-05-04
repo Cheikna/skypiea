@@ -44,6 +44,41 @@
                         </mat-form-field>
 
                     </div>
+
+                    <div class="indicator-filter col-4">
+                        <mat-form-field>
+                            <mat-label>Select an option</mat-label>
+                            <mat-select [(value)]="selectedOption" [disabled]="!selectedIndicator">
+                                <mat-option>All</mat-option>
+                                <ng-container>
+                                    <mat-option [value]="brokenRate">
+                                        broken rate of connected object</mat-option>
+                                    <mat-option [value]="occurrences">number of occurrences of an object failure</mat-option>
+                                    <mat-option [value]="occupancyRate">cumulative breakdown time</mat-option>
+
+                                </ng-container>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="indicator-filter col-4">
+                        <mat-form-field>
+                            <mat-label>Select an object</mat-label>
+                            <mat-select [(value)]="selectedObject" [disabled]="!selectedIndicator && !selectedOption">
+                                <mat-option>All</mat-option>
+                                <ng-container>
+                                    <mat-option [value]="object1">
+                                        mac address 1</mat-option>
+                                    <mat-option [value]="object2">mac address 2</mat-option>
+                                    <mat-option [value]="object3">mac address 3</mat-option>
+
+                                </ng-container>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
                 </div>
              </mat-card-content>
              <mat-card-actions>

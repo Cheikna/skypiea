@@ -54,6 +54,8 @@ export class AnalysisComponent implements OnInit {
       this.failureRate=data;
     });
 
+    this.statisticService
+
     // Enable date checking
     this.dateFrom.valueChanges.subscribe((value: Date) => this.checkDates());
     this.dateTo.valueChanges.subscribe((value: Date) => this.checkDates());
@@ -70,6 +72,17 @@ export class AnalysisComponent implements OnInit {
     }
 
   }
+
+
+  getAllOccurr() {
+    this.statisticService.getAllOccurr(this.dateBeginStr.value, this.dateEndStr.value).subscribe((data) => {
+      const t: Map<string, number> = data.brokenTimeByObjectType;
+      const total: Map<string, number> = data.numberByType;
+      console.log(t);
+
+    });
+  }
+
 
   getStateRate() {
     this.statisticService.getStateRate(this.dateBeginStr.value, this.dateEndStr.value).subscribe((data) => {

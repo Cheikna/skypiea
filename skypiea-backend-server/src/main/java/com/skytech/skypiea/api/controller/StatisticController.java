@@ -1,6 +1,7 @@
 package com.skytech.skypiea.api.controller;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skytech.skypiea.api.service.FailureFactService;
 import com.skytech.skypiea.api.service.StatisticService;
+import com.skytech.skypiea.commons.entity.FailureFact;
 import com.skytech.skypiea.commons.statistic.FailureRate;
 import com.skytech.skypiea.commons.statistic.StateRate;
 
@@ -21,6 +24,7 @@ public class StatisticController {
 
 	@Autowired
 	private StatisticService statisticService;
+	private FailureFactService failureFactService;
 	
 	@GetMapping("/failure-rate")
 	public FailureRate getFailureRate() {
@@ -31,5 +35,16 @@ public class StatisticController {
 	public StateRate getStateRate(@PathVariable String dateBeginInString, @PathVariable String dateEndInString) {
 		return statisticService.getStateRate(dateBeginInString, dateEndInString);
 	}
+	
+	@GetMapping("/all-occurr/{dateBegin}/{dateEnd}")
+	public  int getAllOccurr(@PathVariable String dateBegin, @PathVariable String dateEnd) {
+		return failureFactService.findAllOccurr(dateBegin, dateEnd);
+	}
+	
+	@GetMapping("/occurr/{dateBegin}/{dateEnd}/{macAddress}")
+	public  int getAllOccurr(@PathVariable String dateBegin, @PathVariable String dateEnd, @PathVariable String macAddress) {
+		return failureFactService.findOccurr(dateBegin, dateEnd, macAddress);
+	}
+	
 
 }
