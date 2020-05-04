@@ -1,5 +1,6 @@
 package com.skytech.skypiea.api.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +25,11 @@ public class DiseaseService {
 	}
 	
 	public int findNumberOfDiseaseByClientId(Long id) {
-		List<Disease> diseases = null;
+		List<Disease> diseases = new ArrayList<Disease>();
 		try {
+			System.out.println("ID NB DISEASE : " + id);
 			diseases = diseaseRepository.findByClientId(id);
-
+//			System.out.println("Diseases : " + diseases.size());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
