@@ -79,7 +79,7 @@ export class MailBoxStaffComponent implements OnInit {
       this.notificationToSend.messageBody = this.notificationToSend.messageBody.split('\n').join('<br>');
 
       if (this.selectedRoom.id != 0) {
-        if (this.notificationToSend.notificationObject == NotificationObject.ABOUT_OBJECT) {
+        if (this.notificationToSend.notificationObject == NotificationObject.ABOUT_OBJECT && this.concernedObject != null) {
           const concernedObjectInfo: string = `Information about the concerned object :<br>Type: ${this.typeName(this.concernedObject.nonMedicalObjectType)}`;
           this.notificationToSend.messageBody = `${concernedObjectInfo}<br><br>${this.notificationToSend.messageBody}`;
         }
