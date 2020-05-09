@@ -1,0 +1,150 @@
+<section class="mails-section">
+    <div class="container">
+        <br>
+        <div class="text-center">
+            <h1>Mails box</h1>
+        </div>
+        <mat-tab-group class="notification-tab" mat-align-tabs="center" animationDuration="1200ms">
+            <mat-tab label="Consult sent notifications">
+                <app-mails-list #mailsListComponent [notifications]="notifications"></app-mails-list>
+            </mat-tab>
+            <mat-tab label="Send a notification">
+                <div>
+                    <mat-form-field class="col-12">
+                        <mat-label>
+                            <h5>Select a recipient</h5>
+                        </mat-label>
+                        <mat-select (selectionChange)="onRoomSelectionChange($event)" [(value)]="selectedRoom">
+                            <ng-container *ngIf="occupiedRooms">
+                                <mat-option>None</mat-option>
+                                <mat-option [value]="roomAllOption">
+                                    All</mat-option>
+                                <ng-container *ngFor="let room of occupiedRooms">
+                                    <mat-option [value]="room">Room
+                                        n°{{room.doorNumber}} -
+                                        {{ room.resident.lastName | uppercase }}
+                                        {{ room.resident.firstName }}</mat-option>
+                                </ng-container>
+                            </ng-container>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-error *ngIf="selectedRoom == null">
+                        At least one recipient is required
+                    </mat-error>
+                    <br><br>
+                    <div class="col-12">
+                        <div>
+                            <h5>Subject</h5>
+                            <div>
+                                <div>
+                                </div>
+                                <div>
+                                    <mat-form-field class="col-4">
+                                        <mat-label><b>Select one of the following items</b></mat-label>
+                                        <mat-select [(value)]="notificationToSend.notificationObject">
+                                            <ng-container
+                                                *ngFor="let notificationObject of notificationObjectInfoArray">
+                                                <mat-option [value]="notificationObject[1].id">
+                                                    {{ notificationObject[1].name }}
+                                                </mat-option>
+                                            </ng-container>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <mat-form-field class="col-8">
+                                        <mat-label>Choose or type a subject</mat-label>
+                                        <input matInput type="text" (keyup)="onNotificationTemplateChange($event)"
+                                            placeholder="Choose or type a subject" class="col-8"
+                                            [(ngModel)]="notificationToSend.messageObject"
+                                            [ngModelOptions]="{standalone: true}" [matAutocomplete]="auto">
+                                        <button *ngIf="notificationToSend.messageObject" mat-button matSuffix mat-icon-button aria-label="Clear"
+                                            (click)="clearMessageObject()">
+                                            <mat-icon>close</mat-icon>
+                                        </button>
+                                        <mat-autocomplete #auto="matAutocomplete"
+                                            (optionSelected)="onNotificationTemplateChange($event)">
+                                            <span *ngFor="let notificationTemplate of notificationTemplates">
+                                                <mat-option
+                                                    *ngIf="notificationTemplate?.notificationObject == notificationToSend?.notificationObject"
+                                                    [value]="notificationTemplate.messageObject"
+                                                    (click)="fillMessageBody(notificationTemplate)">
+                                                    {{notificationTemplate.messageObject}}
+                                                </mat-option>
+                                            </span>
+                                        </mat-autocomplete>
+                                    </mat-form-field>
+
+                                </div>
+                            </div>
+                            <mat-error
+                                *ngIf="!notificationToSend?.messageObject || notificationToSend?.messageObject?.trim().length == 0">
+                                An object is required
+                            </mat-error>
+                        </div>
+                        <br>
+                        <br>
+                        <div>
+                            <label for="messageBody">
+                                <h5>Message</h5>
+                            </label>
+                            <mat-accordion class="col-12">
+                                <mat-expansion-panel [disabled]="disableConcernedObjectExpansionPanel()"
+                                    #concernedObjectExpansionPanel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title
+                                            class="d-flex justify-content-center font-italic font-weight-bold text-center">
+                                            <h6>Concerned object
+                                                <span *ngIf="concernedObject">
+                                                    : {{typeName(concernedObject.nonMedicalObjectType)}} -
+                                                    {{concernedObject.macAddress}} - {{concernedObject.state}}
+                                                </span>
+                                            </h6>
+
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <!-- Display the object of the room -->
+                                    <mat-grid-list cols="5" rowHeight="100px">
+                                        <mat-grid-tile
+                                            [ngClass]="{'object-tile-selected': concernedObject && object.macAddress == concernedObject.macAddress}"
+                                            (click)="updateConcernedObject(object)" class="object-tile rounded-lg"
+                                            *ngFor="let object of roomFilteredObjects" [colspan]="1" [rowspan]="1">
+                                            <span class="concerned-objects-icon">
+                                                <img
+                                                    src="{{ nonMedicalObjectIcons[object.nonMedicalObjectType].iconPath }}">
+                                            </span>
+                                            {{typeName(object.nonMedicalObjectType)}}
+                                            <br>
+                                            {{object.macAddress}}
+                                            <br>
+                                            {{object.state}}
+                                        </mat-grid-tile>
+                                    </mat-grid-list>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                            <mat-error *ngIf="disableConcernedObjectExpansionPanel()">
+                                In order to select an object from the room you have to choose a resident and choose the
+                                <span class="font-weight-bold font-italic">About an object</span> subject item !
+                            </mat-error>
+                            <br>
+                            <textarea id="messageBody" class="form-control" [(ngModel)]="notificationToSend.messageBody"
+                                rows="10" [ngModelOptions]="{standalone: true}"></textarea>
+                            <mat-error
+                                *ngIf="!notificationToSend?.messageBody || notificationToSend?.messageBody?.trim().length == 0">
+                                An message is required !
+                            </mat-error>
+                        </div>
+                        <br>
+                        <div>
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-outline-success"
+                                    [disabled]="!isNotificationSendable()" (click)="send()">
+                                    <mdb-icon fas icon="paper-plane"></mdb-icon> Send
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+        <br>
+    </div>
+</section>

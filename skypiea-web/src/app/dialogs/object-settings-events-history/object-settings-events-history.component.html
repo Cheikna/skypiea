@@ -24,6 +24,12 @@
                     <ng-container *ngSwitchCase="NonMedicalObjectType.TEMPERATURE_CONTROLLER">
                         <ng-container *ngTemplateOutlet="temperatureControllerSettingsEventsHistory"></ng-container>
                     </ng-container>
+                    <ng-container *ngSwitchCase="NonMedicalObjectType.SUNSHINE_SENSOR">
+                        <ng-container *ngTemplateOutlet="sunshineSensorSettingsEventsHistory"></ng-container>
+                    </ng-container>
+                    <ng-container *ngSwitchDefault>
+                        <ng-container *ngTemplateOutlet="defaultSettingsEventsHistory"></ng-container>
+                    </ng-container>
                 </ng-container>
             </div>
         </mat-tab>
@@ -188,6 +194,52 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns.temperatureControllerDisplayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns.temperatureControllerDisplayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[10, 20, 30]" #settingsPaginator></mat-paginator>
+</ng-template>
+
+<ng-template #sunshineSensorSettingsEventsHistory>
+    <table mat-table [dataSource]="settingsDataSource">
+        <ng-container matColumnDef="savingDate">
+            <th mat-header-cell *matHeaderCellDef> Saving date </th>
+            <td mat-cell *matCellDef="let setting"> {{ setting.savingDate | date: 'MMM d, y, HH:mm' }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let setting"> {{ setting.status }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="externalTemperature">
+            <th mat-header-cell *matHeaderCellDef> External temperature </th>
+            <td mat-cell *matCellDef="let setting"> {{ setting.externalTemperature }} °C </td>
+        </ng-container>
+
+        <ng-container matColumnDef="externalSunshine">
+            <th mat-header-cell *matHeaderCellDef> External sunshine </th>
+            <td mat-cell *matCellDef="let setting"> {{ setting.externalSunshine }} lux</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns.sunshineSensorDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns.sunshineSensorDisplayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[10, 20, 30]" #settingsPaginator></mat-paginator>
+</ng-template>
+
+<ng-template #defaultSettingsEventsHistory>
+    <table mat-table [dataSource]="settingsDataSource">
+        <ng-container matColumnDef="savingDate">
+            <th mat-header-cell *matHeaderCellDef> Saving date </th>
+            <td mat-cell *matCellDef="let setting"> {{ setting.savingDate | date: 'MMM d, y, HH:mm' }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let setting"> {{ setting.status }} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns.defaultDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns.defaultDisplayedColumns;"></tr>
     </table>
     <mat-paginator [pageSize]="5" [pageSizeOptions]="[10, 20, 30]" #settingsPaginator></mat-paginator>
 </ng-template>

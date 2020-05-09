@@ -21,4 +21,12 @@ public enum State {
 	public static State getDefaultState() {
 		return State.OPERATIONAL;
 	}
+	
+	public static boolean isCheckableForFailure(State state) {
+		return state != State.MISSING;
+	}
+	
+	public static boolean hasStateChangedToMissing(State oldState, State newState) {
+		return oldState != newState && newState == State.MISSING;
+	}
 }

@@ -35,6 +35,9 @@ public class NonMedicalConnectedObjectServiceTest {
 	public void testRealTimeEventDeletion() {
 
 		try {
+			/**
+			 * Given
+			 */
 			// Step 1 : save a new object with a real time event
 			NonMedicalConnectedObject obj1 = new NonMedicalConnectedObject();
 			obj1.setNonMedicalObjectType(NonMedicalObjectType.ALARM_CLOCK);
@@ -42,21 +45,24 @@ public class NonMedicalConnectedObjectServiceTest {
 			RealTimeEvent realTimeEvent = new RealTimeEvent();
 			realTimeEvent.setCurrentState(State.BROKEN);
 			obj1.setRealTimeEvent(realTimeEvent);
-			NonMedicalConnectedObject savedObj = nonMedicalConnectedObjectRepository.save(obj1);
 			
+			/**
+			 * When
+			 */
+			NonMedicalConnectedObject savedObj = nonMedicalConnectedObjectRepository.save(obj1);			
 			// Step 2 : Retrieve the object with its ID
 			Long savedId = savedObj.getId();
-			NonMedicalConnectedObject obj2 = nonMedicalConnectedObjectRepository.findById(savedId).get();
-			
+			NonMedicalConnectedObject obj2 = nonMedicalConnectedObjectRepository.findById(savedId).get();			
 			// Step 3 : set the associated real time event to null
-			obj2.setRealTimeEvent(null);
-			
+			obj2.setRealTimeEvent(null);			
 			// Step 4 : save the object
-			nonMedicalConnectedObjectRepository.save(obj2);
-			
+			nonMedicalConnectedObjectRepository.save(obj2);			
 			// Step 5 : retrieve the object once again
 			NonMedicalConnectedObject obj3 = nonMedicalConnectedObjectRepository.findById(savedId).get();
 			
+			/**
+			 * Then
+			 */
 			// Step 6 : Check if its RealTimeEvent object is equal to null
 			assertNull(obj3.getRealTimeEvent());
 		} catch (Exception e) {

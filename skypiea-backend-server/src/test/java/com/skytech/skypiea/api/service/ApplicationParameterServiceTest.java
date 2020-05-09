@@ -40,44 +40,78 @@ public class ApplicationParameterServiceTest {
 
 	@Test
 	public void testFindExistingParameter() {
+		/**
+		 * Given
+		 */
 		// Create an application parameter and save it
 		Parameter p = Parameter.IS_MEMORY_CACHE_ACTIVE;
 		Boolean value = true;
 		ApplicationParameter a = new ApplicationParameter();
 		a.setParameter(p);
 		a.setValue(value.toString());
-		applicationParameterRepository.save(a);
-		
+
+		/**
+		 * When
+		 */
+		applicationParameterRepository.save(a);		
 		ApplicationParameter fromDB = applicationParameterService.findByParameter(p);
+		
+		/**
+		 * Then
+		 */
 		assertNotNull(fromDB);
 		assertEquals(value, Boolean.valueOf(fromDB.getValue()));		
 	}
 
 	@Test
 	public void testFindNotExistingParameter() {
-		Parameter p = Parameter.IS_MEMORY_CACHE_ACTIVE;		
+
+		/**
+		 * Given
+		 */
+		Parameter p = Parameter.IS_MEMORY_CACHE_ACTIVE;	
+
+		/**
+		 * When
+		 */
 		ApplicationParameter fromDB = applicationParameterService.findByParameter(p);
+
+		/**
+		 * Then
+		 */
 		assertNull(fromDB);
 	}
 
 	@Test
 	public void testFindAll() {
+
+		/**
+		 * Given
+		 */
 		// Create an application parameter and save it
 		Parameter p1 = Parameter.IS_MEMORY_CACHE_ACTIVE;
 		Boolean value = true;
 		ApplicationParameter a1 = new ApplicationParameter();
 		a1.setParameter(p1);
 		a1.setValue(value.toString());
-		applicationParameterRepository.save(a1);
 		
 		Timestamp currentTime = DateUtil.getCurrentTimestamp();
 		Parameter p2 = Parameter.LAST_ROOM_BATCH_UPDATE;
 		ApplicationParameter a2 = new ApplicationParameter();
 		a2.setParameter(p2);
 		a2.setValue(currentTime.toString());
-		applicationParameterRepository.save(a2);
 		
-		List<ApplicationParameter> applications = applicationParameterService.findAll();
+
+		/**
+		 * When
+		 */
+		applicationParameterRepository.save(a1);
+		applicationParameterRepository.save(a2);		
+		List<ApplicationParameter> applications = applicationParameterService.findAll();		
+
+		/**
+		 * Then
+		 */
 		assertThat(applications, hasSize(2));
 		assertThat(applications, hasItems(a1, a2));
 	}

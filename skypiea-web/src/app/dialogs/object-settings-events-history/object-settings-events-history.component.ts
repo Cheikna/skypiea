@@ -16,7 +16,10 @@ export class ObjectSettingsEventsHistoryComponent implements OnInit, AfterViewIn
     bulbDisplayedColumns: ['savingDate', 'status', 'color'],
     shutterDisplayedColumns: ['savingDate', 'status', 'automaticModeEnabled', 'windowCoverage'],
     temperatureControllerDisplayedColumns: ['savingDate', 'status', 'temperatureSettled', 'healthingConnected', 'airConditionnerConnected'],
-    smokeSensorDisplayedColumns: ['savingDate', 'status', 'minThreshold', 'maxThreshold']
+    smokeSensorDisplayedColumns: ['savingDate', 'status', 'minThreshold', 'maxThreshold'],
+    sunshineSensorDisplayedColumns: ['savingDate', 'status', 'externalTemperature', 'externalSunshine'],
+    defaultDisplayedColumns: ['savingDate', 'status']
+
   }
   settingsDataSource = new MatTableDataSource<any>();
   eventsDataSource = new MatTableDataSource<any>();
@@ -25,27 +28,28 @@ export class ObjectSettingsEventsHistoryComponent implements OnInit, AfterViewIn
 
   nonMedicalConnectedObject: any;
   nonMedicalObjectTypeFormat: any;
-  objectSettings: any[];
   NonMedicalObjectType = NonMedicalObjectType;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { 
-    this.objectSettings = [];
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   ngOnInit() {
     this.nonMedicalConnectedObject = this.data.nonMedicalConnectedObject;
     if(this.nonMedicalConnectedObject){
       this.nonMedicalObjectTypeFormat = getNonMedicalObjectTypeName(this.nonMedicalConnectedObject.nonMedicalObjectType);
-      this.objectSettings = this.nonMedicalConnectedObject.objectSettings;
-      if(this.objectSettings){
-        this.objectSettings.sort((setting1, setting2) => this.sortByDateDesc(setting1.savingDate, setting2.savingDate));
-        this.settingsDataSource.data = this.objectSettings;
+      let objectSettings = this.nonMedicalConnectedObject.objectSettings;
+      let historyEvents = this.nonMedicalConnectedObject.historyEvents;
+
+      if(objectSettings){
+        objectSettings.sort((setting1, setting2) => this.sortByDateDesc(setting1.savingDate, setting2.savingDate));  
+        this.settingsDataSource.data = objectSettings;     
       }
-    }
-    if(this.nonMedicalConnectedObject.historyEvents){
-      this.nonMedicalConnectedObject.historyEvents.sort((event1, event2) => this.sortByDateDesc(event1.startTime, event2.startTime));
-    }
-    this.eventsDataSource.data = this.nonMedicalConnectedObject.historyEvents;    
+
+      if(historyEvents){
+        historyEvents.sort((event1, event2) => this.sortByDateDesc(event1.startTime, event2.startTime));
+        this.eventsDataSource.data = historyEvents;
+      }
+    }  
   }
 
   ngAfterViewInit(): void {
