@@ -51,7 +51,7 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
     @JoinColumn(name = "RESIDENT_ID")
 	private Resident resident;
 	
-	@JsonManagedReference
+	@JsonManagedReference(value="room")
 	@OneToMany(mappedBy="room", cascade=CascadeType.ALL)
 	private Set<NonMedicalConnectedObject> nonMedicalConnectedObjects;
 	

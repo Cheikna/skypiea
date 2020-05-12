@@ -26,6 +26,8 @@ import { TemperatureControllerConfigComponent } from './components/temperature-c
 import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smoke-sensor-config.component';
 import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
 import { ObjectsMapComponent } from './components/objects-map/objects-map.component';
+import { ObjectScenarioConfigComponent } from './components/object-scenario-config/object-scenario-config.component';
+import { MultiObjectScenarioConfigComponent } from './components/multi-object-scenario-config/multi-object-scenario-config.component';
 
 const routes: Routes = [
   {
@@ -35,6 +37,22 @@ const routes: Routes = [
   {
     path: 'ObjectIhm',
     component: ObjectIhmComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'object-scenario-config',
+    component: ObjectScenarioConfigComponent, 
+    canActivate: [AuthenticationGuard], 
+    data: { 
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'multi-object-scenario-config',
+    component: MultiObjectScenarioConfigComponent, 
     canActivate: [AuthenticationGuard], 
     data: { 
       userType: 'RESIDENT'

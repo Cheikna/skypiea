@@ -53,6 +53,16 @@
                     <mdb-icon fas icon="chart-bar"></mdb-icon> Analysis
                 </a>
             </li>
+            <li class="nav-item" *appUserVisibility="['RESIDENT']">
+                <button class="btn dropdown-toggle" mat-button [matMenuTriggerFor]="myScenarioMenu">
+                    <mdb-icon fas icon="list"></mdb-icon> Config Scenario
+                </button>
+                <mat-menu #myScenarioMenu="matMenu">
+                    <button mat-menu-item [routerLink]="['/object-scenario-config']">Simple Scenario</button>
+                    <button mat-menu-item [routerLink]="['/multi-object-scenario-config']">Combined Scenario</button>
+                    <button mat-menu-item [routerLink]="['/object-scenario-config']">My Scenario</button>
+                </mat-menu>
+            </li>
             <li class="nav-item" *appUserVisibility="['STAFF', 'RESIDENT']">
                 <button class="btn dropdown-toggle" mat-button [matMenuTriggerFor]="myAccountMenu">
                     <mdb-icon fas icon="user-circle"></mdb-icon> My Account

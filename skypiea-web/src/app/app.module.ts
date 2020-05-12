@@ -50,6 +50,13 @@ import { SunshineSensorConfigComponent } from './components/sunshine-sensor-conf
 import 'hammerjs';
 import { ObjectsMapComponent } from './components/objects-map/objects-map.component';
 import { ObjectSettingsEventsHistoryComponent } from './dialogs/object-settings-events-history/object-settings-events-history.component';
+import { ObjectScenarioConfigComponent } from './components/object-scenario-config/object-scenario-config.component';
+import { MultiObjectScenarioConfigComponent } from './components/multi-object-scenario-config/multi-object-scenario-config.component';
+import { AlarmClockScenarioComponent } from './sub-components/alarm-clock-scenario/alarm-clock-scenario.component';
+import { ShutterScenarioComponent } from './sub-components/shutter-scenario/shutter-scenario.component';
+import { SmokeSensorScenarioComponent } from './sub-components/smoke-sensor-scenario/smoke-sensor-scenario.component';
+import { SunshineSensorScenarioComponent } from './sub-components/sunshine-sensor-scenario/sunshine-sensor-scenario.component';
+import { TemperatureControllerScenarioComponent } from './sub-components/temperature-controller-scenario/temperature-controller-scenario.component';
 
 
 @NgModule({
@@ -98,7 +105,14 @@ import { ObjectSettingsEventsHistoryComponent } from './dialogs/object-settings-
     SunshineSensorConfigComponent,
     FailuresViewComponent,
     ObjectsMapComponent,
-    ObjectSettingsEventsHistoryComponent
+    ObjectSettingsEventsHistoryComponent,
+    ObjectScenarioConfigComponent,
+    MultiObjectScenarioConfigComponent,
+    AlarmClockScenarioComponent,
+    ShutterScenarioComponent,
+    SmokeSensorScenarioComponent,
+    SunshineSensorScenarioComponent,
+    TemperatureControllerScenarioComponent
 
   ],
   imports: [

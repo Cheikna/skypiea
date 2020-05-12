@@ -45,7 +45,7 @@ public class ObjectSetting extends com.skytech.skypiea.commons.entity.Entity {
 	@Column(name="STATUS")
 	protected Status status; 
 	
-	@JsonBackReference
+	@JsonBackReference(value="nonMedicalConnectedObject")
 	@ManyToOne
 	@JoinColumn(name = "NON_MEDICAL_CONNECTED_OBJECT_ID")
 	private NonMedicalConnectedObject nonMedicalConnectedObject;

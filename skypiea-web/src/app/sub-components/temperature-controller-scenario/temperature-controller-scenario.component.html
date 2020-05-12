@@ -1,0 +1,60 @@
+<section>
+    <h1 class="title">&nbsp; &nbsp; Complete the configuration</h1>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 filter">
+                <form (ngSubmit)="saveConfig(f)" #f="ngForm">
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>Temperature Controller</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <div class="row">
+                                <div class="date-filter-from col-4">
+                                    <mat-form-field>
+                                        <mat-label>Select a Status</mat-label>
+                                        <select matNativeControl id="status" class="form-control" name="status" ngModel>
+                                            <option value="ON">On</option>
+                                            <option value="OFF">Off</option>
+                                        </select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="date-filter-from col-4">
+                                    <mat-form-field>
+                                        <mat-label>Select an hour of start</mat-label>
+                                        <input matInput id="startHour" type="datetime-local" class="form-control" name="startHour" ngModel>
+                                    </mat-form-field>
+                                </div>
+                                <div class="date-filter-from col-4">
+                                    <mat-form-field>
+                                        <mat-label>Select an hour of end</mat-label>
+                                        <input matInput id="endHour" type="datetime-local" class="form-control" name="endHour" ngModel>
+                                    </mat-form-field>
+                                </div>
+                                <!--div class="date-filter-from col-4">
+                                <mat-form-field>
+                                    <mat-label>Select the periode of activation</mat-label>
+                                    <input matInput type="month">
+                                </mat-form-field>
+                            </div!-->
+                                <div class="date-filter-from col-4">
+                                    <mat-form-field>
+                                        <mat-label>Select the temperature</mat-label>
+                                        <input matInput id="temperature" type="number" class="form-control" name="temperature" ngModel>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                        </mat-card-content>
+                        <mat-card-action>
+                            <button type="submit" class="btn btn-outline-success">Save
+                                configuration</button>
+                        </mat-card-action>
+
+                    </mat-card>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

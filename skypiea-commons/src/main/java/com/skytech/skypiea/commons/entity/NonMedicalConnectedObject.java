@@ -38,7 +38,7 @@ public class NonMedicalConnectedObject extends ConnectedObject {
 	@Column(name="NON_MEDICAL_OBJECT_TYPE")
 	private NonMedicalObjectType nonMedicalObjectType;
 	
-	@JsonBackReference
+	@JsonBackReference(value="room")
 	@ManyToOne
     @JoinColumn(name = "ROOM_ID")
 	private Room room;
@@ -46,7 +46,7 @@ public class NonMedicalConnectedObject extends ConnectedObject {
 	@Column(name="SVG_POINT")
 	private String svgPoint;
 
-	@JsonManagedReference
+	@JsonManagedReference(value="nonMedicalConnectedObject")
 	@OneToMany(mappedBy="nonMedicalConnectedObject",cascade=CascadeType.ALL)
 	private Set<ObjectSetting> objectSettings;
 	

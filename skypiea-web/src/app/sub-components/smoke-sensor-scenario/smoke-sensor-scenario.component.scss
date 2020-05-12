@@ -1,0 +1,22 @@
+section {
+    background: url("../../../assets/images/backgrounds/eneru-wallpaper.jpg") no-repeat;
+    background-size: cover;
+    width: auto;
+  }
+  
+  .title {
+      font-family: "Courier", Arial;
+      font-weight: bold;
+      color: white;
+  }
+  
+  hr {
+      border: 1px white solid;
+  }
+  .data-lack-info {
+    font-weight: bold;
+    font-style: italic;
+  }
+  mat-card {
+    margin-bottom: 15px;
+  }

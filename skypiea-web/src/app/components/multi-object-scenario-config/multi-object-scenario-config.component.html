@@ -1,0 +1,39 @@
+<section>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 filter">
+                <mat-card>
+                    <div>
+                        <br>
+                        <img src="{{ stateInfo[room.state]?.icon }}"> &nbsp;
+                        {{ resident?.lastName | uppercase }} {{ resident?.firstName }}
+                        <br>
+                        <h2>Room n°{{room?.doorNumber }}</h2>
+                    </div>
+                    <br>
+                    <mat-card-header>
+                        <mat-card-title>Chose the objects for the scenario</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="date-filter-from col-8">
+                                <mat-form-field>
+                                    <mat-label>Select one or more objects </mat-label>
+                                    <mat-select multiple >
+                                        <mat-option *ngFor="let type of nonMedicalObjectTypes" >
+                                            {{type.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                    <mat-acrd-action>
+                        <button class="btn btn-success" (click)="openObjectScenario(select.type)">chose</button>
+                    </mat-acrd-action>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</section>

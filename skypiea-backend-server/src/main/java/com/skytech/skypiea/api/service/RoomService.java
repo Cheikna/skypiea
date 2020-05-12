@@ -63,6 +63,7 @@ public class RoomService {
 			
 			if(rooms != null && rooms.size() > 0) {
 				room = rooms.get(0);
+				room.initObjectQuantityByType();
 			}
 		} catch (Exception e) {
 			log.error(e.getMessage());

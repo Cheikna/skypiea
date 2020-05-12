@@ -1,0 +1,58 @@
+<div>
+    <br>
+    <img src="{{ stateInfo[room.state]?.icon }}"> &nbsp;
+    {{ resident?.lastName | uppercase }} {{ resident?.firstName }}
+    <br>
+    <h2>Room n°{{ room?.doorNumber }}</h2>
+</div>
+<div>
+    <br>
+    <div class="object-icon text-center" *ngFor="let object of room?.objectQuantityByType | keyvalue">
+        <button (click)="openObjectScenario(object.key)"> <img
+                src="{{ nonMedicalObjectIcons[object.key].iconPath }}"></button>
+        <br>
+        <span>{{ typeName(object.key) }}</span>
+        <br>
+        <span>{{ object.value }}</span>
+    </div>
+</div>
+
+
+<ng-container *ngIf="selectedObjectType == NonMedicalObjectType.ALARM_CLOCK">
+    <br>
+    <app-alarm-clock-scenario></app-alarm-clock-scenario>
+</ng-container>
+
+<ng-container *ngIf="selectedObjectType == NonMedicalObjectType.BULB">
+    BULB
+</ng-container>
+
+<ng-container *ngIf="selectedObjectType == NonMedicalObjectType.DOOR_SENSOR">
+    DOOR SENSOR
+</ng-container>
+
+<ng-container *ngIf="selectedObjectType == NonMedicalObjectType.SMOKE_SENSOR">
+    <br>
+    <app-smoke-sensor-scenario></app-smoke-sensor-scenario>
+</ng-container>
+
+<ng-container *ngIf="selectedObjectType == NonMedicalObjectType.SUNSHINE_SENSOR">
+    <br>
+    <app-sunshine-sensor-scenario></app-sunshine-sensor-scenario>
+</ng-container>
+
+<ng-container *ngIf="selectedObjectType == NonMedicalObjectType.SHUTTER">
+    <br>
+    <app-shutter-scenario></app-shutter-scenario>
+</ng-container>
+
+<ng-container *ngIf="selectedObjectType == NonMedicalObjectType.TEMPERATURE_CONTROLLER">
+    <br>
+    <app-temperature-controller-scenario></app-temperature-controller-scenario>
+</ng-container>
+
+<!--br>
+<div fxLayout="row" fxLayoutAlign="space-evenly center">
+    <button type="button" class="btn btn-outline-success" (click)="saveConfig()">Save configuration</button>
+</div>
+<br!-->
