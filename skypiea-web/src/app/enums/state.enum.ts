@@ -3,7 +3,8 @@ export enum State {
 	IN_REPAIR = "IN_REPAIR",
 	BROKEN = "BROKEN",
 	WARNING = "WARNING",
-	DANGER = "DANGER"
+	DANGER = "DANGER",
+	MISSING = "MISSING"
 }
 
 const basePath= "assets/images/object-states";
@@ -37,5 +38,11 @@ export const stateInfo = {
 		color: "#FF0000",
 		name: "Danger",
 		icon: `${basePath}/danger.png`  
+	},
+	"MISSING": {
+		// Grey
+		color: "#696969	",
+		name: "Missing",
+		icon: `${basePath}/help.png`  
 	}
 }

@@ -37,12 +37,13 @@ public class Client extends com.skytech.skypiea.commons.entity.Entity{
 	
 	@Column(name="COUNTRY")
 	protected String country;
-
+	
 	public Client() {
-		
+		super();
 	}
 	
-	public Client (String lastName, String firstName, Integer age, String email, Integer streetNumber, String streetName, String zipCode, String city, String phoneNumber) {
+	public Client (Long id, Long version, String lastName, String firstName, Integer age, String email, Integer streetNumber, String streetName, String zipCode, String city, String phoneNumber) {
+		super(id, version);
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.age = age;
@@ -133,4 +134,16 @@ public class Client extends com.skytech.skypiea.commons.entity.Entity{
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
+	@Override
+	public String toString() {
+		return "Client [lastName=" + lastName + ", firstName=" + firstName + ", age=" + age + ", email=" + email
+				+ ", streetNumber=" + streetNumber + ", streetName=" + streetName + ", zipCode=" + zipCode + ", city="
+				+ city + ", phoneNumber=" + phoneNumber + ", country=" + country + "]";
+	}
+	
+	
+
+	
+
 }

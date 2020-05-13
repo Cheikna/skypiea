@@ -17,7 +17,9 @@ import com.skytech.skypiea.api.repository.ObjectSettingRepository;
 import com.skytech.skypiea.commons.entity.HistoryEvent;
 import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;
 import com.skytech.skypiea.commons.entity.ObjectSetting;
+import com.skytech.skypiea.commons.entity.RealTimeEvent;
 import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
+import com.skytech.skypiea.commons.enumeration.State;
 import com.skytech.skypiea.commons.object.statistic.NonMedicalObjectStatistic;
 import com.skytech.skypiea.commons.object.statistic.NonMedicalObjectStatisticFactory;
 import com.skytech.skypiea.commons.object.statistic.ObjectStatisticFilter;
@@ -26,16 +28,16 @@ import com.skytech.skypiea.commons.util.DateUtil;
 
 @Service
 public class NonMedicalConnectedObjectService {
-	
+
 
 	private static Logger log = LoggerFactory.getLogger(NonMedicalConnectedObjectService.class);
 
 	@Autowired
 	private NonMedicalConnectedObjectRepository nonMedicalConnectedObjectRepository;
-	
+
 	@Autowired
 	private ObjectSettingRepository objectSettingRepository;
-	
+
 	public List<NonMedicalConnectedObject> findAll(){
 		try {
 			List<NonMedicalConnectedObject> nonMedicalConnectedObjects = this.nonMedicalConnectedObjectRepository.findAll();
@@ -45,7 +47,7 @@ public class NonMedicalConnectedObjectService {
 		}
 		return new ArrayList<NonMedicalConnectedObject>();
 	}
-	
+
 	@Transactional
 	public NonMedicalConnectedObject findById(Long id) {
 		NonMedicalConnectedObject object = null;
@@ -58,7 +60,7 @@ public class NonMedicalConnectedObjectService {
 		}
 		return object;
 	}
-	
+
 	public NonMedicalConnectedObject save(NonMedicalConnectedObject objectToSave) {
 		NonMedicalConnectedObject savedObject = null;
 		try {
@@ -69,7 +71,7 @@ public class NonMedicalConnectedObjectService {
 		}
 		return savedObject;
 	}	
-	
+
 	public List<NonMedicalConnectedObject> findByRoomId(Long roomId){
 		try {
 			List<NonMedicalConnectedObject> nonMedicalConnectedObjects = this.nonMedicalConnectedObjectRepository.findByRoomId(roomId);
@@ -79,13 +81,13 @@ public class NonMedicalConnectedObjectService {
 		}
 		return new ArrayList<NonMedicalConnectedObject>();
 	}
-	
+
 	@Transactional
 	public ObjectSetting saveNewSetting(Long objectId, ObjectSetting objectSetting) {
 		ObjectSetting savedSetting = null;
 		try {
 			NonMedicalConnectedObject object = findById(objectId);
-			
+
 			if(object != null) {
 				objectSetting.setId(0L);
 				objectSetting.setVersion(0L);
@@ -96,12 +98,12 @@ public class NonMedicalConnectedObjectService {
 					object.setStatus(objectSetting.getStatus());
 					save(object);
 				}
-				
+
 			} else {
 				throw new Exception("Object with ID " + objectId + " not found !");
 			}
-			
-			
+
+
 		} catch (Exception e) {
 			log.error(e.getMessage());
 			e.printStackTrace();
@@ -121,5 +123,52 @@ public class NonMedicalConnectedObjectService {
 		return statistic;
 	}
 
-	
+
+	//@Transactional
+	public List<NonMedicalConnectedObject> findAllWithEvents(){
+		try {
+			List<NonMedicalConnectedObject> nonMedicalConnectedObjects = this.nonMedicalConnectedObjectRepository.findAll();
+			for(NonMedicalConnectedObject object : nonMedicalConnectedObjects) {
+				//Hibernate.initialize(object.getHistoryEvents());
+				//object.getHistoryEvents().size();
+			}
+			return nonMedicalConnectedObjects;
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		}
+		return new ArrayList<NonMedicalConnectedObject>();
+	}
+
+
+	@Transactional
+	public NonMedicalConnectedObject saveNonMedicalConnectedObjectEvent(Long objectId, RealTimeEvent realTimeEventToSave, State cacheInfoState, boolean saveHistory) {
+		//Retrieve the last version of the object
+		NonMedicalConnectedObject nonMedicalConnectedObject = null;
+		try {
+			nonMedicalConnectedObject = nonMedicalConnectedObjectRepository.findById(objectId).get();
+			log.debug("Saving the new state in the database");
+			if(saveHistory) {
+				//Retrieve the current realTime event attached at the object
+				RealTimeEvent realTimeEventToArchive = nonMedicalConnectedObject.getRealTimeEvent();
+				if(realTimeEventToArchive != null) {
+					log.debug("Saving the old value in the history : " + realTimeEventToArchive.toString());
+					HistoryEvent historyEvent = new HistoryEvent();
+					historyEvent.cloneFromRealTimeEvent(realTimeEventToArchive);
+					Hibernate.initialize(nonMedicalConnectedObject.getHistoryEvents());
+					nonMedicalConnectedObject.getHistoryEvents().add(historyEvent);
+				}
+			}
+
+
+			if(realTimeEventToSave != null) {
+				log.debug("Saving the new realTimeEvent : " + realTimeEventToSave.toString());
+			}
+			nonMedicalConnectedObject.setRealTimeEvent(realTimeEventToSave);
+			nonMedicalConnectedObject.setState(cacheInfoState);
+			nonMedicalConnectedObject = save(nonMedicalConnectedObject);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		}
+		return nonMedicalConnectedObject;
+	}
 }

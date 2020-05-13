@@ -5,8 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-
 import com.skytech.skypiea.commons.entity.ElectronicTag;
 import com.skytech.skypiea.api.repository.ElectronicTagRepository;
 
@@ -35,7 +33,11 @@ public class ElectronicTagService {
 		if(id >= 1) {			
 			try {
 				Optional<ElectronicTag> optionalETag = electronicTagRepository.findById(id);
-				eTag = optionalETag.get();				
+				if(optionalETag.isPresent())
+				{
+					eTag = optionalETag.get();				
+				}
+				else {return eTag;}
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -44,14 +46,14 @@ public class ElectronicTagService {
 		return eTag;
 	}
 	
-	public ElectronicTag findHistoryMovingByResident(@PathVariable Long id)
+	public ElectronicTag findHistoryMovingByResident(Long id)
 	{
 		ElectronicTag electronicTag = null;
-		System.out.println(id);
+		//System.out.println(id);
 		List<ElectronicTag> tags = electronicTagRepository.findAll();
 		if(tags != null) {
 			for(ElectronicTag tag: tags) {
-				System.out.println(tag.getId() + " " + tag.getResident().getId());
+				//System.out.println(tag.getId() + " " + tag.getResident().getId());
 				if(tag.getResident().getId() == id) {
 					electronicTag = tag;
 					break;

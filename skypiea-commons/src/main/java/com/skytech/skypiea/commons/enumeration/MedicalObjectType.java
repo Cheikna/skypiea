@@ -16,4 +16,5 @@ public enum MedicalObjectType {
     public String getMeasurementUnit() {
         return measurementUnit;
     }
+
 }

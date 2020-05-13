@@ -1,12 +1,42 @@
 <section>
+    <div class="container">
+        <br>
+        <mat-card>
+            <div class="row d-flex justify-content-center">
+                <span class="header">Pick a date to see tracking history</span>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" [formControl]="dateBegin">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <button type="button" class="btn btn-outline-success" (click)="updatePositionsToDisplay()">
+                Validate
+            </button>
+            &nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-outline-info" (click)="resetPositionsToDisplay()">
+                Reset
+            </button>
+        </mat-card>
+    </div>
+    <br>
+    <br>
     <div class="trackmap">
         <div style="position:absolute">
-            <span *ngFor="let move of movings" [ngStyle]="{
+            <span *ngFor="let move of movings; let i=index" [ngStyle]="{
                 'position': 'absolute',
                 'top.px': move.posX, 
                 'left.px' : move.posY
             }">
-                <mat-icon matTooltip="{{ move.time | date: 'medium' }}">location_on</mat-icon>
+                <ng-container *ngIf="i == 0">
+                    <img src="../../../assets/gifs/locationicon.gif" class="location" matTooltip="{{ move.time | date: 'medium' }}">
+                </ng-container>
+                <ng-container *ngIf="i != 0">
+                    <img src="../../../assets/gifs/walkingicon.gif" class="location" matTooltip="{{ move.time | date: 'medium' }}">
+                </ng-container>
 
             </span>
         </div>

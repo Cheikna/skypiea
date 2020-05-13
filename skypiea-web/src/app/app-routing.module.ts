@@ -9,6 +9,7 @@ import { PersonnalFormComponent } from './components/personnal-form/personnal-fo
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { DiseaseFormComponent } from './sub-components/disease-form/disease-form.component';
 
 import { ObjectIhmComponent } from './components/object-ihm/object-ihm.component';
 import { ObjectConfigurationGroupe1Component } from './sub-components/object-configuration-groupe1/object-configuration-groupe1.component';
@@ -17,10 +18,10 @@ import { ObjectConfigurationGroupe1Component } from './sub-components/object-con
 
 import { AnalysisComponent } from './components/analysis/analysis.component';
 import { EventHistoryComponent } from './components/event-history/event-history.component';
-import {HealthControlComponent} from "./components/health-control/health-control.component";
+import { HealthControlComponent } from "./components/health-control/health-control.component";
 import { AlarmClockConfigComponent } from './components/alarm-clock-config/alarm-clock-config.component';
-import { BulbConfigComponent} from './components/bulb-config/bulb-config.component'; 
-import { DoorSensorConfigComponent} from './components/door-sensor-config/door-sensor-config.component'; 
+import { BulbConfigComponent } from './components/bulb-config/bulb-config.component';
+import { DoorSensorConfigComponent } from './components/door-sensor-config/door-sensor-config.component';
 import { ShutterConfigComponent } from './components/shutter-config/shutter-config.component';
 import { TemperatureControllerConfigComponent } from './components/temperature-controller-config/temperature-controller-config.component';
 import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smoke-sensor-config.component';
@@ -29,6 +30,10 @@ import { ObjectsMapComponent } from './components/objects-map/objects-map.compon
 import { ObjectScenarioConfigComponent } from './components/object-scenario-config/object-scenario-config.component';
 import { MultiObjectScenarioConfigComponent } from './components/multi-object-scenario-config/multi-object-scenario-config.component';
 
+import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.component';
+import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
+import { MailBoxStaffComponent } from './components/mail-box-staff/mail-box-staff.component';32	
+import { MailBoxResidentComponent } from './components/mail-box-resident/mail-box-resident.component';
 const routes: Routes = [
   {
     path: '',
@@ -36,9 +41,9 @@ const routes: Routes = [
   },
   {
     path: 'ObjectIhm',
-    component: ObjectIhmComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: ObjectIhmComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'RESIDENT'
     }
   },
@@ -148,49 +153,49 @@ const routes: Routes = [
   },
   {
     path: 'object-list/alarm-clock',
-    component: AlarmClockConfigComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: AlarmClockConfigComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'RESIDENT'
     }
   },
   {
     path: 'object-list/bulb',
-    component: BulbConfigComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: BulbConfigComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'RESIDENT'
     }
   },
   {
     path: 'object-list/door-sensor',
-    component: DoorSensorConfigComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: DoorSensorConfigComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'RESIDENT'
     }
   },
   {
     path: 'object-list/alarm-clock',
-    component: AlarmClockConfigComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: AlarmClockConfigComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'RESIDENT'
     }
   },
   {
     path: 'object-list/bulb',
-    component: BulbConfigComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: BulbConfigComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'RESIDENT'
     }
   },
   {
     path: 'object-list/door-sensor',
-    component: DoorSensorConfigComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: DoorSensorConfigComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'RESIDENT'
     }
   },
@@ -212,33 +217,73 @@ const routes: Routes = [
   },
   {
     path: 'object-list/shutter',
-    component: ShutterConfigComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: ShutterConfigComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'RESIDENT'
     }
   },
   {
     path: 'object-list/temperature-controller',
-    component: TemperatureControllerConfigComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: TemperatureControllerConfigComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'RESIDENT'
     }
   },
   {
     path: 'object-list/smoke-sensor',
-    component: SmokeSensorConfigComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: SmokeSensorConfigComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'RESIDENT'
     }
   },
   {
     path: 'object-list/sunshine-sensor',
-    component: SunshineSensorConfigComponent, 
-    canActivate: [AuthenticationGuard], 
-    data: { 
+    component: SunshineSensorConfigComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'RESIDENT'
+    }
+  },
+  {
+    path: 'diseaseForm',
+    component: DiseaseFormComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'NOT_CONNECTED'
+    }
+  },  
+  {
+    path: 'hobbiesForm',
+    component: HobbiesFormComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'NOT_CONNECTED'
+    }
+  },
+  {
+    path: 'waitingClient',
+    component: WaitingClientComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'STAFF'
+    }
+  },
+  {
+    path: 'mail-box/staff',
+    component: MailBoxStaffComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'STAFF'
+    }
+  },
+  {
+    path: 'mail-box/resident',
+    component: MailBoxResidentComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
       userType: 'RESIDENT'
     }
   },

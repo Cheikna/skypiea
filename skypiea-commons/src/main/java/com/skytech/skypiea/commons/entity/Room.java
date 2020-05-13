@@ -63,6 +63,9 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
 	private Map<NonMedicalObjectType, Integer> objectQuantityByType;
 	
 	@Transient
+	private Map<State, Integer> objectQuantityByState;
+	
+	@Transient
 	private int numberOfNonMedicalObjects;
 	
 
@@ -173,11 +176,12 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
 	}
 
 	/**
-	 * Fill the map with the quantity of objects by type
+	 * Fill the map with the quantity of objects by type and state
 	 */
 	@Transient
 	public void initObjectQuantityByType() {
 		objectQuantityByType = new HashMap<NonMedicalObjectType, Integer>();
+		objectQuantityByState = new HashMap<State, Integer>();
 		if(this.nonMedicalConnectedObjects != null && nonMedicalConnectedObjects.size() > 0) {
 			nonMedicalConnectedObjects.forEach((object) -> {
 				NonMedicalObjectType objectType = object.getNonMedicalObjectType();
@@ -192,6 +196,7 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
 					quantity = 1;
 				}
 				objectQuantityByType.put(objectType, quantity);
+				objectQuantityByState.merge(object.getState(), 1, (val, opt) -> val+1);
 			});
 		}
 	}
@@ -202,6 +207,14 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
 
 	public void setSvgPoint(String svgPoint) {
 		this.svgPoint = svgPoint;
+	}	
+
+	public Map<State, Integer> getObjectQuantityByState() {
+		return objectQuantityByState;
+	}
+
+	public void setObjectQuantityByState(Map<State, Integer> objectQuantityByState) {
+		this.objectQuantityByState = objectQuantityByState;
 	}
 
 	@Override

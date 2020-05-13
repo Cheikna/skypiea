@@ -47,7 +47,7 @@ public class RoomObjectsCheckerTask extends TimerTask{
 				log.info("====> Number of non medical connected object(s) : " + numberOfObject);   
 				if(nonMedicalConnectedObjects != null && nonMedicalConnectedObjects.size() > 0) {
 
-					NonMedicalConnectedObject higherStateObject = (NonMedicalConnectedObject)Util.getObjectWithHighestState(nonMedicalConnectedObjects);
+					NonMedicalConnectedObject higherStateObject = (NonMedicalConnectedObject)Util.getObjectWithHighestState(nonMedicalConnectedObjects, null);
 					if(higherStateObject != null) {
 						stateAfterCheck = higherStateObject.getState();
 					}

@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.function.Function;
 
+import org.apache.commons.lang3.RandomUtils;
+import org.javatuples.Pair;
 import org.javatuples.Triplet;
 
 public class DateUtil {
@@ -33,5 +35,25 @@ public class DateUtil {
 		
 		Triplet<Long, Long, Long> daysHoursMinutesTriplet = new Triplet<Long, Long, Long>(daysBetween, hoursBetween, minutesBetween);
 		return daysHoursMinutesTriplet;
+	}
+	
+	public static Timestamp getRandomDateUntil(Timestamp maxTimestamp) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(maxTimestamp);
+		int hourType = Calendar.HOUR;
+		int dayType = Calendar.DAY_OF_MONTH;
+		int monthType = Calendar.MONTH;
+		int[] types = {hourType, dayType, monthType};
+		int typeChoice = types[RandomUtils.nextInt(0, types.length)];
+		int numberToRemove = RandomUtils.nextInt(1, 30);
+		cal.add(typeChoice, numberToRemove * (-1));
+		return new Timestamp(cal.getTimeInMillis());
+	}
+	
+	public static Pair<Long, Long> convertMillisecondsInMinutesAndSeconds(Long milliseconds){
+		Long millisecondsToSeconds = (long)Math.ceil(milliseconds / 1000);
+		Long minutes = (long)Math.ceil(millisecondsToSeconds / 60);
+		Long seconds = millisecondsToSeconds % 60;
+		return new Pair<Long, Long>(minutes,seconds);
 	}
 }

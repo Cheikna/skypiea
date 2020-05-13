@@ -46,9 +46,11 @@ import { ShutterConfigComponent } from './components/shutter-config/shutter-conf
 import { TemperatureControllerConfigComponent } from './components/temperature-controller-config/temperature-controller-config.component';
 import { SmokeSensorConfigComponent } from './components/smoke-sensor-config/smoke-sensor-config.component';
 import { SunshineSensorConfigComponent } from './components/sunshine-sensor-config/sunshine-sensor-config.component';
-
+import { MatPaginatorModule } from '@angular/material';
 import 'hammerjs';
 import { ObjectsMapComponent } from './components/objects-map/objects-map.component';
+import { ResidentComponent } from './components/resident/resident.component';
+import { HealthHistoryComponent } from './components/health-history/health-history.component';
 import { ObjectSettingsEventsHistoryComponent } from './dialogs/object-settings-events-history/object-settings-events-history.component';
 import { ObjectScenarioConfigComponent } from './components/object-scenario-config/object-scenario-config.component';
 import { MultiObjectScenarioConfigComponent } from './components/multi-object-scenario-config/multi-object-scenario-config.component';
@@ -58,6 +60,11 @@ import { SmokeSensorScenarioComponent } from './sub-components/smoke-sensor-scen
 import { SunshineSensorScenarioComponent } from './sub-components/sunshine-sensor-scenario/sunshine-sensor-scenario.component';
 import { TemperatureControllerScenarioComponent } from './sub-components/temperature-controller-scenario/temperature-controller-scenario.component';
 
+import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.component';
+import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
+import { MailBoxStaffComponent } from './components/mail-box-staff/mail-box-staff.component';
+import { MailBoxResidentComponent } from './components/mail-box-resident/mail-box-resident.component';
+import { MailsListComponent } from './sub-components/mails-list/mails-list.component';
 
 @NgModule({
   entryComponents: [
@@ -112,8 +119,17 @@ import { TemperatureControllerScenarioComponent } from './sub-components/tempera
     ShutterScenarioComponent,
     SmokeSensorScenarioComponent,
     SunshineSensorScenarioComponent,
-    TemperatureControllerScenarioComponent
+    TemperatureControllerScenarioComponent,
 
+    HobbiesFormComponent,
+    ResidentComponent,
+    HealthHistoryComponent,
+    ObjectsMapComponent,
+    ObjectSettingsEventsHistoryComponent,
+    WaitingClientComponent,
+    MailBoxStaffComponent,
+    MailBoxResidentComponent,
+    MailsListComponent
   ],
   imports: [
     BrowserModule,
@@ -125,13 +141,15 @@ import { TemperatureControllerScenarioComponent } from './sub-components/tempera
     FlexLayoutModule,
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
-    ToastrModule.forRoot({      
+    ToastrModule.forRoot({
     positionClass: 'toast-top-center',
-    })
+    enableHtml: true,
+    }),
+    MatPaginatorModule,
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
-  
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

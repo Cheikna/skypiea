@@ -12,10 +12,10 @@ public class HistoryMoving extends com.skytech.skypiea.commons.entity.Entity{
 	//private static Logger log = LoggerFactory.getLogger(Character.class);	
 	
 	@Column(name="POSX")
-	private float posX;
+	private int posX;
 	
 	@Column(name="POSY")
-	private float posY;
+	private int posY;
 	
 	@Column(name="SAVING_TIME")
 	private Timestamp time;
@@ -23,7 +23,6 @@ public class HistoryMoving extends com.skytech.skypiea.commons.entity.Entity{
 
 	public HistoryMoving() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public HistoryMoving(Long id, Long version, int posX, int posY, Timestamp time) {
@@ -32,20 +31,20 @@ public class HistoryMoving extends com.skytech.skypiea.commons.entity.Entity{
 		this.posY = posY;
 		this.time = time;
 	}
-	
-	public float getPosX() {
+
+	public int getPosX() {
 		return posX;
 	}
 
-	public void setPosX(float posX) {
+	public void setPosX(int posX) {
 		this.posX = posX;
 	}
 
-	public float getPosY() {
+	public int getPosY() {
 		return posY;
 	}
 
-	public void setPosY(float posY) {
+	public void setPosY(int posY) {
 		this.posY = posY;
 	}
 

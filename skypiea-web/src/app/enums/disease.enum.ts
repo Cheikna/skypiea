@@ -10,3 +10,4 @@ export enum DiseaseType {
 	
 	PARKINSON = "PARKINSON"
 }
+

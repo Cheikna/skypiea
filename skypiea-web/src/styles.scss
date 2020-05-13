@@ -124,3 +124,14 @@ footer {
 div.mat-card-header-text{
   margin: 0 0;
 }
+
+mat-sidenav-container.transparent {
+  background: transparent;
+}
+
+section.mails-section {
+  background: url("./assets/images/backgrounds/mail-wallpaper.jpg") no-repeat;
+  background-size: cover;
+  width: auto;
+  min-height: 1000px;
+}

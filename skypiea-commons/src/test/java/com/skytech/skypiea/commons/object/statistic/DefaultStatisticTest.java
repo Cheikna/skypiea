@@ -14,6 +14,9 @@ public class DefaultStatisticTest {
 
 	@Test
 	public void testHistoryEventsStatistics() {
+		/**
+		 * Given
+		 */
 		HistoryEvent h1 = new HistoryEvent();
 		h1.setId(1L);
 		h1.setReachedState(State.DANGER);
@@ -40,10 +43,18 @@ public class DefaultStatisticTest {
 		events.add(h5);
 		events.add(h6);
 		DefaultStatistic stat = new DefaultStatistic(null, events);
-		stat.initStatistics();
 		Long danger = 3L;
 		Long warning = 1L;
 		Long broken = 2L;
+		
+		/**
+		 * When
+		 */
+		stat.initStatistics();
+		
+		/**
+		 * Then
+		 */
 		assertEquals(danger, stat.getTotalChangesOnEachState().get((State.DANGER)));
 		assertEquals(warning, stat.getTotalChangesOnEachState().get((State.WARNING)));
 		assertEquals(broken, stat.getTotalChangesOnEachState().get((State.BROKEN)));

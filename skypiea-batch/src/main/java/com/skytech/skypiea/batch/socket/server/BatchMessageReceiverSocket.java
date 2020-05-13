@@ -5,6 +5,7 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.skytech.skypiea.batch.service.HealthSurveillanceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class BatchMessageReceiverSocket implements Runnable  {
 	
 	@Autowired
 	private RoomObjectsSurveillanceService roomObjectsSurveillanceService;
+
+	@Autowired
+	private HealthSurveillanceService healthSurveillanceService;
 	
 	@Value("${socket.server.port}")
 	private String portNumberStr;
@@ -39,6 +43,7 @@ public class BatchMessageReceiverSocket implements Runnable  {
 	
 	private void initMessageProcessors() {
 		messageProcessors.put(MessageSender.NON_MEDICAL_CONNECTED_OBJECT, roomObjectsSurveillanceService);		
+		messageProcessors.put(MessageSender.MEDICAL_CONNECTED_OBJECT, healthSurveillanceService);
 	}
 
 	public void run()

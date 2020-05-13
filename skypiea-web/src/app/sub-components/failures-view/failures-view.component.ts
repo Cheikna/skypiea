@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Room } from 'src/app/models/room.model';
 import { State } from 'src/app/enums/state.enum';
 import { getNonMedicalObjectTypeName } from 'src/app/enums/nonMedicalObjectType.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-failures-view',
@@ -17,7 +18,7 @@ export class FailuresViewComponent implements OnInit, OnChanges {
   State = State;
   getObjectTypeName = (type) => getNonMedicalObjectTypeName(type);
 
-  constructor() {
+  constructor(private router: Router) {
     this.brokenObjects = new Array<any>();
    }
 
@@ -37,7 +38,7 @@ export class FailuresViewComponent implements OnInit, OnChanges {
           if(roomObjects){
             // Loop on each object of the room to check if there is at least one object with a BROKEN state
             roomObjects.forEach((object) => {
-              if(object.state == State.BROKEN){
+              if(object.state == State.BROKEN || object.state == State.MISSING){
                 hasBrokenObjects = true;
               }
             })
@@ -48,11 +49,15 @@ export class FailuresViewComponent implements OnInit, OnChanges {
             this.roomsWithBrokenObjects.push(room);
           }
         });
-
+        this.roomsWithBrokenObjects.sort((r1, r2) => r1.doorNumber - r2.doorNumber);
         // Calculate the percentage of rooms with at least one BROKEN object
         this.brokenRoomsPercentage = Math.round((this.roomsWithBrokenObjects.length / this.rooms.length) * 100);
       }
     }
+  }  
+
+  moreDetailsOnRoom(doorNumber: number){    
+    this.router.navigate(['/monitoring/room', doorNumber]);
   }
 
 }

@@ -10,6 +10,7 @@ import javax.persistence.Table;
 
 import com.skytech.skypiea.commons.enumeration.EventType;
 import com.skytech.skypiea.commons.enumeration.State;
+import com.skytech.skypiea.commons.util.DateUtil;
 
 @Entity
 @Table(name="REAL_TIME_EVENT")
@@ -60,6 +61,13 @@ public class RealTimeEvent extends Event {
 	
 	public void setCheckingCount(Long checkingCount) {
 		this.checkingCount = checkingCount;
+	}
+	
+	public void setForMissingState(String comments) {
+		this.eventType = EventType.FAILURE;
+		this.startTime = DateUtil.getCurrentTimestamp();
+		this.description = comments;
+		this.currentState = State.MISSING;
 	}
 
 	@Override
