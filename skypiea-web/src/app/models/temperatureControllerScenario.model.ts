@@ -4,7 +4,7 @@ import { Time } from '@angular/common';
 
 
 export class TemperatureControllerScenario{
-    nonMedicalConnectedObjectId: NonMedicalConnectedObject;
+    nonMedicalConnectedObject: NonMedicalConnectedObject;
     room: Room;
     status: String;
     startHour: Time;

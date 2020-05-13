@@ -49,7 +49,8 @@ export class TemperatureControllerScenarioComponent implements OnInit {
   saveConfig(form: NgForm) {
     this.objectsFromServiceCall.forEach((object) => {
       if(object.nonMedicalObjectType == NonMedicalObjectType.TEMPERATURE_CONTROLLER){
-        this.temperatureControllerScenario.nonMedicalConnectedObjectId = object;
+        this.temperatureControllerScenario.nonMedicalConnectedObject = object;
+        console.log(JSON.stringify(this.temperatureControllerScenario.nonMedicalConnectedObject))
       }
     });
     this.temperatureControllerScenario.status = form.value['status'];
@@ -57,7 +58,6 @@ export class TemperatureControllerScenarioComponent implements OnInit {
     this.temperatureControllerScenario.endHour = form.value['endHour'];
     this.temperatureControllerScenario.temperature = form.value['temperature'];
     this.temperatureControllerScenario.room = this.room;
-    console.log(JSON.stringify(this.temperatureControllerScenario));
     this.temperatureControllerScenarioService.save(this.temperatureControllerScenario).subscribe((data)=> {
       this.temperatureControllerScenario = data;
     });
