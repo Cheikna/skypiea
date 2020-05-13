@@ -4,49 +4,48 @@
     <div class="container">
         <div class="row">
             <div class="col-12 filter">
-                <mat-card>
-                    <mat-card-header>
-                        <mat-card-title>Shutter</mat-card-title>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <div class="row">
-                            <div class="date-filter-from col-4">
-                                <mat-form-field>
-                                    <mat-label>Select a Status</mat-label>
-                                    <select matNativeControl>
-                                        <option value="on">On</option>
-                                        <option value="off">Off</option>
-                                    </select>
-                                </mat-form-field>
+                <form (ngSubmit)="saveConfig(f)" #f="ngForm">
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>Shutter</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <div class="row">
+                                <div class="date-filter-from col-4">
+                                    <mat-form-field>
+                                        <mat-label>Select a Status</mat-label>
+                                        <select matNativeControl id="status" class="form-control" name="status" ngModel>
+                                            <option value="ON">On</option>
+                                            <option value="OFF">Off</option>
+                                        </select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="date-filter-from col-4">
+                                    <mat-form-field>
+                                        <mat-label>Select an hour of start</mat-label>
+                                        <input matInput id="startHour" type="datetime-local" class="form-control"
+                                            name="startHour" ngModel>
+                                    </mat-form-field>
+                                </div>
+                                <div class="date-filter-from col-4">
+                                    <mat-form-field>
+                                        <mat-label>Select the position</mat-label>
+                                        <select matNativeControl id="position" class="form-control" name="position"
+                                            ngModel>
+                                            <option value="closed">Closed</option>
+                                            <option value="opened">Opened</option>
+                                            <option value="opened">Half-opened</option>
+                                        </select>
+                                    </mat-form-field>
+                                </div>
                             </div>
-                            <div class="date-filter-from col-4">
-                                <mat-form-field>
-                                    <mat-label>Select an hour of start</mat-label>
-                                    <input matInput type="time">
-                                </mat-form-field>
-                            </div>
-                            <!--div class="date-filter-from col-4">
-                                <mat-form-field>
-                                    <mat-label>Select the periode of activation</mat-label>
-                                    <input matInput type="month">
-                                </mat-form-field>
-                            </div!-->
-                            <div class="date-filter-from col-4">
-                                <mat-form-field>
-                                    <mat-label>Select the position</mat-label>
-                                    <select matNativeControl>
-                                        <option value="closed">Closed</option>
-                                        <option value="opened">Opened</option>
-                                        <option value="opened">Half-opened</option>
-                                    </select>
-                                </mat-form-field>
-                            </div>
-                        </div>
-                    </mat-card-content>
-                    <mat-card-action>
-                        <button type="button" class="btn btn-outline-success" (click)="saveConfig()">Save configuration</button>
-                    </mat-card-action>
-                </mat-card>
+                        </mat-card-content>
+                        <mat-card-action>
+                            <button type="submit" class="btn btn-outline-success">Save
+                                configuration</button>
+                        </mat-card-action>
+                    </mat-card>
+                </form>
             </div>
         </div>
     </div>
