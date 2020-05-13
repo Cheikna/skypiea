@@ -50,7 +50,6 @@ export class TemperatureControllerScenarioComponent implements OnInit {
     this.objectsFromServiceCall.forEach((object) => {
       if(object.nonMedicalObjectType == NonMedicalObjectType.TEMPERATURE_CONTROLLER){
         this.temperatureControllerScenario.nonMedicalConnectedObject = object;
-        console.log(JSON.stringify(this.temperatureControllerScenario.nonMedicalConnectedObject))
       }
     });
     this.temperatureControllerScenario.status = form.value['status'];
