@@ -9,7 +9,7 @@ describe('AlarmClockScenarioComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AlarmClockScenarioComponent ]
-    })
+    })  
     .compileComponents();
   }));
 
