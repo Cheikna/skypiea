@@ -34,8 +34,7 @@
                             <mat-select [(value)]="selectedIndicator">
                                 <mat-option>All</mat-option>
                                 <ng-container>
-                                    <mat-option [value]="failureRate">
-                                        failure rate of connected object</mat-option>
+                                    <mat-option [value]="failureRate">failure rate of connected object</mat-option>
                                     <mat-option [value]="useRate">rate of use of connected objects</mat-option>
                                     <mat-option [value]="occupancyRate">occupancy rate of the residence</mat-option>
 
@@ -45,16 +44,13 @@
 
                     </div>
 
-                    <div class="indicator-filter col-4">
+                   <!-- <div class="indicator-filter col-4">
                         <mat-form-field>
-                            <mat-label>Select an option</mat-label>
-                            <mat-select [(value)]="selectedOption" [disabled]="!selectedIndicator">
+                            <mat-label>Select a type</mat-label>
+                            <mat-select [(value)]="selectedType" [disabled]="!selectedIndicator">
                                 <mat-option>All</mat-option>
                                 <ng-container>
-                                    <mat-option [value]="brokenRate">
-                                        broken rate of connected object</mat-option>
-                                    <mat-option [value]="occurrences">number of occurrences of an object failure</mat-option>
-                                    <mat-option [value]="occupancyRate">cumulative breakdown time</mat-option>
+                                    <mat-option *ngFor = "let s of statics"> {{ s.objectType }} </mat-option>
 
                                 </ng-container>
                             </mat-select>
@@ -65,25 +61,23 @@
                     <div class="indicator-filter col-4">
                         <mat-form-field>
                             <mat-label>Select an object</mat-label>
-                            <mat-select [(value)]="selectedObject" [disabled]="!selectedIndicator && !selectedOption">
+                            <mat-select [(value)]="selectedObject" [disabled]="!selectedIndicator || !selectedType">
                                 <mat-option>All</mat-option>
                                 <ng-container>
-                                    <mat-option [value]="object1">
-                                        mac address 1</mat-option>
-                                    <mat-option [value]="object2">mac address 2</mat-option>
-                                    <mat-option [value]="object3">mac address 3</mat-option>
+                                    <mat-option *ngFor = "let s of statics"> {{ s.macAddress }} </mat-option>
 
                                 </ng-container>
                             </mat-select>
                         </mat-form-field>
 
                     </div>
+                -->
 
                 </div>
              </mat-card-content>
              <mat-card-actions>
                 <div class="d-flex justify-content-end">
-                    <button type="button" class="btn btn-outline-success" (click)="getStateRate()"
+                    <button type="button" class="btn btn-outline-success" (click)="findAllByDate(dateFrom, dateTo); getAllOccur(dateFrom, dateTo); findOccurPerObject(dateFrom, dateTo)"
                         [disabled]="!selectedIndicator || !isDateFormValid">
                         <mdb-icon fas icon="chart-pie"></mdb-icon> Get the statistics
                     </button>
@@ -100,8 +94,9 @@
     <div class="row">
         <mat-card class="col-12 statistic-section-title text-center">Results</mat-card>
 
-        <mat-card class="col-5">
-            <span class="statistic-card-title">Number of failures occurences per object since the 1st january 2020 :</span>
+        <!--
+        <mat-card class="col-6">
+            <span class="statistic-card-title">Number of failures occurences</span>
             <div>
                 <p></p>
                 <div class="col-12">
@@ -138,8 +133,45 @@
             </div>
         </mat-card>
 
-        <div class="col-2"></div>
 
+            <mat-card class="col-6">
+
+                <span class="statistic-card-title">broken rate of connected object</span>
+                    <div *ngFor= "let s of statics">
+                        {{s.objectType}}, {{s.macAddress}}
+                    </div>
+
+
+            </mat-card>
+        -->
+
+            <mat-card class="col-12" *ngIf="selectedIndicator === failureRate">
+
+                <div class="tab">
+                    <table>
+                        <tr>
+                            <th>Mac address</th>
+                            <th>Type</th>
+                            <th>Failure Rate</th>
+                            <th>Failure Occurence</th>
+                            <th>Cumulative Breakdown Time</th>
+                        </tr>
+                        <tr *ngFor="let f of failures; let key of occurPerObject.keys()">
+                            <td> {{ f.macAddress }} </td>
+                            <td>{{ f.objectType }} </td>
+                            <td> {{ nbOccur }}/{{ occurrencesNumber }}</td>
+                            <td> {{ nbOccur }} </td>
+                            <td> Comming soon </td>
+                        </tr>
+                    </table>
+
+
+                </div>
+
+
+        </mat-card>
+
+       
     </div>>
 
 </section>

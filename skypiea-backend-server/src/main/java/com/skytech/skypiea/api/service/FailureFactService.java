@@ -2,7 +2,9 @@ package com.skytech.skypiea.api.service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -13,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import com.skytech.skypiea.api.repository.FailureFactRepository;
 import com.skytech.skypiea.commons.entity.FailureFact;
-import com.skytech.skypiea.commons.entity.Room;
 
 
 @Service
@@ -23,63 +24,6 @@ public class FailureFactService {
 	@Autowired
 	private FailureFactRepository failureFactRepository;
 
-	@Transactional
-	public List<FailureFact> findAllByDate(String dateBeginStr, String dateEndStr) {
-		try {
-			List<FailureFact> failureFacts = this.failureFactRepository.findAll();
-
-			return failureFacts;
-		} catch (Exception e) {
-			log.error(e.getMessage());
-		}
-		return new ArrayList<FailureFact>();
-	}
-
-	public boolean findByMacAddress(String macAddress) {
-		try {
-			List<FailureFact> failureFacts = failureFactRepository.findAll();
-			for(int i=0; i<failureFacts.size(); i++) {
-				FailureFact failureFact = failureFacts.get(i);
-				String addressMac = failureFact.getMacAddress();
-				if (addressMac == macAddress) {
-					return true;
-				}
-			}
-
-		} catch (Exception e) {
-			log.error(e.getMessage());
-		}
-
-		return false;
-	}
-
-	public int findOccurr(String dateBeginStr, String dateEndStr, String macAddress) {
-		int occurrence = 0;
-		try {
-			List<FailureFact> failureFacts = failureFactRepository.findAll();
-			for(int i=0; i<failureFacts.size(); i++) {
-				FailureFact failureFact = failureFacts.get(i);
-				Timestamp startDate = failureFact.getStartDate();
-				Timestamp endDate = failureFact.getEndDate();
-				Timestamp begin = Timestamp.valueOf(dateBeginStr);
-				Timestamp end = Timestamp.valueOf(dateEndStr);
-				String addressMac = failureFact.getMacAddress();
-
-				if (begin.before(startDate) && end.after(endDate)) {
-					if (addressMac == macAddress) {
-						occurrence++;
-					}
-
-				}
-
-			}
-
-		} catch (Exception e) {
-			log.error(e.getMessage());
-		}
-
-		return occurrence;
-	}
 
 	public int findAllOccurr(String dateBeginStr, String dateEndStr) {
 		int allOccurrences = 0;
@@ -104,7 +48,63 @@ public class FailureFactService {
 
 		return allOccurrences;
 	}
-	
-	
 
+	public List<FailureFact> findAll() {
+		List<FailureFact> failureFacts = failureFactRepository.findAll();
+		return failureFacts;
+	}
+
+	public List<FailureFact> findAllByDate(String dateBeginStr, String dateEndStr) {
+
+		List<FailureFact> failureFactsFinal = failureFactRepository.findAll();
+		List<FailureFact> failureFacts = failureFactRepository.findAll();
+		for(int i=0; i<failureFacts.size(); i++) {
+			FailureFact failureFact = failureFacts.get(i);
+			Timestamp startDate = failureFact.getStartDate();
+			Timestamp endDate = failureFact.getEndDate();
+			Timestamp begin = Timestamp.valueOf(dateBeginStr);
+			Timestamp end = Timestamp.valueOf(dateEndStr);
+
+			if (begin.before(startDate) && end.after(endDate)) {
+
+				FailureFact failureFactItem = new FailureFact(failureFact.getId(), failureFact.getVersion(), failureFact.getObjectType(), failureFact.getMacAddress(), failureFact.getStartDate(), failureFact.getEndDate());
+				failureFactItem.setObjectType(failureFact.getObjectType());
+				failureFactItem.setMacAddress(failureFact.getMacAddress());
+				failureFactItem.setStartDate(failureFact.getStartDate());
+				failureFactItem.setEndDate(failureFact.getEndDate());
+				failureFactsFinal.add(failureFactItem);
+			}
+
+		}
+		return failureFactsFinal;
+	}
+	
+	
+	public Map<String, Integer> findOccurPerObject(String dateBeginStr, String dateEndStr) {
+		Map<String, Integer> occurPerObject = new HashMap<>();
+		List<FailureFact> failureFacts = failureFactRepository.findAll();
+		for(int i=1; i<failureFacts.size(); i++) {
+			FailureFact failureFact = failureFacts.get(i);
+			FailureFact failureFactPast = failureFacts.get(i-1);
+			Timestamp startDate = failureFact.getStartDate();
+			Timestamp endDate = failureFact.getEndDate();
+			Timestamp begin = Timestamp.valueOf(dateBeginStr);
+			Timestamp end = Timestamp.valueOf(dateEndStr);
+
+			if (begin.before(startDate) && end.after(endDate)) {
+				//int count=0;
+				int occur=1;
+				if(failureFact.getMacAddress()==failureFactPast.getMacAddress()) {
+					occur++;
+					occurPerObject.put(failureFact.getMacAddress(),occur);
+				}
+				else {
+					occurPerObject.put(failureFact.getMacAddress(), occur);
+				}
+			}
+
+		}
+		return occurPerObject;
+	}
+	
 }
