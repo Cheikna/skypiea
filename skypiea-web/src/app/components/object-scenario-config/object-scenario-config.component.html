@@ -24,11 +24,11 @@
 </ng-container>
 
 <ng-container *ngIf="selectedObjectType == NonMedicalObjectType.BULB">
-    BULB
+    <app-bulb-scenario></app-bulb-scenario>
 </ng-container>
 
 <ng-container *ngIf="selectedObjectType == NonMedicalObjectType.DOOR_SENSOR">
-    DOOR SENSOR
+    <app-door-sensor-scenario></app-door-sensor-scenario>
 </ng-container>
 
 <ng-container *ngIf="selectedObjectType == NonMedicalObjectType.SMOKE_SENSOR">
