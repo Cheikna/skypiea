@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,5 +35,10 @@ public class TemperatureControllerScenarioController {
 	@PostMapping("/scenario")
 	public TemperatureControllerScenario save(@RequestBody TemperatureControllerScenario objectToSave) {
 		return this.temperatureControllerScenarioService.save(objectToSave);
+	}
+	
+	@PostMapping("/scenario/temperatureController/delete")
+	public boolean delete(@RequestBody Long id){
+		return temperatureControllerScenarioService.delete(id);
 	}
 }

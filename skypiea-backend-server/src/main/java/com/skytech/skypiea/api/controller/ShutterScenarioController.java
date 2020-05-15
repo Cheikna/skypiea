@@ -32,5 +32,10 @@ public class ShutterScenarioController {
 	public ShutterScenario save(@RequestBody ShutterScenario objectToSave) {
 		return this.shutterScenarioService.save(objectToSave);
 	}
+	
+	@PostMapping("/scenario/shutter/delete")
+	public boolean delete(@RequestBody Long id){
+		return shutterScenarioService.delete(id);
+	}
 
 }

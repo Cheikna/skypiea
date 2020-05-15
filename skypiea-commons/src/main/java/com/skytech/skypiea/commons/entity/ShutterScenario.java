@@ -41,6 +41,12 @@ public class ShutterScenario {
 	@Column(name="POSITION")
 	private String position;
 	
+	
+	
+	public ShutterScenario() {
+		super();
+	}
+
 	public ShutterScenario(Long id, NonMedicalConnectedObject nonMedicalConnectedObject, Room room, String status, Timestamp startHour, String position) {
 		this.id = id;
 		this.nonMedicalConnectedObject = nonMedicalConnectedObject;

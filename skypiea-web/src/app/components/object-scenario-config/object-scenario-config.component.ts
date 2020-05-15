@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-
 import { Room } from 'src/app/models/room.model';
 import { getNonMedicalObjectTypeName, NonMedicalObjectType } from 'src/app/enums/nonMedicalObjectType.enum';
 import { stateInfo, State } from 'src/app/enums/state.enum';

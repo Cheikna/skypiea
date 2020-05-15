@@ -40,5 +40,10 @@ public class ShutterScenarioService {
 		}
 		return savedObject;
 	}	
+	
+	public boolean delete(Long id) {
+		shutterScenarioRepository.deleteById(id);
+		return true;
+	}
 
 }

@@ -1,0 +1,51 @@
+<section>
+
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <h4>List of temperature controller scenarios :</h4>
+        <br>
+        <table class="table table-bordered table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Status</th>
+                    <th scope="col">Start Hour</th>
+                    <th scope="col">End Hour</th>
+                    <th scope="col">Temperature</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let temperatureControllerScenario of temperatureControllerScenarioList">
+                    <td>{{ temperatureControllerScenario.status }}</td>
+                    <td>{{ temperatureControllerScenario.startHour |  date: 'medium' }}</td>
+                    <td>{{ temperatureControllerScenario.endHour |  date: 'medium' }}</td>
+                    <td>{{ temperatureControllerScenario.temperature}}</td>
+                    <td><button class="btn btn-warning" (click)="deleteTemperatureController(temperatureControllerScenario.id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <h4>List of shutter scenarios :</h4>
+        <br>
+        <table class="table table-bordered table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Status</th>
+                    <th scope="col">Start Hour</th>
+                    <th scope="col">Position</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let shutterScenario of shutterScenarioList">
+                    <td>{{ shutterScenario.status }}</td>
+                    <td>{{ shutterScenario.startHour |  date: 'medium' }}</td>
+                    <td>{{ shutterScenario.position }}</td>
+                    <td><button class="btn btn-warning" (click)="deleteShutter(shutterScenario.id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

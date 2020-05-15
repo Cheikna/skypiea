@@ -13,7 +13,7 @@ export class TemperatureControllerScenarioService extends RestService {
     super("temperature-controller-scenarios", http);
   }
 
-  getTemperatureControllerScenari(room: number): Observable<any> {
+  getTemperatureControllerScenario(room: number): Observable<any> {
     return this.http.get(`${this.completeBackendServerUrl}/${room}`, { headers: this.headers });
   }
 
@@ -21,5 +21,7 @@ export class TemperatureControllerScenarioService extends RestService {
     return this.http.post(`${this.completeBackendServerUrl}/scenario`,JSON.stringify(objectToSave), { headers: this.headers });
   }
 
-
+  delete(id: number){
+    return this.http.post(`${this.completeBackendServerUrl}/scenario/temperatureController/delete`,id, { headers: this.headers });
+  }
 }

@@ -13,7 +13,7 @@ export class ShutterScenarioService extends RestService {
     super("shutter-scenarios", http);
   }
 
-  getShutterScenari(room: number): Observable<any> {
+  getShutterScenario(room: number): Observable<any> {
     return this.http.get(`${this.completeBackendServerUrl}/${room}`, { headers: this.headers });
   }
 
@@ -21,5 +21,7 @@ export class ShutterScenarioService extends RestService {
     return this.http.post(`${this.completeBackendServerUrl}/scenario`,JSON.stringify(objectToSave), { headers: this.headers });
   }
 
-
+  delete(id: number){
+    return this.http.post(`${this.completeBackendServerUrl}/scenario/shutter/delete`,id, { headers: this.headers });
+  }
 }

@@ -57,6 +57,11 @@ public class TemperatureControllerScenarioService {
 		return savedObject;
 	}	
 	
+	public boolean delete(Long id) {
+		temperatureControllerScenarioRepository.deleteById(id);
+		return true;
+	}
+	
 
 	
 }

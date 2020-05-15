@@ -34,6 +34,7 @@ import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.com
 import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
 import { MailBoxStaffComponent } from './components/mail-box-staff/mail-box-staff.component';32	
 import { MailBoxResidentComponent } from './components/mail-box-resident/mail-box-resident.component';
+import { ScenarioListComponent } from './components/scenario-list/scenario-list.component';
 const routes: Routes = [
   {
     path: '',
@@ -47,6 +48,15 @@ const routes: Routes = [
       userType: 'RESIDENT'
     }
   },
+  {
+    path: 'ScenarioList',
+    component: ScenarioListComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      userType: 'RESIDENT'
+    }
+  },
+  
   {
     path: 'object-scenario-config',
     component: ObjectScenarioConfigComponent, 
@@ -294,7 +304,7 @@ const routes: Routes = [
 ];
 // The line {path: '**', component: PageNotFoundComponent} MUST BE the LAST route
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

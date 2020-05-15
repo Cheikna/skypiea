@@ -44,7 +44,13 @@ public class TemperatureControllerScenario{
     @Column(name = "TEMPERATURE")
 	private int temperature;
     
-    public TemperatureControllerScenario(Long id, NonMedicalConnectedObject nonMedicalConnectedObject, Room room, String status, Timestamp startHour, Timestamp endHour, int temperature) {
+    
+    
+    public TemperatureControllerScenario() {
+		super();
+	}
+
+	public TemperatureControllerScenario(Long id, NonMedicalConnectedObject nonMedicalConnectedObject, Room room, String status, Timestamp startHour, Timestamp endHour, int temperature) {
 		this.id = id;
 		this.nonMedicalConnectedObject = nonMedicalConnectedObject;
 		this.room = room;
