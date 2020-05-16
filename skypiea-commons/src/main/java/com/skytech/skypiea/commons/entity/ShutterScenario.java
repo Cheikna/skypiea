@@ -46,6 +46,15 @@ public class ShutterScenario {
 	public ShutterScenario() {
 		super();
 	}
+	
+	public ShutterScenario(long id) {
+		this.id = id;
+	}
+	
+	public ShutterScenario(Room room, String position) {
+		this.room = room;
+		this.position = position;
+	}
 
 	public ShutterScenario(Long id, NonMedicalConnectedObject nonMedicalConnectedObject, Room room, String status, Timestamp startHour, String position) {
 		this.id = id;

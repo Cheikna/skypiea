@@ -2,6 +2,7 @@ package com.skytech.skypiea.api.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.transaction.Transactional;
@@ -37,11 +38,15 @@ public class TemperatureControllerScenarioService {
 	private TemperatureControllerScenarioRepository temperatureControllerScenarioRepository;
 	
 	public List<TemperatureControllerScenario> findByRoom(Long room){
-		try {
-			List<TemperatureControllerScenario> temperatureControllerScenarios = this.temperatureControllerScenarioRepository.findByRoom(room);
-			return temperatureControllerScenarios;
-		} catch (Exception e) {
-			log.error(e.getMessage());
+		if(room>0) {
+			try {
+				List<TemperatureControllerScenario> temperatureControllerScenarios = this.temperatureControllerScenarioRepository.findByRoom(room);
+				return temperatureControllerScenarios;
+			} catch (Exception e) {
+				log.error(e.getMessage());
+			}
+		}else {
+			return new ArrayList<TemperatureControllerScenario>();
 		}
 		return new ArrayList<TemperatureControllerScenario>();
 	}

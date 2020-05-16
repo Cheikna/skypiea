@@ -47,7 +47,16 @@ public class TemperatureControllerScenario{
     
     
     public TemperatureControllerScenario() {
-		super();
+    	super();
+	}
+    
+    public TemperatureControllerScenario(Long id) {
+    	this.id = id;
+	}
+    
+    public TemperatureControllerScenario(Room room, int temperature) {
+    	this.room = room;
+    	this.temperature = temperature;
 	}
 
 	public TemperatureControllerScenario(Long id, NonMedicalConnectedObject nonMedicalConnectedObject, Room room, String status, Timestamp startHour, Timestamp endHour, int temperature) {
