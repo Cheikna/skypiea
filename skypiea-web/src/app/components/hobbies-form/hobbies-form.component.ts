@@ -64,16 +64,14 @@ export class HobbiesFormComponent implements OnInit {
       (data) => {
         if(data){
           console.log("profile created");
-          //this.router.navigate(['/dynamicForm']).then(() => {
-            this.toastService.displayToast(ToastType.SUCCESS, 'Successful connection', true, 'Please wait, the page will reload');
-          //});
+          this.toastService.displayToast(ToastType.SUCCESS, 'Successful connection', true, 'Please wait, the page will reload');
         } else {
           this.toastService.displayToast(ToastType.ERROR, 'Authentication failed !', true, 
           'Your username or your password is incorrect.', 7000);
         }        
       },
       (error) => this.toastService.displayToast(ToastType.ERROR, 'An error occured !', true, JSON.stringify(error)));
-
   }
+
 
 }

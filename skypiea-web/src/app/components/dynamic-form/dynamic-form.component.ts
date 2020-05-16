@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { ToastService } from 'src/app/util/toast.service';
 import { ToastType } from 'src/app/enums/toastType.enum';
 import { DiseaseType } from 'src/app/enums/disease.enum';
-import { DiseaseFormComponent } from 'src/app/sub-components/disease-form/disease-form.component';
 import { Client } from 'src/app/models/client.model';
 
 

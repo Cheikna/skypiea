@@ -14,6 +14,7 @@ public class ClientDetails{
 	private int income;
 	private String cooker;
 	private String sporty;
+	private float priorityPoints;
 	
 	public ClientDetails() {
 		super();
@@ -21,7 +22,7 @@ public class ClientDetails{
 
 	public ClientDetails(String lastName, String firstName, int age, String adress, String phoneNumber, String email,
 			int numberOfDisease, String cinephile, String smoker, String sedentary, int income, String cooker,
-			String sporty) {
+			String sporty, float priorityPoints) {
 		super();
 		this.lastName = lastName;
 		this.firstName = firstName;
@@ -36,6 +37,7 @@ public class ClientDetails{
 		this.income = income;
 		this.cooker = cooker;
 		this.sporty = sporty;
+		this.priorityPoints = priorityPoints;
 	}
 
 	public String getLastName() {
@@ -142,12 +144,20 @@ public class ClientDetails{
 		this.sporty = sporty;
 	}
 
+	public float getPriorityPoints() {
+		return priorityPoints;
+	}
+
+	public void setPriorityPoints(float priorityPoints) {
+		this.priorityPoints = priorityPoints;
+	}
+
 	@Override
 	public String toString() {
 		return "ClientDetails [lastName=" + lastName + ", firstName=" + firstName + ", age=" + age + ", adress="
 				+ adress + ", phoneNumber=" + phoneNumber + ", email=" + email + ", numberOfDisease=" + numberOfDisease
 				+ ", cinephile=" + cinephile + ", smoker=" + smoker + ", sedentary=" + sedentary + ", income=" + income
-				+ ", cooker=" + cooker + ", sporty=" + sporty + "]";
+				+ ", cooker=" + cooker + ", sporty=" + sporty + ", priorityPoints = " + priorityPoints + "]";
 	}
 	
 	

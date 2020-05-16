@@ -2,6 +2,8 @@ package com.skytech.skypiea.api.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skytech.skypiea.api.service.ClientService;
 import com.skytech.skypiea.commons.entity.Client;
+import com.skytech.skypiea.commons.util.ClientDetails;
 
 @RestController
 @RequestMapping("/clients")
@@ -33,8 +36,38 @@ public class ClientController {
 		return clientService.findAll();
 	}
 	
-	@GetMapping("/priorityPoints")
-	public void getPriorityPointsPerClients() {
-		clientService.calculOfPriorityPointsForAClient();
+	@GetMapping("/priorityPointsDiseaseIncomeCriteria")
+	public void getPriorityPointsPerClientsDiseaseIncomeCriteria() {
+		clientService.calculOfPriorityPointsForAClientDiseaseIncomeCriteria();
+	}
+	
+	@GetMapping("/priorityPointsDiseaseCriteriaIncome")
+	public void getPriorityPointsPerClientsDiseaseCriteriaIncome() {
+		clientService.calculOfPriorityPointsForAClientDiseaseCriteriaIncome();
+	}
+	
+	@GetMapping("/priorityPointsIncomeDiseaseCriteria")
+	public void getPriorityPointsPerClientsIncomeDiseaseCriteria() {
+		clientService.calculOfPriorityPointsForAClientIncomeDiseaseCriteria();
+	}
+	
+	@GetMapping("/priorityPointsIncomeCriteriaDisease")
+	public void getPriorityPointsPerClientsIncomeCriteriaDisease() {
+		clientService.calculOfPriorityPointsForAClientIncomeCriteriaDisease();
+	}
+	
+	@GetMapping("/priorityPointsCriteriaIncomeDisease")
+	public void getPriorityPointsPerClientsCriteriaIncomeDisease() {
+		clientService.calculOfPriorityPointsForAClientCriteriaIncomeDisease();
+	}
+	
+	@GetMapping("/priorityPointsCriteriaDiseaseIncome")
+	public void getPriorityPointsPerClientsCriteriaDiseaseIncome() {
+		clientService.calculOfPriorityPointsForAClientCriteriaDiseaseIncome();
+	}
+	
+	@PostMapping("/sortedList")
+	public List<ClientDetails> sortedClientDetailsList(@RequestBody List<ClientDetails> clientDetails) {
+		return clientService.sortClientDetailsListByPriorityPoints(clientDetails);
 	}
 }

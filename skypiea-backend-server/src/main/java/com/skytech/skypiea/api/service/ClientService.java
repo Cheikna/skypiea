@@ -1,12 +1,16 @@
 package com.skytech.skypiea.api.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skytech.skypiea.api.repository.ClientRepository;
 import com.skytech.skypiea.commons.entity.Client;
+import com.skytech.skypiea.commons.util.ClientDetails;
 
 @Service
 public class ClientService {
@@ -29,7 +33,51 @@ public class ClientService {
 		return clientRepository.save(client);
 	}
 	
-	public void calculOfPriorityPointsForAClient() {
+	public void calculOfPriorityPointsForAClientIncomeDiseaseCriteria() {
+		List<Client> clients = findAll();
+		for (Client client : clients) {
+			float priorityPoints = 0;
+			priorityPoints += diseaseService.findNumberOfDiseaseByClientId(client.getId()) * 4;
+			priorityPoints += profileService.getPointsForCriteria(client.getId()) * 0.5;
+			priorityPoints += profileService.getPointsForIncome(client.getId()) * 12;
+			clientRepository.updateClientForPriorityPoints(priorityPoints, client.getId());
+		} 
+	}
+	
+	public void calculOfPriorityPointsForAClientIncomeCriteriaDisease() {
+		List<Client> clients = findAll();
+		for (Client client : clients) {
+			float priorityPoints = 0;
+			priorityPoints += diseaseService.findNumberOfDiseaseByClientId(client.getId()) * 0.5;
+			priorityPoints += profileService.getPointsForCriteria(client.getId()) * 4;
+			priorityPoints += profileService.getPointsForIncome(client.getId()) * 12;
+			clientRepository.updateClientForPriorityPoints(priorityPoints, client.getId());
+		} 
+	}
+	
+	public void calculOfPriorityPointsForAClientCriteriaDiseaseIncome() {
+		List<Client> clients = findAll();
+		for (Client client : clients) {
+			float priorityPoints = 0;
+			priorityPoints += diseaseService.findNumberOfDiseaseByClientId(client.getId()) * 4;
+			priorityPoints += profileService.getPointsForCriteria(client.getId()) * 12;
+			priorityPoints += profileService.getPointsForIncome(client.getId()) * 0.5;
+			clientRepository.updateClientForPriorityPoints(priorityPoints, client.getId());
+		} 
+	}
+	
+	public void calculOfPriorityPointsForAClientCriteriaIncomeDisease() {
+		List<Client> clients = findAll();
+		for (Client client : clients) {
+			float priorityPoints = 0;
+			priorityPoints += diseaseService.findNumberOfDiseaseByClientId(client.getId()) * 0.5;
+			priorityPoints += profileService.getPointsForCriteria(client.getId()) * 12;
+			priorityPoints += profileService.getPointsForIncome(client.getId()) * 4;
+			clientRepository.updateClientForPriorityPoints(priorityPoints, client.getId());
+		} 
+	}
+	
+	public void calculOfPriorityPointsForAClientDiseaseIncomeCriteria() {
 		List<Client> clients = findAll();
 		for (Client client : clients) {
 			float priorityPoints = 0;
@@ -37,7 +85,32 @@ public class ClientService {
 			priorityPoints += profileService.getPointsForCriteria(client.getId()) * 0.5;
 			priorityPoints += profileService.getPointsForIncome(client.getId()) * 4;
 			clientRepository.updateClientForPriorityPoints(priorityPoints, client.getId());
+		} 
+	}
+	
+	public void calculOfPriorityPointsForAClientDiseaseCriteriaIncome() {
+		List<Client> clients = findAll();
+		for (Client client : clients) {
+			float priorityPoints = 0;
+			priorityPoints += diseaseService.findNumberOfDiseaseByClientId(client.getId()) * 12;
+			priorityPoints += profileService.getPointsForCriteria(client.getId()) * 4;
+			priorityPoints += profileService.getPointsForIncome(client.getId()) * 0.5;
+			clientRepository.updateClientForPriorityPoints(priorityPoints, client.getId());
+		} 
+	}
+	
+	public List<ClientDetails> sortClientDetailsListByPriorityPoints(List<ClientDetails> clientDetails) {
+		System.out.println("DETAILS : " + clientDetails);
+		return clientDetails.stream().sorted((c1, c2) -> compare(c1.getPriorityPoints(), c2.getPriorityPoints())).collect(Collectors.toList());
+	}
+
+	private int compare(float priorityPoints, float priorityPoints2) {
+		if (priorityPoints > priorityPoints2) {
+			return -1;
+		} else if (priorityPoints > priorityPoints2) {
+			return 1;
 		}
+		return 0;
 	}
 
 }

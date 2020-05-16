@@ -39,7 +39,7 @@ public class Client extends com.skytech.skypiea.commons.entity.Entity{
 	protected String country;
 	
 	@Column(name="PRIORITY_POINTS")
-	protected int priorityPoints;
+	protected float priorityPoints;
 
 	public Client() {
 		super();
@@ -139,11 +139,11 @@ public class Client extends com.skytech.skypiea.commons.entity.Entity{
 		this.phoneNumber = phoneNumber;
 	}
 	
-	public int getPriorityPoints() {
+	public float getPriorityPoints() {
 		return priorityPoints;
 	}
 
-	public void setPriorityPoints(int priorityPoints) {
+	public void setPriorityPoints(float priorityPoints) {
 		this.priorityPoints = priorityPoints;
 	}
 
