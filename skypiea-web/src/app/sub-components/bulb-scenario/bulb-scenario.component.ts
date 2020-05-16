@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlarmClockScenario } from 'src/app/models/alarmClockScenario.model';
+import { BulbScenario } from 'src/app/models/bulbScenario.model';
 import { WebStorageService } from 'src/app/util/web-storage.service';
 import { RoomService } from 'src/app/services/room.service';
 import { Room } from 'src/app/models/room.model';
@@ -8,31 +8,33 @@ import { Resident } from 'src/app/models/resident.model';
 import { storageKey } from 'src/app/util/storageKey.util';
 import { NgForm } from '@angular/forms';
 import { NonMedicalObjectType } from 'src/app/enums/nonMedicalObjectType.enum';
-import { AlarmClockScenarioService } from 'src/app/services/alarm-clock-scenario.service';
-
+import { BulbScenarioService } from 'src/app/services/bulb-scenario.service';
 
 @Component({
-  selector: 'app-alarm-clock-scenario',
-  templateUrl: './alarm-clock-scenario.component.html',
-  styleUrls: ['./alarm-clock-scenario.component.scss']
+  selector: 'app-bulb-scenario',
+  templateUrl: './bulb-scenario.component.html',
+  styleUrls: ['./bulb-scenario.component.scss']
 })
-export class AlarmClockScenarioComponent implements OnInit {
+export class BulbScenarioComponent implements OnInit {
 
   room: Room;
   resident: Resident;
   status: String;
   startHour: Date;
+  endHour:Date;
+  color: String;
+  selected: String;
   objectsFromServiceCall: Array<any>;
-  alarmClockScenario: any;
+  bulbScenario: any;
   nonMedicalConnectedObject: any;
   
 
-  constructor(private webStorageService: WebStorageService, private roomService: RoomService,private alarmClockScenarioService: AlarmClockScenarioService) {
+  constructor(private webStorageService: WebStorageService, private roomService: RoomService,private bulbScenarioService: BulbScenarioService) {
 
   }
 
   ngOnInit() {
-    this.alarmClockScenario = new AlarmClockScenario();
+    this.bulbScenario = new BulbScenario();
     this.room = new Room();
     this.room.state = State.OPERATIONAL;
     this.objectsFromServiceCall = new Array<string>();
@@ -45,15 +47,19 @@ export class AlarmClockScenarioComponent implements OnInit {
 
   saveConfig(form: NgForm) {
     this.objectsFromServiceCall.forEach((object) => {
-      if(object.nonMedicalObjectType == NonMedicalObjectType.ALARM_CLOCK){
-        this.alarmClockScenario.nonMedicalConnectedObject = object;
+      if(object.nonMedicalObjectType == NonMedicalObjectType.BULB){
+        this.bulbScenario.nonMedicalConnectedObject = object;
       }
     });
-    this.alarmClockScenario.status = form.value['status'];
-    this.alarmClockScenario.startHour = form.value['startHour'];
-    this.alarmClockScenario.room = this.room;
-    this.alarmClockScenarioService.save(this.alarmClockScenario).subscribe((data)=> {
-      this.alarmClockScenario = data;
+    this.bulbScenario.status = form.value['status'];
+    this.bulbScenario.startHour = form.value['startHour'];
+    this.bulbScenario.endHour = form.value['endHour'];
+    console.log(this.selected)
+    this.bulbScenario.color = this.selected;
+    this.bulbScenario.room = this.room;
+    this.bulbScenarioService.save(this.bulbScenario).subscribe((data)=> {
+      this.bulbScenario = data;
     });
   }
 }
+

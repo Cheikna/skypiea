@@ -66,6 +66,8 @@ import { MailBoxStaffComponent } from './components/mail-box-staff/mail-box-staf
 import { MailBoxResidentComponent } from './components/mail-box-resident/mail-box-resident.component';
 import { MailsListComponent } from './sub-components/mails-list/mails-list.component';
 import { ScenarioListComponent } from './components/scenario-list/scenario-list.component';
+import { DoorSensorScenarioComponent } from './sub-components/door-sensor-scenario/door-sensor-scenario.component';
+import { BulbScenarioComponent } from './sub-components/bulb-scenario/bulb-scenario.component';
 
 @NgModule({
   entryComponents: [
@@ -131,7 +133,9 @@ import { ScenarioListComponent } from './components/scenario-list/scenario-list.
     MailBoxStaffComponent,
     MailBoxResidentComponent,
     MailsListComponent,
-    ScenarioListComponent
+    ScenarioListComponent,
+    DoorSensorScenarioComponent,
+    BulbScenarioComponent
   ],
   imports: [
     BrowserModule,

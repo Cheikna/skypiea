@@ -7,7 +7,7 @@
                 <form (ngSubmit)="saveConfig(f)" #f="ngForm">
                     <mat-card>
                         <mat-card-header>
-                            <mat-card-title>Alarm Clock</mat-card-title>
+                            <mat-card-title>Bulb</mat-card-title>
                         </mat-card-header>
                         <mat-card-content>
                             <div class="row">
@@ -24,6 +24,24 @@
                                     <mat-form-field>
                                         <mat-label>Select an hour of start</mat-label>
                                         <input matInput id="startHour" type="datetime-local" class="form-control" name="startHour" ngModel>
+                                    </mat-form-field>
+                                </div>
+                                <div class="date-filter-from col-4">
+                                    <mat-form-field>
+                                        <mat-label>Select an hour of end</mat-label>
+                                        <input matInput id="endHour" type="datetime-local" class="form-control" name="endHour" ngModel>
+                                    </mat-form-field>
+                                </div>
+                                <div class="date-filter-from col-4">
+                                    <mat-form-field>
+                                        <mat-label>Select the color light</mat-label>
+                                        <mat-select [(value)]= "selected">
+                                          <mat-option value="#FF00FF">Rose</mat-option>
+                                          <mat-option value="#FFFF00">Jaune</mat-option>
+                                          <mat-option value="#00BFFF">Bleu</mat-option>
+                                          <mat-option value="#FF0000">Rouge</mat-option>
+                                          <mat-option value="#00FF00">Vert</mat-option>
+                                        </mat-select>
                                     </mat-form-field>
                                 </div>
                             </div>

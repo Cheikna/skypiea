@@ -81,8 +81,6 @@ public class NonMedicalConnectedObjectServiceTest {
 		// on vérifie que la valeur a bien été enregistré. 
 		assertEquals(Status.OFF, savedObj.getStatus());
 		
-		//TODO: test dans le cas contraire 
-		//TODO: mocker BD pour test
 		
 	}
 	
