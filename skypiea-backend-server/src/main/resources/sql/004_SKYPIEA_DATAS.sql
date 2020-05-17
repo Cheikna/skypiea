@@ -142,3 +142,31 @@ insert into CONNECTED_OBJECT (ID, VERSION, BRAND, IP_ADDRESS, MAC_ADDRESS, LAST_
 insert into NON_MEDICAL_CONNECTED_OBJECT (ID, INSTALLATION_DATE, NON_MEDICAL_OBJECT_TYPE, ROOM_ID, SVG_POINT) values (currval(pg_get_serial_sequence('connected_object', 'id')), '2019-12-15 09:00:00.000', 'SMOKE_SENSOR', currval(pg_get_serial_sequence('room', 'id')), 'point-10');
 insert into OBJECT_SETTING values(nextval(pg_get_serial_sequence('object_setting', 'id')), 1, 15, '2019-12-09 09:00:00.000');
 insert into SMOKE_SENSOR values(currval(pg_get_serial_sequence('object_setting', 'id')), 1, 300, 'LOW', 100, 355);
+
+
+-- New Client/ Disease/ Profile --
+insert into CLIENT (id, version, last_name, first_name, age, email, street_number, street_name, zip_code, city, phone_number, country, priority_points) 
+VALUES (nextval(pg_get_serial_sequence('client', 'id')), 0, 'Gonzales', 'Leo', 81, 'gonzales.leo@mail.com', 1, 'rue de Paris', 75001, 'Paris', 0101010101, 'France', 0);
+
+insert into DISEASE (id, version, type_of_disease, duration, treatment, client_id) 
+VALUES (nextval(pg_get_serial_sequence('disease', 'id')), 0, 'DIABETIC', 3, 'Metformine', currval(pg_get_serial_sequence('client', 'id')));
+
+insert into PROFILE (id, version, criteria, client_id) VALUES (nextval(pg_get_serial_sequence('profile', 'id')), 0, '{"income":"difficulties","smoker":"true","cook":"cantine","cinephile":"false","sedentary":"true","sporty":"false"}', currval(pg_get_serial_sequence('client', 'id')));
+
+
+
+insert into CLIENT (id, version, last_name, first_name, age, email, street_number, street_name, zip_code, city, phone_number, country, priority_points) 
+VALUES (nextval(pg_get_serial_sequence('client', 'id')), 0, 'James', 'Gerard', 81, 'james.gerard@mail.com', 15, 'rue de Chelles', 77200, 'Torcy', 0123456789, 'France', 0);
+
+insert into DISEASE (id, version, type_of_disease, duration, treatment, client_id) 
+VALUES (nextval(pg_get_serial_sequence('disease', 'id')), 0, 'ARTHRITIS', 5, 'Doliprane', currval(pg_get_serial_sequence('client', 'id')));
+
+insert into DISEASE (id, version, type_of_disease, duration, treatment, client_id) 
+VALUES (nextval(pg_get_serial_sequence('disease', 'id')), 0, 'ALZHEIMER', 1, 'Northon', currval(pg_get_serial_sequence('client', 'id')));
+
+insert into PROFILE (id, version, criteria, client_id) VALUES (nextval(pg_get_serial_sequence('profile', 'id')), 0, '{"income":"normal","smoker":"false","cook":"mixed","cinephile":"false","sedentary":"false","sporty":"true"}', currval(pg_get_serial_sequence('client', 'id')));
+
+
+insert into CLIENT (id, version, last_name, first_name, age, email, street_number, street_name, zip_code, city, phone_number, country, priority_points) 
+VALUES (nextval(pg_get_serial_sequence('client', 'id')), 0, 'Fabrice', 'Jackson', 72, 'fabrice.jackson@mail.com', 15, 'rue Saint-Simon', 94000, 'Creteil', 0123456789, 'France', 0);
+insert into PROFILE (id, version, criteria, client_id) VALUES (nextval(pg_get_serial_sequence('profile', 'id')), 0, '{"income":"rich","smoker":"true","cook":"alone","cinephile":"true","sedentary":"true","sporty":"true"}', currval(pg_get_serial_sequence('client', 'id')));

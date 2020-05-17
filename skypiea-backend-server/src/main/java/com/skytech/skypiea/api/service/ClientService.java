@@ -99,16 +99,16 @@ public class ClientService {
 		} 
 	}
 	
+	//La méthode fonctionne correctement mais n'a pas été utilisé car le service était systématiquement appelé à la fin en l'angular
 	public List<ClientDetails> sortClientDetailsListByPriorityPoints(List<ClientDetails> clientDetails) {
-		System.out.println("DETAILS : " + clientDetails);
 		return clientDetails.stream().sorted((c1, c2) -> compare(c1.getPriorityPoints(), c2.getPriorityPoints())).collect(Collectors.toList());
 	}
 
-	private int compare(float priorityPoints, float priorityPoints2) {
-		if (priorityPoints > priorityPoints2) {
-			return -1;
-		} else if (priorityPoints > priorityPoints2) {
+	public int compare(float priorityPoints, float priorityPoints2) {
+		if (priorityPoints < priorityPoints2) {
 			return 1;
+		} else if (priorityPoints > priorityPoints2) {
+			return -1;
 		}
 		return 0;
 	}

@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -19,6 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.skytech.skypiea.api.repository.ClientRepository;
 import com.skytech.skypiea.api.repository.ResidentRepository;
 import com.skytech.skypiea.commons.entity.Client;
+import com.skytech.skypiea.commons.util.ClientDetails;
 
 @ComponentScan(basePackageClasses = {
 		ClientService.class,
@@ -70,6 +72,21 @@ public class ClientServiceTest {
 		assertEquals(id, client2.getId());		
 	}
 	
+	@Test
+	public void sortClientDetailsListByPriorityPointsTest() {
+		List<ClientDetails> clientDetails = new ArrayList<ClientDetails>();
+		clientDetails.add(new ClientDetails("TestSup", "TestSup", 0, "TestSup", "TestSup", "TestSup", 0, null, null, null, 0, null, null, 15));
+		clientDetails.add(new ClientDetails("TestInf", "TestInf", 0, "TestInf", "TestInf", "TestInf", 0, null, null, null, 0, null, null, 5));
+		List<ClientDetails> sortedClientDetails = clientService.sortClientDetailsListByPriorityPoints(clientDetails);
+		assertEquals(15.0, sortedClientDetails.get(0).getPriorityPoints(), 0.1);
+		assertEquals(5.0, sortedClientDetails.get(1).getPriorityPoints(), 0.1);
+	}
 	
+	@Test
+	public void compareTest() {
+		assertEquals(1, clientService.compare(1, 2));
+		assertEquals(-1, clientService.compare(2, 1));
+		assertEquals(0, clientService.compare(1, 1));
+	}
 	
 }

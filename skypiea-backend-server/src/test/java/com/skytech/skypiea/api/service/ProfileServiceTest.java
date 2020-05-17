@@ -122,6 +122,11 @@ public class ProfileServiceTest {
 		ProfileCriteriaJsonParameter profileCriteriaJsonParameter = new ProfileCriteriaJsonParameter(profile, 2, "false", 4, 200, "true", 2, true);
 		profileService.save(profileCriteriaJsonParameter);
 		assertEquals(criteriaModel, profileService.getProfileCriteriaForClient(client.getId()));
-		
+	}
+	
+	@Test
+	public void getPointsForIncomeTest() {
+		Profile p = new Profile(new Long(1), new Long(0), client, criteriaModel);
+		assertEquals(0, profileService.getPointsForIncome(client.getId()));
 	}
 }
