@@ -75,6 +75,7 @@ import { BulbScenarioComponent } from './sub-components/bulb-scenario/bulb-scena
     ObjectInfoComponent,
     ObjectMonitoringExtraInfoComponent,
     ObjectSettingsEventsHistoryComponent
+    
   ],
   declarations: [
     AppComponent,
