@@ -1,0 +1,63 @@
+section {
+    background: url("../../../assets/images/backgrounds/op-wallpaper.jpg") no-repeat;
+    background-size: cover;
+    width: auto;
+    font-family: "Britannic Bold", Arial;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: auto;
+  }
+  
+  .title {
+      font-family: "Britannic Bold", Arial;
+      font-weight: bold;
+      color: white;
+  }
+  
+  hr {
+      border: 1px white solid;
+  }
+
+  th {
+    font-family: "Avenir Next", Arial;
+    border: 1px solid grey;
+    padding: 5px;
+  }
+
+  td {
+    border: 1px solid grey;
+    padding: 5px; 
+  }
+  
+  table {
+    font-display: center;
+    padding: 10px;
+    border: 1px solid grey;
+  }
+
+  .tab {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .statistic-section-title,
+  .statistic-card-title {
+    font-weight: bold;
+    padding-left: 20px;
+  }
+  
+  .statistic-section-title {
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  mat-card {
+    margin-bottom: 15px;
+  }
+  
+  .data-lack-info {
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  
