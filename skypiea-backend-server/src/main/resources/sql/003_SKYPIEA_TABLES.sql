@@ -17,7 +17,8 @@ STREET_NUMBER integer,
 STREET_NAME VARCHAR(255),
 ZIP_CODE VARCHAR(20),
 CITY character varying(60),
-COUNTRY VARCHAR(255)
+COUNTRY VARCHAR(255),
+priority_points real
 );
 
 CREATE TABLE disease(

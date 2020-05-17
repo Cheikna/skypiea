@@ -37,10 +37,12 @@ export class DynamicFormComponent implements OnInit {
   fracture: any;
   parkinson: any;
   numberOfDisease: any;
+  checked = false;
 
   constructor(private clientService: ClientService, private diseaseService: DiseaseService, private router : Router, private fb: FormBuilder, private toastService : ToastService) {
 
     this.dynamicForm = new FormGroup({
+      diseases: new FormControl(),
       diabetic: new FormControl(),
       alzheimer: new FormControl(),
       arthritis: new FormControl(),
@@ -67,6 +69,7 @@ export class DynamicFormComponent implements OnInit {
 
   ngOnInit() {
     this.dynamicForm = this.fb.group({
+      diseases: [false],
       diabetic: [false],
       arthritis: [false],
       fracture: [false],
@@ -138,6 +141,10 @@ export class DynamicFormComponent implements OnInit {
     return checked;
   }
 
+  haveDiseases(){
+    return this.dynamicForm.get('diseases').value === "yes";
+  }
+
   parkinsonCheckboxChecked(){
     var checked: Boolean;
     checked = this.dynamicForm.get('parkinson').value;
@@ -153,8 +160,14 @@ export class DynamicFormComponent implements OnInit {
     }
     return checked;
   }
+  
 
   createDisease(){
+    if (!this.haveDiseases()){
+      this.router.navigate(['/hobbiesForm']).then(() => {
+        this.toastService.displayToast(ToastType.SUCCESS, 'Your medical record are saved', true);
+      });
+    }
    
     this.client = this.clientService.getOneClient();
     this.numberOfDisease += this.diabetic + this.arthritis + this.parkinson + this.fracture + this.alzheimer;
@@ -166,12 +179,11 @@ export class DynamicFormComponent implements OnInit {
             if(data){
               console.log("disease created");
               this.router.navigate(['/hobbiesForm']).then(() => {
-                this.toastService.displayToast(ToastType.SUCCESS, 'Successful connection', true, 'Please wait, the page will reload');
+                this.toastService.displayToast(ToastType.SUCCESS, 'Your medical record are saved', true);
               });
               this.diseaseService.setClient(data.client);
             } else {
-              this.toastService.displayToast(ToastType.ERROR, 'Authentication failed !', true, 
-              'Your username or your password is incorrect.', 7000);
+              this.toastService.displayToast(ToastType.ERROR, 'Medical record is not saved !', true);
             }        
           },
           (error) => this.toastService.displayToast(ToastType.ERROR, 'An error occured !', true, JSON.stringify(error)));

@@ -1,39 +1,48 @@
 <div class="container">
 
-    <h1>Have you got diseases ? </h1>
+    <h1>Have you got medical issues ? </h1>
 
     <form class="needs-validation" [formGroup]="dynamicForm" (ngSubmit)="createDisease()" ngNativeValidate>
         <div class="form-group">
-                <div class="col-md-4 mb-3">
-                    <label>Have you got medical issues ?</label><br>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" name="diabetic" formControlName="diabetic" id="diabetic" aria-checked="true">
-                        <label class="form-check-label" for="diabetic">Diabetic</label>
-                        <app-disease-form *ngIf="diabeticCheckboxChecked()"></app-disease-form>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" name="arthritis" formControlName="arthritis" id="arthritis">
-                        <label class="form-check-label" for="arthritis">Arthritis</label>
-                        <app-disease-form *ngIf="arthritisCheckboxChecked()"></app-disease-form>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" name="fracture" formControlName="fracture" id="fracture">
-                        <label class="form-check-label" for="fracture">Fracture</label>
-                        <app-disease-form *ngIf="fractureCheckboxChecked()"></app-disease-form>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" name="alzheimer" formControlName="alzheimer" id="alzheimer">
-                        <label class="form-check-label" for="alzheimer">Alzheimer</label>
-                        <app-disease-form *ngIf="alzheimerCheckboxChecked()"></app-disease-form>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" name="parkinson" formControlName="parkinson" id="parkinson">
-                        <label class="form-check-label" for="parkinson">Parkinson</label>
-                        <app-disease-form *ngIf="parkinsonCheckboxChecked()"></app-disease-form>
-                    </div>        
-                    
+            <div class="col-md-4 mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="yes" name="diseases" formControlName="diseases" id="haveDiseases" required>
+                    <label class="form-check-label" for="true">Yes</label>
                 </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="no" name="diseases" formControlName="diseases" id="dontHaveDiseases">
+                    <label class="form-check-label" for="false">No</label>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3" *ngIf="haveDiseases()">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" name="diabetic" formControlName="diabetic" id="diabetic" aria-checked="true">
+                    <label class="form-check-label" for="diabetic">Diabetic</label>
+                    <app-disease-form *ngIf="diabeticCheckboxChecked()"></app-disease-form>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" name="arthritis" formControlName="arthritis" id="arthritis">
+                    <label class="form-check-label" for="arthritis">Arthritis</label>
+                    <app-disease-form *ngIf="arthritisCheckboxChecked()"></app-disease-form>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" name="fracture" formControlName="fracture" id="fracture">
+                    <label class="form-check-label" for="fracture">Fracture</label>
+                    <app-disease-form *ngIf="fractureCheckboxChecked()"></app-disease-form>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" name="alzheimer" formControlName="alzheimer" id="alzheimer">
+                    <label class="form-check-label" for="alzheimer">Alzheimer</label>
+                    <app-disease-form *ngIf="alzheimerCheckboxChecked()"></app-disease-form>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" name="parkinson" formControlName="parkinson" id="parkinson">
+                    <label class="form-check-label" for="parkinson">Parkinson</label>
+                    <app-disease-form *ngIf="parkinsonCheckboxChecked()"></app-disease-form>
+                </div>        
+                
+            </div>
         </div>
         <div mat-dialog-actions class="d-flex justify-content-left">
             <button mat-raised-button class="btn btn-success" type="submit">

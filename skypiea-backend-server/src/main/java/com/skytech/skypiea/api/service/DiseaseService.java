@@ -27,9 +27,7 @@ public class DiseaseService {
 	public int findNumberOfDiseaseByClientId(Long id) {
 		List<Disease> diseases = new ArrayList<Disease>();
 		try {
-			System.out.println("ID NB DISEASE : " + id);
 			diseases = diseaseRepository.findByClientId(id);
-//			System.out.println("Diseases : " + diseases.size());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

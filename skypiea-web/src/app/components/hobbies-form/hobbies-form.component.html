@@ -13,7 +13,7 @@
             <div class="col-md-4 mb-3">
                 <label>Do you prefer to ...</label><br>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" value="true" name="cooker" formControlName="cooker" id="trueCooker" checked>
+                    <input class="form-check-input" type="radio" value="true" name="cooker" formControlName="cooker" id="trueCooker" required>
                     <label class="form-check-label" for="true">Cook alone</label>
                 </div>
                 <div class="form-check">
@@ -29,7 +29,7 @@
             <div class="col-md-4 mb-3">
                 <label>Do you smoke ?</label><br>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" value="true" name="smoker" formControlName="smoker" id="trueSmoker" checked>
+                    <input class="form-check-input" type="radio" value="true" name="smoker" formControlName="smoker" id="trueSmoker" required>
                     <label class="form-check-label" for="true">Yes</label>
                     <label *ngIf=isSmoker()>How many cigarettes do you smoke per day ?</label>
                     <input *ngIf=isSmoker() type="number" class="form-control" placeholder="Ex : 2" required>
@@ -42,7 +42,7 @@
             <div class="col-md-4 mb-3">
                 <label>Do you prefer to</label><br>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" value="true" name="sedentary" formControlName="sedentary" id="trueSedentary" checked>
+                    <input class="form-check-input" type="radio" value="true" name="sedentary" formControlName="sedentary" id="trueSedentary" required>
                     <label class="form-check-label" for="true">be at home</label>
                     <label *ngIf=isSedentary()>What are your time pass at home ?</label>
                     <input *ngIf=isSedentary() type="text" class="form-control" placeholder="Ex : play video games" required>
@@ -57,7 +57,7 @@
             <div class="col-md-4 mb-3">
                 <label>Do you practices any sports ?</label><br>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" value="true" name="sports" formControlName="sports" id="trueSports" aria-checked="true" checked>
+                    <input class="form-check-input" type="radio" value="true" name="sports" formControlName="sports" id="trueSports" aria-checked="true" required>
                     <label class="form-check-label" for="true">Yes</label>
                     <label *ngIf=isSportive()>Which sports do you practice ?</label>
                     <input *ngIf=isSportive() type="text" class="form-control" placeholder="Ex : Football" required>
@@ -75,7 +75,7 @@
             </div>
         </div>
         <div mat-dialog-actions class="d-flex justify-content-left">
-            <button mat-raised-button class="btn btn-success" type="submit" (click)="createHobby()">
+            <button mat-raised-button class="btn btn-success" type="submit">
                 <mat-icon>done</mat-icon>Valid
             </button> 
         </div>
