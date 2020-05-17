@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,14 +16,18 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.skytech.skypiea.api.repository.NonMedicalConnectedObjectRepository;
+import com.skytech.skypiea.api.repository.RoomRepository;
 import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;
 import com.skytech.skypiea.commons.entity.RealTimeEvent;
+import com.skytech.skypiea.commons.entity.Room;
 import com.skytech.skypiea.commons.enumeration.NonMedicalObjectType;
 import com.skytech.skypiea.commons.enumeration.State;
 import com.skytech.skypiea.commons.enumeration.Status;
 
 @ComponentScan(basePackageClasses = {
-		NonMedicalConnectedObjectRepository.class
+		NonMedicalConnectedObjectRepository.class,
+		NonMedicalConnectedObjectService.class,
+		RoomRepository.class
 })
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -30,6 +36,10 @@ public class NonMedicalConnectedObjectServiceTest {
 	
 	@Autowired
 	private NonMedicalConnectedObjectRepository nonMedicalConnectedObjectRepository;
+	@Autowired
+	private NonMedicalConnectedObjectService nonMedicalConnectedObjectService;
+	@Autowired
+	private RoomRepository roomRepository;
 
 	@Test
 	public void testRealTimeEventDeletion() {
@@ -82,6 +92,16 @@ public class NonMedicalConnectedObjectServiceTest {
 		assertEquals(Status.OFF, savedObj.getStatus());
 		
 		
+	}
+	
+	@Test
+	public void TestFindByRoomId() {
+		Room room = new Room((long) 1);
+		Room roomSave = roomRepository.save(room);
+		NonMedicalConnectedObject obj1 = new NonMedicalConnectedObject((long) 1,"bonjour",room);
+		NonMedicalConnectedObject objSave = nonMedicalConnectedObjectRepository.save(obj1);
+		List<NonMedicalConnectedObject> list = nonMedicalConnectedObjectService.findByRoomId(roomSave.getId());
+		assertEquals("bonjour", list.get(0).getSvgPoint());
 	}
 	
 

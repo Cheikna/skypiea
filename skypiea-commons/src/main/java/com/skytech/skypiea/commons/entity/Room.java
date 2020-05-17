@@ -73,6 +73,10 @@ public class Room extends com.skytech.skypiea.commons.entity.Entity {
 		super();
 	}	
 	
+	public Room(long id) {
+		this.id = id;
+	}	
+	
 
 	public Room(Long id, Long version, Long doorNumber, int floor, float width, float length, float height, Wing wing,
 			String svgPoint) {
