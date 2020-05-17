@@ -316,7 +316,7 @@ getStateRate() {
       } else if (key == NonMedicalObjectType.SMOKE_SENSOR) {
         this.smokeSensorTotal = t[key];
       } else if (key == NonMedicalObjectType.SUNSHINE_SENSOR) {
-        this.sunshineSensorTotal = t[key];
+        this.sunshineSensorTotal = t[key]; 
       } else if (key == NonMedicalObjectType.TEMPERATURE_CONTROLLER) {
         this.temperatureControllerTotal = t[key];
       }
@@ -324,7 +324,5 @@ getStateRate() {
     }
   });
 }
-
-
 
 }
