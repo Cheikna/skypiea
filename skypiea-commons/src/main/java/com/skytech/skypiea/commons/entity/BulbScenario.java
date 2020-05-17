@@ -44,6 +44,15 @@ public class BulbScenario {
 	private String color;
 
 	
+	public BulbScenario() {
+		super();
+	}
+
+	public BulbScenario(Long id) {
+		super();
+		this.id = id;
+	}
+
 	public BulbScenario(Long id, NonMedicalConnectedObject nonMedicalConnectedObject, Room room, String status, Timestamp startHour, Timestamp endHour, String color) {
 		this.id = id;
 		this.nonMedicalConnectedObject = nonMedicalConnectedObject;

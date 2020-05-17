@@ -39,5 +39,10 @@ public class BulbScenarioService {
 		return savedObject;
 	}	
 	
+	public boolean delete(Long id) {
+		bulbScenarioRepository.deleteById(id);
+		return true;
+	}
+	
 
 }

@@ -40,6 +40,16 @@ public class AlarmClockScenario {
 		private  Timestamp startHour;
 		
 
+		public AlarmClockScenario() {
+			super();
+		}
+		
+
+		public AlarmClockScenario(Long id) {
+			super();
+			this.id = id;
+		}
+
 		public AlarmClockScenario(Long id, NonMedicalConnectedObject nonMedicalConnectedObject, Room room, String status, Timestamp startHour) {
 			this.id = id;
 			this.nonMedicalConnectedObject = nonMedicalConnectedObject;

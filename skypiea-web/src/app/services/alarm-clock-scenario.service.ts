@@ -23,4 +23,7 @@ export class AlarmClockScenarioService extends RestService {
     return this.http.post(`${this.completeBackendServerUrl}/scenario`,JSON.stringify(objectToSave), { headers: this.headers });
   }
 
+  delete(id: number){
+    return this.http.post(`${this.completeBackendServerUrl}/scenario/alarm-clock/delete`,id, { headers: this.headers });
+  }
 }

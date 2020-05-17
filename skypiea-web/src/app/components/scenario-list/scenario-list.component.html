@@ -47,5 +47,46 @@
                 </tr>
             </tbody>
         </table>
+        <br>
+        <br>
+        <h4>List of Alarm clock scenarios :</h4>
+        <br>
+        <table class="table table-bordered table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Status</th>
+                    <th scope="col">Start Hour</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let alarmClockScenario of alarmClockScenarioList">
+                    <td>{{ alarmClockScenario.status }}</td>
+                    <td>{{ alarmClockScenario.startHour |  date: 'medium' }}</td>
+                    <td><button class="btn btn-warning" (click)="deleteAlarmClock(alarmClockScenario.id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <h4>List of bulb scenarios :</h4>
+        <br>
+        <table class="table table-bordered table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Status</th>
+                    <th scope="col">Start Hour</th>
+                    <th scope="col">End Hour</th>
+                    <th scope="col">Color</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bulbScenario of bulbScenarioList">
+                    <td>{{ bulbScenario.status }}</td>
+                    <td>{{ bulbScenario.startHour |  date: 'medium' }}</td>
+                    <td>{{ bulbScenario.position }}</td>
+                    <td><button class="btn btn-warning" (click)="deleteBulb(bulbScenario.id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </section>
