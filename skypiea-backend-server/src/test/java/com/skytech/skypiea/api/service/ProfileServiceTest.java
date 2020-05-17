@@ -44,7 +44,7 @@ public class ProfileServiceTest {
 	@org.junit.Before
 	public void beforeTest() {
 		profileRepository.deleteAll();
-		client = clientService.save(new Client(null, null, "lastNameTest", "firstNameTest", 85, "test@email.fr", 1, "streetName test", "zipCode", "cityTest", "0101010101"));
+		client = clientService.save(new Client(null, null, "lastNameTest", "firstNameTest", 85, "test@email.fr", 1, "streetName test", "zipCode", "cityTest", "0101010101", 0));
 	}
 	
 	@Test
@@ -122,6 +122,11 @@ public class ProfileServiceTest {
 		ProfileCriteriaJsonParameter profileCriteriaJsonParameter = new ProfileCriteriaJsonParameter(profile, 2, "false", 4, 200, "true", 2, true);
 		profileService.save(profileCriteriaJsonParameter);
 		assertEquals(criteriaModel, profileService.getProfileCriteriaForClient(client.getId()));
-		
+	}
+	
+	@Test
+	public void getPointsForIncomeTest() {
+		Profile p = new Profile(new Long(1), new Long(0), client, criteriaModel);
+		assertEquals(0, profileService.getPointsForIncome(client.getId()));
 	}
 }

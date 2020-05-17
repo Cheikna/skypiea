@@ -23,4 +23,7 @@ export class BulbScenarioService extends RestService {
     return this.http.post(`${this.completeBackendServerUrl}/scenario`,JSON.stringify(objectToSave), { headers: this.headers });
   }
 
+  delete(id: number){
+    return this.http.post(`${this.completeBackendServerUrl}/scenario/bulb/delete`,id, { headers: this.headers });
+  }
 }

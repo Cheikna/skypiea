@@ -1,74 +1,74 @@
 <div class="container">
-    <h1>Personnal Form</h1>
+    <h1>What about you</h1>
     <form class="needs-validation" ngNativeValidate [formGroup]="personnalForm" (ngSubmit)="create()">
     <div class="form-group">
             <div class="col-md-4 mb-3">
-                <label for="prenom">First name</label>
+                <label for="prenom">First name*</label>
                 <input type="text" class="form-control" formControlName="firstName" [(ngModel)]="newClient.firstName" name="prenom" placeholder="Ex : Jacques" required>
             </div>
     </div>
     <div class="form-group">
             <div class="col-md-4 mb-3">
-                <label for="nom">Last name</label>
+                <label for="nom">Last name*</label>
                 <input type="text" class="form-control" formControlName="lastName" [(ngModel)]="newClient.lastName" name="nom" placeholder="Ex : Chirac" required>
             </div>
     </div>
     <div class="form-group">
             <div class="col-md-3 mb-3">
-            <label for="age">Age</label>
+            <label for="age">Age*</label>
             <input type="number" class="form-control" formControlName="age" [(ngModel)]="newClient.age" name="age" placeholder="Exemple : 88" required>
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-6 mb-3">
-            <label for="streetNumber">Street number</label>
+            <label for="streetNumber">Street number*</label>
             <input type="number" class="form-control" formControlName="streetNumber" [(ngModel)]="newClient.streetNumber" name="streetNumber" placeholder="Exemple : 15" required>
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-6 mb-3">
-            <label for="streetName">Street name</label>
+            <label for="streetName">Street name*</label>
             <input type="text" class="form-control" formControlName="streetName" [(ngModel)]="newClient.streetName" name="streetName" placeholder="Ex : rue de Paris" required>
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-6 mb-3">
-            <label for="city">City</label>
+            <label for="city">City*</label>
             <input type="text" class="form-control" formControlName="city" [(ngModel)]="newClient.city" name="city" placeholder="Ex : Paris" required>
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-3 mb-3">
-            <label for="zipCode">Zip code</label>
+            <label for="zipCode">Zip code*</label>
             <input type="text" class="form-control" formControlName="zipCode" [(ngModel)]="newClient.zipCode" name="zipCode" placeholder="Ex : 75001" required>
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-3 mb-3">
-            <label for="country">Country</label>
+            <label for="country">Country*</label>
             <input type="text" class="form-control" formControlName="country" [(ngModel)]="newClient.country" name="country" placeholder="Ex : France" required>
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-3 mb-3">
-            <label for="email">Email</label>
+            <label for="email">Email*</label>
             <input type="email" class="form-control" formControlName="email" [(ngModel)]="newClient.email" name="email" placeholder="Ex : jacques.chirac@example.fr" required>
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-3 mb-3">
-            <label for="phoneNumber">Phone number</label>
-            <input type="text" class="form-control" formControlName="phoneNumber" [(ngModel)]="newClient.phoneNumber" name="phoneNumber" placeholder="Ex : 0110101010" required>
+            <label for="phoneNumber">Phone number*</label>
+            <input type="number" class="form-control" size="10" formControlName="phoneNumber" [(ngModel)]="newClient.phoneNumber" name="phoneNumber" placeholder="Ex : 0110101010" required>
         </div>
     </div>
     <div class="form-group">
         <div class="form-check">
         <input class="form-check-input" type="checkbox" formControlName="cgu" value="" id="cgu" required>
-        <label class="form-check-label" for="cgu">I accept the conservation of my data</label>
+        <label class="form-check-label" for="cgu">I accept the conservation of my data*</label>
         </div>
     </div>
     <div mat-dialog-actions class="d-flex justify-content-left">
-        <button mat-raised-button [disabled]="personnalForm.invalid" class="btn btn-success" type="submit">
+        <button mat-raised-button class="btn btn-success" type="submit">
             <mat-icon>done</mat-icon>Valid
         </button> 
     </div>    

@@ -38,11 +38,14 @@ public class Client extends com.skytech.skypiea.commons.entity.Entity{
 	@Column(name="COUNTRY")
 	protected String country;
 	
+	@Column(name="PRIORITY_POINTS")
+	protected float priorityPoints;
+
 	public Client() {
 		super();
 	}
 	
-	public Client (Long id, Long version, String lastName, String firstName, Integer age, String email, Integer streetNumber, String streetName, String zipCode, String city, String phoneNumber) {
+	public Client (Long id, Long version, String lastName, String firstName, Integer age, String email, Integer streetNumber, String streetName, String zipCode, String city, String phoneNumber, int priorityPoints) {
 		super(id, version);
 		this.lastName = lastName;
 		this.firstName = firstName;
@@ -53,6 +56,7 @@ public class Client extends com.skytech.skypiea.commons.entity.Entity{
 		this.zipCode = zipCode;
 		this.city = city;
 		this.phoneNumber = phoneNumber;
+		this.priorityPoints = priorityPoints;
 	}
 	
 	public String getCountry() {
@@ -134,12 +138,20 @@ public class Client extends com.skytech.skypiea.commons.entity.Entity{
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	
+	public float getPriorityPoints() {
+		return priorityPoints;
+	}
+
+	public void setPriorityPoints(float priorityPoints) {
+		this.priorityPoints = priorityPoints;
+	}
 
 	@Override
 	public String toString() {
 		return "Client [lastName=" + lastName + ", firstName=" + firstName + ", age=" + age + ", email=" + email
 				+ ", streetNumber=" + streetNumber + ", streetName=" + streetName + ", zipCode=" + zipCode + ", city="
-				+ city + ", phoneNumber=" + phoneNumber + ", country=" + country + "]";
+				+ city + ", phoneNumber=" + phoneNumber + ", country=" + country + ", priorityPoints = " + priorityPoints + "]";
 	}
 	
 	

@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.skytech.skypiea.api.repository.ProfileRepository;
+import com.skytech.skypiea.commons.entity.Disease;
 import com.skytech.skypiea.commons.entity.Profile;
 import com.skytech.skypiea.commons.util.ProfileCriteriaJsonParameter;
 
@@ -35,6 +36,8 @@ public class ProfileService {
 		List<Profile> profiles = this.profileRepository.findAll();
 		return profiles;
 	}
+	
+	//Create criteria
 	
 	public void setIsCinephile(int hours) {
 		if (hours > 7) {
@@ -96,6 +99,8 @@ public class ProfileService {
 		return criteriaJson.toString();
 	}
 	
+	//Get criteria
+	
 	public String isSporty(String criteria) {
 		String[] criterias = criteria.split(",");
 		for (String c: criterias) {
@@ -117,11 +122,9 @@ public class ProfileService {
 	}
 	
 	public String isCooker(String criteria) {
-		System.out.println("GETCOOKER : " + criteria);
 		String[] criterias = criteria.split(",");
 		for (String c: criterias) {
 			if (c.contains(this.cooker)) {			
-				System.out.println("COOKER : " + c.split(":")[1].split("\"")[1]);
 				return c.split(":")[1].split("\"")[1];
 			}
 		}
@@ -149,13 +152,9 @@ public class ProfileService {
 	}
 	
 	public String isSmoker(String criteria) {
-		System.out.println("GETSMOEKR : " + criteria);
 		String[] criterias = criteria.split(",");
-		System.out.println("LINES : " + criterias[0]);
 		for (String c: criterias) {
-			System.out.println("C : " + c);
 			if (c.contains(this.smoker)) {				
-				System.out.println("SMOKER : " + c.split(":")[1].split("\"")[1]);
 				return c.split(":")[1].split("\"")[1];
 			}
 		}
@@ -169,7 +168,59 @@ public class ProfileService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("getProfileCriteria : " + profile.getCriteria());
 		return profile.getCriteria();
+	}
+	
+	//Points for criteria
+	public int getPointsForSmoker(String criteria) {
+		if (isSmoker(criteria).equals("true")) {
+			return 1;
+		}
+		return 0;
+	}
+	
+	public int getPointsForCinephile(String criteria) {
+		if (isCinephile(criteria).equals("true")) {
+			return 1;
+		}
+		return 0;
+	}
+	
+	public int getPointsForSedentary(String criteria) {
+		if (isSedentary(criteria).equals("true")) {
+			return 1;
+		}
+		return 0;
+	}
+	
+	public int getPointsForCooker(String criteria) {
+		if (isSedentary(criteria).equals("alone")) {
+			return 1;
+		}else if (isSedentary(criteria).equals("mixed")) {
+			return 2;
+		}
+		return 0;
+	}
+	
+	public int getPointsForSporty(String criteria) {
+		if (isSporty(criteria).equals("true")) {
+			return 1;
+		}
+		return 0;
+	}
+	
+	public int getPointsForCriteria(Long id) {
+		String criteria = getProfileCriteriaForClient(id);
+		return getPointsForSmoker(criteria) + getPointsForCinephile(criteria) + getPointsForCooker(criteria) + getPointsForSedentary(criteria) + getPointsForSporty(criteria);
+	}
+	
+	public int getPointsForIncome(Long id) {
+		String criteria = getProfileCriteriaForClient(id);
+		if (getIncome(criteria).equals("rich")) {
+			return 2;
+		}else if (getIncome(criteria).equals("normal")) {
+			return 1;
+		}
+		return 0;
 	}
 }

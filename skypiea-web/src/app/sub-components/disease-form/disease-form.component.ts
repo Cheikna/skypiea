@@ -31,6 +31,7 @@ export class DiseaseFormComponent implements OnInit {
     this.newDisease.typeOfDisease = this.diseaseService.getTypeOfDisease();
     this.diseaseService.setTreatment(this.newDisease.treatment);
     this.diseaseService.setDuration(this.newDisease.duration);
+    this.toastService.displayToast(ToastType.SUCCESS, 'The disease is saved on your medical record', true);
   }
 
   createFormGroup(){

@@ -31,6 +31,9 @@ public class AlarmClockScenarioController {
 		return this.alarmClockScenarioService.save(objectToSave);
 	}
 	
-
+	@PostMapping("/scenario/alarm-clock/delete")
+	public boolean delete(@RequestBody Long id){
+		return alarmClockScenarioService.delete(id);
+	}
 }
 

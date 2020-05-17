@@ -150,21 +150,19 @@
                 <div class="tab">
                     <table>
                         <tr>
-                            <th>Mac address</th>
                             <th>Type</th>
                             <th>Failure Rate</th>
                             <th>Failure Occurence</th>
                             <th>Cumulative Breakdown Time</th>
                         </tr>
-                        <tr *ngFor="let f of failures; let key of occurPerObject.keys()">
-                            <td> {{ f.macAddress }} </td>
-                            <td>{{ f.objectType }} </td>
-                            <td> {{ nbOccur }}/{{ occurrencesNumber }}</td>
-                            <td> {{ nbOccur }} </td>
+                        <tr *ngFor="let type of byType | keyvalue">
+                            <td> {{ type.key }} </td>
+                            <td> {{ type.value.size }}/{{ occurrencesNumber }}</td>
+                            <td> {{ type.value.size }} </td>
                             <td> Comming soon </td>
                         </tr>
                     </table>
-
+            
 
                 </div>
 

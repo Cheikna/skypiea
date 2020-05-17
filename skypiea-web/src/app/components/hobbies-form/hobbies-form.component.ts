@@ -59,21 +59,21 @@ export class HobbiesFormComponent implements OnInit {
     this.profileCriteriaJsonParameter = new ProfileCriteriaJsonParameter(this.profile, this.cinephile, this.isSmoker(), this.outsideHours, this.income, this.hobbiesForm.get('cooker').value, this.isSportive(), this.timeSports);
     this.client = this.clientService.getOneClient();
     this.profile.client = this.client;
-
+    console.log("TEST");
     this.profileService.create(this.profileCriteriaJsonParameter).subscribe(
       (data) => {
         if(data){
           console.log("profile created");
-          //this.router.navigate(['/dynamicForm']).then(() => {
-            this.toastService.displayToast(ToastType.SUCCESS, 'Successful connection', true, 'Please wait, the page will reload');
-          //});
+          this.router.navigate(['/']).then(() => {
+            this.toastService.displayToast(ToastType.SUCCESS, 'Your are registred', true, 'Please wait until a place becomes available');
+          });
         } else {
           this.toastService.displayToast(ToastType.ERROR, 'Authentication failed !', true, 
           'Your username or your password is incorrect.', 7000);
         }        
       },
       (error) => this.toastService.displayToast(ToastType.ERROR, 'An error occured !', true, JSON.stringify(error)));
-
   }
+
 
 }

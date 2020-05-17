@@ -9,6 +9,10 @@ import { storageKey } from 'src/app/util/storageKey.util';
 import { TemperatureControllerScenario } from 'src/app/models/temperatureControllerScenario.model';
 import { ShutterScenarioService } from 'src/app/services/shutter-scenario.service';
 import { ShutterScenario } from 'src/app/models/shutterScenario.model';
+import { AlarmClockScenarioService } from 'src/app/services/alarm-clock-scenario.service';
+import { AlarmClockScenario } from 'src/app/models/alarmClockScenario.model';
+import { BulbScenarioService } from 'src/app/services/bulb-scenario.service';
+import { BulbScenario } from 'src/app/models/bulbScenario.model';
 
 
 
@@ -22,11 +26,13 @@ export class ScenarioListComponent implements OnInit {
   temperatureControllerScenarioList: Array<any>;
   scenarioList: ScenarioListComponent;
   shutterScenarioList: Array<any>
+  alarmClockScenarioList: Array<any>; 
+  bulbScenarioList: Array<any>;
   resident: Resident;
   room: Room;
   delete: boolean;
 
-  constructor(private roomService: RoomService, private webStorageService: WebStorageService, private temperatureControllerScenarioService: TemperatureControllerScenarioService, private shutterScenarioService: ShutterScenarioService) {
+  constructor(private roomService: RoomService, private webStorageService: WebStorageService, private temperatureControllerScenarioService: TemperatureControllerScenarioService, private shutterScenarioService: ShutterScenarioService, private alarmClockScenarioService: AlarmClockScenarioService, private bulbScenarioService: BulbScenarioService) {
     this.room = new Room();
     this.room.state = State.OPERATIONAL;
     this.temperatureControllerScenarioList = new Array<string>();
@@ -42,6 +48,12 @@ export class ScenarioListComponent implements OnInit {
       this.shutterScenarioService.getShutterScenario(this.room.id).subscribe((data: Array<ShutterScenario>) => {
         this.shutterScenarioList = data;
       });
+      this.alarmClockScenarioService.getAlarmClockScenario(this.room.id).subscribe((data: Array<AlarmClockScenario>) => {
+        this.alarmClockScenarioList = data;
+      });
+      this.bulbScenarioService.getBulbScenario(this.room.id).subscribe((data: Array<BulbScenario>) => {
+        this.bulbScenarioList = data;
+      });
     });
   }
 
@@ -55,6 +67,22 @@ export class ScenarioListComponent implements OnInit {
 
   deleteShutter(id: number) {
     this.shutterScenarioService.delete(id).subscribe((data: boolean) => {
+      this.delete = data;
+      console.log(data);
+      window.location.reload();
+    });
+  }
+
+  deleteAlarmClock(id: number) {
+    this.alarmClockScenarioService.delete(id).subscribe((data: boolean) => {
+      this.delete = data;
+      console.log(data);
+      window.location.reload();
+    });
+  }
+
+  deleteBulb(id: number) {
+    this.bulbScenarioService.delete(id).subscribe((data: boolean) => {
       this.delete = data;
       console.log(data);
       window.location.reload();

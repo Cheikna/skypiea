@@ -31,6 +31,12 @@ public class BulbScenarioController {
 	public BulbScenario save(@RequestBody BulbScenario objectToSave) {
 		return this.bulbScenarioService.save(objectToSave);
 	}
+	
+	@PostMapping("/scenario/bulb/delete")
+	public boolean delete(@RequestBody Long id){
+		return bulbScenarioService.delete(id);
+	}
+	
 		
 }
 

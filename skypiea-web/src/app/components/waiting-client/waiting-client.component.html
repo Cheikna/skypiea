@@ -1,66 +1,122 @@
+
 <h1>List of waiting client</h1>
-  <div class="container">
-    <table mat-table [dataSource]="dataSource" matSort>
+
+<div class="container row md-padding">
+  <div class="room-filter col-12 col-md-auto">
+    <mat-form-field>
+      <mat-label>First priority</mat-label>
+      <mat-select [(value)]="firstPriority">
+        <ng-container *ngFor="let field1 of getFirstField()">
+          <mat-option [value]="field1">{{ field1 }}
+          </mat-option>
+      </ng-container>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="room-filter col-12 col-md-auto">
+    <mat-form-field>
+      <mat-label>Second priority</mat-label>
+      <mat-select [(value)]="secondPriority">
+        <ng-container *ngFor="let field2 of getSecondField()">
+          <mat-option [value]="field2">{{ field2 }}
+          </mat-option>
+      </ng-container>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="room-filter col-12 col-md-auto">
+    <mat-form-field>
+      <mat-label>Third priority</mat-label>
+      <mat-select [(value)]="thirdPriority">
+        <ng-container *ngFor="let field3 of getThirdField()">
+          <mat-option [value]="field3">{{ field3 }}
+          </mat-option>
+      </ng-container>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <button routerLink="/waitingClient" mat-raised-button class="btn btn-success" type="submit" (click)="calculOfPriorityPoints()">
+    <mat-icon>dialpad</mat-icon>Calcul priority points 
+  </button> 
+</div>
+<br>
+
+<div class="container">
+  Order of priority : {{typeSort}}
+</div>
+
+<div class="container">
+  <button mat-raised-button class="btn btn-success pull-right" type="submit" (click)="testTri()">
+    <mat-icon>autorenew</mat-icon>Sorted
+  </button> 
+</div>
+
+<br>
+
+<div class="container">
+    <table mat-table [dataSource]="dataSource" class="table table-striped table-bordered" animationDuration="1200ms" matSort>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;">
       </tr>
   
       <ng-container matColumnDef="lastName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Last name</th>
+        <th mat-header-cell *matHeaderCellDef>Last name</th>
         <td mat-cell *matCellDef="let clientsDetails" class="text-center"> {{clientsDetails.lastName}} </td>
       </ng-container>
       <ng-container matColumnDef="firstName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>First name</th>
+        <th mat-header-cell *matHeaderCellDef>First name</th>
         <td mat-cell *matCellDef="let clientsDetails" class="text-center"> {{clientsDetails.firstName}} </td>
       </ng-container>
       <ng-container matColumnDef="age">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Age</th>
+        <th mat-header-cell *matHeaderCellDef>Age</th>
         <td mat-cell *matCellDef="let clientsDetails" class="text-center"> {{clientsDetails.age}} </td>
       </ng-container>
       <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+        <th mat-header-cell *matHeaderCellDef>Email</th>
         <td mat-cell *matCellDef="let clientsDetails" class="text-center"> {{clientsDetails.email}} </td>
       </ng-container>
       <ng-container matColumnDef="adress">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Adress</th>
+        <th mat-header-cell *matHeaderCellDef>Adress</th>
         <td mat-cell *matCellDef="let clientsDetails" class="text-center"> {{clientsDetails.street}}<br>{{clientsDetails.city}}</td>
       </ng-container>
       <ng-container matColumnDef="phoneNumber">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone number</th>
+        <th mat-header-cell *matHeaderCellDef>Phone number</th>
         <td mat-cell *matCellDef="let clientsDetails" class="text-center"> {{clientsDetails.phoneNumber}} </td>
       </ng-container>
       <ng-container matColumnDef="disease">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Number of disease</th>
+        <th mat-header-cell *matHeaderCellDef>Number of disease</th>
         <td mat-cell *matCellDef="let clientsDetails" class="text-center"> {{clientsDetails.numberOfDisease}} </td>
       </ng-container>
       <ng-container matColumnDef="sporty">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sporty</th>
+        <th mat-header-cell *matHeaderCellDef>Sporty</th>
         <td mat-cell *matCellDef="let clientsDetails" class="text-center"> {{clientsDetails.sporty}} </td>
       </ng-container>
       <ng-container matColumnDef="smoker">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Smoker</th>
+        <th mat-header-cell *matHeaderCellDef>Smoker</th>
         <td mat-cell *matCellDef="let clientsDetails" class="text-center"> {{clientsDetails.smoker}} </td>
       </ng-container>
       <ng-container matColumnDef="cinephile">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Cinephile</th>
+        <th mat-header-cell *matHeaderCellDef>Cinephile</th>
         <td mat-cell *matCellDef="let clientsDetails" class="text-center"> {{clientsDetails.cinephile}} </td>
       </ng-container>
       <ng-container matColumnDef="cooker">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Cook</th>
+        <th mat-header-cell *matHeaderCellDef>Cook</th>
         <td mat-cell *matCellDef="let clientsDetails" class="text-center"> {{clientsDetails.cooker}} </td>
       </ng-container>
       <ng-container matColumnDef="sedentary">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sedentary</th>
+        <th mat-header-cell *matHeaderCellDef>Sedentary</th>
         <td mat-cell *matCellDef="let clientsDetails" class="text-center"> {{clientsDetails.sedentary}} </td>
       </ng-container>
       <ng-container matColumnDef="income">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Income</th>
+        <th mat-header-cell *matHeaderCellDef>Income</th>
         <td mat-cell *matCellDef="let clientsDetails" class="text-center"> {{clientsDetails.income}} </td>
       </ng-container>
-  
+      <ng-container matColumnDef="priorityPoints">
+        <th mat-header-cell *matHeaderCellDef>Priority points (for test)</th>
+        <td mat-cell *matCellDef="let clientsDetails" class="text-center"> {{clientsDetails.priorityPoints}} </td>
+      </ng-container>
     </table>
   
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
-  

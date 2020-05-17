@@ -40,5 +40,10 @@ public class AlarmClockScenarioService {
 		return savedObject;
 	}	
 	
+	public boolean delete(Long id) {
+		alarmClockScenarioRepository.deleteById(id);
+		return true;
+	}
+	
 
 }

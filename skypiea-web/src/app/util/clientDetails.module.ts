@@ -15,6 +15,7 @@ export class ClientDetails extends Entity{
     income: string;
     cooker: string;
     sporty: string;
+    priorityPoints: number;
 
     setLastName(lastName: string){
         this.lastName = lastName;
@@ -70,5 +71,9 @@ export class ClientDetails extends Entity{
 
     setSporty(sporty: string){
         this.sporty = sporty;
+    }
+
+    setPriorityPoints(priorityPoints: number){
+        this.priorityPoints = priorityPoints;
     }
 }
