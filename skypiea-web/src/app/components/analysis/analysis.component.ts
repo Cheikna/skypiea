@@ -9,12 +9,18 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { FooterComponent } from '../footer/footer.component';
 
 
+interface InfoObject {
+  nbOccurrence: number;
+  cumulateTime: number;
+}
+
 @Component({
   selector: 'app-analysis',
   templateUrl: './analysis.component.html',
   styleUrls: ['./analysis.component.scss'],
   
 })
+
 export class AnalysisComponent implements OnInit {
 
   Indicator = Indicator;
@@ -56,6 +62,8 @@ export class AnalysisComponent implements OnInit {
   dayFromStr: string;
   monthToStr: string;
   dayToStr: string;
+  byType: Map<string, Map<string, InfoObject>>;
+
 
 
   
@@ -116,10 +124,9 @@ export class AnalysisComponent implements OnInit {
     });
 
 
-    /*this.statisticService.findAllByDate(this.dateBeginStr, this.dateEndStr).subscribe((data) => {
+    this.statisticService.findAllByDate(this.dateBeginStr, this.dateEndStr).subscribe((data) => {
        this.failures = data;
-       console.log(this.failures);
-    });*/
+    });
     
 
     
@@ -259,19 +266,32 @@ findOccurPerObject(dateFrom, dateTo) {
   this.dateEndStr=""+this.dateTo.value.getFullYear()+"-"+this.monthToStr+"-"+this.dayToStr+" "+this.dateTo.value.getSeconds()+":"+this.dateTo.value.getMinutes()+":"+this.dateTo.value.getHours();
   console.log(this.dateEndStr);
 
-  this.statisticService.findOccurPerObject(this.dateBeginStr, this.dateEndStr).subscribe((data) => {
-    const occurPerObject: Map<string, number> = data;
+  this.statisticService.findAllByDate(this.dateBeginStr, this.dateEndStr).subscribe((data) => {
+     this.byType = new Map();
     i: Number;
-    console.log(occurPerObject);
-    for (let key of Object.keys(occurPerObject)) {
-      for (let f of this.failures) {
-        console.log(occurPerObject[key]);
-      if (key == f.macAddress) {
-        this.nbOccur = occurPerObject[key];
+    for (let obj of data) {
+      let perMacAddress: Map<string, InfoObject> = this.byType.get(obj.objectType);
+      if(perMacAddress===undefined){
+        perMacAddress = new Map();
+        this.byType.set(obj.objectType, perMacAddress);
       }
+      let infoObject: InfoObject = perMacAddress.get(obj.macAddress);
+      if (infoObject === undefined) {
+        infoObject = {
+          nbOccurrence : 0,
+          cumulateTime : 0
+        }
+        perMacAddress.set(obj.macAddress, infoObject);
       }
+      let dateStart = new Date(obj.startDate);
+      let dateEnd = new Date(obj.endDate);
+      
+      infoObject.nbOccurrence +=1;
+      infoObject.cumulateTime = dateEnd.getTime()-dateStart.getTime();
     }
+
   });
+
 }
 
 getStateRate() {
@@ -322,6 +342,7 @@ getStateRate() {
       }
 
     }
+
   });
 }
 
