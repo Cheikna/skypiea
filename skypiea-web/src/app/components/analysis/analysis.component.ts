@@ -24,9 +24,12 @@ interface InfoObject {
 export class AnalysisComponent implements OnInit {
 
   Indicator = Indicator;
+  selectedIndicator: any[];
   failureRate: any;
   statics: any[];
   failureFact: any;
+  useRate: any;
+  occupancyRate: any;
   macAddress: String;
   macAddresses: string[];
   stateRate: Map<string, Number>;
@@ -63,6 +66,7 @@ export class AnalysisComponent implements OnInit {
   monthToStr: string;
   dayToStr: string;
   byType: Map<string, Map<string, InfoObject>>;
+  perMacAddress: Map<string, InfoObject>;
 
 
 
@@ -74,6 +78,7 @@ export class AnalysisComponent implements OnInit {
     this.isDateFormValid = true;
     currentDayAtMidnight.setHours(23, 59, 59);
     this.dateTo.setValue(currentDayAtMidnight);
+    this.selectedIndicator=[this.failureRate, this.useRate, this.occupancyRate];
     
   }
 
@@ -270,24 +275,25 @@ findOccurPerObject(dateFrom, dateTo) {
      this.byType = new Map();
     i: Number;
     for (let obj of data) {
-      let perMacAddress: Map<string, InfoObject> = this.byType.get(obj.objectType);
-      if(perMacAddress===undefined){
-        perMacAddress = new Map();
-        this.byType.set(obj.objectType, perMacAddress);
+      this.perMacAddress= this.byType.get(obj.objectType);
+      if(this.perMacAddress===undefined){
+        this.perMacAddress = new Map();
+        this.byType.set(obj.objectType, this.perMacAddress);
       }
-      let infoObject: InfoObject = perMacAddress.get(obj.macAddress);
+      let infoObject: InfoObject = this.perMacAddress.get(obj.macAddress);
       if (infoObject === undefined) {
         infoObject = {
           nbOccurrence : 0,
           cumulateTime : 0
         }
-        perMacAddress.set(obj.macAddress, infoObject);
+       this.perMacAddress.set(obj.macAddress, infoObject);
       }
       let dateStart = new Date(obj.startDate);
       let dateEnd = new Date(obj.endDate);
       
       infoObject.nbOccurrence +=1;
-      infoObject.cumulateTime = dateEnd.getTime()-dateStart.getTime();
+      infoObject.cumulateTime = dateEnd.getTime()-dateStart.getTime()/1000;
+
     }
 
   });
