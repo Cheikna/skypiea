@@ -5,15 +5,13 @@ import com.skytech.skypiea.batch.algorithm.abstracts.MedicalConnectedObjectAlgor
 import com.skytech.skypiea.batch.algorithm.implementation.HealthSurveillenceAlgorithm;
 import com.skytech.skypiea.batch.cache.CacheFactory;
 import com.skytech.skypiea.batch.cache.CacheInfo;
-import com.skytech.skypiea.commons.entity.HealthControlHistory;
+import com.skytech.skypiea.commons.entity.HealthControlHistoryEvent;
 import com.skytech.skypiea.commons.entity.HistoryEvent;
 import com.skytech.skypiea.commons.entity.MedicalConnectedObject;
 import com.skytech.skypiea.commons.entity.RealTimeEvent;
 import com.skytech.skypiea.commons.enumeration.EventType;
 import com.skytech.skypiea.commons.enumeration.State;
 import com.skytech.skypiea.commons.message.Message;
-import com.skytech.skypiea.commons.object.statistic.ObjectStatisticFilter;
-import com.skytech.skypiea.commons.util.DateUtil;
 import com.skytech.skypiea.commons.util.StringFormatterUtil;
 import org.javatuples.Pair;
 import org.slf4j.Logger;
@@ -64,7 +62,7 @@ public class HealthSurveillanceService  implements IMessageProcessor {
                 }
 
                 log.info("Initial state : " + cacheInfo.getCurrentState());
-                EventType eventType = EventType.MONITORING;
+                EventType eventType = EventType.HEALTH_CONTROL;
                 cacheInfo = heartRateAlgorithm.check(medicalConnectedObject,message,cacheInfo);
                 newObjectState = cacheInfo.getCurrentState();
                 log.info("New state after monitoring check : " + newObjectState);
@@ -132,5 +130,6 @@ public class HealthSurveillanceService  implements IMessageProcessor {
         medicalConnectedObject = medicalConnectedObjectService.save(medicalConnectedObject);
         return medicalConnectedObject;
     }
+
 
 }

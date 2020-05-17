@@ -31,12 +31,13 @@ public class HealthSurveillenceAlgorithm extends MedicalConnectedObjectAlgorithm
         if(receivedValue <= 50 || receivedValue >= 80){
           cacheInfo.setCurrentState(State.WARNING);
           cacheInfo.increaseWarningMessageCount();
-          comments = "Resident is potentially in danger!";
+          comments = "Resident is in danger!";
       }
       else{
           cacheInfo.setCurrentState(State.OPERATIONAL);
       }
       cacheInfo.setComments(comments);
+      cacheInfo.add(receivedValue.toString());
       return cacheInfo;
     }
 

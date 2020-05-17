@@ -45,6 +45,17 @@ public class CacheInfo {
 		add(value);
 	}
 
+	public CacheInfo(Timestamp creationDate, Timestamp stateChangingDate, Timestamp lastCheckingDate, State currentState, Long warningMessageCount, String comments, boolean isCacheInfoNeedToBeSavedInDatabase, List<Pair<Timestamp, String>> valuesReached) {
+		this.creationDate = creationDate;
+		this.stateChangingDate = stateChangingDate;
+		this.lastCheckingDate = lastCheckingDate;
+		this.currentState = currentState;
+		this.warningMessageCount = warningMessageCount;
+		this.comments = comments;
+		this.isCacheInfoNeedToBeSavedInDatabase = isCacheInfoNeedToBeSavedInDatabase;
+		this.valuesReached = valuesReached;
+	}
+
 	public Timestamp getCreationDate() {
 		return creationDate;
 	}

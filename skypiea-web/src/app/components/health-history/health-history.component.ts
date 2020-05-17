@@ -23,14 +23,14 @@ export class HealthHistoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.medicalConnectedObjectService.findAll().subscribe(data =>{
+   /* this.medicalConnectedObjectService.findAll().subscribe(data =>{
       this.medicalConnectedObjects = data;
       this.healthControlHistories = this.medicalConnectedObjects.map(function (medicalConnectedObject) {
         return medicalConnectedObject.healthControlHistories;
       })
       this.dataSource = new MatTableDataSource<HealthControlHistory[]>(this.healthControlHistories);
     });
-    this.dataSource.paginator = this.paginator;
+    this.dataSource.paginator = this.paginator;*/
   }
 
 }

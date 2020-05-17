@@ -73,6 +73,10 @@ public class MedicalConnectedObject extends ConnectedObject {
         return medicalObjectType;
     }
 
+    public void setMedicalObjectType(MedicalObjectType medicalObjectType) {
+        this.medicalObjectType = medicalObjectType;
+    }
+
     @Override
     public String toString() {
         return "NonMedicalConnectedObject [id=" + id + ", MedicalObjectType=" + medicalObjectType + "]";

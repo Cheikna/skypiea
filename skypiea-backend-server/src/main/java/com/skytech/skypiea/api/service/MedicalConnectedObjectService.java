@@ -1,9 +1,7 @@
 package com.skytech.skypiea.api.service;
 
 import com.skytech.skypiea.api.repository.MedicalConnectedObjectRepository;
-import com.skytech.skypiea.commons.entity.HealthControlHistory;
 import com.skytech.skypiea.commons.entity.MedicalConnectedObject;
-import com.skytech.skypiea.commons.entity.NonMedicalConnectedObject;
 import org.hibernate.Hibernate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

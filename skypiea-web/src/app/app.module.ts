@@ -62,6 +62,8 @@ import { TemperatureControllerScenarioComponent } from './sub-components/tempera
 
 import { HobbiesFormComponent } from './components/hobbies-form/hobbies-form.component';
 import { WaitingClientComponent } from './components/waiting-client/waiting-client.component';
+import { AlertComponent } from './components/alert/alert.component';
+
 import { MailBoxStaffComponent } from './components/mail-box-staff/mail-box-staff.component';
 import { MailBoxResidentComponent } from './components/mail-box-resident/mail-box-resident.component';
 import { MailsListComponent } from './sub-components/mails-list/mails-list.component';
@@ -75,7 +77,7 @@ import { BulbScenarioComponent } from './sub-components/bulb-scenario/bulb-scena
     ObjectInfoComponent,
     ObjectMonitoringExtraInfoComponent,
     ObjectSettingsEventsHistoryComponent
-    
+
   ],
   declarations: [
     AppComponent,
@@ -131,6 +133,7 @@ import { BulbScenarioComponent } from './sub-components/bulb-scenario/bulb-scena
     ObjectsMapComponent,
     ObjectSettingsEventsHistoryComponent,
     WaitingClientComponent,
+    AlertComponent,
     MailBoxStaffComponent,
     MailBoxResidentComponent,
     MailsListComponent,
